@@ -38,7 +38,6 @@ my @to_install = qw(
     indirect multidimensional bareword::filehandles
     strictures
     Test::Warnings
-    LWP::Protocol::https
     Dist::Zilla::PluginBundle::Author::ETHER
     Dist::Zilla::App::Command::dumpphases
     Dist::Zilla::App::Command::podpreview

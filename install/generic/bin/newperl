@@ -1,0 +1,91 @@
+#!/usr/bin/env perl
+
+# adapted from https://gist.github.com/dagolden/5171336
+# 2013-03-15
+
+my $as = shift
+    or die "Usage: $0 <perl-version>";
+my @args = @ARGV;
+ 
+# trailing "t" means do threads
+my @threads = ( $as =~ /t$/ ) ? (qw/-D usethreads/) : ();
+ 
+$as =~ s/^5\.//;
+my $perl = "5.$as";
+$perl =~ s/t$//; # strip trailing "t" if any
+my $lib = $as . '@std';
+
+# TODO: these should all be in Task::BeLike::ETHER
+my @to_install = qw(
+    App::Ack
+    App::Nopaste
+    App::cpanoutdated
+    App::pmuninstall
+    App::cpanminus::reporter
+    Module::CoreList
+    Test::CPAN::Meta
+    Test::Pod::Coverage
+    Pod::Coverage::TrustPod
+    Test::CleanNamespaces
+    Data::Dumper
+    Archive::Tar::Wrapper
+    LWP::Protocol::https
+    ExtUtils::MakeMaker
+    Test::Builder
+    Carp::Always
+    Cpanel::JSON::XS
+    YAML::Syck
+    indirect multidimensional bareword::filehandles
+    strictures
+    Test::Warnings
+    LWP::Protocol::https
+    Dist::Zilla::PluginBundle::Author::ETHER
+    Dist::Zilla::App::Command::dumpphases
+    Dist::Zilla::App::Command::podpreview
+    Module::Install
+    Module::Install::Repository
+    Module::Install::AuthorRequires
+    Module::Install::ReadmeFromPod
+    Module::Install::GithubMeta
+    Module::Install::AutoLicense
+
+);
+#    Dist::Zilla
+#    Dist::Zilla::PluginBundle::RJBS
+#    Dist::Zilla::PluginBundle::DAGOLDEN
+#    Dist::Zilla::PluginBundle::FLORA
+
+my @no_man = qw/-D man1dir=none -D man3dir=none/;
+
+run( qw/perlbrew self-upgrade/ );
+ 
+# install perl and lock it down
+
+run( qw/perlbrew install -j 9 --as/, $as, $perl, @threads, @no_man, @args );
+run( qw/chmod -R a-w/, "$ENV{HOME}/perl5/perlbrew/perls/$as" );
+
+# give us a local::lib for installing things
+run( qw/perlbrew lib create/, $lib );
+ 
+## let's avoid any pod tests when we try to install stuff
+#system( qw/perlbrew exec --with/, $lib, qw/cpanm TAP::Harness::Restricted/ );
+#local $ENV{HARNESS_SUBCLASS} = "TAP::Harness::Restricted";
+ 
+# some things need forcing
+run( qw/perlbrew exec --with/, $lib, qw/cpanm -f/, @problem_modules )
+    if @problem_modules;
+ 
+# now install the rest
+run( qw/perlbrew exec --with/, $lib, qw/cpanm/, @to_install );
+
+# and again, to handle circular deps
+print "\n\ninstalling again, to handle circular dependencies (WATCH FOR THESE!)...\n";
+run( qw/perlbrew exec --with/, $lib, qw/cpanm/, @to_install );
+
+sub run
+{
+    my $cmd = join(' ', @_);
+    print "Running: $cmd\n";
+    system $cmd;
+}
+

@@ -1,0 +1,160 @@
+application/vnd.sun.xml.writer;mutt_bgrun ooffice %s; test=RunningX
+application/vnd.sun.xml.writer.global;mutt_bgrun ooffice %s; test=RunningX
+application/vnd.stardivision.writer;mutt_bgrun ooffice %s; test=RunningX
+application/vnd.stardivision.writer-global;mutt_bgrun ooffice %s; test=RunningX
+application/x-starwriter;mutt_bgrun ooffice %s; test=RunningX
+application/vnd.sun.xml.writer.template;mutt_bgrun ooffice %s; test=RunningX
+application/msword;mutt_bgrun ooffice %s; test=RunningX
+application/vnd.sun.xml.calc;mutt_bgrun ooffice %s; test=RunningX
+application/vnd.stardivision.calc;mutt_bgrun ooffice %s; test=RunningX
+application/x-starcalc;mutt_bgrun ooffice %s; test=RunningX
+application/vnd.sun.xml.calc.template;mutt_bgrun ooffice %s; test=RunningX
+application/excel;mutt_bgrun ooffice %s; test=RunningX
+application/msexcel;mutt_bgrun ooffice %s; test=RunningX
+application/vnd.ms-excel;mutt_bgrun ooffice %s; test=RunningX
+application/x-msexcel;mutt_bgrun ooffice %s; test=RunningX
+application/vnd.sun.xml.impress;mutt_bgrun ooffice %s; test=RunningX
+application/vnd.stardivision.impress;mutt_bgrun ooffice %s; test=RunningX
+application/vnd.stardivision.impress-packed;mutt_bgrun ooffice %s; test=RunningX
+application/x-starimpress;mutt_bgrun ooffice %s; test=RunningX
+application/vnd.sun.xml.impress.template;mutt_bgrun ooffice %s; test=RunningX
+application/powerpoint;mutt_bgrun ooffice %s; test=RunningX
+application/mspowerpoint;mutt_bgrun ooffice %s; test=RunningX
+application/vnd.ms-powerpoint;mutt_bgrun ooffice %s; test=RunningX
+application/x-mspowerpoint;mutt_bgrun ooffice %s; test=RunningX
+application/vnd.sun.xml.draw;mutt_bgrun ooffice %s; test=RunningX
+application/vnd.stardivision.draw;mutt_bgrun ooffice %s; test=RunningX
+application/x-stardraw;mutt_bgrun ooffice %s; test=RunningX
+application/vnd.sun.xml.draw.template;mutt_bgrun ooffice %s; test=RunningX
+application/vnd.sun.xml.math;mutt_bgrun ooffice %s; test=RunningX
+application/vnd.stardivision.math;mutt_bgrun ooffice %s; test=RunningX
+application/x-starmath;mutt_bgrun ooffice %s; test=RunningX
+application/vnd.sun.xml.writer;mutt_bgrun ooffice %s; test=RunningX
+application/vnd.sun.xml.writer.global;mutt_bgrun ooffice %s; test=RunningX
+application/vnd.stardivision.writer;mutt_bgrun ooffice %s; test=RunningX
+application/vnd.stardivision.writer-global;mutt_bgrun ooffice %s; test=RunningX
+application/x-starwriter;mutt_bgrun ooffice %s; test=RunningX
+application/vnd.sun.xml.writer.template;mutt_bgrun ooffice %s; test=RunningX
+application/msword;mutt_bgrun ooffice %s; test=RunningX
+application/vnd.sun.xml.calc;mutt_bgrun ooffice %s; test=RunningX
+application/vnd.stardivision.calc;mutt_bgrun ooffice %s; test=RunningX
+application/x-starcalc;mutt_bgrun ooffice %s; test=RunningX
+application/vnd.sun.xml.calc.template;mutt_bgrun ooffice %s; test=RunningX
+application/excel;mutt_bgrun ooffice %s; test=RunningX
+application/msexcel;mutt_bgrun ooffice %s; test=RunningX
+application/vnd.ms-excel;mutt_bgrun ooffice %s; test=RunningX
+application/x-msexcel;mutt_bgrun ooffice %s; test=RunningX
+application/vnd.sun.xml.impress;mutt_bgrun ooffice %s; test=RunningX
+application/vnd.stardivision.impress;mutt_bgrun ooffice %s; test=RunningX
+application/vnd.stardivision.impress-packed;mutt_bgrun ooffice %s; test=RunningX
+application/x-starimpress;mutt_bgrun ooffice %s; test=RunningX
+application/vnd.sun.xml.impress.template;mutt_bgrun ooffice %s; test=RunningX
+application/powerpoint;mutt_bgrun ooffice %s; test=RunningX
+application/mspowerpoint;mutt_bgrun ooffice %s; test=RunningX
+application/vnd.ms-powerpoint;mutt_bgrun ooffice %s; test=RunningX
+application/x-mspowerpoint;mutt_bgrun ooffice %s; test=RunningX
+application/vnd.sun.xml.draw;mutt_bgrun ooffice %s; test=RunningX
+application/vnd.stardivision.draw;mutt_bgrun ooffice %s; test=RunningX
+application/x-stardraw;mutt_bgrun ooffice %s; test=RunningX
+application/vnd.sun.xml.draw.template;mutt_bgrun ooffice %s; test=RunningX
+application/vnd.sun.xml.math;mutt_bgrun ooffice %s; test=RunningX
+application/vnd.stardivision.math;mutt_bgrun ooffice %s; test=RunningX
+application/x-starmath;mutt_bgrun ooffice %s; test=RunningX
+application/vnd.sun.xml.writer;mutt_bgrun ooffice %s; test=RunningX
+application/vnd.sun.xml.writer.global;mutt_bgrun ooffice %s; test=RunningX
+application/vnd.stardivision.writer;mutt_bgrun ooffice %s; test=RunningX
+application/vnd.stardivision.writer-global;mutt_bgrun ooffice %s; test=RunningX
+application/x-starwriter;mutt_bgrun ooffice %s; test=RunningX
+application/vnd.sun.xml.writer.template;mutt_bgrun ooffice %s; test=RunningX
+application/msword;mutt_bgrun ooffice %s; test=RunningX
+application/vnd.sun.xml.calc;mutt_bgrun ooffice %s; test=RunningX
+application/vnd.stardivision.calc;mutt_bgrun ooffice %s; test=RunningX
+application/x-starcalc;mutt_bgrun ooffice %s; test=RunningX
+application/vnd.sun.xml.calc.template;mutt_bgrun ooffice %s; test=RunningX
+application/excel;mutt_bgrun ooffice %s; test=RunningX
+application/msexcel;mutt_bgrun ooffice %s; test=RunningX
+application/vnd.ms-excel;mutt_bgrun ooffice %s; test=RunningX
+application/x-msexcel;mutt_bgrun ooffice %s; test=RunningX
+application/vnd.sun.xml.impress;mutt_bgrun ooffice %s; test=RunningX
+application/vnd.stardivision.impress;mutt_bgrun ooffice %s; test=RunningX
+application/vnd.stardivision.impress-packed;mutt_bgrun ooffice %s; test=RunningX
+application/x-starimpress;mutt_bgrun ooffice %s; test=RunningX
+application/vnd.sun.xml.impress.template;mutt_bgrun ooffice %s; test=RunningX
+application/powerpoint;mutt_bgrun ooffice %s; test=RunningX
+application/mspowerpoint;mutt_bgrun ooffice %s; test=RunningX
+application/vnd.ms-powerpoint;mutt_bgrun ooffice %s; test=RunningX
+application/x-mspowerpoint;mutt_bgrun ooffice %s; test=RunningX
+application/vnd.sun.xml.draw;mutt_bgrun ooffice %s; test=RunningX
+application/vnd.stardivision.draw;mutt_bgrun ooffice %s; test=RunningX
+application/x-stardraw;mutt_bgrun ooffice %s; test=RunningX
+application/vnd.sun.xml.draw.template;mutt_bgrun ooffice %s; test=RunningX
+application/vnd.sun.xml.math;mutt_bgrun ooffice %s; test=RunningX
+application/vnd.stardivision.math;mutt_bgrun ooffice %s; test=RunningX
+application/x-starmath;mutt_bgrun ooffice %s; test=RunningX
+application/x-ogg;/usr/bin/xmms %s
+application/ogg;/usr/bin/xmms %s
+text/vnd.rn-realtext;/usr/bin/xmms %s
+image/vnd.rn-realpix;/usr/bin/xmms %s
+application/smil;/usr/bin/xmms %s
+audio/mp3;/usr/bin/xmms %s
+audio/x-mp3;/usr/bin/xmms %s
+audio/mpeg;/usr/bin/xmms %s
+audio/mpg;/usr/bin/xmms %s
+audio/x-mpeg;/usr/bin/xmms %s
+audio/x-mpg;/usr/bin/xmms %s
+audio/mpegurl;/usr/bin/xmms %s
+audio/x-mpegurl;/usr/bin/xmms %s
+audio/wav;/usr/bin/xmms %s
+audio/x-wav;/usr/bin/xmms %s
+audio/x-pn-wav;/usr/bin/xmms %s
+audio/x-pn-windows-acm;/usr/bin/xmms %s
+audio/x-pn-windows-pcm;/usr/bin/xmms %s
+application/vnd.rn-realmedia-secure;/usr/bin/xmms %s
+application/vnd.rn-realaudio-secure;/usr/bin/xmms %s
+audio/x-realaudio-secure;/usr/bin/xmms %s
+video/vnd.rn-realvideo-secure;/usr/bin/xmms %s
+audio/vnd.rn-realaudio;/usr/bin/xmms %s
+audio/x-realaudio;/usr/bin/xmms %s
+application/vnd.rn-realmedia;/usr/bin/xmms %s
+application/vnd.rn-realmedia-vbr;/usr/bin/xmms %s
+image/vnd.rn-realpix;/usr/bin/xmms %s
+audio/x-pn-realaudio;/usr/bin/xmms %s
+video/vnd.rn-realvideo;/usr/bin/xmms %s
+application/vnd.rn-realsystem-rmj;/usr/bin/xmms %s
+application/vnd.rn-realsystem-rmx;/usr/bin/xmms %s
+audio/aac;/usr/bin/xmms %s
+audio/m4a;/usr/bin/xmms %s
+audio/mp2;/usr/bin/xmms %s
+audio/mp1;/usr/bin/xmms %s
+audio/rn-mpeg;/usr/bin/xmms %s
+audio/scpls;/usr/bin/xmms %s
+audio/x-scpls;/usr/bin/xmms %s
+application/streamingmedia;/usr/bin/xmms %s
+application/sdp;/usr/bin/xmms %s
+application/x-sdp;/usr/bin/xmms %s
+audio/basic;/usr/bin/xmms %s
+audio/x-pn-au;/usr/bin/xmms %s
+audio/aiff;/usr/bin/xmms %s
+audio/x-aiff;/usr/bin/xmms %s
+audio/x-pn-aiff;/usr/bin/xmms %s
+# Java Web Start
+application/x-java-jnlp-file; /home/ether/jre1.5.0_02/bin/javaws %s
+
+# Added manually by ether
+# mutt_bgrun and RunningX available at http://www.spocom.com/users/gjohnson/mutt/
+# and from //depot/users/ether/bin/
+application/pdf; mutt_bgrun preview %s
+# also check out
+# http://www.atmos.washington.edu/local-httpdocs/ishmail/guide/6m52wFBX4N9X3cS.html
+#image/*; mutt_bgrun xloadimage %s; test=RunningX
+image/*; mutt_bgrun preview %s
+image/jpeg; mutt_bgrun preview %s
+application/rtf; mutt_bgrun ooffice %s; test=RunningX
+# experimental - excel files sometimes show up as this
+# application/octet-stream; mutt_bgrun ooffice %s; test=RunningX
+application/octet-stream; less
+# See http://www.mozilla.org/unix/remote.html
+text/calendar; firefox -calendar -remote openFile\\(%s\\); test=RunningX
+
+#text/html; lynx -force_html %s; needsterminal;
+text/html; lynx -dump -force_html %s; needsterminal; copiousoutput;

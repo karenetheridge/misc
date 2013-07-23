@@ -1,0 +1,474 @@
+###################################################################
+###
+### ether's muttrc
+### This file lives in //depot/users/ether/.muttrc
+### Largely based on the .muttrc for ether@tcp.com
+### with a few things taken from neilw, lukec etc
+###
+### Copying encouraged, but please integrate rather than add,
+### and include credit (and be very aware of what you're doing before
+### you do it!)
+
+
+# first, undo all the gentoo-prescribed prefs
+set mbox_type=mbox
+
+# set folder=~/mail
+set folder=~/mail
+
+set spoolfile="=i"
+#set record="=sent"     # see below for send-hook overrides
+set move=no
+
+
+# Set and source our alias file
+set alias_file=~/.mutt/aliases
+source ~/.mutt/aliases
+
+# Who am I? -- note that this is mis-documented at mutt.org
+#alternates ((karene|ether)@(ca.sophos|activestate).com|karen.etheridge@sophos.com)
+
+#send-hook . 'set signature=~/.signature'
+# I sure want negative assertions, grr... -> NOT (estate) or (sophos)
+#send-hook '~t @.*[^es][^so][^tp][^ah][^to][^es]\.com' 'set signature=~/.remote-signature'
+
+set signature='~/bin/sigrandomizermutt|'
+
+set print_command='a2ps -=mail -d'
+
+###################################################################
+###
+### Indexer:
+
+# default:                      "%4C %Z %{%b %d} %-16.16L  %s"
+folder-hook . 'set index_format="%Z %3C %[%b %d] %-16.16F (%4l)  %s"'
+
+set noarrow_cursor          # the bar looks nice when it's coloured
+set menu_scroll             # don't flip pages - just scroll the menu
+set status_on_top	    # move status bar to top of screen
+
+# default:
+#"-%r-Mutt: %f [Msgs:%?M?%M/?%m%?n? New:%n?%?o? Old:%o?%?d? Del:%d?%?F? Flag:%F?%?t? Tag:%t?%?p? Post:%p?%?b? Inc:%b?%?l? %l?]---(%s/%S)-%>-(%P)---
+# this is awful to parse, so I've done so below:
+# args deliminated: MMMMMMMmmmmnnnnnnnnnnnnooooooooooooddddddddddddFFFFFFFFFFFFFttttttttttttpppppppppppppbbbbbbbbbbbbllllllll
+set status_format="%r %f [%?b?Mboxes:%b ?Msgs:%?M?%M/?%m%?n? New:%n?%?d? Del:%d?%?F? Flag:%F?%?t? Tag:%t?%?p? Post:%p?%?l? %l?]---(%s/%S)-%>-(%P)---"
+# args deliminated:       bbbbbbbbbbbbbbbMMMMMMMMMMMmmmmnnnnnnnnnnnnddddddddddddFFFFFFFFFFFFFttttttttttttpppppppppppppllllllll
+
+#set sort=date-received
+set sort=threads             # preferred sorting method
+#folder-hook . set sort=date-received
+set sort_aux=last-date-received # sorting method for threads
+#set sort_aux=last-date-sent # sorting method for threads
+#folder-hook . set sort_aux=last-date-sent
+
+set prompt_after=no	    # when pager exits, go to menu immediately
+set confirmappend=no        # don't ask confirmation to append to a folder
+set confirmcreate=no        # don't ask confirmation to create a new folder
+set save_empty=no           # delete empty mailboxes
+set move=no                 # do not save spooler into $mbox (quad-option)
+set delete_untag=yes        # untag messages that I've marked for deletion
+set beep=no                 # stop beeping all the time
+set beep_new=no             # and that goes for new mail arriving too
+set mark_old=no             # no diff between new-new (N) and old-new (O)
+set resolve=no              # don't advance to next msg when changing its state
+
+
+###################################################################
+###
+### Macros
+
+# macro index i fspam^Myt
+
+
+###################################################################
+###
+### Pager/viewing messages:
+
+auto_view text/html         # automatically show me these types (they MUST be
+                            # defined with "copiousoutput").
+alternative_order text/plain text text/html  # prefer to display in this order
+auto_view text/html
+set implicit_autoview	    # use mailcap entries...
+#  set mailcap_sanitize
+unset wait_key              # just go ahead and don't ask me to push a key
+
+#set pager='less -icM'       # I didn't used to like the "builtin" pager
+set pager_index_lines=20
+
+# builtin pager:
+set pager_stop          # "next-page" will not jump to next message
+set pager_context=1     # include one line of overlap between screens
+#set charset=iso-8859-1
+set smart_wrap          # try to wrap at word boundaries
+unset markers           # I don't like the + at the start of wrapped lines:
+                        # it screws up copy/pasting of long URLs
+
+bind pager G bottom
+bind pager $ bottom
+bind pager U half-up
+bind pager D half-down
+bind pager B previous-page
+
+# this is a test... which doesn't work
+# bind pager c next-unread
+
+# These are all the headers I don't want to see; bang on 'h' to see them though
+ignore delivered-to precedence received mime-version errors-to message-id
+ignore content-type status content-transfer-encoding
+ignore user-agent in-reply-to reply-to importance
+ignore thread-
+ignore x-
+ignore return-path sender
+unignore x-spam-status
+unignore x-spammer
+ignore list-
+ignore X400-
+ignore auto-submitted mailing-list mail-followup-to
+ignore "Priority: normal"
+ignore References
+#ignore "Organization: Sophos"
+ignore content-disposition content-length lines content-class
+ignore From
+unignore From:
+ignore >From
+ignore Sensitivity
+ignore DKIM-
+ignore DomainKey-
+
+folder-hook . unignore To Cc
+
+set pager_format="%Z %C/%m: %-13.13n %s"
+
+macro index \cb |urlview\n
+macro pager \cb |urlview\n
+
+
+###################################################################
+###
+### Editing/composing messages:
+
+# set edit_headers          # allow editing of headers when composing
+# set autoedit              # skip the initial send-menu (use with edit_headers)
+# attribution - string that precedes message being quoted.
+set forward_quote           # use $indent_string to quote forwards when in body
+#set tilde                  # show non-existant lines with ~ at start of line
+                            # (vim probably already does this)
+send-hook . 'set mime_forward=ask-no'
+set mime_forward=ask-no
+set forward_decode=yes      # used when mime_forward is no
+set mime_forward_decode=no  # used when mime_forward is yes
+
+# Make vim do all the smart stuff
+set editor="vim +':set ft=mail'"
+# set editor="/usr/bin/vim -u ~/.mutt/vimrc
+
+
+###################################################################
+###
+### Sending messages:
+
+set fast_reply		    # Jump right in to replying (skip send-menu)
+set askcc=no                # Don't ask for Cc addresses
+# send-hook . 'set askcc=yes'
+set askbcc=no               # Don't ask for Bcc addresses
+set include=yes             # Automatically include copy of message in reply
+set copy                    # Save a copy of outgoing mail...
+#set record='=sent'          # ... into the =sent folder
+send-hook . 'set record="=sent"'
+#set metoo=no                # rm me from To: when replying to group mail
+send-hook . 'set metoo=no'
+set hidden_host		    # Don't use `hostname` when filling in domain
+set forward_format='%s (fwd)'
+set postpone=ask-no	    # I don't generally like to postpone cancellations
+set postponed==postponed    # where to save them to
+unset fcc_attach            # don't save outgoing attachments
+
+# Header customization
+
+# set hostname=excavator.ca.sophos.com      # Use my dynamic hostname
+#set from='karen@etheridge.ca'  # Use this From: address
+set from='karen@etheridge.ca'
+set realname='Karen Etheridge'  # gcos not used, because $from is set
+set reverse_name=yes            # reply as the user to whom the mail was sent
+                            # (will fake sender if addressed to one of my
+                            # alternate addresses and procmailed here)
+set reverse_realname=yes    # use header name as-is, without using 'realname'
+set alternates='(karen@etheridge.ca|.*@froods.org|karen.?etheridge@gmail.com|ether@cpan.org)'
+#my_hdr Reply-To: Karen Etheridge <karen@etheridge.ca>
+unhdr_order *
+hdr_order From Date: From: To: Cc: Subject: Organization: X-Spam:
+
+# Mime attachments and forwarding:
+#set mime_forward=ask-no
+send-hook '.' 'set mime_forward=ask-no'
+set forward_decode=yes      # used when mime_forward is no
+set mime_forward_decode=no  # used when mime_forward is yes
+
+# Sendmail config
+#set sendmail="/usr/bin/cat -- "   # for debugging
+#set sendmail="/usr/bin/nbsmtp -f ether@activestate.com -h smtp.activestate.com -d activestate.com"
+set sendmail="/opt/local/bin/msmtp"
+set envelope_from=yes       # derive sender from From: header: passes -f to msmtp
+set use_from=yes            # Generate the From: header.
+
+# Use only when your MTA supports DSN (sendmail does, exim / qmail dont
+# and newer versions of postfix do, apparently).  If your MTA doesn't
+# support DSN (you can't ask for return receipts using pine, say) then
+# comment out the dsn_notify and dsn_return lines.  --suresh (5/25/01)
+# I use nbsmtp/msmtp and ran into problems when this was enabled. -ether
+#set dsn_notify='failure,delay' # when to return an error message
+#set dsn_return=hdrs            # what to return in the error message
+
+
+###################################################################
+###
+### Stuff about mailboxes and lists
+###
+### folder-hooks must come at the end of the file, so normal settings do not
+### override them (or, use defaults to undo them for other folders)
+
+set sort_browser=reverse-date       # the order presented in the 'c' menu
+
+# these are all the mailboxes with incoming mail
+# If something isn't listed, I don't want to cycle through them.
+# ordered by precedence for cycling (just hit 'c' to see what mailbox you
+# should read next)
+mailboxes ! =i =IN.gmail =IN.froods =IN.other =IN.tcp
+
+# disabled 2010-02-08: was overriding desired "reverse_name" behaviour
+#send-hook '.' 'my_hdr From: Karen Etheridge <karen@etheridge.ca>'
+send-hook . 'unmy_hdr From:'
+send-hook '~t burncard@' 'my_hdr From: Karen Etheridge <karen.etheridge@gmail.com>'
+send-hook '~t Lothaenorixius@' 'my_hdr From: Karen Etheridge <karen.etheridge@gmail.com>'
+send-hook '~t cspa.chat@' 'my_hdr From: Karen Etheridge <cspa@froods.org>'
+
+send-hook '~t vancouver-pm@pm.org' 'my_hdr From: Karen Etheridge <perlmongers@froods.org>'
+send-hook '~t beanstalk-talk@googlegroups.com' 'my_hdr From: Karen Etheridge <karen.etheridge@gmail.com>'
+#send-hook '~t moose@perl.org' 'my_hdr From: Karen Etheridge <perl@froods.org>'
+#send-hook '~t datetime@perl.org' 'my_hdr From: Karen Etheridge <perl@froods.org>'
+#send-hook '~t perl-documentation@perl.org' 'my_hdr From: Karen Etheridge <perl@froods.org>'
+#send-hook '~t perl5-porters@perl.org' 'my_hdr From: Karen Etheridge <perl@froods.org>'
+#send-hook '~t cpan-workers.perl.org' 'my_hdr From: Karen Etheridge <perl@froods.org>'
+#send-hook '~t perl-qa.perl.org' 'my_hdr From: Karen Etheridge <perl@froods.org>'
+send-hook '~t @perl.org' 'my_hdr From: Karen Etheridge <perl@froods.org>'
+send-hook '~c @perl.org' 'my_hdr From: Karen Etheridge <perl@froods.org>'
+send-hook '~t @rt.cpan.org' 'my_hdr From: Karen Etheridge <ether@cpan.org>'
+send-hook '~c @rt.cpan.org' 'my_hdr From: Karen Etheridge <ether@cpan.org>'
+send-hook '~t perlbug@perl.org' 'my_hdr From: Karen Etheridge <ether@cpan.org>'
+
+send-hook '~t perl-cache-discuss@' 'my_hdr From: Karen Etheridge <karen.etheridge@gmail.com>'
+send-hook '~t distzilla@lists.codesimply.com' 'my_hdr From: Karen Etheridge <ether@cpan.org>'
+send-hook '~t psgi-plack@googlegroups.com' 'my_hdr From: Karen Etheridge <karen.etheridge@gmail.com>'
+send-hook '~t xml-compile@lists.scsys.co.uk' 'my_hdr From: Karen Etheridge <perl@froods.org>'
+send-hook '~t metacpan@lists.scsys.co.uk' 'my_hdr From: Karen Etheridge <perl@froods.org>'
+
+
+# these are all mailing lists - parse List-Reply headers etc
+# these strings need to match something in the headers
+subscribe burncard
+subscribe Lothaenorixius
+subscribe cspa
+subscribe friends@jinfoong.net
+subscribe vancouver-pm@pm.org
+subscribe moose
+subscribe datetime
+subscribe beanstalk
+subscribe perl-documentation
+subscribe perl5-porters
+subscribe perl-cache-discuss
+subscribe distzilla
+subscribe toolchain
+subscribe cpan-workers
+subscribe perl-qa
+subscribe psgi-plack
+subscribe xml-compile
+subscribe metacpan
+subscribe perl5-porters
+subscribe yapc
+
+
+# All folder-hooks need to be "undone" with defaults so other folders don't
+# inherit the same changes.
+
+# In p4 checkin reports, it is very annoying seeing a huge To address line, so
+# remove it.
+folder-hook p4 ignore To Cc
+folder-hook p4 hdr_order From: Date: Subject:
+
+# don't say 'To foo...' for p4 mail - it's irrelevant (s/%F/%n/)
+folder-hook p4 'set index_format="%Z %3C %{%b %d} %-16.16n (%4l)  %s"'
+
+folder-hook i$ set sort=threads
+
+
+###################################################################
+###
+### Colours
+
+source ~/.mutt/colours-other
+source ~/.mutt/colours-p4
+source ~/.mutt/colours-bugzilla
+source ~/.mutt/colours-builds
+
+
+
+# vim: ft=muttrc
+
+###################################################################
+###
+### Guide to transitioning to mutt from thunderbird/kmail etc
+#
+# For interesting tidbits, see: http://www.gentoo.org/doc/en/guide-to-mutt.xml
+#
+# Configure stuff in this order:
+#
+# 1. sendmail substitute (nbsmtp, msmtp):
+#
+#    .nbsmtprc:
+#     auth_user = karene
+#     auth_password = <password>
+#
+#    .msmtprc:
+#     account default
+#     host smtp.activestate.com
+#     from ether@activestate.com
+#     user karene
+#     password <password>
+#     domain activestate.com
+#     logfile /home/ether/var/msmtp.log
+#
+# 2. procmail (see my .procmailrc for more info) for filtering mail into
+#    folders for better usability
+#
+# 3. fetchmail (see .fetchmailrc)
+#
+# 4. mutt
+#
+# For testing fetchmail/procmail configuration, comment out "set daemon .."
+# and run "fetchmail -akv" - this will not delete messages from the server
+#
+# You can fetch individual mailboxes from the server with
+# 'mutt imap://mail.activestate.com' and then manually change to the 'Sent'
+# directory (or whatever you've called it - see the 'c' command), then save
+# all messages to a local file by typing this (annotations in brackets):
+#     T.             [tag everything matching . - i.e. everything]
+#     ;s~/sent       [save all tagged messages to ~/sent]
+#     x              [exit without making changes]
+#
+# I used this method to fetch my sent messages, but used fetchmail to grab
+# everything else - I moved all folders back into the inbox, then ran
+# "fetchmail -a" to fetch the inbox (still with daemon mode turned off).
+# Then when I was happy with how the filters were working, I uncommented the
+# daemon line and ran 'fetchmail' with no arguments.
+#
+# I also call fetchmail from .profile.d/.../mail.sh because whenever I
+# reboot my workstation, I forget to restart fetchmail.
+#
+
+
+###################################################################
+###
+### Opening URLs from mutt into firefox, by Dave Lee
+#
+#
+# Add these lines to .muttrc:
+#   macro index \cb |urlview\n
+#   macro pager \cb |urlview\n
+#
+# The program "urlview" can be found at:
+# ftp://ftp.guug.de/pub/mutt/contrib/urlview-0.9.tar.gz
+# Install using the usuall ./configure; make; make install commands.
+# "urlview" is used to parse out the URL and perform an action on the
+# URL it finds.
+#
+# Now a .urlview file which contains the following line:
+#  COMMAND ~/.firefox.sh %s
+#
+# Also create ~/.firefox.sh which contains the following:
+#   /usr/bin/firefox -remote "openurl($@, new-window)"
+#
+# chmod +x ~/.firefox.sh
+#
+# If you want to open a new tab in an existing browser, try using
+# "new-tab" instead.  As far as I know, if the browser isn't already
+# running, this will _not_ start a new instance.  I could be wrong, so
+# if someone verifies, please correct me.
+#
+
+
+###################################################################
+###
+### To do list
+
+### Enhancements
+#
+# - shell prompt should show number of messages in (important) mailboxes
+# cliffordh says to look at users/neilw/mailtools/nwmail - which is only for
+# maildir format, so I'll need to write an 'ethermail'
+#
+# - cliffordh says to check out his new mutt.sh
+#
+# - should be able to keep banging space and circulate through all new
+# messages in all mailboxes (perl hackers are lazy!)
+#
+#
+# - vim's formatting is less than perfect when composing messages
+#
+# indexer:
+# - should show number of new messages in this folder, and number of folders
+# with new messages
+# - indexer should (like my vi) never go to the bottom of the page; always
+# scroll with a few messages below me, for context
+# - 'date' should be 'time' if message sent today
+# - highlight messages with 'important' flag
+# - space and tab should go to next mailbox
+#
+# - bindings:
+#   when first arriving in a mailbox, "half-down"?
+#   need meta-b and meta-h back like I'm used to
+#
+#   in pager, j/k should scroll in message not between messages; use arrow
+#   keys to move between messages.
+#
+#   need an alias for lowering pager_index_lines
+#   "go to last message in index"
+#
+# pager:
+# - keybindings should be more like less
+# - <spc> when at bottom of message should act like tab - go to next newest
+# - <spc> when at bottom of message and no new messages should act like c - go
+# to next mailbox
+#
+# - colours:
+#   normal text is okay as grey (i.e. default)
+#   singly-quoted text shouldn't be brighter (white) though - this is
+#   different on my home system than work, so term settings are partially to
+#   blame here - therefore be explicit with colourings
+#
+#   highlight the header lines in bugzilla emails for easier parsing
+#   ditto for perforce changes.
+#
+# - w and W should work as in indexer
+# - and any other unmapped indexer keys...
+#
+# send hooks:
+# - strip *-bounces@activestate.com/sophos.com from To: or Cc:
+# - replace dev-chat@sophos.com with activestate.com
+# - strip *-admin from mailing list outgoing messages
+#
+# mailbox hooks:
+# - 'mailbox to save to' - for perforce messages that end up in inbox
+#
+# editor:
+# - vim should not wrap so ridiculously (at something like 60) - instead use
+# the standard 72.
+# - turn off whatever's taking forever - is it just the spellchecking?
+#
+# PGP - set up, etc - http://codesorcery.net/mutt/mutt-gnupg-howto
+
+# Problems:
+
+# in mailboxes pmx-bld, p4*, ...:
+#  jump to most recent message, not first unread
+
+

@@ -1,0 +1,31 @@
+#!/usr/bin/perl
+ 
+# Karen Etheridge (com.tcp@ether reversed), 2000
+
+# Undoes the effects of 'wordwrap' - all lines in a paragraph (separated
+# by a blank line) are joined.  Lines with just whitespace are considered
+# paragraph separators also.
+
+# spaces are added between joined lines.  (maybe this isn't a good idea)
+ 
+while (<>)
+{
+    chomp($line = $_);
+ 
+    # End of paragraph reached; print it out (and the blank line)
+    if ($line =~ /^\s*$/)
+    {
+        $paragraph eq "" || print "$paragraph\n";
+	print "$line\n";
+        $paragraph = "";
+    }
+    else
+    {
+         # concat the new line with the paragraph
+         $paragraph = ($paragraph eq "" ? $line : $paragraph . " " . $line);
+    }
+}
+ 
+$line eq "" || print "$paragraph\n";
+print "$line\n";
+

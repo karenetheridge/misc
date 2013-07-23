@@ -1,0 +1,74 @@
+###################################################################
+###
+### ether's mutt colour preferences - miscellaneous
+###
+
+# Source this first, before other more specialized files
+# source .mutt/colours-other
+
+# Unfortunately mutt doesn't support variable substitutions, or I'd pull out
+# all the 'ether's into a $user for greater portability.  sed is your friend!
+
+
+# apparently 'default' is needed to stop space padding -
+# http://linuxmafia.com/~rick/linux-info/screen-bce
+color normal default default
+
+# Indexer
+uncolor index *
+color index red default ~N              # new messages
+color index red default ~O              # "new" messages
+color index brightcyan default ~F       # flagged messages
+color index magenta default ~T          # Tagged
+color index yellow default ~D           # Deleted
+color indicator brightyellow red        # actual message
+color tree green default                # thread arrows in index menu (this
+                                        # requires TERM=xterm, not screen)
+color error brightred default           # errors yell at you in red
+color status white blue                 # top status bar
+color message brightcyan default        # informational messages, not mail
+#color attachment brightyellow red      # MIME attachments - annoying!
+color search brightyellow red           # search matches
+
+
+### Pager
+color header cyan default ^(From|Subject|Date): # Important headers
+color hdrdefault red default                  # other headers
+color underline yellow default
+color markers red default                     # + at beginning of wrapped lines
+color bold white default                      # hiliting bold patterns in body
+color body brightwhite default " [;:]-*[)>(<|]" # smileys
+color tilde blue default                      # ~'s after message body
+color signature green default                 # signature (after "-- ")
+
+color body brightred default "activestate\.com" # activestate.com is verboten now
+color header brightred default "activestate\.com"
+
+
+### Body
+# email addresses (http://aperiodic.net/phil/configs/mutt/colors)
+color body magenta default "((@(([0-9a-z-]+\\.)*[0-9a-z-]+\\.?|#[0-9]+|\\[[0-9]?[0-9]?[0-9]\\.[0-9]?[0-9]?[0-9]\\.[0-9]?[0-9]?[0-9]\\.[0-9]?[0-9]?[0-9]\\]),)*@(([0-9a-z-]+\\.)*[0-9a-z-]+\\.?|#[0-9]+|\\[[0-9]?[0-9]?[0-9]\\.[0-9]?[0-9]?[0-9]\\.[0-9]?[0-9]?[0-9]\\.[0-9]?[0-9]?[0-9]\\]):)?[0-9a-z_.+%$-]+@(([0-9a-z-]+\\.)*[0-9a-z-]+\\.?|#[0-9]+|\\[[0-2]?[0-9]?[0-9]\\.[0-2]?[0-9]?[0-9]\\.[0-2]?[0-9]?[0-9]\\.[0-2]?[0-9]?[0-9]\\])"
+
+color body green default "\\<ether"
+color body green default "\\<Karen\\>"
+color body green default "KarenE"
+color body green default "Etheridge"
+color body green default "Karen Etheridge"
+color body green default "(ether|karene)@(ca.sophos|activestate).com"
+color body green default "karen.etheridge@sophos.com"
+color body green default "karen@etheridge.ca"
+
+color body green default "Vancouver"
+
+color body blue default "( *[-+=#*~_]){6,}"    # Border lines
+
+color body red default "BASE"
+
+
+# Still experimental
+#color body green default "<http://search.safaribooksonline[^>]+>.*<http://search.safaribooksonline[^>]+>"
+#color body default default "<http://search.safaribooksonline[^>]+>"
+#color body green default "<http://search.safaribooksonline[^>]+>.*<http://search.safaribooksonline[^>]+>"
+
+
+# vim: ft=muttrc

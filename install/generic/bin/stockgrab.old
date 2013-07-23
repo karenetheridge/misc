@@ -1,0 +1,73 @@
+#!/usr/local/bin/perl
+#
+# $Id: stockgrab,v 1.8 2001/03/08 02:09:37 jlick Exp $
+#
+# stockgrab
+#   -P webproxy		if you need to use a proxy
+#   -p port number	if you need to use a proxy
+#   -q 			print no header
+#
+
+use Getopt::Std;
+
+getopt("Pp");
+
+$ARGV[0] || die "You need to specify a ticker symbol\n";
+
+use Socket;
+
+$site = "quote.yahoo.com";
+if($opt_p) { $port=$opt_p; } else { $port = 80; }
+
+if ($opt_P) { $hostname=$opt_P; $proxyhead="http://$site"; } 
+  else { $hostname = $site; }
+
+print "    For news and more information: http://quote.yahoo.com\n\n" unless($opt_q);
+print "Symbol      Last Trade              Change             Volume News\n" unless($opt_q);
+
+# Open a socket and get the data
+  ($sockaddr,$there,$response,$tries) = ("Snc4x8");
+  $there = pack($sockaddr,2,$port, &getaddress($hostname));
+  ($a, $b, $c, $d) = unpack('C4', $hostaddr);
+
+  $proto = (getprotobyname ('tcp'))[2];
+
+  if (!socket(S,AF_INET,SOCK_STREAM,$proto)) { die "$0:  Fatal Error.  $!\n"; }
+  if (!connect(S,$there)) { die "$0:  Fatal Error.  $!\n"; }
+  select(S);$|=1;
+  select(STDOUT);
+  print S "GET $proxyhead/q?s=$ARGV[0]&d=v1&o=t HTTP/1.0\r\n";
+  print S "Cookie: Y=v=1&n=5mubu547ita29&l=9b82awz/o&p=m252sqe40100&lg=us\r\n";
+  print S "\r\n";
+  do {
+    $line = <S>;
+  } until ($line=~/^Symbol/);
+
+
+  do {
+    $rawline = $line = <S>;
+    chomp($line);
+    if($line=~/News/) { $news=1; } else { $news=0; }
+    $line=~s/(.*) <small>.*/$1/;
+    $line=~s/<[^>]*>//g;
+    if ( !$line=~/^$/)
+    {
+      print "$line";
+      print " News" if($news);
+      print "\n";
+    }
+  } until ($rawline=~/^<\/pre>/);
+
+  while($line = <S>) {
+      #print $line;
+  }
+  close(S);
+
+
+sub getaddress {
+  local($host) = @_;
+  local(@ary);
+  @ary = gethostbyname($host);
+  return(unpack("C4",$ary[4]));
+}
+

@@ -1,0 +1,54 @@
+###################################################################
+###
+### ether's mutt colour preferences for p4
+###
+
+#source ~/.mutt/colours-p4
+
+# Unfortunately mutt doesn't support variable substitutions, or I'd pull out
+# all the 'ether's into a $user for greater portability.  sed is your friend!
+
+color index default default "~s ^PERFORCE"      # new messages aren't red, so I can see failures easier
+color index brightcyan default "~s ^PERFORCE ~F"
+color index magenta default "~s ^PERFORCE ~T"
+
+color index brightgreen default "~s ^PERFORCE ~b '\\<r=ether'"
+
+# Review, merge requested of me
+color index brightyellow default "~s ^PERFORCE ~b '\\<rq=[A-Za-z,]*ether'"
+color index brightcyan default "~s ^PERFORCE ~b '\\<m=ether'"
+
+# Reviewed/failed by me
+color index green default "~s ^PERFORCE ~b '\\<rf?=ether'"
+
+# Other people's rfs
+color index red default "~s ^PERFORCE ~b '\\<rf='"
+
+# My change
+color index green default "~s ^PERFORCE ~b 'By: ether'"
+color index green default "~s ^PERFORCE ~b 'Change [0-9]{6} by ether'"
+color index brightgreen default "~s ^PERFORCE ~b 'Change [0-9]{6} by ether' ~b '\\<r='"
+color index brightred default "~s ^PERFORCE ~b 'Change [0-9]{6} by ether' ~b '\\<rf='"
+
+color body brightyellow default "\\<rq=[A-Za-z0-9,]+"
+color body brightgreen default "\\<r=[A-Za-z]+"
+color body brightred default "\\<rf=[A-Za-z]+"
+color body brightcyan default "\\<m=[A-Za-z]+"
+color body brightblue default "\\<d=[0-9,]+"
+color body cyan default "\\<c=[0-9,]+"
+
+# user@clientspec
+color body default default "\\<[[:alpha:]]+-[[:alpha:]]+\\>"
+color body green default "ether@ether-[[:alpha:]]+"
+
+# this is an attempt to match 'colordiff':
+#color body green default "~s ^PERFORCE ~b '^\+.*$'"
+#color body brightred default "~s ^PERFORCE ~b '^-.+$'"
+color body brightgreen default '^\+\+\+.*'
+color body brightred default '^---.+$'
+color body brightblue default '^\+.*'
+color body brightred default '^-.+$'
+color body brightmagenta default '^@@ .+ @@'
+
+
+# vim: ft=muttrc

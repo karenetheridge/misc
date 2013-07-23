@@ -1,0 +1,19 @@
+#!/usr/bin/perl
+ 
+# Karen Etheridge (com.tcp@ether reversed), 1998
+
+# strips leading and trailing spaces from all lines.
+ 
+while (<>)
+{
+    if (/^\s*(.*\S?)\s*$/)
+    {
+        print "$1\n";
+    }
+    else
+    {
+        print;
+    }
+}
+
+

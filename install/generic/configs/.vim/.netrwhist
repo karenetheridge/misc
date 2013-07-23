@@ -1,0 +1,9 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =7
+let g:netrw_dirhist_1='/Users/ether/git/Test-Kwalitee/t/corpus'
+let g:netrw_dirhist_2='/Users/ether/git/Dist-Zilla-Plugin-OptionalFeature/lib/Dist/Zilla/Plugin'
+let g:netrw_dirhist_3='/Users/ether/git/Dist-Zilla/lib/Dist/Zilla/Plugin/MakeMaker'
+let g:netrw_dirhist_4='/Users/ether/git/Dist-Zilla/t/commands'
+let g:netrw_dirhist_5='/Users/ether/git/Dist-Zilla/t/diagnostics'
+let g:netrw_dirhist_6='/Users/ether/git/Dist-Zilla/t/lib'
+let g:netrw_dirhist_7='/Users/ether/git/Dist-Zilla-Plugin-Test-Compile/lib/Dist/Zilla/Plugin'

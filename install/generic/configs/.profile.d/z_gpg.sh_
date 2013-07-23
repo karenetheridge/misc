@@ -1,0 +1,36 @@
+# from https://metacpan.org/module/Config::Identity,
+# modified 
+
+#if which gpg-agent 1>/dev/null
+#then
+#    if test -f $HOME/.gpg-agent-info && \
+#        kill -0 `cut -d: -f 2 $HOME/.gpg-agent-info` 2>/dev/null
+#    then
+#        . "${HOME}/.gpg-agent-info"
+#        export GPG_AGENT_INFO
+#    else
+#        eval `gpg-agent --daemon --write-env-file "${HOME}/.gpg-agent-info"`
+#    fi
+#else
+#fi
+
+# see http://linux.die.net/man/1/gpg-agent
+
+GPG_TTY=$(tty)
+export GPG_TTY
+
+# run this once
+if [ ! -f "${HOME}/.gpg-agent-info" ]; then
+    gpg-agent --daemon --enable-ssh-support \
+          --write-env-file "${HOME}/.gpg-agent-info"
+fi
+
+
+if [ -f "${HOME}/.gpg-agent-info" ]; then
+    . "${HOME}/.gpg-agent-info"
+    export GPG_AGENT_INFO
+    export SSH_AUTH_SOCK
+    export SSH_AGENT_PID
+fi
+
+

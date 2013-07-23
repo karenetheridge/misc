@@ -1,0 +1,62 @@
+#!/usr/bin/perl
+#
+# $Id: stockgrab,v 1.12 2007/03/17 06:32:01 jlick Exp $
+#
+# stockgrab
+#   -h			print only the header
+#   -q 			print no header
+#
+# proxy supported through http_proxy environment variable
+#
+
+use Getopt::Std;
+use LWP::Simple;
+
+sub parse_csv {
+  my $text = shift;      # record containing comma-separated values
+  my @new  = ();
+
+  # the first part groups the phrase inside the quotes.
+  # see explanation of this pattern in MRE
+  push(@new, $+) while $text =~ 
+    m{"([^\"\\]*(?:\\.[^\"\\]*)*)",? |  ([^,]+),? | ,}gx;
+  push(@new, undef) if substr($text, -1,1) eq ',';
+  return @new;      # list of values that were comma-separated
+}
+
+sub commify {
+  local $_  = shift;
+  1 while s/^([-+]?\d+)(\d{3})/$1,$2/;
+  return $_;
+}
+
+$urlhead="http://finance.yahoo.com/d/quotes.csv?s=";
+$urltail="&f=sd1t1l1c1p2v";
+$printspec="%-10s %-18s %12s %10s %9s %14s\n";
+
+getopt();
+
+if(!$opt_h) { $ARGV[0] || die "You need to specify a ticker symbol\n"; }
+
+print "	  For news and more information: http://finance.yahoo.com\n\n"
+  unless($opt_q);
+printf($printspec,"Symbol","Last Trade","Quote","Change","Percent","Volume")
+  unless($opt_q);
+printf($printspec,"======","==========","=====","======","=======","======")
+  unless($opt_q);
+
+if($opt_h) { exit; }
+
+if($data=get("$urlhead$ARGV[0]$urltail"))
+{
+  foreach $line (split(/^/,$data))
+  {
+    chop($line); chop($line);
+    ($symbol,$date,$time,$quote,$change,$pctchange,$volume)=parse_csv($line);
+    printf($printspec,$symbol,"$date $time",commify($quote),commify($change),
+      $pctchange,commify($volume));
+  }
+} else {
+  print "Query failed.\n";
+}
+

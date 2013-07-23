@@ -1,0 +1,27 @@
+###################################################################
+###
+### ether's mutt preferences for bugzilla
+###
+
+# source .mutt/colours-bugzilla
+
+# Unfortunately mutt doesn't support variable substitutions, or I'd pull out
+# all the 'ether's into a $user for greater portability.  sed is your friend!
+
+### We love bugs!
+
+color index brightwhite default '~s "\[[:alpha:]+ Bug [0-9]{5}\]" ~s New:'
+color index brightred default '~s "\[[:alpha:]+ Bug [0-9]{5}\]" ~s New: ~N'
+
+# bugs assigned to me
+# disabled 2009-12-17 "empty (sub)expression"
+#color index brightgreen default '~s "\[[:alpha:]+ Bug [0-9]{5}]" ~b "AssignedTo(: |\\|.*\\|)ether@(ca.sophos|activestate).com"'
+
+# bugs becoming resolved/fixed
+color index yellow default '~s "\[[:alpha:]+ Bug [0-9]{5}\]" ~b "Resolution\\|[[:space:]]+\\|Fixed"'
+
+# bugs becoming verified
+color index green default '~s "\[[:alpha:]+ Bug [0-9]{5}]" ~b "Status\\|RESOLVED[[:space:]]+\\|VERIFIED"'
+
+
+# vim: ft=muttrc

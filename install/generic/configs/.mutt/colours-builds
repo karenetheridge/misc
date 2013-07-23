@@ -1,0 +1,28 @@
+###################################################################
+###
+### ether's mutt colour preferences for build results
+###
+
+# source .mutt/colours-builds
+
+# The subject used to be in an order unsuitable for sorting - fix this with:
+# sed -i.bak 's/Subject: \(Re: \)\?\([^ ]\+\) FAILED \([A-Za-z0-9-]\+@[0-9]\+\)\(.*$\)/Subject: \1\2 \3 FAILED\4/' pmx-bld
+color index white default "~C dev-perlmx-build"
+color index brightred default "~C dev-perlmx-build ~s FAILED"
+color index red default "~C dev-perlmx-build ~s 'tests FAIL'"
+color index brightred default "~C dev-perlmx-build ~s 'tests FAIL' ~F"
+color index yellow default "~C dev-perlmx-build ~s 'tests fail\?'"
+color index brightyellow default "~C dev-perlmx-build ~s 'tests fail\?' ~F"
+color index green default "~C dev-perlmx-build ~s 'tests PASS'"
+color index brightgreen default "~C dev-perlmx-build ~s 'tests PASS' ~F"
+
+color body red default "^(build|sdk)[^ ]+log:.*make test failed"
+color body yellow default "^(build|sdk)[^ ]+log:.*FAILED test.*$"
+color body yellow default "^(build|sdk)[^ ]+log:.*Failed.*okay."
+color body yellow default "^(build|sdk)[^ ]+log:.*FAILED.*$"
+
+color body red default "No such file or directory"
+color body red default "Build result: FAIL"
+
+
+# vim: ft=muttrc

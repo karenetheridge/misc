@@ -1,0 +1,33 @@
+#!/usr/bin/perl
+
+# Karen Etheridge (com.tcp@ether reversed), 1999
+
+# Randomly pick a file from .sigs and display to stdout. (for mutt)
+
+ 
+# get number of files in .sigs
+$pwd = $ENV{'PWD'};
+
+chdir($ENV{"HOME"} || $ENV{"LOGDIR"} || (getpwuid($<))[7]);
+@list = <.sigs/*>;
+ 
+# Generate a pseudo-random number, from a pseudo-random seed.
+# Update!  perl5 runs srand automatically.
+# srand(time^$$);
+ 
+$index = int(rand($#list+1));
+$file = $list[$index];
+ 
+unlink ".sig";
+# link($file, ".sig");
+
+# Create new .sig to use (concatenate the few lines that never change)
+system("/bin/cp $file .sig");
+system("/bin/cat .sig-base >> .sig");
+
+# Change dirs back
+#chdir($pwd);
+
+# Display the sig to stdout
+exec "/bin/cat .sig";
+

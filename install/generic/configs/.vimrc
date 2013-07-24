@@ -9,7 +9,8 @@
 " Karen Etheridge, ether@activestate.com, 2004-2006.
 " Karen Etheridge, karen.etheridge@globalrelay.net, 2006.
 " Karen Etheridge, ketheridge@threewavesoftware.com, 2007-2008.
-" Karen Etheridge, karene@airg.com, 2008-.
+" Karen Etheridge, karene@airg.com, 2008-2013.
+" Karen Etheridge, karen#etheridge.ca, 2000-
 
 " vim has copious :help, and you can also ask me about anything that this
 " file does.  If you just want syntax colouring or easy format filtering,

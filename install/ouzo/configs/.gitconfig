@@ -1,1 +1,20 @@
-../../generic/configs/.gitconfig
+[user]
+	email = ketheridge@campusexplorer.com
+	name = Karen Etheridge
+[color]
+	diff = auto
+	status = auto
+	branch = auto
+        interactive = auto
+        ui = true
+[color "diff"]
+[push]
+	default = upstream
+[branch]
+	autosetupmerge = true
+	autosetuprebase = always
+;[column]
+;        branch = auto
+[core]
+	excludesfile = /home/vagrant/.gitexclude
+

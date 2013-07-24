@@ -1,0 +1,1 @@
+../../../generic/configs/.profile.d/unix_applications.sh

@@ -208,6 +208,7 @@ endif
 " 1: red, 0:grey, 7:white, 6:magenta
 highlight Comment term=bold cterm=bold ctermfg=DarkGrey
 
+hi Normal guifg=White guibg=Black
 
 " original: mailQuoted1    xxx links to Comment
 au FileType mail highlight mailQuoted1 term=bold cterm=bold ctermfg=5
@@ -215,7 +216,6 @@ au FileType mail highlight mailQuoted1 term=bold cterm=bold ctermfg=5
 " settings for macvim...
 "guifont	list of font names to be used in the GUI
 set gfn=Monaco:h10
-
 set noanti      " no anti-aliasing!
 
 

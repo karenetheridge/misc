@@ -1,1 +1,0 @@
-../../generic/configs/.git-completion.bash

@@ -181,6 +181,8 @@ endif
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " SYNTAX HIGHLIGHTING AND GUI
 
+colorscheme default
+
 " experimental.. attempt to get colours right
 set t_Co=16
 

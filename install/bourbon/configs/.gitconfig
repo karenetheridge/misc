@@ -15,6 +15,18 @@
 	autosetuprebase = always
 ;[column]
 ;        branch = auto
+
+; see doc/howto/gitflow.txt
+[gitflow "branch"]
+        master = production
+        develop = trunk
+[gitflow "prefix"]
+        feature = feature/
+        release = staging/
+        hotfix = hotfix/
+        support = support/
+        versiontag = release
+
 [core]
 	excludesfile = /Users/ether/.gitexclude
 

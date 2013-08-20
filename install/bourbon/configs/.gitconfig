@@ -25,6 +25,7 @@
         release = staging/
         hotfix = hotfix/
         support = support/
+        cepatch = cepatch/
         versiontag = release
 
 [core]

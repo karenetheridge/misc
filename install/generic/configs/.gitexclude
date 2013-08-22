@@ -2,4 +2,3 @@
 .*.sw[a-z]
 /.DS_Store
 /.ackrc
-/.build

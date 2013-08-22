@@ -285,6 +285,7 @@ subscribe xml-compile
 subscribe metacpan
 subscribe perl5-porters
 subscribe yapc
+subscribe module-authors
 
 
 # All folder-hooks need to be "undone" with defaults so other folders don't

@@ -98,6 +98,7 @@ newperllibs() {
         Cpanel::JSON::XS \
         App::mymeta_requires \
         App::cpanminus::reporter \
+        Config::Identity::GitHub \
         indirect multidimensional bareword::filehandles
 
     # this brings in Moose and all its deps too

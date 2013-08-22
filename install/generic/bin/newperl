@@ -41,6 +41,7 @@ my @to_install = qw(
     Dist::Zilla::PluginBundle::Author::ETHER
     Dist::Zilla::App::Command::dumpphases
     Dist::Zilla::App::Command::podpreview
+    Config::Identity::GitHub
     Module::Install
     Module::Install::Repository
     Module::Install::AuthorRequires

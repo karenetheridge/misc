@@ -13,4 +13,5 @@ checklist for releases:
 - all contributors have attribution (e.g. [ContributorsFromGit] and podweaver plugins)
 - repo migrated to github?
 - no Test::NoWarnings, Test::Exception, shebangs in tests, use of FindBin?
+- base -> parent, NEXT -> mro?
 

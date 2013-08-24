@@ -1,0 +1,16 @@
+
+checklist for releases:
+
+- triaged/resolved all RT tickets?
+- triaged/resolved outstanding github pull requests/issues, both in my repo and other forks?
+- cpantesters failures corrected? - http://cpantesters.org/author/E/ETHER.html
+- CPANTS failures corrected? - http://cpants.cpanauthors.org/author/ETHER
+- Changes file compliance - http://changes.cpanhq.org/author/ETHER
+- any outstanding notes in local git stashes?
+- converted to Distar or Dist::Zilla?
+- repository information set properly?
+- authority information set properly?
+- all contributors have attribution (e.g. [ContributorsFromGit] and podweaver plugins)
+- repo migrated to github?
+- no Test::NoWarnings, Test::Exception, shebangs in tests, use of FindBin?
+

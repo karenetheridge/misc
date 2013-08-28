@@ -1,0 +1,12 @@
+
+data used to find and prioritize outstanding work:
+
+- outstanding items in development/release-checklist.txt, perhaps consolidated
+  into a score
+
+- examine repositories:
+    - uncommitted changes
+    - unpushed commits
+    - commits since last release tag
+
+- recent incoming bug reports, cpantesters reports

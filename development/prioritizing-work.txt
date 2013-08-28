@@ -10,3 +10,8 @@ data used to find and prioritize outstanding work:
     - commits since last release tag
 
 - recent incoming bug reports, cpantesters reports
+
+- number of maintainers for this dist
+- was I the last releaser for this dist?
+- have I *ever* released this dist?
+- proportion of releases of this dist that were by me?

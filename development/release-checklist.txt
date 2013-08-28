@@ -7,9 +7,11 @@ checklist for releases:
 - CPANTS failures corrected? - http://cpants.cpanauthors.org/author/ETHER
 - Changes file compliance - http://changes.cpanhq.org/author/ETHER
 - any outstanding notes in local git stashes?
+- any local todo/ or todo.txt?
 - converted to Distar or Dist::Zilla?
-- repository information set properly?
-- authority information set properly?
+- if using Dist::Zilla, is someone's pluginbundle being used (not necessarily mine)
+- repository information set properly in metadata?
+- authority information set?  (might be useful as an 'extra' kwalitee metric)
 - all contributors have attribution (e.g. [ContributorsFromGit] and podweaver plugins)
 - repo migrated to github?
 - no Test::NoWarnings, Test::Exception, shebangs in tests, use of FindBin?

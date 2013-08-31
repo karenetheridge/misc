@@ -13,8 +13,9 @@ export PERLDOC_PAGER='less -sicMr'
 
 export HISTTIMEFORMAT="%Y-%m-%d %T  "
 
-LANG=en_US
-# LANG=en_US.ISO-8859-1   suggests http://wiki.mutt.org/?MuttFaq/Charset
+export LANG=en_CA.UTF-8
+#export LC_ALL=en_CA.UTF-8
+
 
 export LESS="-icMR"
 #export LESSCHARSET="latin1"

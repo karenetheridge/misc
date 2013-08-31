@@ -1,15 +1,21 @@
 
 data used to find and prioritize outstanding work:
 
-- outstanding items in development/release-checklist.txt, perhaps consolidated
-  into a score
+- outstanding RT tickets in each state
 
-- examine repositories:
+- outstanding github issues/pull requests (also look at other repositories in
+  the network graph)
+
+- failing cpantesters reports for the last release
+
+- failing kwalitee metrics
+
+- examine repository:
+    - repository is on github?
     - uncommitted changes
     - unpushed commits
     - commits since last release tag
-
-- recent incoming bug reports, cpantesters reports
+    - stash labels
 
 - number of maintainers for this dist
 - was I the last releaser for this dist?

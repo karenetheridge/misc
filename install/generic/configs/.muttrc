@@ -98,9 +98,9 @@ set pager_index_lines=20
 # builtin pager:
 set pager_stop          # "next-page" will not jump to next message
 set pager_context=1     # include one line of overlap between screens
-# just leave this alone at iso-8859-1 and the pager seems to be ok...
-#set charset=iso-8859-1 # default
-#set charset=utf-8
+# just leave this alone? at iso-8859-1 and the pager seems to be ok...
+#set charset=iso-8859-1 # default??
+set charset=utf-8
 set smart_wrap          # try to wrap at word boundaries
 unset markers           # I don't like the + at the start of wrapped lines:
                         # it screws up copy/pasting of long URLs
@@ -195,7 +195,8 @@ set reverse_name=yes            # reply as the user to whom the mail was sent
                             # (will fake sender if addressed to one of my
                             # alternate addresses and procmailed here)
 set reverse_realname=yes    # use header name as-is, without using 'realname'
-set alternates='(karen@etheridge.ca|.*@froods.org|karen.?etheridge@gmail.com|ether@cpan.org)'
+## XXX no longer a valid option?
+#set alternates='(karen@etheridge.ca|.*@froods.org|karen.?etheridge@gmail.com|ether@cpan.org)'
 #my_hdr Reply-To: Karen Etheridge <karen@etheridge.ca>
 unhdr_order *
 hdr_order From Date: From: To: Cc: Subject: Organization: X-Spam:

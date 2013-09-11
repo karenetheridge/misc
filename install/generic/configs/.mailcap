@@ -157,4 +157,4 @@ application/octet-stream; less
 text/calendar; firefox -calendar -remote openFile\\(%s\\); test=RunningX
 
 #text/html; lynx -force_html %s; needsterminal;
-text/html; lynx -dump -force_html %s; needsterminal; copiousoutput;
+text/html; lynx -dump -force_html -display_charset=utf-8 %s; needsterminal; copiousoutput;

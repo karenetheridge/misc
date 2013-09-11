@@ -13,8 +13,23 @@
 [branch]
 	autosetupmerge = true
 	autosetuprebase = always
+[diff]
+        algorithm = patience
 ;[column]
 ;        branch = auto
 [core]
 	excludesfile = /Users/ether/.gitexclude
 
+; for automatic translation of URLs
+[url "git@github.com:"]
+    insteadOf = https://github.com/
+    insteadOf = git://github.com/
+
+[url "p5sagit@git.shadowcat.co.uk:"]
+    insteadOf = git://git.shadowcat.co.uk/p5sagit/
+
+[url "gitmo@git.moose.perl.org:"]
+    insteadOf = git://git.moose.perl.org/
+
+[url "catagits@git.shadowcat.co.uk:"]
+    insteadOf = git://git.shadowcat.co.uk/catagits/

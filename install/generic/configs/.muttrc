@@ -195,6 +195,8 @@ set reverse_name=yes            # reply as the user to whom the mail was sent
                             # (will fake sender if addressed to one of my
                             # alternate addresses and procmailed here)
 set reverse_realname=yes    # use header name as-is, without using 'realname'
+set use_from                # always generate a From: header
+
 ## XXX no longer a valid option?
 #set alternates='(karen@etheridge.ca|.*@froods.org|karen.?etheridge@gmail.com|ether@cpan.org)'
 #my_hdr Reply-To: Karen Etheridge <karen@etheridge.ca>
@@ -264,6 +266,7 @@ send-hook '~t distzilla@lists.codesimply.com' 'my_hdr From: Karen Etheridge <eth
 send-hook '~t psgi-plack@googlegroups.com' 'my_hdr From: Karen Etheridge <karen.etheridge@gmail.com>'
 send-hook '~t xml-compile@lists.scsys.co.uk' 'my_hdr From: Karen Etheridge <perl@froods.org>'
 send-hook '~t metacpan@lists.scsys.co.uk' 'my_hdr From: Karen Etheridge <perl@froods.org>'
+send-hook '~t github.com' 'my_hdr From: Karen Etheridge <github@froods.org>'
 
 
 # these are all mailing lists - parse List-Reply headers etc

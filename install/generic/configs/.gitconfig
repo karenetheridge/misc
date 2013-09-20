@@ -33,3 +33,10 @@
 
 [url "catagits@git.shadowcat.co.uk:"]
     insteadOf = git://git.shadowcat.co.uk/catagits/
+
+[url "dbsrgits@git.shadowcat.co.uk:"]
+    insteadOf = git://git.shadowcat.co.uk/dbsrgits/
+
+; see https://gist.github.com/piscisaureus/3342247
+[remote "origin"]
+    fetch = +refs/pull/*/head:refs/remotes/origin/pr/*

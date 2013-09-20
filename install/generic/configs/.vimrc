@@ -87,6 +87,7 @@ endif
 set backspace=indent,eol,start
 
 set encoding=utf8       " latin1 is not quite good enough anymore for a default
+set modelines=5         " respect modelines in first and last N lines of file
 
 " APPEARANCE
 

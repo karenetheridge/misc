@@ -22,6 +22,7 @@ my @to_install = qw(
     App::cpanoutdated
     App::pmuninstall
     App::cpanminus::reporter
+    App::mymeta_requires
     Module::CoreList
     Test::CPAN::Meta
     Test::Pod::Coverage
@@ -31,6 +32,7 @@ my @to_install = qw(
     Archive::Tar::Wrapper
     LWP::Protocol::https
     ExtUtils::MakeMaker
+    Module::Build::Tiny
     Test::Builder
     Carp::Always
     Cpanel::JSON::XS

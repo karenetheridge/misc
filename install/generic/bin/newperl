@@ -84,6 +84,8 @@ run( qw/perlbrew exec --with/, $lib, qw/cpanm/, @to_install );
 print "\n\ninstalling again, to handle circular dependencies (WATCH FOR THESE!)...\n";
 run( qw/perlbrew exec --with/, $lib, qw/cpanm/, @to_install );
 
+run( qw/perlbrew exec --with/, $lib, qw/cpanm-reporter/);
+
 sub run
 {
     my $cmd = join(' ', @_);

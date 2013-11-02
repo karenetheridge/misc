@@ -15,7 +15,9 @@ my $perl = "5.$as";
 $perl =~ s/t$//; # strip trailing "t" if any
 my $lib = $as . '@std';
 
-# TODO: these should all be in Task::BeLike::ETHER
+# TODO: these should all be in Task::BeLike::ETHER --
+# which I should autogenerate by looking up all my dists and their develop
+# prereqs
 my @to_install = qw(
     App::Ack
     App::Nopaste
@@ -24,6 +26,7 @@ my @to_install = qw(
     App::cpanminus::reporter
     App::mymeta_requires
     Module::CoreList
+    Unicode::Tussle
     Test::CPAN::Meta
     Test::Pod::Coverage
     Pod::Coverage::TrustPod
@@ -39,19 +42,26 @@ my @to_install = qw(
     YAML::Syck
     indirect multidimensional bareword::filehandles
     strictures
-    Test::Warnings
-    Dist::Zilla::PluginBundle::Author::ETHER
+    Dist::Zilla::Plugin::Chrome::ExtraPrompt
+    Dist::Zilla::Plugin::ContributorsFromGit
+    Dist::Zilla::Plugin::Bootstrap::lib
     Dist::Zilla::App::Command::dumpphases
     Dist::Zilla::App::Command::podpreview
-    Config::Identity::GitHub
     Module::Install
     Module::Install::Repository
     Module::Install::AuthorRequires
     Module::Install::ReadmeFromPod
     Module::Install::GithubMeta
     Module::Install::AutoLicense
-
 );
+
+# install with develop and recommended prereqs too
+@to_install_with_everything  = qw(
+    Moose
+    Dist::Zilla
+    Dist::Zilla::PluginBundle::Author::ETHER
+);
+
 #    Dist::Zilla
 #    Dist::Zilla::PluginBundle::RJBS
 #    Dist::Zilla::PluginBundle::DAGOLDEN
@@ -74,16 +84,22 @@ run( qw/perlbrew lib create/, $lib );
 #local $ENV{HARNESS_SUBCLASS} = "TAP::Harness::Restricted";
  
 # some things need forcing
-run( qw/perlbrew exec --with/, $lib, qw/cpanm -f/, @problem_modules )
-    if @problem_modules;
+#if (@problem_modules)
+#{
+#    run( qw/perlbrew exec --with/, $lib, qw/cpanm -f/, @problem_modules )
+#    run( qw/perlbrew exec --with/, $lib, qw/cpanm-reporter/);
+#}
  
 # now install the rest
+run( qw/perlbrew exec --with/, $lib, qw/cpanm --with-develop --with-recommends/, @to_install_with_everything );
+run( qw/perlbrew exec --with/, $lib, qw/cpanm-reporter/);
+
 run( qw/perlbrew exec --with/, $lib, qw/cpanm/, @to_install );
+run( qw/perlbrew exec --with/, $lib, qw/cpanm-reporter/);
 
 # and again, to handle circular deps
-print "\n\ninstalling again, to handle circular dependencies (WATCH FOR THESE!)...\n";
+print "\n\ninstalling again, to handle circular dependencies, and things that didn't install cleanly (WATCH FOR THESE!)...\n";
 run( qw/perlbrew exec --with/, $lib, qw/cpanm/, @to_install );
-
 run( qw/perlbrew exec --with/, $lib, qw/cpanm-reporter/);
 
 sub run

@@ -69,7 +69,7 @@ my @to_install = qw(
 
 my @no_man = qw/-D man1dir=none -D man3dir=none/;
 
-run( qw/perlbrew self-upgrade/ );
+#run( qw/perlbrew self-upgrade/ );
  
 # install perl and lock it down
 
@@ -107,5 +107,6 @@ sub run
     my $cmd = join(' ', @_);
     print "Running: $cmd\n";
     system $cmd;
+    die "$cmd returned exit code $?: stopping";
 }
 

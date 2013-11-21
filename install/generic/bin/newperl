@@ -107,6 +107,6 @@ sub run
     my $cmd = join(' ', @_);
     print "Running: $cmd\n";
     system $cmd;
-    die "$cmd returned exit code $?: stopping";
+    die "$cmd returned exit code $?: stopping" if $?;
 }
 

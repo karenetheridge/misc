@@ -37,7 +37,7 @@ my @to_install = qw(
     ExtUtils::MakeMaker
     Module::Build::Tiny
     Test::Builder
-    Carp::Always
+    Devel::Confess
     Cpanel::JSON::XS
     YAML::Syck
     indirect multidimensional bareword::filehandles

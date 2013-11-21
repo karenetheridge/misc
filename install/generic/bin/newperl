@@ -91,15 +91,18 @@ run( qw/perlbrew lib create/, $lib );
 #}
  
 # now install the rest
-run( qw/perlbrew exec --with/, $lib, qw/cpanm --with-develop --with-recommends/, @to_install_with_everything );
-run( qw/perlbrew exec --with/, $lib, qw/cpanm-reporter/);
 
-run( qw/perlbrew exec --with/, $lib, qw/cpanm/, @to_install );
+chomp(my $cpanm = `which cpanm`);
+
+# we need two passes for this -- https://github.com/miyagawa/cpanminus/issues/336
+run( qw/perlbrew exec --with/, $lib, $cpanm, @to_install, @to_install_with_everything);
+run( qw/perlbrew exec --with/, $lib, qw/cpanm-reporter/);
+run( qw/perlbrew exec --with/, $lib, $cpanm, qw/--with-develop --with-recommends/, @to_install_with_everything );
 run( qw/perlbrew exec --with/, $lib, qw/cpanm-reporter/);
 
 # and again, to handle circular deps
 print "\n\ninstalling again, to handle circular dependencies, and things that didn't install cleanly (WATCH FOR THESE!)...\n";
-run( qw/perlbrew exec --with/, $lib, qw/cpanm/, @to_install );
+run( qw/perlbrew exec --with/, $lib, $cpanm, @to_install, @to_install_with_everything );
 run( qw/perlbrew exec --with/, $lib, qw/cpanm-reporter/);
 
 sub run

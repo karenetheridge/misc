@@ -30,8 +30,8 @@ my @to_install = qw(
     Test::CPAN::Meta
     Test::Pod::Coverage
     Pod::Coverage::TrustPod
-    Test::CleanNamespaces
     Data::Dumper
+    local::lib
     Archive::Tar::Wrapper
     LWP::Protocol::https
     ExtUtils::MakeMaker
@@ -53,19 +53,17 @@ my @to_install = qw(
     Module::Install::ReadmeFromPod
     Module::Install::GithubMeta
     Module::Install::AutoLicense
+    Dist::Zilla::PluginBundle::RJBS
+    Dist::Zilla::PluginBundle::DAGOLDEN
+    Dist::Zilla::PluginBundle::FLORA
 );
 
 # install with develop and recommended prereqs too
 @to_install_with_everything  = qw(
-    Moose
-    Dist::Zilla
     Dist::Zilla::PluginBundle::Author::ETHER
+    Dist::Zilla
+    Moose
 );
-
-#    Dist::Zilla
-#    Dist::Zilla::PluginBundle::RJBS
-#    Dist::Zilla::PluginBundle::DAGOLDEN
-#    Dist::Zilla::PluginBundle::FLORA
 
 my @no_man = qw/-D man1dir=none -D man3dir=none/;
 

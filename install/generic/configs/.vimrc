@@ -86,7 +86,8 @@ endif
 
 set backspace=indent,eol,start
 
-set encoding=utf8       " latin1 is not quite good enough anymore for a default
+set termencoding=utf-8
+set encoding=utf-8      " latin1 is not quite good enough anymore for a default
 set modelines=5         " respect modelines in first and last N lines of file
 
 " APPEARANCE
@@ -99,6 +100,10 @@ set background=dark     " Change to "light" when a white background
 			" maybe we need a keybinding to toggle this
 set laststatus=2        " always show status line, even for one window
 
+" from http://vim.wikia.com/wiki/Show_fileencoding_and_bomb_in_the_status_line
+if has("statusline")
+ set statusline=%<%f\ %h%m%r%=%{\"[\".(&fenc==\"\"?&enc:&fenc).((exists(\"+bomb\")\ &&\ &bomb)?\",B\":\"\").\"]\ \"}%k\ %-14.(%l,%c%V%)\ %P
+endif
 
 " SPELLING
 
@@ -235,7 +240,7 @@ set ai		" always do autoindenting
 "if has("mouse")
 "  set mouse=nvi	" use mouse support in xterm
 "endif
-set listchars=tab:^.,trail:·
+set listchars=tab:^.,trail:Â·
 
 
 

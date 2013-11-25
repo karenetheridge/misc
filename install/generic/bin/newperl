@@ -97,7 +97,7 @@ chomp(my $cpanm = `which cpanm`);
 # we need two passes for this -- https://github.com/miyagawa/cpanminus/issues/336
 run( qw/perlbrew exec --with/, $lib, $cpanm, @to_install, @to_install_with_everything);
 run( qw/perlbrew exec --with/, $lib, qw/cpanm-reporter/);
-run( qw/perlbrew exec --with/, $lib, $cpanm, qw/--installdeps --with-develop --with-recommends/, @to_install_with_everything );
+run( qw/perlbrew exec --with/, $lib, $cpanm, qw/--reinstall --installdeps --with-develop --with-recommends/, @to_install_with_everything );
 run( qw/perlbrew exec --with/, $lib, qw/cpanm-reporter/);
 
 # and again, to handle circular deps

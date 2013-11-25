@@ -24,7 +24,6 @@ my @to_install = qw(
     App::cpanoutdated
     App::pmuninstall
     App::cpanminus::reporter
-    App::mymeta_requires
     Module::CoreList
     Unicode::Tussle
     Test::CPAN::Meta

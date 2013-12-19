@@ -3,6 +3,8 @@
 
 # export PATH=/usr/local/ActivePerl-5.8/bin:$PATH
 
+export HARNESS_OPTIONS=j9
+
 # equivalent to perldoc -l <module>
 perlwhere() {
     perl -wle'eval "require $ARGV[0]" or die; ($mod = $ARGV[0]) =~ s|::|/|g; print $INC{"${mod}.pm"}' $1

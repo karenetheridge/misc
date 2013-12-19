@@ -19,6 +19,8 @@ my $lib = $as . '@std';
 # which I should autogenerate by looking up all my dists and their develop
 # prereqs
 my @to_install = qw(
+    ExtUtils::MakeMaker
+    Module::Build::Tiny
     App::Ack
     App::Nopaste
     App::cpanoutdated
@@ -33,8 +35,7 @@ my @to_install = qw(
     local::lib
     Archive::Tar::Wrapper
     LWP::Protocol::https
-    ExtUtils::MakeMaker
-    Module::Build::Tiny
+    Unicode::UTF8
     Test::Builder
     Devel::Confess
     Cpanel::JSON::XS
@@ -45,6 +46,8 @@ my @to_install = qw(
     Dist::Zilla::Plugin::Bootstrap::lib
     Dist::Zilla::App::Command::dumpphases
     Dist::Zilla::App::Command::podpreview
+    Dist::Zilla::App::Command::dumpwith
+    Dist::Zilla::App::Command::lsplugins
     Module::Install
     Module::Install::Repository
     Module::Install::AuthorRequires

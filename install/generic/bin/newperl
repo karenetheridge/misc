@@ -48,6 +48,7 @@ my @to_install = qw(
     Dist::Zilla::App::Command::podpreview
     Dist::Zilla::App::Command::dumpwith
     Dist::Zilla::App::Command::lsplugins
+    Dist::Zilla::App::Command::cover
     Module::Install
     Module::Install::Repository
     Module::Install::AuthorRequires

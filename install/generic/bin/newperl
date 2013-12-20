@@ -73,11 +73,11 @@ my @no_man = qw/-D man1dir=none -D man3dir=none/;
  
 # install perl and lock it down
 
-run( qw/perlbrew install -j 9 --as/, $as, $perl, @threads, @no_man, @args );
-run( qw/chmod -R a-w/, "$ENV{HOME}/perl5/perlbrew/perls/$as" );
+run_or_die( qw/perlbrew install -j 9 --as/, $as, $perl, @threads, @no_man, @args );
+run_or_die( qw/chmod -R a-w/, "$ENV{HOME}/perl5/perlbrew/perls/$as" );
 
 # give us a local::lib for installing things
-run( qw/perlbrew lib create/, $lib );
+run_or_die( qw/perlbrew lib create/, $lib );
  
 ## let's avoid any pod tests when we try to install stuff
 #system( qw/perlbrew exec --with/, $lib, qw/cpanm TAP::Harness::Restricted/ );
@@ -107,11 +107,19 @@ print "\n\ninstalling again, to handle circular dependencies, and things that di
 run( qw/perlbrew exec --with/, $lib, $cpanm, @to_install, @to_install_with_everything );
 run( qw/perlbrew exec --with/, $lib, qw/cpanm-reporter/);
 
-sub run
+sub run_or_die
 {
     my $cmd = join(' ', @_);
     print "Running: $cmd\n";
     system $cmd;
     die "$cmd returned exit code $?: stopping" if $?;
+}
+
+sub run
+{
+    my $cmd = join(' ', @_);
+    print "Running: $cmd\n";
+    system $cmd;
+    warn "$cmd returned exit code $?" if $?;
 }
 

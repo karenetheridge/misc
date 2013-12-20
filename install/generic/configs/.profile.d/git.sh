@@ -3,6 +3,7 @@
 alias gdd='git diff'
 
 alias gpr='git pull --rebase'
+alias grc='git rebase --continue'
 
 if [ -f ~/.git-completion.bash ]; then
   . ~/.git-completion.bash

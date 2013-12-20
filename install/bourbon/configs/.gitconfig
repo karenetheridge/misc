@@ -38,9 +38,14 @@
     insteadOf = https://github.com/
     insteadOf = git://github.com/
 
+[url "p5sagit@git.shadowcat.co.uk:"]
+    insteadOf = git://git.shadowcat.co.uk/p5sagit/
+
 [url "gitmo@git.moose.perl.org:"]
     insteadOf = git://git.moose.perl.org/
 
 [url "catagits@git.shadowcat.co.uk:"]
     insteadOf = git://git.shadowcat.co.uk/catagits/
 
+[url "dbsrgits@git.shadowcat.co.uk:"]
+    insteadOf = git://git.shadowcat.co.uk/dbsrgits/

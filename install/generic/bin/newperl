@@ -62,9 +62,9 @@ my @to_install = qw(
 
 # install with develop and recommended prereqs too
 @to_install_with_everything  = qw(
-    Dist::Zilla::PluginBundle::Author::ETHER
-    Dist::Zilla
     Moose
+    Dist::Zilla
+    Dist::Zilla::PluginBundle::Author::ETHER
 );
 
 my @no_man = qw/-D man1dir=none -D man3dir=none/;

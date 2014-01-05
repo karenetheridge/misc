@@ -20,6 +20,7 @@ my $lib = $as . '@std';
 # prereqs
 my @to_install = qw(
     ExtUtils::MakeMaker
+    Module::Build
     Module::Build::Tiny
     App::Ack
     App::Nopaste

@@ -67,6 +67,11 @@ function cpanm() {
     cpanm-reporter
 }
 
+function cpanmdev() {
+    command cpanm --with-recommends --dev $@
+    cpanm-reporter
+}
+
 export NOPASTE_SERVICES='Shadowcat Gist Pastie Snitch'
 
 # stop using cpanplus

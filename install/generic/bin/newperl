@@ -74,6 +74,8 @@ my @no_man = qw/-D man1dir=none -D man3dir=none/;
  
 # install perl and lock it down
 
+$perl = '' if grep { qr{^http://} } @args;
+
 run_or_die( qw/perlbrew install -j 9 --as/, $as, $perl, @threads, @no_man, @args );
 run_or_die( qw/chmod -R a-w/, "$ENV{HOME}/perl5/perlbrew/perls/$as" );
 

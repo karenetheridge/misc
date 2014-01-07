@@ -10,6 +10,8 @@
 [color "diff"]
 [push]
 	default = upstream
+[rebase]
+        autostash = true
 [branch]
 	autosetupmerge = true
 	autosetuprebase = always

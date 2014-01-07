@@ -100,17 +100,40 @@ run_or_die( qw/perlbrew lib create/, $lib );
 # currently active)
 chomp(my $cpanm = `which cpanm`);
 
-run( qw/perlbrew exec --with/, $lib, $cpanm, @to_install, @to_install_with_everything);
-run( qw/perlbrew exec --with/, $lib, qw/cpanm-reporter/);
+my @success, @failed, @failed_twice, @failed_with_everything;
 
-# and again, to handle circular deps
+use List::MoreUtils 'part';
+
+my @results = part {
+    my $result = run( qw/perlbrew exec --with/, $lib, $cpanm, $_);
+    run( qw/perlbrew exec --with/, $lib, qw/cpanm-reporter/);
+    $result ? 1 : 0
+} (@to_install, @to_install_with_everything);
+push @success, @{$results[0]};
+push @failed, @{$results[1]};
+
+# try failures again, to handle circular deps
 print "\n\ninstalling again, to handle circular dependencies, and things that didn't install cleanly (WATCH FOR THESE!)...\n";
-run( qw/HARNESS_OPTIONS=j1 perlbrew exec --with/, $lib, $cpanm, @to_install, @to_install_with_everything );
-run( qw/perlbrew exec --with/, $lib, qw/cpanm-reporter/);
+$results = part {
+    my $result = run( qw/HARNESS_OPTIONS=j1 perlbrew exec --with/, $lib, $cpanm, $_);
+    run( qw/perlbrew exec --with/, $lib, qw/cpanm-reporter/);
+    $result ? 1 : 0
+} @failed;
+push @success, @{$results[0]};
+push @failed_twice, @{$results[1]};
 
 # we need two passes for this -- https://github.com/miyagawa/cpanminus/issues/336
-run( qw/perlbrew exec --with/, $lib, $cpanm, qw/--reinstall --installdeps --with-develop --with-recommends --dev/, @to_install_with_everything );
-run( qw/perlbrew exec --with/, $lib, qw/cpanm-reporter/);
+$results = part {
+    my $result = run( qw/perlbrew exec --with/, $lib, $cpanm, qw/--reinstall --installdeps --with-develop --with-recommends --dev/, $_);
+    run( qw/perlbrew exec --with/, $lib, qw/cpanm-reporter/);
+    $result ? 1 : 0
+} @to_install_with_everything;
+push @success, @{$results[0]};
+push @failed_with_everything, @{$results[1]};
+
+print "Failed first attempt to install:", join("\n    ", '', @failed), "\n\n";
+print "Failed second attempt to install:", join("\n    ", '', @failed_twice), "\n\n";
+print "Failed attempt to install as --with-develop --with-recommends --dev:", join("\n   ", '', @failed_with_everything), "\n\n";
 
 
 sub run_or_die
@@ -119,6 +142,7 @@ sub run_or_die
     print "Running: $cmd\n";
     system $cmd;
     die "$cmd returned exit code $?: stopping" if $?;
+    return $?
 }
 
 sub run
@@ -127,5 +151,6 @@ sub run
     print "Running: $cmd\n";
     system $cmd;
     warn "$cmd returned exit code $?" if $?;
+    return $?
 }
 

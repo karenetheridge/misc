@@ -70,7 +70,7 @@ my @to_install = qw(
 
 my @no_man = qw/-D man1dir=none -D man3dir=none/;
 
-#run( qw/perlbrew self-upgrade/ );
+run( qw/perlbrew self-upgrade/ );
  
 # install perl and lock it down
 

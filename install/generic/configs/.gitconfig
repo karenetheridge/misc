@@ -1,26 +1,26 @@
 [user]
-	email = ether@cpan.org
-	name = Karen Etheridge
+    email = ether@cpan.org
+    name = Karen Etheridge
 [color]
-	diff = auto
-	status = auto
-	branch = auto
+    diff = auto
+    status = auto
+    branch = auto
         interactive = auto
         ui = true
 [color "diff"]
 [push]
-	default = upstream
+    default = upstream
 [rebase]
-	autostash = true
+    autostash = true
 [branch]
-	autosetupmerge = true
-	autosetuprebase = always
+    autosetupmerge = true
+    autosetuprebase = always
 [diff]
         algorithm = patience
 ;[column]
 ;        branch = auto
 [core]
-	excludesfile = /Users/ether/.gitexclude
+    excludesfile = /Users/ether/.gitexclude
 
 ; for automatic translation of URLs
 [url "git@github.com:"]

@@ -1,6 +1,7 @@
 
 # aliases and customizations for git
 alias gdd='git diff'
+alias gds='git diff --staged'
 
 alias gpr='git pull --rebase'
 alias grc='git rebase --continue'

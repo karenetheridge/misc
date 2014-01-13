@@ -21,6 +21,8 @@
 ;        branch = auto
 [core]
     excludesfile = /Users/ether/.gitexclude
+    # indent-with-non-tab omitted - it makes diffs look ugly
+    whitespace = space-before-tab,tab-in-indent,trailing-space
 
 ; for automatic translation of URLs
 [url "git@github.com:"]

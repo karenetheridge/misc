@@ -22,6 +22,8 @@ my @to_install = qw(
     ExtUtils::MakeMaker
     Module::Build
     Module::Build::Tiny
+    IO::Socket::IP
+    Acme::Override::INET
     App::Ack
     App::Nopaste
     App::cpanoutdated

@@ -14,49 +14,6 @@ inlinesort () {
     sort -dfu -o $1 $1
 }
 
-
-# perform action (or just print files) on tree, ignoring svn stuff
-f () {
-    find . \
-        -name .svn -a -prune -o \
-        -name CVS -a -prune -o \
-        $* -print
-}
-
-# common operation: print all files from <foo>|$CWD downwards
-ff() {
-    if [ $1 ]
-    then
-        DIR=$1
-    else
-        DIR=.
-    fi
-
-    find $DIR \
-        -name .svn -a -prune -o \
-        -name CVS -a -prune -o \
-        -type f -print
-}
-
-# just like grep -r <term>, except ignores .svn stuff, vim swap files
-s () {
-    find . \
-        -name .svn -a -prune -o \
-        -name blib -a -prune -o \
-            -not -name .\*swp \
-            -type f \
-            -exec grep -i -H "$1" \{\} \;
-}
-
-scs () {
-    find . \
-        -name .svn -a -prune -o \
-        -name blib -a -prune -o \
-            -not -name .\*swp \
-            -type f \
-            -exec grep -H "$1" \{\} \;
-}
-
 # Touch a file, but create all the intermediate paths first
 touchp()
 {

@@ -178,3 +178,5 @@ newmodule() {
 minver() {
     perl -MData::Dumper -MPerl::MinimumVersion::Fast -wle'$Data::Dumper::Terse = 1; print "$_: ", Dumper(Perl::MinimumVersion::Fast->new($_)) foreach @ARGV' $*
 }
+
+alias dbn='dzil build --not'

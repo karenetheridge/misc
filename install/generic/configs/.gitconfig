@@ -24,6 +24,13 @@
     # indent-with-non-tab omitted - it makes diffs look ugly
     whitespace = space-before-tab,tab-in-indent,trailing-space
 
+[alias]
+    git = !git
+    pr = pull --rebase
+    rc = rebase --continue
+    wip = stash save --keep-index 'wip'
+    fetchall = fetch --all --prune
+
 ; for automatic translation of URLs
 [url "git@github.com:"]
     insteadOf = https://github.com/

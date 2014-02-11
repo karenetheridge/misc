@@ -69,7 +69,6 @@ my @to_install = qw(
 );
 
 my @fails_tests = qw(
-    Test::Moose::More
     Archive::Zip
 );
 

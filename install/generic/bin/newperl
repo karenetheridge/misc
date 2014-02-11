@@ -66,6 +66,7 @@ my @to_install = qw(
     Dist::Zilla::PluginBundle::RJBS
     Dist::Zilla::PluginBundle::DAGOLDEN
     Dist::Zilla::PluginBundle::FLORA
+    perlsecret
 );
 
 my @fails_tests = qw(

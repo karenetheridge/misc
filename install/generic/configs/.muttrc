@@ -291,6 +291,7 @@ subscribe metacpan
 subscribe perl5-porters
 subscribe yapc
 subscribe module-authors
+subscribe dbix-class
 
 
 # All folder-hooks need to be "undone" with defaults so other folders don't

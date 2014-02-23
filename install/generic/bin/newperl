@@ -34,6 +34,7 @@ my @to_install = qw(
     App::Nopaste
     App::cpanoutdated
     App::pmuninstall
+    App::cpangrep
     Module::CoreList
     Unicode::Tussle
     Test::CPAN::Meta

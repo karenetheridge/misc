@@ -47,6 +47,8 @@ my @to_install = qw(
     Unicode::UTF8
     Test::Builder
     Devel::Confess
+    Devel::TraceUse
+    Test::DiagINC
     Cpanel::JSON::XS
     YAML::Syck
     indirect multidimensional bareword::filehandles

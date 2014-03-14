@@ -1,0 +1,77 @@
+#!/usr/bin/env perl
+use strict;
+use warnings;
+
+my $usage = 'usage: parse_version <META.json> <.pm file>';
+my $metafile = shift or die $usage;
+my $pmfile = shift or die $usage;
+
+use Data::Dumper;
+use CPAN::Meta;
+use Parse::PMFile;
+use ExtUtils::MakeMaker;
+use V ();
+use Module::Info;
+use Module::InstalledVersion;
+use Module::Version;
+use Module::Metadata;
+
+my $metadata = CPAN::Meta->load_file($metafile);
+
+my $module = $pmfile =~ s/\.pm$//r;
+$module =~ s{/}{::}g;
+$module =~ s/^(.*lib::)//;
+
+print "Guessing module name is $module from file $pmfile.\n\n";
+
+{
+    my $pmparser = Parse::PMFile->new($metadata);
+    my $packages_info = $pmparser->parse($pmfile);
+    #print Dumper($packages_info);
+    print sprintf('%30s', 'Parse::PMFile module(s): '), join(', ', keys %$packages_info), "\n";
+    print sprintf('%30s', 'Parse::PMFile version: '), ($packages_info->{$module}{version} // '<undef>'), "\n\n";
+}
+
+{
+    print sprintf('%30s', 'MM->parse_version: '), (MM->parse_version($pmfile) // '<undef>'), "\n\n";
+}
+
+{
+    print sprintf('%30s', 'V::get_version: '), (V::get_version($module) // '<undef>'), "\n\n";
+}
+
+{
+    my $mod = Module::Info->new_from_file($pmfile);
+    print sprintf('%30s', 'Module::Info->packages_inside: '), join(', ', $mod->packages_inside), "\n";
+    print sprintf('%30s', 'Module::Info->...->version: '), ($mod->version // '<undef>'), "\n\n";
+}
+
+{
+    # Module::Extract
+    # ???
+    1;
+}
+
+{
+    my $info = Module::Metadata->new_from_file($pmfile);
+    print sprintf('%30s', 'Module::Metadata module(s): '), join(', ', $info->packages_inside), "\n";
+    print sprintf('%30s', 'Module::Metadata version: '), ($info->version // '<undef>'), "\n\n";
+}
+
+
+require $pmfile;
+
+{
+    my $m = Module::InstalledVersion->new($module);
+    print sprintf('%30s', 'Module::InstalledVersion: '), ($m->{version} // '<undef>'), "\n\n";
+}
+
+{
+    print sprintf('%30s', 'Module::Version::get_version: '), (Module::Version::get_version($module) // '<undef>'), "\n\n";
+}
+
+{
+    print sprintf('%30s', "$module->VERSION: "), ($module->VERSION // '<undef>'), "\n";
+    no strict 'refs';
+    print sprintf('%30s', "\$${module}::VERSION: "), (${"${module}::VERSION"} // '<undef>'), "\n\n";
+}

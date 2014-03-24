@@ -1,0 +1,22 @@
+#!/usr/bin/env perl
+# originally from xdg, https://gist.github.com/dagolden/9743232
+use v5.10;
+use strict;
+use warnings;
+
+my $delay = 120;
+my @addresses = @ARGV;
+
+my $old = 'none';
+
+while (1) {
+    my $output = `wget -q -O - checkip.dyndns.org`;
+    my ($new) = $output =~ /Current IP Address: ([0-9.]+)/;
+
+    $new //= "none";
+    if ( $old ne $new ) {
+        system(qq{echo "ip changed: $new" | mutt -s "ip changed: $new" @addresses});
+    }
+    $old = $new;
+    sleep $delay;
+}

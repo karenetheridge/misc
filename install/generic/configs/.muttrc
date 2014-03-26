@@ -292,6 +292,7 @@ subscribe perl5-porters
 subscribe yapc
 subscribe module-authors
 subscribe dbix-class
+subscribe yapc.pm.org
 
 
 # All folder-hooks need to be "undone" with defaults so other folders don't

@@ -1,4 +1,5 @@
 !.gitignore
 .*.sw[a-z]
-/.DS_Store
-/.ackrc
+.DS_Store
+.ackrc
+!.mailmap

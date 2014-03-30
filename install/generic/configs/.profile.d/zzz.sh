@@ -2,7 +2,7 @@
 
 # Ensure that this path has the highest precedence
 #export PATH=~/bin:/usr/local/bin:$PATH
-export PATH=~/bin:~/git/misc/install/$HOSTNAME/bin:$PATH
+export PATH=~/bin:~/git/misc/install/$HOSTNAME/bin:~/git/misc/install/generic/bin:$PATH
 
 # remove duplicate $PATH elements
 # commented out for now - not needed.

@@ -2,3 +2,4 @@
 --ignore-dir=.build
 --sort-files
 --follow
+--ignore-dir=Plack-App-BeanstalkConsole/t/app/public

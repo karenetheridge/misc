@@ -180,3 +180,7 @@ minver() {
 }
 
 alias dbn='dzil build --not'
+
+perledit() {
+    vi `perldoc -lm $*`
+}

@@ -30,6 +30,7 @@
     rc = rebase --continue
     wip = stash save --keep-index 'wip'
     fetchall = fetch --all --prune
+    squash = commit -m'squash'
 
 ; for automatic translation of URLs
 [url "git@github.com:"]

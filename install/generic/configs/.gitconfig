@@ -31,6 +31,7 @@
     wip = stash save --keep-index 'wip'
     fetchall = fetch --all --prune
     squash = commit -m'squash'
+    deltag = push --delete origin tag
 
 ; for automatic translation of URLs
 [url "git@github.com:"]

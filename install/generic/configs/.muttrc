@@ -295,7 +295,7 @@ subscribe yapc
 subscribe module-authors
 subscribe dbix-class
 subscribe yapc.pm.org
-subscribe cpantesters-discuss
+subscribe cpan-testers-discuss
 
 
 # All folder-hooks need to be "undone" with defaults so other folders don't

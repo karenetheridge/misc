@@ -1,0 +1,167 @@
+#!/usr/bin/env perl
+
+use strict;
+use warnings;
+
+# split from from 'newperl', because perlbrew exec has problems handling
+# local::lib directories when we're not actually in that perl directly
+
+sub part(&@);
+
+# TODO: these should all be in Task::BeLike::ETHER
+
+my @install_first = qw(
+    List::MoreUtils
+    App::cpanminus::reporter
+);
+my @to_install = qw(
+    ExtUtils::MakeMaker
+    Module::Build
+    Module::Build::Tiny
+    IO::Socket::IP
+    Acme::Override::INET
+    App::Ack
+    App::Nopaste
+    App::cpanoutdated
+    App::pmuninstall
+    App::cpangrep
+    Module::CoreList
+    Unicode::Tussle
+    Test::CPAN::Meta
+    Test::Pod::Coverage
+    Pod::Coverage::TrustPod
+    Data::Dumper
+    local::lib
+    Archive::Tar::Wrapper
+    LWP::Protocol::https
+    Unicode::UTF8
+    Test::Builder
+    Devel::Confess
+    Devel::TraceUse
+    Test::DiagINC
+    Acme::require::case
+    Cpanel::JSON::XS
+    YAML::Syck
+    indirect multidimensional bareword::filehandles
+    strictures
+    Dist::Zilla::Plugin::Chrome::ExtraPrompt
+    Dist::Zilla::Plugin::Bootstrap::lib
+    Dist::Zilla::App::Command::dumpphases
+    Dist::Zilla::App::Command::podpreview
+    Dist::Zilla::App::Command::dumpwith
+    Dist::Zilla::App::Command::lsplugins
+    Dist::Zilla::App::Command::cover
+    Dist::Zilla::Plugin::Prereqs::Soften
+    Dist::Zilla::Plugin::MungeFile::WithDataSection
+    Dist::Zilla::Plugin::OnlyCorePrereqs
+    Module::Install
+    Module::Install::Repository
+    Module::Install::AuthorRequires
+    Module::Install::ReadmeFromPod
+    Module::Install::GithubMeta
+    Module::Install::AutoLicense
+    Dist::Zilla::PluginBundle::RJBS
+    Dist::Zilla::PluginBundle::DAGOLDEN
+    Dist::Zilla::PluginBundle::FLORA
+    perlsecret
+);
+
+my @fails_tests = qw(
+    Archive::Zip
+);
+
+# install with develop and recommended prereqs too
+my @to_install_with_everything  = qw(
+    Moose
+    Dist::Zilla
+    Dist::Zilla::PluginBundle::Author::ETHER
+);
+
+print `perl -v`;
+
+run( qw/yes | perlbrew install-cpanm/ );
+
+
+## let's avoid any pod tests when we try to install stuff
+#system( $cpanm 'TAP::Harness::Restricted' );
+#local $ENV{HARNESS_SUBCLASS} = "TAP::Harness::Restricted";
+
+
+# now install the rest
+
+# avoid my cpanm alias which invokes cpanm-reporter (in whatever perl is
+# currently active)
+chomp(my $cpanm = `which cpanm`);
+
+my (@success, @failed, @failed_twice, @failed_with_everything);
+
+run_or_die($cpanm, @install_first);
+run_or_die('cpanm-reporter');
+
+
+# on the first big pass, try to install everything in one process, using
+# default HARNESS_OPTIONS
+run($cpanm, @to_install, @fails_tests, @to_install_with_everything);
+run('cpanm-reporter');
+
+# now install things whose tests are known to fail...
+run($cpanm, '--notest', @fails_tests);
+run('cpanm-reporter');
+
+# try failures again, to handle circular deps, parallelization problems
+print "\n\ninstalling again, to handle circular dependencies, and things that didn't install cleanly (WATCH FOR THESE!)...\n";
+my @results = part {
+    my $result = run("HARNESS_OPTIONS=j1 $cpanm", $_[0]);
+    run('cpanm-reporter');
+    $result ? 1 : 0;
+} (@to_install, @fails_tests, @to_install_with_everything);
+push @success, @{$results[0]};
+push @failed, @{$results[1] // []};
+
+
+# we need two passes for this -- https://github.com/miyagawa/cpanminus/issues/336
+@results = part {
+    my $result = run($cpanm, qw/--reinstall --installdeps --with-develop --with-recommends --dev/, $_[0]);
+    run('cpanm-reporter');
+    $result ? 1 : 0
+} @to_install_with_everything;
+push @success, @{$results[0]};
+push @failed_with_everything, @{$results[1] // []};
+
+print 'Failed first attempt to install:', join("\n    ", '', @failed), "\n\n";
+print 'Failed second attempt to install:', join("\n    ", '', @failed_twice), "\n\n";
+print 'Failed attempt to install as --with-develop --with-recommends --dev:', join("\n   ", '', @failed_with_everything), "\n\n";
+
+
+sub part(&@)
+{
+    my $sub = shift;
+    my (@true, @false);
+
+    foreach my $element (@_)
+    {
+        my $res = $sub->($element);
+        push @true, $element if $res;
+        push @false, $element if not $res;
+    }
+    return \@true, \@false;
+}
+
+sub run_or_die
+{
+    my $cmd = join(' ', @_);
+    print "Running: $cmd\n";
+    system $cmd;
+    die "$cmd returned exit code $?: stopping" if $?;
+    return $?
+}
+
+sub run
+{
+    my $cmd = join(' ', @_);
+    print "Running: $cmd\n";
+    system $cmd;
+    warn "$cmd returned exit code $?" if $?;
+    return $?
+}
+

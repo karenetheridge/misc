@@ -18,146 +18,22 @@ my $perl = "5.$as";
 $perl =~ s/t$//; # strip trailing "t" if any
 my $lib = $as . '@std';
 
-# TODO: these should all be in Task::BeLike::ETHER --
-# which I should autogenerate by looking up all my dists and their develop
-# prereqs
-my @install_first = qw(
-    ExtUtils::MakeMaker
-    Module::Build
-    App::cpanminus::reporter
-);
-my @to_install = qw(
-    Module::Build::Tiny
-    IO::Socket::IP
-    Acme::Override::INET
-    App::Ack
-    App::Nopaste
-    App::cpanoutdated
-    App::pmuninstall
-    App::cpangrep
-    Module::CoreList
-    Unicode::Tussle
-    Test::CPAN::Meta
-    Test::Pod::Coverage
-    Pod::Coverage::TrustPod
-    Data::Dumper
-    local::lib
-    Archive::Tar::Wrapper
-    LWP::Protocol::https
-    Unicode::UTF8
-    Test::Builder
-    Devel::Confess
-    Devel::TraceUse
-    Test::DiagINC
-    Acme::require::case
-    Cpanel::JSON::XS
-    YAML::Syck
-    indirect multidimensional bareword::filehandles
-    strictures
-    Dist::Zilla::Plugin::Chrome::ExtraPrompt
-    Dist::Zilla::Plugin::Bootstrap::lib
-    Dist::Zilla::App::Command::dumpphases
-    Dist::Zilla::App::Command::podpreview
-    Dist::Zilla::App::Command::dumpwith
-    Dist::Zilla::App::Command::lsplugins
-    Dist::Zilla::App::Command::cover
-    Dist::Zilla::Plugin::Prereqs::Soften
-    Dist::Zilla::Plugin::MungeFile::WithDataSection
-    Dist::Zilla::Plugin::OnlyCorePrereqs
-    Module::Install
-    Module::Install::Repository
-    Module::Install::AuthorRequires
-    Module::Install::ReadmeFromPod
-    Module::Install::GithubMeta
-    Module::Install::AutoLicense
-    Dist::Zilla::PluginBundle::RJBS
-    Dist::Zilla::PluginBundle::DAGOLDEN
-    Dist::Zilla::PluginBundle::FLORA
-    perlsecret
-);
-
-my @fails_tests = qw(
-    Archive::Zip
-);
-
-# install with develop and recommended prereqs too
-my @to_install_with_everything  = qw(
-    Moose
-    Dist::Zilla
-    Dist::Zilla::PluginBundle::Author::ETHER
-);
-
 my @no_man = qw/-D man1dir=none -D man3dir=none/;
 
-#run( qw/perlbrew self-upgrade/ );
+run( qw/perlbrew self-upgrade/ );
 run( qw/yes | perlbrew install-cpanm/ );
 
 # install perl and lock it down
 
 $perl = '' if grep { qr{^http://} } @args;
 
-#run_or_die( qw/perlbrew install -j 9 --as/, $as, $perl, @threads, @no_man, @args );
-#run_or_die( qw/chmod -R a-w/, "$ENV{HOME}/perl5/perlbrew/perls/$as" );
+run_or_die( qw/perlbrew install -j 9 --as/, $as, $perl, @threads, @no_man, @args );
+run_or_die( qw/chmod -R a-w/, "$ENV{HOME}/perl5/perlbrew/perls/$as" );
 
 # give us a local::lib for installing things
-#run_or_die( qw/perlbrew lib create/, $lib );
+run_or_die( qw/perlbrew lib create/, $lib );
 
- 
-## let's avoid any pod tests when we try to install stuff
-#system( qw/perlbrew exec --with/, $lib, qw/cpanm TAP::Harness::Restricted/ );
-#local $ENV{HARNESS_SUBCLASS} = "TAP::Harness::Restricted";
- 
-# some things need forcing
-#if (@problem_modules)
-#{
-#    run( qw/perlbrew exec --with/, $lib, qw/cpanm -f/, @problem_modules )
-#    run( qw/perlbrew exec --with/, $lib, qw/cpanm-reporter/);
-#}
- 
-# now install the rest
-
-# avoid my cpanm alias which invokes cpanm-reporter (in whatever perl is
-# currently active)
-chomp(my $cpanm = `which cpanm`);
-
-my (@success, @failed, @failed_twice, @failed_with_everything);
-
-run_or_die( qw/perlbrew exec --with/, $lib, $cpanm, @install_first);
-run_or_die( qw/perlbrew exec --with/, $lib, qw/cpanm-reporter/);
-
-# on the first pass, try to install everything in one process...
-# (temporary: disable parallel testing until Archive::Zip is fixed)
-run(qw/HARNESS_OPTIONS=j1 perlbrew exec --with/, $lib, $cpanm, @to_install);
-run(qw/perlbrew exec --with/, $lib, qw/cpanm-reporter/);
-
-# now install things whose tests are known to fail...
-run(qw/perlbrew exec --with/, $lib, $cpanm, '--notest', @fails_tests);
-run(qw/perlbrew exec --with/, $lib, qw/cpanm-reporter/);
-
-use List::MoreUtils 'part';
-
-# try failures again, to handle circular deps, parallelization problems
-print "\n\ninstalling again, to handle circular dependencies, and things that didn't install cleanly (WATCH FOR THESE!)...\n";
-my @results = part {
-    my $result = run( qw/HARNESS_OPTIONS=j1 perlbrew exec --with/, $lib, $cpanm, $_);
-    run( qw/perlbrew exec --with/, $lib, qw/cpanm-reporter/);
-    $result ? 1 : 0
-} (@to_install, @fails_tests, @to_install_with_everything);
-push @success, @{$results[0]};
-push @failed, @{$results[1] // []};
-
-# we need two passes for this -- https://github.com/miyagawa/cpanminus/issues/336
-@results = part {
-    my $result = run( qw/perlbrew exec --with/, $lib, $cpanm, qw/--reinstall --installdeps --with-develop --with-recommends --dev/, $_);
-    run( qw/perlbrew exec --with/, $lib, qw/cpanm-reporter/);
-    $result ? 1 : 0
-} @to_install_with_everything;
-push @success, @{$results[0]};
-push @failed_with_everything, @{$results[1] // []};
-
-print "Failed first attempt to install:", join("\n    ", '', @failed), "\n\n";
-print "Failed second attempt to install:", join("\n    ", '', @failed_twice), "\n\n";
-print "Failed attempt to install as --with-develop --with-recommends --dev:", join("\n   ", '', @failed_with_everything), "\n\n";
+print "done. now you should run: perlbrew use $as\@std; perlmodules \n";
 
 
 sub run_or_die

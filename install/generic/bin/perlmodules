@@ -92,7 +92,7 @@ chomp(my $cpanm = `which cpanm`);
 
 # now install the rest
 
-my (@success, @failed, @failed_twice, @failed_with_everything);
+my (@success, @failed, @failed_with_everything);
 
 if (shift)
 {
@@ -137,9 +137,9 @@ push @success, @{$results[0]};
 push @failed_with_everything, @{$results[1] // []};
 
 print 'Failed first attempt to install:', join("\n    ", '', @failed), "\n\n";
-print 'Failed second attempt to install:', join("\n    ", '', @failed_twice), "\n\n";
 print 'Failed attempt to install as --with-develop --with-recommends --dev:', join("\n   ", '', @failed_with_everything), "\n\n";
 
+print "SUCCESS!!!\n\n" if not @failed_with_everything;
 
 sub part(&@)
 {

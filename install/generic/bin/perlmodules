@@ -40,6 +40,7 @@ my @to_install = qw(
     Devel::TraceUse
     Test::DiagINC
     Acme::require::case
+    Safe::Isa
     Cpanel::JSON::XS
     YAML::Syck
     indirect multidimensional bareword::filehandles
@@ -64,6 +65,10 @@ my @to_install = qw(
     Dist::Zilla::PluginBundle::DAGOLDEN
     Dist::Zilla::PluginBundle::FLORA
     perlsecret
+    Parse::PMFile
+    V
+    Module::InstalledVersion
+    Module::Version
 );
 
 my @fails_tests = qw(

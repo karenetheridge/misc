@@ -11,6 +11,9 @@ use CPAN::DistnameInfo;
 use File::Spec;
 use WWW::Mechanize;
 
+# keep the last N stable dists
+my $keep = shift || 2;
+
 my $home = $ENV{HOME} || '.';
 my $rc   = File::Spec->catfile($home, '.pause');
 
@@ -77,10 +80,11 @@ FILE: for my $file (@files) {
     }
   }
 
+  # lol that'll be the day
   next if $dni->dist eq 'perl';
 
   my $by_name = $found{ $dni->dist } ||= {};
-  my $dist = $by_name->{ eval $dni->version } ||= { values => [] };
+  my $dist = $by_name->{ $dni->version } ||= { values => [] };
   push @{ $dist->{values} }, $file;
 }
 
@@ -92,10 +96,26 @@ my %ticked;
 
 for my $key (sort keys %found) {
   my $dist = $found{ $key };
-  next unless keys %$dist > 3;
+  next unless keys %$dist > $keep;
 
-  my @versions = sort { $b <=> $a } keys %$dist;
-  for my $version (map { $versions[$_] } 3 .. $#versions) {
+  # this is a dumb sort, but ought to work out as long as I don't change
+  # version number formats midway in a way that disrupts sorting (because I
+  # know that breaks distro packagers too, I don't do that!)
+  my @versions = sort { $b cmp $a } keys %$dist;
+
+  # we keep the last $keep *stable* releases - work through all releases in
+  # reverse order until we've found that many
+  my $found_stable = 0;
+  my $index;
+  for ($index = 0; $index < @versions; ++$index)
+  {
+      ++$found_stable if $versions[$index] !~ /_/
+          and $versions[$keep] !~ qr/-TRIAL$/;
+      last if $found_stable >= $keep;
+  }
+
+  for my $version (map { $versions[$_] } $index+1 .. $#versions) {
+
     for my $file (@{ $dist->{ $version }{values} }) {
       print "scheduling $file for deletion\n";
       $ticked{ $file } ++;
@@ -103,7 +123,7 @@ for my $key (sort keys %found) {
   }
 }
 
-print "ticked ", scalar keys %ticked, " tickey boxes\n";
+print "ticked ", scalar keys %ticked, " ticky boxes\n";
 
 for my $input (
   $mech->find_all_inputs(name => 'pause99_delete_files_FILE')
@@ -117,4 +137,7 @@ for my $input (
 
 $mech->click('SUBMIT_pause99_delete_files_delete');
 # print $mech->content;
+
+
+print "Now go to https://pause.perl.org/pause/authenquery?ACTION=delete_files and confirm that all is well.\n";
 

@@ -53,9 +53,10 @@ print "Guessing module name is $module from file $pmfile.\n\n";
 }
 
 {
-    my $info = Module::Metadata->new_from_file($pmfile);
-    print sprintf('%30s', 'Module::Metadata module(s): '), join(', ', $info->packages_inside), "\n";
-    print sprintf('%30s', 'Module::Metadata version: '), ($info->version // '<undef>'), "\n\n";
+    my $mmd = Module::Metadata->new_from_file($pmfile);
+    my @packages = $mmd->packages_inside;
+    print sprintf('%30s', 'Module::Metadata module(s): '), join(', ', @packages), "\n";
+    print sprintf('%30s', 'Module::Metadata version: '), ($mmd->version // $mmd->version($packages[0]) // '<undef>'), "\n\n";
 }
 
 

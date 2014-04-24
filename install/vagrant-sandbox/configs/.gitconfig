@@ -13,6 +13,12 @@
 [branch]
 	autosetupmerge = true
 	autosetuprebase = always
+
+[diff "gz"]
+    textconv = zcat
+    cachetextconv = true
+    binary = true
+
 ;[column]
 ;        branch = auto
 

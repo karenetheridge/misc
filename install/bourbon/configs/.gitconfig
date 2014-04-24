@@ -17,6 +17,12 @@
     autosetuprebase = always
 [diff]
     algorithm = patience
+
+[diff "gz"]
+    textconv = zcat
+    cachetextconv = true
+    binary = true
+
 ;[column]
 ;    branch = auto
 

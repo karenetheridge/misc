@@ -17,6 +17,19 @@ my $keep = shift || 2;
 my $home = $ENV{HOME} || '.';
 my $rc   = File::Spec->catfile($home, '.pause');
 
+my $USAGE=
+"usage: $0 <keep>
+or: $0 <keep> USER PASS
+
+<keep> is the number of versions to keep
+       defaults to 2
+       optional if USER and PASS are not passed on the command line
+
+$home/.pause format: 
+user <username>
+password <password>
+";
+
 # Process .pause
 open my $pauserc, '<', $rc or die "can't open $rc for reading: $!";
 
@@ -32,7 +45,7 @@ while (<$pauserc>) {
 }
 
 if (@ARGV) {
-  die "usage: tl\n   or: tl USER PASS\n" unless @ARGV == 2;
+  die $USAGE unless @ARGV == 2;
   @arg{ qw(user password) } = @ARGV;
 }
 
@@ -140,4 +153,3 @@ $mech->click('SUBMIT_pause99_delete_files_delete');
 
 
 print "Now go to https://pause.perl.org/pause/authenquery?ACTION=delete_files and confirm that all is well.\n";
-

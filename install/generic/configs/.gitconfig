@@ -12,6 +12,8 @@
     default = upstream
 [rebase]
     autostash = true
+[pull]
+    autostash = true
 [branch]
     autosetupmerge = true
     autosetuprebase = always

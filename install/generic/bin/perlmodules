@@ -111,8 +111,8 @@ run_or_die('cpanm-reporter');
 
 
 # on the first big pass, try to install everything in one process, using
-# default HARNESS_OPTIONS
-run($cpanm, @to_install, @fails_tests, @to_install_with_everything);
+# default HARNESS_OPTIONS, trial/developer releases if there is one
+run($cpanm, qw(--dev --mirror http://www.cpan.org/), @to_install, @fails_tests, @to_install_with_everything);
 run('cpanm-reporter');
 
 # now install things whose tests are known to fail...
@@ -122,7 +122,7 @@ run('cpanm-reporter');
 print "\n\ninstalling again, to handle circular dependencies, and things that didn't install cleanly (WATCH FOR THESE!)...\n";
 
 SEPARATELY:
-# try failures again, to handle circular deps, parallelization problems
+# try installing everything again, stable releases this time, to handle circular deps, parallelization problems
 my @results = part {
     my $result = run("HARNESS_OPTIONS=j1 $cpanm", $_[0]);
     run('cpanm-reporter');

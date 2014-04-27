@@ -35,7 +35,6 @@ my @to_install = qw(
     Archive::Tar::Wrapper
     LWP::Protocol::https
     Unicode::UTF8
-    Test::Builder
     Devel::Confess
     Devel::TraceUse
     Test::DiagINC
@@ -69,6 +68,10 @@ my @to_install = qw(
     V
     Module::InstalledVersion
     Module::Version
+);
+# dev versions known to fail
+my @install_no_dev = qw(
+    Test::Builder
 );
 
 my @fails_tests = qw(
@@ -127,7 +130,7 @@ my @results = part {
     my $result = run("HARNESS_OPTIONS=j1 $cpanm", $_[0]);
     run('cpanm-reporter');
     $result ? 0 : 1;
-} (@to_install, @fails_tests, @to_install_with_everything);
+} (@install_no_dev, @to_install, @fails_tests, @to_install_with_everything);
 push @success, @{$results[0]};
 push @failed, @{$results[1] // []};
 

@@ -31,6 +31,7 @@
     excludesfile = /Users/ether/.gitexclude
     # indent-with-non-tab omitted - it makes diffs look ugly
     whitespace = space-before-tab,tab-in-indent,trailing-space
+    attributesfile = /Users/ether/.gitattributes
 
 [alias]
     git = !git

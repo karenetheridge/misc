@@ -12,3 +12,24 @@ fi
 
 # this is only valid for OSX, but harmless to include everywhere...
 export PATH=$PATH:/opt/local/share/git-core/contrib/workdir
+
+# perform command(s) in each repository in 'mydists' sequentially.
+mydists() {
+    local COMMANDS=$*
+    for dir in ~/git/mydists/*; do
+        pushd $dir
+        echo "executing: $COMMANDS"
+        eval $COMMANDS
+        popd
+    done
+}
+
+adopteddists() {
+    local COMMANDS=$*
+    for dir in ~/git/adopteddists/*; do
+        pushd $dir
+        echo "executing: $COMMANDS"
+        eval $COMMANDS
+        popd
+    done
+}

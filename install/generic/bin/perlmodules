@@ -26,6 +26,7 @@ my @to_install = qw(
     App::pmuninstall
     App::cpangrep
     Module::CoreList
+    CPAN::Perl::Releases
     Unicode::Tussle
     Test::CPAN::Meta
     Test::Pod::Coverage
@@ -37,6 +38,7 @@ my @to_install = qw(
     Unicode::UTF8
     Devel::Confess
     Devel::TraceUse
+    Devel::PatchPerl
     Test::DiagINC
     Acme::require::case
     Safe::Isa

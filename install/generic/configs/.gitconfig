@@ -50,6 +50,7 @@
 
 ; for automatic translation of URLs
 [url "git@github.com:"]
+    insteadOf = http://github.com/
     insteadOf = https://github.com/
     insteadOf = git://github.com/
 

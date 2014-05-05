@@ -146,7 +146,7 @@ push @failed, @{$results[1] || []};
 push @success, @{$results[0]};
 push @failed_with_everything, @{$results[1] || []};
 
-print 'Failed first attempt to install:', join("\n    ", '', @failed), "\n\n";
+print 'Failed attempts to install:', join("\n    ", '', @failed), "\n\n";
 print 'Failed attempt to install as --with-develop --with-recommends --dev:', join("\n   ", '', @failed_with_everything), "\n\n";
 
 print "SUCCESS!!!\n\n" if not @failed_with_everything;

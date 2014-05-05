@@ -132,7 +132,7 @@ my @results = part {
     $result ? 0 : 1;
 } (@install_no_dev, @to_install, @fails_tests, @to_install_with_everything);
 push @success, @{$results[0]};
-push @failed, @{$results[1] // []};
+push @failed, @{$results[1] || []};
 
 
 # we need two passes for this -- https://github.com/miyagawa/cpanminus/issues/336
@@ -142,7 +142,7 @@ push @failed, @{$results[1] // []};
     $result ? 0 : 1
 } @to_install_with_everything;
 push @success, @{$results[0]};
-push @failed_with_everything, @{$results[1] // []};
+push @failed_with_everything, @{$results[1] || []};
 
 print 'Failed first attempt to install:', join("\n    ", '', @failed), "\n\n";
 print 'Failed attempt to install as --with-develop --with-recommends --dev:', join("\n   ", '', @failed_with_everything), "\n\n";

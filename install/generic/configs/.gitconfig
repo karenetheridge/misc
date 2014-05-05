@@ -24,14 +24,20 @@
     textconv = zcat
     cachetextconv = true
     binary = true
+[diff "zip"]
+    textconv = unzip -c -a
 
 ;[column]
 ;        branch = auto
+
 [core]
     excludesfile = /Users/ether/.gitexclude
     # indent-with-non-tab omitted - it makes diffs look ugly
     whitespace = space-before-tab,tab-in-indent,trailing-space
     attributesfile = /Users/ether/.gitattributes
+
+[interactive]
+    singlekey = true
 
 [alias]
     git = !git

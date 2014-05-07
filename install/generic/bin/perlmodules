@@ -6,6 +6,8 @@ use warnings;
 # split from from 'newperl', because perlbrew exec has problems handling
 # local::lib directories when we're not actually in that perl directly
 
+my $start_time = time();
+
 sub part(&@);
 
 # TODO: these should all be in Task::BeLike::ETHER
@@ -150,6 +152,9 @@ print 'Failed attempts to install:', join("\n    ", '', @failed), "\n\n";
 print 'Failed attempt to install as --with-develop --with-recommends --dev:', join("\n   ", '', @failed_with_everything), "\n\n";
 
 print "SUCCESS!!!\n\n" if not @failed_with_everything;
+my $elapsed_time = time() - $start_time;
+my ($min, $sec) = (int($elapsed_time / 60), $elapsed_time % 60);
+print "done (elapsed time: ${min}m ${sec}s).\n";
 
 sub part(&@)
 {

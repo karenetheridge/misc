@@ -6,6 +6,8 @@ use warnings;
 # adapted from https://gist.github.com/dagolden/5171336
 # 2013-03-15
 
+my $start_time = time();
+
 my $as = shift
     or die "Usage: $0 <perl-version>";
 my @args = @ARGV;
@@ -33,7 +35,9 @@ run_or_die( qw/chmod -R a-w/, "$ENV{HOME}/perl5/perlbrew/perls/$as" );
 # give us a local::lib for installing things
 run_or_die( qw/perlbrew lib create/, $lib );
 
-print "done. now you should run: perlbrew use $as\@std; perlmodules \n";
+my $elapsed_time = time() - $start_time;
+my ($min, $sec) = (int($elapsed_time / 60), $elapsed_time % 60);
+print "done (elapsed time: ${min}m ${sec}s). now you should run: perlbrew use $as\@std; perlmodules \n";
 
 
 sub run_or_die

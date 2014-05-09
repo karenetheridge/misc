@@ -5,6 +5,9 @@ alias gds='git diff --staged'
 
 alias gpr='git pull --rebase'
 alias grc='git rebase --continue'
+alias gra='git rebase --abort'
+alias gcc='git cherry-pick --continue'
+alias gca='git cherry-pick --abort'
 
 if [ -f ~/.git-completion.bash ]; then
   . ~/.git-completion.bash

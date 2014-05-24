@@ -1,0 +1,72 @@
+# configure vt100 to allow colours.
+termcap  vt100 AF=\E[3%dm:AB=\E[4%dm
+terminfo vt100 AF=\E[3%p1%dm:AB=\E[4%p1%dm
+
+termcap  xterm AF=\E[3%dm:AB=\E[4%dm
+terminfo xterm AF=\E[3%p1%dm:AB=\E[4%p1%dm
+
+termcap  vs100 AF=\E[3%dm:AB=\E[4%dm
+terminfo vs100 AF=\E[3%p1%dm:AB=\E[4%p1%dm
+
+termcap  xterm-color AF=\E[3%dm:AB=\E[4%dm
+terminfo xterm-color AF=\E[3%p1%dm:AB=\E[4%p1%dm
+
+
+# General settings.
+activity '~~Activity in window %.'
+bell '~~Bell in window %.'
+vbell off
+#deflogin on    # not needed in OSX: see footnote.
+defscrollback 10000  # we have tons of memory; use it!
+# defzombie '^k^r'    # type ^k to kill window, ^r to restart/ressurect.
+msgwait 60
+# nethack on
+nethack off
+obuflimit 1024
+## this is the culprit line??
+shell -bash
+shelltitle bash
+startup_message off
+#term vt100
+
+# restore screen contents after 'less', 'vi' etc
+altscreen on
+
+# stop that stupid trailing whitespace problem: (thanks klez!!)
+# http://linuxmafia.com/~rick/linux-info/screen-bce
+defbce on
+term screen-bce
+
+# that didn't seem to work still, but this does:
+# term xterm (no, this doesn't work either..) :(
+
+#term screen
+
+# 2011-11-29: try xterm-color to get out of vt100...
+term xterm-color
+
+# Bindings
+bind j focus down
+bind k focus up
+bind t focus top
+bind b focus bottom
+
+
+
+###  # Hawkeye says, "Add this to you .screenrc:"
+###  # H: termcap  vs100 AF=\E[3%dm
+###  # H: terminfo vs100 AF=\E[3%p1%dm
+###  # H: termcap  vs100 AB=\E[4%dm
+###  # H: terminfo vs100 AB=\E[4%p1%dm
+###
+###  # Windows.
+screen -t irc 0 irssi
+screen -l 1
+
+# A note about login shells:
+# see http://www.mail-archive.com/screen-users@gnu.org/msg02445.html
+# "deflogin" and -l flags enabled by default
+# mode removed from Apple version due to utmp vs utmpx implementation
+#
+# reassign window numbers:
+# ^A :number 3

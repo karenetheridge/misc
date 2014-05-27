@@ -116,8 +116,12 @@ if (shift)
 run_or_die($cpanm, @install_first);
 run_or_die('cpanm-reporter');
 
+# on the first big pass, just try to install my pluginbundle, using
+# default HARNESS_OPTIONS, trial/developer releases if there is one
+run($cpanm, qw(--dev --mirror http://www.cpan.org Dist::Zilla::PluginBundle::Author::ETHER));
+run('cpanm-reporter');
 
-# on the first big pass, try to install everything in one process, using
+# now do another big pass, try to install everything in one process, using
 # default HARNESS_OPTIONS, trial/developer releases if there is one
 run($cpanm, qw(--dev --mirror http://www.cpan.org/), @to_install, @fails_tests, @to_install_with_everything);
 run('cpanm-reporter');

@@ -17,6 +17,7 @@ my @install_first = qw(
     App::cpanminus::reporter
 );
 my @to_install = qw(
+    Dist::Zilla::PluginBundle::Author::ETHER
     ExtUtils::MakeMaker
     Module::Build
     Module::Build::Tiny
@@ -61,6 +62,9 @@ my @to_install = qw(
     Dist::Zilla::Plugin::CheckBin
     Dist::Zilla::Plugin::CheckLib
     Dist::Zilla::Plugin::AssertOS
+    Dist::Zilla::Plugin::GenerateFile::ShareDir
+    Dist::Zilla::Plugin::DynamicPrereqs
+    Dist::Zilla::Plugin::Test::PAUSE::Permissions
     Module::Install
     Module::Install::Repository
     Module::Install::AuthorRequires

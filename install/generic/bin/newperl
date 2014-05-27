@@ -9,7 +9,7 @@ use warnings;
 my $start_time = time();
 
 my $as = shift
-    or die "Usage: $0 <perl-version>";
+    or die "Usage: $0 <perl-version-alias> [listed version to install]";
 my @args = @ARGV;
  
 # trailing "t" means do threads

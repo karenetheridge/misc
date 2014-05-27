@@ -138,7 +138,7 @@ my @results = part {
     my $result = run("HARNESS_OPTIONS=j1 $cpanm", $_[0]);
     run('cpanm-reporter');
     $result ? 0 : 1;
-} (@install_no_dev, @to_install, @fails_tests, @to_install_with_everything);
+} (@install_first, @install_no_dev, @to_install, @fails_tests, @to_install_with_everything);
 push @success, @{$results[0]};
 push @failed, @{$results[1] || []};
 

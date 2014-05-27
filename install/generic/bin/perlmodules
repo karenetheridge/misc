@@ -135,6 +135,9 @@ my @results = part {
 push @success, @{$results[0]};
 push @failed, @{$results[1] || []};
 
+run('cpan-outdated | cpanm');
+run('cpanm-reporter');
+
 print 'Failed attempts to install:', join("\n    ", '', @failed), "\n\n";
 
 print "SUCCESS!!!\n\n" if not @failed;

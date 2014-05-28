@@ -10,3 +10,13 @@ ackall() {
     ack "$@" \
         lib t tlib bin root root-admin extlib/etc/modules.yaml
 }
+
+export database=localdev
+
+db_credentials() {
+    perl bin/config-db-value $1 db_host db_name db_user db_port db_password
+}
+
+dsn() {
+    perl -Ilib -MCE::Config -wle'print CE::Config->dsn($ARGV[0] // q{localdev}, $ARGV[1] // q{cedev})' $1 $2
+}

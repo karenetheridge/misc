@@ -226,6 +226,14 @@ au FileType mail highlight mailQuoted1 term=bold cterm=bold ctermfg=5
 set gfn=Monaco:h10
 set noanti      " no anti-aliasing!
 
+" fix colours on MacVim
+if (has("gui_running"))
+    " default:
+    " IncSearch      xxx term=reverse cterm=reverse gui=reverse
+    " Search         xxx term=reverse ctermfg=0 ctermbg=11 guifg=Black guibg=Yellow
+  hi Search term=reverse cterm=reverse guifg=Black guibg=LightBlue
+endif
+
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

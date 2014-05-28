@@ -58,6 +58,9 @@ my @to_install = qw(
     Dist::Zilla::Plugin::Prereqs::Soften
     Dist::Zilla::Plugin::MungeFile::WithDataSection
     Dist::Zilla::Plugin::OnlyCorePrereqs
+    Dist::Zilla::Plugin::CheckBin
+    Dist::Zilla::Plugin::CheckLib
+    Dist::Zilla::Plugin::AssertOS
     Module::Install
     Module::Install::Repository
     Module::Install::AuthorRequires

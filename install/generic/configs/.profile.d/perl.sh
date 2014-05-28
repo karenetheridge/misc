@@ -187,5 +187,8 @@ perledit() {
 
 # run specified command on all @std perlbrew installs
 stdperls() {
-    perlbrew exec --with $(perlbrew list | perl -w -l -e'print join(",", map { m/([\d.]+.*\@std$)/ ?  $1 : () } <>)') $*
+    # perlbrew exec --with 19.7@std bash -lc "cpanm --reinstall Test::Without::Module"
+    perlbrew exec \
+        --with $(perlbrew list | perl -w -l -e'print join(",", map { m/([\d.]+.*\@std$)/ ?  $1 : () } <>)') \
+        bash -lc "$*"
 }

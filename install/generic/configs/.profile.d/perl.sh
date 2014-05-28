@@ -184,3 +184,8 @@ alias dbn='dzil build --not'
 perledit() {
     vi `perldoc -lm $*`
 }
+
+# run specified command on all @std perlbrew installs
+stdperls() {
+    perlbrew exec --with $(perlbrew list | perl -w -l -e'print join(",", map { m/([\d.]+.*\@std$)/ ?  $1 : () } <>)') $*
+}

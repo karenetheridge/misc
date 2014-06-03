@@ -186,9 +186,14 @@ perledit() {
 }
 
 # run specified command on all @std perlbrew installs
+# this doesn't actually work - perlbrew exec seems broken??!
 stdperls() {
     # perlbrew exec --with 19.7@std bash -lc "cpanm --reinstall Test::Without::Module"
     perlbrew exec \
         --with $(perlbrew list | perl -w -l -e'print join(",", map { m/([\d.]+.*\@std$)/ ?  $1 : () } <>)') \
         bash -lc "$*"
+}
+
+mydists() {
+    cpanm $(perl -wle'print map { s/-/::/g; $_ . "\n" } @ARGV' $(ls -1 ~/git/mydists))
 }

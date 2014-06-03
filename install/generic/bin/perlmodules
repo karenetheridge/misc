@@ -130,6 +130,10 @@ run('cpanm-reporter');
 run($cpanm, '--notest', @fails_tests);
 run('cpanm-reporter');
 
+# when we just installed a virgin perl, this will find stale dual-lifed modules
+run('cpan-outdated | cpanm');
+run('cpanm-reporter');
+
 print "\n\ninstalling again, to handle circular dependencies, and things that didn't install cleanly (WATCH FOR THESE!)...\n";
 
 SEPARATELY:
@@ -141,9 +145,6 @@ my @results = part {
 } (@install_first, @install_no_dev, @to_install, @fails_tests);
 push @success, @{$results[0]};
 push @failed, @{$results[1] || []};
-
-run('cpan-outdated | cpanm');
-run('cpanm-reporter');
 
 print 'Failed attempts to install:', join("\n    ", '', @failed), "\n\n";
 

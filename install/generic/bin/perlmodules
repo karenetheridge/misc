@@ -8,6 +8,7 @@ use warnings;
 
 my $start_time = time();
 
+use File::Basename;
 sub part(&@);
 
 # TODO: these should all be in Task::BeLike::ETHER
@@ -16,13 +17,12 @@ my @install_first = qw(
     List::MoreUtils
     App::cpanminus::reporter
 );
-my @to_install = qw(
+my @to_install = (
+qw(
     Dist::Zilla::PluginBundle::Author::ETHER
     ExtUtils::MakeMaker
     Module::Build
     Module::Build::Tiny
-    IO::Socket::IP
-    Acme::Override::INET
     App::Ack
     App::Nopaste
     App::cpanoutdated
@@ -79,6 +79,12 @@ my @to_install = qw(
     V
     Module::InstalledVersion
     Module::Version
+),
+(map { (my $mod = basename($_)) =~ s/-/::/g; $mod } glob('~/git/mydists/*')),
+$] < '5.020' ? (qw(
+    IO::Socket::IP
+    Acme::Override::INET
+)) : (),
 );
 # dev versions known to fail
 my @install_no_dev = qw(

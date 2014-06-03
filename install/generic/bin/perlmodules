@@ -65,6 +65,7 @@ qw(
     Dist::Zilla::Plugin::GenerateFile::ShareDir
     Dist::Zilla::Plugin::DynamicPrereqs
     Dist::Zilla::Plugin::Test::PAUSE::Permissions
+    Dist::Zilla::Plugin::PPPort
     Module::Install
     Module::Install::Repository
     Module::Install::AuthorRequires

@@ -82,10 +82,6 @@ qw(
     Module::Version
 ),
 (map { (my $mod = basename($_)) =~ s/-/::/g; $mod } glob('~/git/mydists/*')),
-$] < '5.020' ? (qw(
-    IO::Socket::IP
-    Acme::Override::INET
-)) : (),
 );
 # dev versions known to fail
 my @install_no_dev = qw(

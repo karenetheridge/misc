@@ -10,6 +10,7 @@
 [color "diff"]
 [push]
     default = upstream
+    # default = simple
 [rebase]
     autostash = true
 [pull]
@@ -47,6 +48,7 @@
     fetchall = fetch --all --prune
     squash = commit -m'squash'
     deltag = push --delete origin tag
+    delbranch = push --delete
 
 ; for automatic translation of URLs
 [url "git@github.com:"]

@@ -197,3 +197,8 @@ stdperls() {
 mydists() {
     cpanm $(perl -wle'print map { s/-/::/g; $_ . "\n" } @ARGV' $(ls -1 ~/git/mydists))
 }
+
+disapprove() {
+    perl -CS -wle'print v3232.95.3232'
+}
+

@@ -3,7 +3,7 @@
 
 # export PATH=/usr/local/ActivePerl-5.8/bin:$PATH
 
-export HARNESS_OPTIONS=j9
+export HARNESS_OPTIONS=j9:c
 
 # equivalent to perldoc -l <module>
 perlwhere() {

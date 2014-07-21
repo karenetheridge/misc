@@ -5,6 +5,9 @@
 
 export HARNESS_OPTIONS=j9:c
 
+# used by ExtUtils::Install 1.68+
+export PERL_INSTALL_QUIET=1
+
 # equivalent to perldoc -l <module>
 perlwhere() {
     perl -wle'eval "require $ARGV[0]" or die; ($mod = $ARGV[0]) =~ s|::|/|g; print $INC{"${mod}.pm"}' $1

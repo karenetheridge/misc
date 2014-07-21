@@ -12,6 +12,7 @@ export MANPAGER='less -sicMR'
 export PERLDOC_PAGER='less -sicMr'
 
 export HISTTIMEFORMAT="%Y-%m-%d %T  "
+export HISTSIZE=10000
 
 export LANG=en_CA.UTF-8
 #export LC_ALL=en_CA.UTF-8

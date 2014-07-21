@@ -51,7 +51,7 @@ gitmo() {
         $dist =~ s/moose/Moose/;
         $dist =~ s/oosex/ooseX/i;
         $dist =~ s/-([a-z])/"-". uc($1)/e;
-        print "gitmo\@git.moose.perl.org:", $dist, ".git"' $1
+        print "git://git.moose.perl.org/", $dist, ".git"' $1
 }
 
 

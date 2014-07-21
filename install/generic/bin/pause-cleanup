@@ -1,6 +1,6 @@
 #!/usr/bin/env perl
 
-# adopted from https://github.com/rjbs/misc/blob/master/perl/tl, 2014-04-23
+# adapted from https://github.com/rjbs/misc/blob/master/perl/tl, 2014-04-23
 
 use 5.010;
 use strict;

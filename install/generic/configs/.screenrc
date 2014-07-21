@@ -65,7 +65,7 @@ screen -t tf 0 tf -n
 #    screen -l 1
 screen 1 mutt   # -l
 screen 2 #    fetchmail # -l
-screen 3 irssi
+screen 3 agaton
 screen 4    # -l
 #screen -l 5
 #screen -l 6

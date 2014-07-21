@@ -90,6 +90,8 @@ set termencoding=utf-8
 set encoding=utf-8      " latin1 is not quite good enough anymore for a default
 set modelines=5         " respect modelines in first and last N lines of file
 
+" to change a file's encoding: :write ++enc=utf-8
+
 " APPEARANCE
 
 set noshowmode          " I don't need to be told when in insert mode

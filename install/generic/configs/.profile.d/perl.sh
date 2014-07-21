@@ -201,7 +201,26 @@ mydists() {
     cpanm $(perl -wle'print map { s/-/::/g; $_ . "\n" } @ARGV' $(ls -1 ~/git/mydists))
 }
 
+firstcome() {
+    zcat ~/.cpanm/06perms.txt.gz | ack ',ETHER,f' | perl -n -e's/,ETHER,f//; s/::/-/g; print'
+}
+
 disapprove() {
     perl -CS -wle'print v3232.95.3232'
 }
 
+
+firstcome_bugs() {
+    perl ~/git/misc/rt-data.pl $(firstcome)
+}
+
+adopted_bugs() {
+    pushd ~/git/adopteddists
+    perl ~/git/misc/rt-data.pl $(ls -l1)
+    popd
+}
+
+
+snowman () {
+    perl -CO -le'print v9731'
+}

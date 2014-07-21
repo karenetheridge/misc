@@ -173,7 +173,7 @@ sub part(&@)
 sub run_or_die
 {
     my $cmd = join(' ', @_);
-    print "Running: $cmd\n";
+    print "\nRunning: $cmd\n";
     system $cmd;
     die "$cmd returned exit code $?: stopping" if $?;
     return $?
@@ -182,7 +182,7 @@ sub run_or_die
 sub run
 {
     my $cmd = join(' ', @_);
-    print "Running: $cmd\n";
+    print "\nRunning: $cmd\n";
     system $cmd;
     warn "$cmd returned exit code $?" if $?;
     return $?

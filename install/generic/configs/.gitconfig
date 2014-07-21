@@ -49,6 +49,7 @@
     squash = commit -m'squash'
     deltag = push --delete origin tag
     delbranch = push --delete
+    noff = merge --no-ff
 
 ; for automatic translation of URLs
 [url "git@github.com:"]

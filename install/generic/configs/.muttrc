@@ -261,6 +261,8 @@ send-hook '~c @rt.cpan.org' 'my_hdr From: Karen Etheridge <ether@cpan.org>'
 send-hook '~t @cpan.org' 'my_hdr From: Karen Etheridge <ether@cpan.org>'
 send-hook '~c @cpan.org' 'my_hdr From: Karen Etheridge <ether@cpan.org>'
 send-hook '~t perlbug@perl.org' 'my_hdr From: Karen Etheridge <ether@cpan.org>'
+send-hook '~t yapc@pm.org' 'my_hdr From: Karen Etheridge <cpan@perl.org>'
+send-hook '~t @lists.scsys.co.uk' 'my_hdr From: Karen Etheridge <perl@froods.org>'
 
 send-hook '~t perl-cache-discuss@' 'my_hdr From: Karen Etheridge <karen.etheridge@gmail.com>'
 send-hook '~t distzilla@lists.codesimply.com' 'my_hdr From: Karen Etheridge <ether@cpan.org>'

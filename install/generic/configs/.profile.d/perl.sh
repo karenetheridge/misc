@@ -209,7 +209,7 @@ firstcome() {
 }
 
 disapprove() {
-    perl -CS -wle'print v3232.95.3232'
+    perl -CS -wle'print v3232.95.3232'  # 0x0CA0 0x5F 0x0CA0
 }
 
 
@@ -225,5 +225,10 @@ adopted_bugs() {
 
 
 snowman () {
-    perl -CO -le'print v9731'
+    perl -CO -le'print v9731'   # 0x2603
 }
+
+heart () {
+    perl -CO -le'print v9825'   # 0x2661
+}
+

@@ -50,6 +50,7 @@
     deltag = push --delete origin tag
     delbranch = push --delete
     noff = merge --no-ff
+    uhub = hub --remote upstream
 
 ; for automatic translation of URLs
 [url "git@github.com:"]

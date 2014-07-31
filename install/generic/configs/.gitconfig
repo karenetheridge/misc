@@ -70,6 +70,9 @@
 [url "dbsrgits@git.shadowcat.co.uk:"]
     insteadOf = git://git.shadowcat.co.uk/dbsrgits/
 
+[url "scpubgit@git.shadowcat.co.uk:"]
+    insteadOf = git://git.shadowcat.co.uk/scpubgit/
+
 ; see https://gist.github.com/piscisaureus/3342247
 #[remote "origin"]
 #    fetch = +refs/pull/*/head:refs/remotes/origin/pr/*

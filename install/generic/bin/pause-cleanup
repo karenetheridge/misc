@@ -80,7 +80,7 @@ FILE: for my $file (@files) {
   my $dni;
 
   if ($file =~ m{\.(readme|meta)\z}) {
-    (my $fake = $path) =~ s{\.$ext\z}{.tar.gz};
+    (my $fake = $path) =~ s{\.$1\z}{.tar.gz};
 
     $dni = CPAN::DistnameInfo->new($fake);
   } else {

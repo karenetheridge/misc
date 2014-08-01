@@ -66,6 +66,7 @@ qw(
     Dist::Zilla::Plugin::DynamicPrereqs
     Dist::Zilla::Plugin::Test::PAUSE::Permissions
     Dist::Zilla::Plugin::PPPort
+    Dist::Zilla::Plugin::Git::Contributors
     Module::Install
     Module::Install::Repository
     Module::Install::AuthorRequires

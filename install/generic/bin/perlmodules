@@ -73,8 +73,6 @@ qw(
     Module::Install::GithubMeta
     Module::Install::AutoLicense
     Dist::Zilla::PluginBundle::RJBS
-    Dist::Zilla::PluginBundle::DAGOLDEN
-    Dist::Zilla::PluginBundle::FLORA
     perlsecret
     Parse::PMFile
     V

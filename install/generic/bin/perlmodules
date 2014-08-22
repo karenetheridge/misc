@@ -67,6 +67,7 @@ qw(
     Dist::Zilla::Plugin::Test::PAUSE::Permissions
     Dist::Zilla::Plugin::PPPort
     Dist::Zilla::Plugin::Git::Contributors
+    Dist::Zilla::Plugin::ReportPhase
     Module::Install
     Module::Install::Repository
     Module::Install::AuthorRequires

@@ -51,6 +51,8 @@
     delbranch = push --delete
     noff = merge --no-ff
     uhub = hub --remote upstream
+    morelog = log --pretty=fuller
+    logone = log --graph --oneline --decorate
 
 ; for automatic translation of URLs
 [url "git@github.com:"]

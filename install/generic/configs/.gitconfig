@@ -51,6 +51,7 @@
     delbranch = push --delete
     noff = merge --no-ff
     uhub = hub --remote upstream
+    rebasemaster = rebase -i $(git merge-base master HEAD)
     morelog = log --pretty=fuller
     logone = log --graph --oneline --decorate
 

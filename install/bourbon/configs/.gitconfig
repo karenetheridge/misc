@@ -59,8 +59,12 @@
     fetchall = fetch --all --prune
     squash = commit -m'squash'
     deltag = push --delete origin tag
+    delbranch = push --delete
+    noff = merge --no-ff
     rebasetrunk = rebase -i $(git merge-base trunk HEAD)
     rebasemaster = rebase -i $(git merge-base master HEAD)
+    morelog = log --pretty=fuller
+    logone = log --graph --oneline --decorate
 
 ; for automatic translation of URLs
 [url "git@github.com:"]

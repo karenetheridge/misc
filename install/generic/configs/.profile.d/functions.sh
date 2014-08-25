@@ -11,3 +11,9 @@ atime() {
 title() {
     printf "\033]0;%s\007" "$1"
 }
+
+# find non-ascii content
+ackutf8() {
+    ack '[^[:ascii:]]' "$*"
+}
+

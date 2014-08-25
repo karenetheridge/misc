@@ -121,7 +121,7 @@ run_or_die($cpanm, @install_first);
 run_or_die('cpanm-reporter');
 
 # on the first big pass, just try to install my pluginbundle, using
-# default HARNESS_OPTIONS, trial/developer releases if there are any
+# default HARNESS_OPTIONS, trial/developer releases of everything upstream if there are any
 run("EXTRA_TESTING=1 $cpanm --dev --mirror http://www.cpan.org Dist::Zilla::PluginBundle::Author::ETHER");
 run('cpanm-reporter');
 

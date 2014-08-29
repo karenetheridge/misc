@@ -223,6 +223,11 @@ adopted_bugs() {
     popd
 }
 
+shipped_bugs() {
+    pushd ~/git/shippeddists
+    perl ~/git/misc/rt-data.pl $(ls -l1)
+    popd
+}
 
 snowman () {
     perl -CO -le'print v9731'   # 0x2603
@@ -232,3 +237,10 @@ heart () {
     perl -CO -le'print v9825'   # 0x2661
 }
 
+# run the command on all major perlbrews
+allperls () {
+    for perl in 8.9 10.1 12.5 14.4 16.3 18.2 20.0 21.3; do
+        perlbrew use ${perl}@std;
+        command $*
+    done
+}

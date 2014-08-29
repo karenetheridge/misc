@@ -241,6 +241,7 @@ heart () {
 allperls () {
     for perl in 8.9 10.1 12.5 14.4 16.3 18.2 20.0 21.3; do
         perlbrew use ${perl}@std;
+        echo using $PERL5LIB
         command $*
         command cpanm-reporter
     done

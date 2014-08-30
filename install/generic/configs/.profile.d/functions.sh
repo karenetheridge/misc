@@ -13,7 +13,5 @@ title() {
 }
 
 # find non-ascii content
-ackutf8() {
-    ack '[^[:ascii:]]' "$*"
-}
+alias ackutf8='ack "[^[:ascii:]]"'
 

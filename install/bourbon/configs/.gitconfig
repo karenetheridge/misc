@@ -51,6 +51,9 @@
 [interactive]
     singlekey = true
 
+[log]
+    date = iso8601
+
 [alias]
     git = !git
     pr = pull --rebase
@@ -59,12 +62,14 @@
     fetchall = fetch --all --prune
     squash = commit -m'squash'
     deltag = push --delete origin tag
-    delbranch = push --delete
+    delbranch = push origin --delete
     noff = merge --no-ff
     rebasetrunk = rebase -i $(git merge-base trunk HEAD)
     rebasemaster = rebase -i $(git merge-base master HEAD)
     morelog = log --pretty=fuller
     logone = log --graph --oneline --decorate
+    reflogs = reflog --pretty='%cd %h %gd %gs'
+    stashes = stash list --pretty='%cd %h %gd %gs'
 
 ; for automatic translation of URLs
 [url "git@github.com:"]

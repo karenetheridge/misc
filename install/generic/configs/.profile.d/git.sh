@@ -1,5 +1,6 @@
 
 # aliases and customizations for git
+alias gd='git diff'
 alias gdd='git diff'
 alias gds='git diff --staged'
 

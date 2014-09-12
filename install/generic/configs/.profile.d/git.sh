@@ -3,6 +3,7 @@
 alias gd='git diff'
 alias gdd='git diff'
 alias gds='git diff --staged'
+alias glp='git log -p'
 
 alias gpr='git pull --rebase'
 alias grc='git rebase --continue'

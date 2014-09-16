@@ -250,3 +250,19 @@ allperls () {
 unstale () {
     dzil stale --all | cpanm
 }
+
+# install all modules released by me,
+# minus a few oddballs that will screw everything up
+mymodules() {
+        # Moose::Error lost in 2.1200 :/
+        # Moose::Exception::* has a few old ones indexed to Moose-1.1205
+        # TK tries to install all TK-*
+        # Pinto breaks cpanm-reporter
+    grep ETHER ~/.cpanm/02packages.details.txt \
+        | cut -d ' ' -f 1 \
+        | grep -v Moose::Error \
+        | grep -v Moose::Exception \
+        | grep -v ^Task::Kensho$ \
+        | grep -v Task::Kensho::Toolchain \
+        | cpanm
+}

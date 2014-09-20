@@ -61,9 +61,9 @@ path() {
     perl -wle'print join "\n", split(":", $ENV{PATH})'
 }
 
-alias diff='colordiff  -u -s --ignore-blank-lines --ignore-all-space'
+alias diff='colordiff  -u -s --ignore-blank-lines'
 
-alias sidediff='colordiff  -s --side-by-side --width=165 --ignore-all-space'
+alias sidediff='colordiff  -s --side-by-side --width=165'
 
 # use gnu-units rather than /usr/bin/units
 alias units=gunits

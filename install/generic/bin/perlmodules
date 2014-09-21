@@ -113,7 +113,9 @@ my $dev = '';
 
 my (@success, @failed);
 
-if (shift)
+my $separately = shift;
+
+if ($separately)
 {
     # this is crude but will do for now...
     print "argument detected - skipping to installing each module separately\n";
@@ -150,6 +152,8 @@ run('cpanm-reporter');
 run('cpan-outdated | cpanm');
 run('cpanm-reporter');
 
+goto DONE if not $separately;
+
 print "\n\ninstalling again, to handle circular dependencies, and things that didn't install cleanly (WATCH FOR THESE!)...\n";
 
 SEPARATELY:
@@ -165,6 +169,9 @@ push @failed, @{$results[1] || []};
 print 'Failed attempts to install:', join("\n    ", '', @failed), "\n\n";
 
 print "SUCCESS!!!\n\n" if not @failed;
+
+DONE:
+
 my $elapsed_time = time() - $start_time;
 my ($min, $sec) = (int($elapsed_time / 60), $elapsed_time % 60);
 print "done (elapsed time: ${min}m ${sec}s).\n";

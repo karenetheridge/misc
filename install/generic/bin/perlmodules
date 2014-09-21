@@ -89,8 +89,11 @@ my @install_no_dev = qw(
     Test::Builder
 );
 
-my @fails_tests = qw(
+my @serial_tests = qw(
     Archive::Zip
+);
+
+my @fails_tests = qw(
 );
 
 print `perl -v`;
@@ -131,21 +134,25 @@ run_or_die('cpanm-reporter');
 run("$cpanm --mirror http://www.cpan.org Test::Tester ok");
 run('cpanm-reporter');
 
-# on the first big pass, just try to install my pluginbundle, using
-# default HARNESS_OPTIONS, trial/developer releases of everything upstream if there are any
-run("EXTRA_TESTING=1 $cpanm $dev --mirror http://www.cpan.org Dist::Zilla::PluginBundle::Author::ETHER");
-run('cpanm-reporter');
+## on the first big pass, just try to install my pluginbundle, using
+## default HARNESS_OPTIONS, trial/developer releases of everything upstream if there are any
+#run("EXTRA_TESTING=1 $cpanm $dev --mirror http://www.cpan.org Dist::Zilla::PluginBundle::Author::ETHER");
+#run('cpanm-reporter');
 
-run("moose-outdated | $cpanm $dev --mirror http://www.cpan.org");
-run('cpanm-reporter');
-
-# now do another big pass, try to install everything in one process, using
+# in the first big pass, try to install everything in one process, using
 # default HARNESS_OPTIONS, trial/developer releases if there are any
 run("EXTRA_TESTING=1 $cpanm $dev --mirror http://www.cpan.org @to_install @fails_tests");
 run('cpanm-reporter');
 
+# now try again to install things whose tests break when run in parallel
+run("HARNESS_OPTIONS=j1 $cpanm @serial_tests");
+run('cpanm-reporter');
+
 # now try again to install things whose tests are known to fail
 run($cpanm, '--notest', @fails_tests);
+run('cpanm-reporter');
+
+run("moose-outdated | $cpanm $dev --mirror http://www.cpan.org");
 run('cpanm-reporter');
 
 # when we just installed a virgin perl, this will find stale dual-lifed modules

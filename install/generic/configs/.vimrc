@@ -48,8 +48,9 @@ set nocompatible        " I understand all the ways that vim != vi.
 
 " INSERT MODE
 
-set softtabstop=4       " tabs count for four spaces, but don't change tabstop
-set shiftwidth=4        " each tab counts as four columns
+" tabstop               " each ^T in the file is worth 8 columns
+set softtabstop=4       " each time I bang on tab, give me four columns
+set shiftwidth=4        " autoindents are worth four columns
 set expandtab           " use spaces rather than tabs
 " set formatoptions+=l    " Don't wrap already-long lines
 " set wrapmargin=2        " go to next line when close to the edge

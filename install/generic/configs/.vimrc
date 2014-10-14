@@ -184,6 +184,11 @@ if has("autocmd")
       au BufNewFile,BufReadPre Makefile*    set list
   augroup END
 
+  augroup filetype_yaml
+      au FileType yaml                      set softtabstop=2
+      au FileType yaml                      set shiftwidth=2
+  augroup END
+
 endif
 
 

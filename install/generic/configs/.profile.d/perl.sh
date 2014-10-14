@@ -29,8 +29,6 @@ dumpsymbols() {
         {
             use_module($className);
             print "symbols in $className:";
-            eval "require $className";
-            die "Cannot load $className: $@" if $@;
             no strict "refs";
             print Dumper(\%{"main::${className}::"});
         }

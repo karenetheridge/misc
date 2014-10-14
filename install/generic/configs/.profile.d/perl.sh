@@ -264,5 +264,5 @@ mymodules() {
         | grep -v Moose::Exception \
         | grep -v ^Task::Kensho$ \
         | grep -v Task::Kensho::Toolchain \
-        | cpanm
+        | cpanm --no-report-perl-version
 }

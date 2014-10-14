@@ -14,4 +14,5 @@ title() {
 
 # find non-ascii content
 alias ackutf8='ack "[^[:ascii:]]"'
+alias nonascii='ack "[^[:ascii:]]"'
 

@@ -152,18 +152,20 @@ run('cpanm-reporter');
 run($cpanm, '--notest', @fails_tests);
 run('cpanm-reporter');
 
+SEPARATELY:
+
 run("moose-outdated | $cpanm $dev --mirror http://www.cpan.org");
 run('cpanm-reporter');
 
-# when we just installed a virgin perl, this will find stale dual-lifed modules
-run('cpan-outdated | cpanm');
+use Module::CoreList;
+my $in_core = Module::CoreList->find_version($]);
+run('cpanm', keys %$in_core);
 run('cpanm-reporter');
 
 goto DONE if not $separately;
 
 print "\n\ninstalling again, to handle circular dependencies, and things that didn't install cleanly (WATCH FOR THESE!)...\n";
 
-SEPARATELY:
 # try installing everything again, stable releases this time, to handle circular deps, parallelization problems
 my @results = part {
     my $result = run("HARNESS_OPTIONS=j1 $cpanm", $_[0]);

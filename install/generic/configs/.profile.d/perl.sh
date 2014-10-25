@@ -205,7 +205,7 @@ mydists() {
 }
 
 firstcome() {
-    gzcat ~/.cpanm/06perms.txt.gz | ack ',ETHER,f' | perl -n -e's/,ETHER,f//; s/::/-/g; print'
+    gzcat ~/.cpanm/06perms.txt.gz | ack ',ETHER,[fm]' | perl -n -e's/,ETHER,[fm]//; s/::/-/g; print'
 }
 
 disapprove() {

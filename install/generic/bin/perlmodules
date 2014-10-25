@@ -36,6 +36,9 @@ qw(
     Pod::Coverage::TrustPod
     Data::Dumper
     local::lib
+    App::FatPacker
+    PPI::XS
+    Text:CSV_XS
     Archive::Tar::Wrapper
     LWP::Protocol::https
     Unicode::UTF8
@@ -49,6 +52,7 @@ qw(
     YAML::Syck
     indirect multidimensional bareword::filehandles
     strictures
+    Role::Tiny Package::Variant Moo
     Dist::Zilla::Plugin::Chrome::ExtraPrompt
     Dist::Zilla::Plugin::Bootstrap::lib
     Dist::Zilla::App::Command::dumpphases

@@ -101,6 +101,11 @@ my @serial_tests = qw(
 my @fails_tests = qw(
 );
 
+my @with_dev_recommends = qw(
+    Moose
+    Dist::Zilla::PluginBundle::Author::ETHER
+);
+
 print `perl -v`;
 
 run( qw/yes | perlbrew install-cpanm/ );
@@ -155,6 +160,9 @@ run('cpanm-reporter');
 
 # now try again to install things whose tests are known to fail
 run($cpanm, '--notest', @fails_tests);
+run('cpanm-reporter');
+
+run($cpanm, '--reinstall', '--with-recommends', '--with-dev', '--dev', @with_dev_recommends);
 run('cpanm-reporter');
 
 SEPARATELY:

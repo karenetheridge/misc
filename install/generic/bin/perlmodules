@@ -31,6 +31,7 @@ qw(
     Module::CoreList
     CPAN::Perl::Releases
     Unicode::Tussle
+    App::Uni
     Test::CPAN::Meta
     Test::Pod::Coverage
     Pod::Coverage::TrustPod

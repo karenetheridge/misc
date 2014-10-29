@@ -3,7 +3,7 @@
 
 # export PATH=/usr/local/ActivePerl-5.8/bin:$PATH
 
-export HARNESS_OPTIONS=j9:c
+export HARNESS_OPTIONS=j5:c
 
 # used by ExtUtils::Install 1.68+
 export PERL_INSTALL_QUIET=1

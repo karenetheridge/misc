@@ -5,12 +5,13 @@ alias gdd='git diff'
 alias gds='git diff --staged'
 alias gs='git status'
 alias glp='git log -p'
+alias gca='git commit --amend'   # not to be confused with 'gcpa' below
 
 alias gpr='git pull --rebase'
 alias grc='git rebase --continue'
 alias gra='git rebase --abort'
-alias gcc='git cherry-pick --continue'
-alias gca='git cherry-pick --abort'
+alias gcpc='git cherry-pick --continue'
+alias gcpa='git cherry-pick --abort'
 alias viconf='vim $(git conf)'  # all files in conflict
 
 if [ -f ~/.git-completion.bash ]; then

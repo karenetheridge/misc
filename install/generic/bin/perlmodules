@@ -173,7 +173,7 @@ run('cpanm-reporter');
 
 use Module::CoreList;
 my $in_core = Module::CoreList->find_version($]);
-run('cpanm', keys %$in_core);
+run('cpanm', grep { !/win32/i } keys %$in_core);
 run('cpanm-reporter');
 
 goto DONE if not $separately;

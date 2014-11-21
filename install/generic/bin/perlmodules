@@ -74,6 +74,10 @@ qw(
     Dist::Zilla::Plugin::Git::Contributors
     Dist::Zilla::Plugin::ReportPhase
     Dist::Zilla::Plugin::VerifyPhases
+    Dist::Zilla::Plugin::BumpVersionAfterRelease
+    Dist::Zilla::Plugin::Prepender
+    Dist::Zilla::Plugin::Covenant
+    Dist::Zilla::Plugin::Conflicts
     Module::Install
     Module::Install::Repository
     Module::Install::AuthorRequires

@@ -8,7 +8,7 @@ export PATH=/Users/ether/src/CE/devtools:/Users/ether/git/CE/devtools:/Users/eth
 
 ackall() {
     ack "$@" \
-        lib t tlib bin root root-admin extlib
+        lib t tlib bin root root-admin extlib database
 }
 
 export database=localdev

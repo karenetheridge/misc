@@ -242,7 +242,8 @@ allperls () {
     for perl in 8.9 10.1 12.5 14.4 16.3 18.4 20.1 21.5; do
         perlbrew use ${perl}@std;
         echo; echo using $PERL5LIB
-        $*
+        eval $(printf "%q " "$@")
+        #$*
         #command cpanm-reporter
     done
 }

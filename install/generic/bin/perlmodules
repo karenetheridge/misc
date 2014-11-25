@@ -78,6 +78,8 @@ qw(
     Dist::Zilla::Plugin::Prepender
     Dist::Zilla::Plugin::Covenant
     Dist::Zilla::Plugin::Conflicts
+    Dist::Zilla::Plugin::Breaks
+    Dist::Zilla::Plugin::Test::CheckBreaks
     Module::Install
     Module::Install::Repository
     Module::Install::AuthorRequires

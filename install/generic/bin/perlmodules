@@ -80,6 +80,8 @@ qw(
     Dist::Zilla::Plugin::Conflicts
     Dist::Zilla::Plugin::Breaks
     Dist::Zilla::Plugin::Test::CheckBreaks
+    Dist::Zilla::Plugin::SurgicalPodWeaver
+    Dist::Zilla::Plugin::MungeFile::WithConfigFile
     Module::Install
     Module::Install::Repository
     Module::Install::AuthorRequires

@@ -13,6 +13,9 @@ export NO_NETWORK_TESTING=1
 # ensure version for 'dzil run' subshells does not affect subsequent builds
 unset V
 
+# don't do this everywhere... just remember how to do it when we need it.
+# PERL_MM_OPT=NORECURS=1
+
 # equivalent to perldoc -l <module>
 perlwhere() {
     perl -wle'eval "require $ARGV[0]" or die; ($mod = $ARGV[0]) =~ s|::|/|g; print $INC{"${mod}.pm"}' $1

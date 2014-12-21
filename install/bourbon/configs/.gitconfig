@@ -77,8 +77,8 @@
     insteadOf = git://github.com/
 
 ; p5sagit does not have ssh key for bourbon
-;[url "p5sagit@git.shadowcat.co.uk:"]
-;    insteadOf = git://git.shadowcat.co.uk/p5sagit/
+[url "p5sagit@git.shadowcat.co.uk:"]
+    insteadOf = git://git.shadowcat.co.uk/p5sagit/
 
 [url "gitmo@git.moose.perl.org:"]
     insteadOf = git://git.moose.perl.org/

@@ -6,6 +6,8 @@ export CE_EMAIL_ADDRESS=ketheridge@campusexplorer.com
 
 export PATH=/Users/ether/src/CE/devtools:/Users/ether/git/CE/devtools:/Users/ether/src/CE/bin:/Users/ether/git/CE/bin:$PATH
 
+export DEVEL_CONFESS_OPTIONS=objects,better_names,color,errors,warnings
+
 ackall() {
     ack "$@" \
         lib t tlib bin root root-admin extlib database

@@ -70,6 +70,8 @@
     logone = log --graph --oneline --decorate
     reflogs = reflog --pretty='%cd %h %gd %gs'
     stashes = stash list --pretty='%cd %h %gd %gs'
+    ; from http://stackoverflow.com/questions/3065650/whats-the-simplest-way-to-git-a-list-of-conflicted-files
+    conf = diff --name-only --diff-filter=U
 
 ; for automatic translation of URLs
 [url "git@github.com:"]

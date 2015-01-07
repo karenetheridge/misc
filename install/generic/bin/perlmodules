@@ -94,6 +94,9 @@ qw(
     V
     Module::InstalledVersion
     Module::Version
+    DateTime
+    DateTime::TimeZone
+    DateTime::Format::ISO8601
 ),
 (map { (my $mod = basename($_)) =~ s/-/::/g; $mod } glob('~/git/mydists/*')),
 );

@@ -37,7 +37,7 @@ dumpsymbols() {
             no strict "refs";
             print Dumper(\%{"main::${className}::"});
         }
-' $*
+' $@
 }
 
 # Note that perls are installed in /usr/local/perls/ and symlinked into
@@ -181,17 +181,17 @@ newdist() {
 }
 
 newmodule() {
-    dzil add -P Author::ETHER -p github $*
+    dzil add -P Author::ETHER -p github $@
 }
 
 minver() {
-    perl -MData::Dumper -MPerl::MinimumVersion::Fast -wle'$Data::Dumper::Terse = 1; print "$_: ", Dumper(Perl::MinimumVersion::Fast->new($_)) foreach @ARGV' $*
+    perl -MData::Dumper -MPerl::MinimumVersion::Fast -wle'$Data::Dumper::Terse = 1; print "$_: ", Dumper(Perl::MinimumVersion::Fast->new($_)) foreach @ARGV' $@
 }
 
 alias dbn='dzil build --not'
 
 perledit() {
-    vi `perldoc -lm $*`
+    vi `perldoc -lm $@`
 }
 
 # run specified command on all @std perlbrew installs
@@ -200,7 +200,7 @@ stdperls() {
     # perlbrew exec --with 19.7@std bash -lc "cpanm --reinstall Test::Without::Module"
     perlbrew exec \
         --with $(perlbrew list | perl -w -l -e'print join(",", map { m/([\d.]+.*\@std$)/ ?  $1 : () } <>)') \
-        bash -lc "$*"
+        bash -lc "$@"
 }
 
 mydists() {
@@ -246,7 +246,7 @@ allperls () {
         perlbrew use ${perl}@std;
         echo; echo using $PERL5LIB
         eval $(printf "%q " "$@")
-        #$*
+        #$@
         #command cpanm-reporter
     done
 }

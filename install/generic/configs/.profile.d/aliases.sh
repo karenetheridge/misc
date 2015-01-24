@@ -23,7 +23,7 @@ touchp()
 # diff with all the arguments needed to make a patch
 diffp()
 {
-    diff --unified=3 $*
+    diff --unified=3 $@
 }
 
 build()

@@ -22,9 +22,9 @@
 
 # remove duplicates, for comparison
 
-command -v foo >/dev/null 2>&1 && {
-    export PERL5LIB=`perl -MList::MoreUtils=uniq -wle'print join(":", uniq split(":", $ENV{PERL5LIB} // ""))'`
-}
+#command -v foo >/dev/null 2>&1 && {
+#    export PERL5LIB=`perl -MList::MoreUtils=uniq -wle'print join(":", uniq split(":", $ENV{PERL5LIB} // ""))'`
+#}
 
 # save original PERL5LIB...
 orig_PERL5LIB=$PERL5LIB
@@ -33,7 +33,7 @@ orig_PERL5LIB=$PERL5LIB
 
 source ~/perl5/perlbrew/etc/bashrc
 
-export PERL5LIB=`perl -MList::MoreUtils=uniq -wle'print join(":", uniq split(":", $ENV{PERL5LIB}))'`
+#export PERL5LIB=`perl -MList::MoreUtils=uniq -wle'print join(":", uniq split(":", $ENV{PERL5LIB}))'`
 
 #echo new PERL5LIB: $PERL5LIB
 

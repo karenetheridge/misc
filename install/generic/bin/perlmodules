@@ -39,7 +39,7 @@ qw(
     local::lib
     App::FatPacker
     PPI::XS
-    Text:CSV_XS
+    Text::CSV_XS
     Archive::Tar::Wrapper
     LWP::Protocol::https
     Unicode::UTF8

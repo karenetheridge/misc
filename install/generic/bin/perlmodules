@@ -106,8 +106,9 @@ my @install_no_dev = qw(
 );
 
 my @serial_tests = qw(
-    File::Remove
     File::Next
+    IO::Pty
+    Parse::CPAN::Packages::Fast
 );
 
 my @fails_tests = qw(

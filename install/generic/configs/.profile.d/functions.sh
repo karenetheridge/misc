@@ -16,3 +16,4 @@ title() {
 alias ackutf8='ack "[^[:ascii:]]"'
 alias nonascii='ack "[^[:ascii:]]"'
 
+alias crontab="VIM_CRONTAB=true crontab"

@@ -91,6 +91,11 @@ set termencoding=utf-8
 set encoding=utf-8      " latin1 is not quite good enough anymore for a default
 set modelines=5         " respect modelines in first and last N lines of file
 
+if $VIM_CRONTAB == "true"
+  set nobackup
+  set nowritebackup
+endif
+
 " to change a file's encoding: :write ++enc=utf-8
 
 " APPEARANCE

@@ -110,6 +110,7 @@ my @serial_tests = qw(
     Parse::CPAN::Packages::Fast
     File::Slurp
     Test::Inline
+    Storable
 );
 
 my @fails_tests = qw(

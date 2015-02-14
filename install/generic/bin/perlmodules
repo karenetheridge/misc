@@ -108,6 +108,8 @@ my @serial_tests = qw(
     File::Next
     IO::Pty
     Parse::CPAN::Packages::Fast
+    File::Slurp
+    Test::Inline
 );
 
 my @fails_tests = qw(

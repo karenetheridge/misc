@@ -105,15 +105,16 @@ prompt_function() {
     fi
     if [ "$PS1_DIR1" = "/" ]; then unset PS1_DIR1; fi
     if [ "$PS1_DIR2" = "/" ]; then unset PS1_DIR2; fi
+
+    # set window title
+    echo -n -e "\033]0;$PS1_DIR2\007"
 }
 
 PROMPT_COMMAND="prompt_function"
 
-# put basename into xtitle:  \033]0;\W\007
-
 # test -t 0: checks fd 0 (stdin)
 if test -t 0; then
-    P1="\033]0;\W\007${red}:${NC} [\u@\h \$PS1_DIR1\$SEP\$PS1_DIR2]"
+    P1="${red}:${NC} [\u@\h \$PS1_DIR1\$SEP\$PS1_DIR2]"
     P2="\$${red};${NC} "
     if test -n "$WINDOW"; then
       export PS1="${P1}.\${WINDOW}${P2}"

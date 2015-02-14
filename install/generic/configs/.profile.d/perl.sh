@@ -270,3 +270,5 @@ mymodules() {
         | grep -v Task::Kensho::Toolchain \
         | cpanm --no-report-perl-version
 }
+
+alias dtr='dzil test --release'

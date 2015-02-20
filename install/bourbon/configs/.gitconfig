@@ -17,6 +17,9 @@
 [branch]
     autosetupmerge = true
     autosetuprebase = always
+[rerere]
+    enabled = true
+    autoupdate = true
 [diff]
     algorithm = patience
 

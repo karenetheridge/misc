@@ -175,13 +175,13 @@ newdist() {
     local module=$1
     local dist=`perl -we"print q{$module} =~ s/::/-/r"`
     pushd ~/git
-    dzil new -P Author::ETHER -p github $dist
+    dzil new -P Author::ETHER -p default $dist
     pushd mydists; ln -sf ../$dist; popd
     cd $dist
 }
 
 newmodule() {
-    dzil add -P Author::ETHER -p github $@
+    dzil add -P Author::ETHER -p default $@
 }
 
 minver() {

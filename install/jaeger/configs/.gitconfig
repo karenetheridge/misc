@@ -1,0 +1,9 @@
+[include]
+    path = /Volumes/amaretto/Users/ether/git/misc/install/generic/configs/.gitconfig
+
+; from https://gist.github.com/piscisaureus/3342247
+; copy one of these to your .git/config as needed
+;[remote "origin"]
+;    fetch = +refs/pull/*/head:refs/remotes/origin/pr/*
+;[remote "upstream"]
+;    fetch = +refs/pull/*/head:refs/remotes/upstream/pr/*

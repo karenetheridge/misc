@@ -1,3 +1,6 @@
+;[include]
+;    path = /Users/ether/git/misc/install/generic/configs/.gitconfig
+
 [user]
     email = ether@cpan.org
     name = Karen Etheridge

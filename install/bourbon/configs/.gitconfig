@@ -1,39 +1,5 @@
-[user]
-    email = ether@cpan.org
-    name = Karen Etheridge
-[color]
-    diff = auto
-    status = auto
-    branch = auto
-    interactive = auto
-    ui = true
-[color "diff"]
-[push]
-    default = upstream
-    ; default = simple
-[merge]
-    renamelimit = 1658
-[rebase]
-    autostash = true
-[pull]
-    autostash = true
-[branch]
-    autosetupmerge = true
-    autosetuprebase = always
-[rerere]
-    enabled = true
-    autoupdate = true
-[diff]
-    algorithm = patience
-[diff "gz"]
-    textconv = zcat
-    cachetextconv = true
-    binary = true
-[diff "zip"]
-    textconv = unzip -c -a
-
-;[column]
-;    branch = auto
+[include]
+    path = /Users/ether/git/misc/install/generic/configs/.gitconfig
 
 ; see doc/howto/gitflow.txt
 [gitflow "branch"]
@@ -47,58 +13,8 @@
     cepatch = cepatch/
     versiontag = release
 
-[core]
-    excludesfile = /Users/ether/.gitexclude
-    # indent-with-non-tab omitted - it makes diffs look ugly
-    whitespace = space-before-tab,tab-in-indent,trailing-space
-    attributesfile = /Users/ether/.gitattributes
-
-[interactive]
-    singlekey = true
-
-[log]
-    date = iso8601
-
 [alias]
-    git = !git
-    pr = pull --rebase
-    rc = rebase --continue
-    wip = stash save --keep-index 'wip'
-    fetchall = fetch --all --prune
-    squash = commit -m'squash'
-    deltag = push --delete origin tag
-    delbranch = push origin --delete
-    noff = merge --no-ff
-    uhub = hub --remote upstream
     rebasetrunk = rebase -i $(git merge-base trunk HEAD)
-    rebasemaster = rebase -i $(git merge-base master HEAD)
-    morelog = log --pretty=fuller
-    logone = log --graph --oneline --decorate
-    reflogs = reflog --pretty='%cd %h %gd %gs'
-    stashes = stash list --pretty='%cd %h %gd %gs'
-    ; from http://stackoverflow.com/questions/3065650/whats-the-simplest-way-to-git-a-list-of-conflicted-files
-    conf = diff --name-only --diff-filter=U
-
-; for automatic translation of URLs
-[url "git@github.com:"]
-    insteadOf = http://github.com/
-    insteadOf = https://github.com/
-    insteadOf = git://github.com/
-
-[url "p5sagit@git.shadowcat.co.uk:"]
-    insteadOf = git://git.shadowcat.co.uk/p5sagit/
-
-[url "gitmo@git.moose.perl.org:"]
-    insteadOf = git://git.moose.perl.org/
-
-[url "catagits@git.shadowcat.co.uk:"]
-    insteadOf = git://git.shadowcat.co.uk/catagits/
-
-[url "dbsrgits@git.shadowcat.co.uk:"]
-    insteadOf = git://git.shadowcat.co.uk/dbsrgits/
-
-[url "scpubgit@git.shadowcat.co.uk:"]
-    insteadOf = git://git.shadowcat.co.uk/scpubgit/
 
 ; from https://gist.github.com/piscisaureus/3342247
 ; copy one of these to your .git/config as needed

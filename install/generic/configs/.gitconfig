@@ -5,12 +5,14 @@
     diff = auto
     status = auto
     branch = auto
-        interactive = auto
-        ui = true
+    interactive = auto
+    ui = true
 [color "diff"]
 [push]
     default = upstream
-    # default = simple
+    ; default = simple
+[merge]
+    renamelimit = 1658
 [rebase]
     autostash = true
 [pull]
@@ -18,9 +20,11 @@
 [branch]
     autosetupmerge = true
     autosetuprebase = always
+[rerere]
+    enabled = true
+    autoupdate = true
 [diff]
-        algorithm = patience
-
+    algorithm = patience
 [diff "gz"]
     textconv = zcat
     cachetextconv = true
@@ -29,7 +33,7 @@
     textconv = unzip -c -a
 
 ;[column]
-;        branch = auto
+;    branch = auto
 
 [core]
     excludesfile = /Users/ether/.gitexclude
@@ -62,7 +66,6 @@
     ; from http://stackoverflow.com/questions/3065650/whats-the-simplest-way-to-git-a-list-of-conflicted-files
     conf = diff --name-only --diff-filter=U
 
-
 ; for automatic translation of URLs
 [url "git@github.com:"]
     insteadOf = http://github.com/
@@ -84,6 +87,9 @@
 [url "scpubgit@git.shadowcat.co.uk:"]
     insteadOf = git://git.shadowcat.co.uk/scpubgit/
 
-; see https://gist.github.com/piscisaureus/3342247
-#[remote "origin"]
-#    fetch = +refs/pull/*/head:refs/remotes/origin/pr/*
+; from https://gist.github.com/piscisaureus/3342247
+; copy one of these to your .git/config as needed
+;[remote "origin"]
+;    fetch = +refs/pull/*/head:refs/remotes/origin/pr/*
+;[remote "upstream"]
+;    fetch = +refs/pull/*/head:refs/remotes/upstream/pr/*

@@ -10,9 +10,12 @@
 [color "diff"]
 [push]
     default = upstream
+    ; default = simple
 [merge]
     renamelimit = 1658
 [rebase]
+    autostash = true
+[pull]
     autostash = true
 [branch]
     autosetupmerge = true
@@ -22,7 +25,6 @@
     autoupdate = true
 [diff]
     algorithm = patience
-
 [diff "gz"]
     textconv = zcat
     cachetextconv = true
@@ -67,6 +69,7 @@
     deltag = push --delete origin tag
     delbranch = push origin --delete
     noff = merge --no-ff
+    uhub = hub --remote upstream
     rebasetrunk = rebase -i $(git merge-base trunk HEAD)
     rebasemaster = rebase -i $(git merge-base master HEAD)
     morelog = log --pretty=fuller
@@ -78,10 +81,10 @@
 
 ; for automatic translation of URLs
 [url "git@github.com:"]
+    insteadOf = http://github.com/
     insteadOf = https://github.com/
     insteadOf = git://github.com/
 
-; p5sagit does not have ssh key for bourbon
 [url "p5sagit@git.shadowcat.co.uk:"]
     insteadOf = git://git.shadowcat.co.uk/p5sagit/
 
@@ -94,9 +97,12 @@
 [url "dbsrgits@git.shadowcat.co.uk:"]
     insteadOf = git://git.shadowcat.co.uk/dbsrgits/
 
+[url "scpubgit@git.shadowcat.co.uk:"]
+    insteadOf = git://git.shadowcat.co.uk/scpubgit/
+
 ; from https://gist.github.com/piscisaureus/3342247
 ; copy one of these to your .git/config as needed
-; [remote "origin"]
-;	fetch = +refs/pull/*/head:refs/remotes/origin/pr/*
-; [remote "upstream"]
-;	fetch = +refs/pull/*/head:refs/remotes/upstream/pr/*
+;[remote "origin"]
+;    fetch = +refs/pull/*/head:refs/remotes/origin/pr/*
+;[remote "upstream"]
+;    fetch = +refs/pull/*/head:refs/remotes/upstream/pr/*

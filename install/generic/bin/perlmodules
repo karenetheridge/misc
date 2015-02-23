@@ -166,7 +166,7 @@ run('cpanm-reporter');
 
 # in the first big pass, try to install everything in one process, using
 # default HARNESS_OPTIONS, trial/developer releases if there are any
-run("EXTRA_TESTING=1 $cpanm $dev --mirror http://www.cpan.org @to_install @fails_tests");
+run("EXTRA_TESTING=1 $cpanm $dev --mirror http://www.cpan.org @to_install @serial_tests @fails_tests");
 run('cpanm-reporter');
 
 # now try again to install things whose tests break when run in parallel
@@ -174,8 +174,8 @@ run("HARNESS_OPTIONS=j1 $cpanm @serial_tests");
 run('cpanm-reporter');
 
 # now try again to install things whose tests are known to fail
-run($cpanm, '--notest', @fails_tests);
-run('cpanm-reporter');
+run($cpanm, '--notest', @fails_tests) if @fails_tests;
+run('cpanm-reporter') if @fails_tests;
 
 run($cpanm, '--reinstall', '--with-recommends', '--with-dev', '--dev', @with_dev_recommends);
 run('cpanm-reporter');

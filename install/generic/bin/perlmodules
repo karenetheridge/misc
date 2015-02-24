@@ -117,6 +117,7 @@ my @fails_tests = qw(
 );
 
 my @with_dev_recommends = qw(
+    ExtUtils::MakeMaker
     Moose
     Dist::Zilla::PluginBundle::Author::ETHER
 );

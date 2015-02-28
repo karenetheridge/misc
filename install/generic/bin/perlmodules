@@ -46,7 +46,7 @@ qw(
     Test::DiagINC
     Acme::require::case
     Safe::Isa
-    Cpanel::JSON::XS
+    Cpanel::JSON::XS JSON::MaybeXS
     YAML::Syck
     indirect multidimensional bareword::filehandles
     strictures
@@ -66,19 +66,18 @@ qw(
     Dist::Zilla::Plugin::AssertOS
     Dist::Zilla::Plugin::GenerateFile::ShareDir
     Dist::Zilla::Plugin::DynamicPrereqs
+    Dist::Zilla::Plugin::OptionalFeature
     Dist::Zilla::Plugin::Test::PAUSE::Permissions
     Dist::Zilla::Plugin::PPPort
-    Dist::Zilla::Plugin::Git::Contributors
     Dist::Zilla::Plugin::ReportPhase
     Dist::Zilla::Plugin::VerifyPhases
-    Dist::Zilla::Plugin::BumpVersionAfterRelease
     Dist::Zilla::Plugin::Prepender
     Dist::Zilla::Plugin::Covenant
     Dist::Zilla::Plugin::Conflicts
     Dist::Zilla::Plugin::Breaks
     Dist::Zilla::Plugin::Test::CheckBreaks
-    Dist::Zilla::Plugin::SurgicalPodWeaver
     Dist::Zilla::Plugin::MungeFile::WithConfigFile
+    Dist::Zilla::Plugin::Prereqs::Soften
     Module::Install
     Module::Install::Repository
     Module::Install::AuthorRequires

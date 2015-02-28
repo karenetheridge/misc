@@ -20,8 +20,6 @@ my @to_install = (
 qw(
     Dist::Zilla::PluginBundle::Author::ETHER
     ExtUtils::MakeMaker
-    Module::Build
-    Module::Build::Tiny
     App::Ack
     App::Nopaste
     App::cpanoutdated

@@ -1,5 +1,5 @@
 [include]
-    path = /Users/ether/git/misc/install/generic/configs/.gitconfig
+    path = ~ether/git/misc/install/generic/configs/.gitconfig
 
 ; see doc/howto/gitflow.txt
 [gitflow "branch"]

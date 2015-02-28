@@ -1,5 +1,5 @@
 ;[include]
-;    path = /Users/ether/git/misc/install/generic/configs/.gitconfig
+;    path = ~ether/git/misc/install/generic/configs/.gitconfig
 
 [user]
     email = ether@cpan.org
@@ -39,10 +39,10 @@
 ;    branch = auto
 
 [core]
-    excludesfile = /Users/ether/.gitexclude
+    excludesfile = ~ether/.gitexclude
     # indent-with-non-tab omitted - it makes diffs look ugly
     whitespace = space-before-tab,tab-in-indent,trailing-space
-    attributesfile = /Users/ether/.gitattributes
+    attributesfile = ~ether/.gitattributes
 
 [interactive]
     singlekey = true

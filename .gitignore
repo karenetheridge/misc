@@ -1,2 +1,3 @@
 /install/generic/configs/.profile.d/local.sh
 !.ackrc
+.netrwhist

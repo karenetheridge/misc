@@ -68,6 +68,7 @@ qw(
     Dist::Zilla::Plugin::DynamicPrereqs
     Dist::Zilla::Plugin::OptionalFeature
     Dist::Zilla::Plugin::Test::PAUSE::Permissions
+    ExtUtils::MakeMaker::Dist::Zilla::Develop
     Dist::Zilla::Plugin::PPPort
     Dist::Zilla::Plugin::ReportPhase
     Dist::Zilla::Plugin::VerifyPhases

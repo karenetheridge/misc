@@ -1,3 +1,4 @@
+; vim: set ts=8 sw=8 tw=78 noet :
 [user]
 	email = ketheridge@campusexplorer.com
 	name = Karen Etheridge
@@ -5,8 +6,8 @@
 	diff = auto
 	status = auto
 	branch = auto
-        interactive = auto
-        ui = true
+	interactive = auto
+	ui = true
 [color "diff"]
 [push]
 	default = upstream
@@ -15,24 +16,24 @@
 	autosetuprebase = always
 
 [diff "gz"]
-    textconv = zcat
-    cachetextconv = true
-    binary = true
+	textconv = zcat
+	cachetextconv = true
+	binary = true
 
 ;[column]
-;        branch = auto
+;	branch = auto
 
 ; see doc/howto/gitflow.txt
 [gitflow "branch"]
-        master = production
-        develop = trunk
+	master = production
+	develop = trunk
 [gitflow "prefix"]
-        feature = feature/
-        release = staging/
-        hotfix = hotfix/
-        support = support/
-        cepatch = cepatch/
-        versiontag = release
+	feature = feature/
+	release = staging/
+	hotfix = hotfix/
+	support = support/
+	cepatch = cepatch/
+	versiontag = release
 
 [core]
 	excludesfile = /home/vagrant/.gitexclude

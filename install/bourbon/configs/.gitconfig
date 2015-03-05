@@ -1,24 +1,25 @@
+; vim: set ts=8 sw=8 tw=78 noet nolist :
 [include]
-    path = ~ether/git/misc/install/generic/configs/.gitconfig
+	path = ~ether/git/misc/install/generic/configs/.gitconfig
 
 ; see doc/howto/gitflow.txt
 [gitflow "branch"]
-    master = production
-    develop = trunk
+	master = production
+	develop = trunk
 [gitflow "prefix"]
-    feature = feature/
-    release = staging/
-    hotfix = hotfix/
-    support = support/
-    cepatch = cepatch/
-    versiontag = release
+	feature = feature/
+	release = staging/
+	hotfix = hotfix/
+	support = support/
+	cepatch = cepatch/
+	versiontag = release
 
 [alias]
-    rebasetrunk = rebase -i $(git merge-base trunk HEAD)
+	rebasetrunk = rebase -i $(git merge-base trunk HEAD)
 
 ; from https://gist.github.com/piscisaureus/3342247
 ; copy one of these to your .git/config as needed
 ;[remote "origin"]
-;    fetch = +refs/pull/*/head:refs/remotes/origin/pr/*
+;	fetch = +refs/pull/*/head:refs/remotes/origin/pr/*
 ;[remote "upstream"]
-;    fetch = +refs/pull/*/head:refs/remotes/upstream/pr/*
+;	fetch = +refs/pull/*/head:refs/remotes/upstream/pr/*

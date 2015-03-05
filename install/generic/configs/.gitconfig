@@ -1,98 +1,99 @@
+; vim: set ts=8 sw=8 tw=78 noet :
 ;[include]
-;    path = ~ether/git/misc/install/generic/configs/.gitconfig
+;	path = ~ether/git/misc/install/generic/configs/.gitconfig
 
 [user]
-    email = ether@cpan.org
-    name = Karen Etheridge
+	email = ether@cpan.org
+	name = Karen Etheridge
 [color]
-    diff = auto
-    status = auto
-    branch = auto
-    interactive = auto
-    ui = true
+	diff = auto
+	status = auto
+	branch = auto
+	interactive = auto
+	ui = true
 [color "diff"]
 [push]
-    default = upstream
-    ; default = simple
+	default = upstream
+	; default = simple
 [merge]
-    renamelimit = 1658
+	renamelimit = 1658
 [rebase]
-    autostash = true
+	autostash = true
 [pull]
-    autostash = true
+	autostash = true
 [branch]
-    autosetupmerge = true
-    autosetuprebase = always
+	autosetupmerge = true
+	autosetuprebase = always
 [rerere]
-    enabled = true
-    autoupdate = true
+	enabled = true
+	autoupdate = true
 [diff]
-    algorithm = patience
+	algorithm = patience
 [diff "gz"]
-    textconv = zcat
-    cachetextconv = true
-    binary = true
+	textconv = zcat
+	cachetextconv = true
+	binary = true
 [diff "zip"]
-    textconv = unzip -c -a
+	textconv = unzip -c -a
 
 ;[column]
-;    branch = auto
+;	branch = auto
 
 [core]
-    excludesfile = ~ether/.gitexclude
-    # indent-with-non-tab omitted - it makes diffs look ugly
-    whitespace = space-before-tab,tab-in-indent,trailing-space
-    attributesfile = ~ether/.gitattributes
+	excludesfile = ~ether/.gitexclude
+	# indent-with-non-tab omitted - it makes diffs look ugly
+	whitespace = space-before-tab,tab-in-indent,trailing-space
+	attributesfile = ~ether/.gitattributes
 
 [interactive]
-    singlekey = true
+	singlekey = true
 
 [log]
-    date = iso8601
+	date = iso8601
 
 [alias]
-    git = !git
-    pr = pull --rebase
-    rc = rebase --continue
-    wip = stash save --keep-index 'wip'
-    fetchall = fetch --all --prune
-    squash = commit -m'squash'
-    deltag = push --delete origin tag
-    delbranch = push origin --delete
-    noff = merge --no-ff
-    uhub = hub --remote upstream
-    rebasemaster = rebase -i $(git merge-base master HEAD)
-    morelog = log --pretty=fuller
-    logone = log --graph --oneline --decorate
-    reflogs = reflog --pretty='%cd %h %gd %gs'
-    stashes = stash list --pretty='%cd %h %gd %gs'
-    ; from http://stackoverflow.com/questions/3065650/whats-the-simplest-way-to-git-a-list-of-conflicted-files
-    conf = diff --name-only --diff-filter=U
+	git = !git
+	pr = pull --rebase
+	rc = rebase --continue
+	wip = stash save --keep-index 'wip'
+	fetchall = fetch --all --prune
+	squash = commit -m'squash'
+	deltag = push --delete origin tag
+	delbranch = push origin --delete
+	noff = merge --no-ff
+	uhub = hub --remote upstream
+	rebasemaster = rebase -i $(git merge-base master HEAD)
+	morelog = log --pretty=fuller
+	logone = log --graph --oneline --decorate
+	reflogs = reflog --pretty='%cd %h %gd %gs'
+	stashes = stash list --pretty='%cd %h %gd %gs'
+	; from http://stackoverflow.com/questions/3065650/whats-the-simplest-way-to-git-a-list-of-conflicted-files
+	conf = diff --name-only --diff-filter=U
 
 ; for automatic translation of URLs
 [url "git@github.com:"]
-    insteadOf = http://github.com/
-    insteadOf = https://github.com/
-    insteadOf = git://github.com/
+	insteadOf = http://github.com/
+	insteadOf = https://github.com/
+	insteadOf = git://github.com/
 
 [url "p5sagit@git.shadowcat.co.uk:"]
-    insteadOf = git://git.shadowcat.co.uk/p5sagit/
+	insteadOf = git://git.shadowcat.co.uk/p5sagit/
 
 [url "gitmo@git.moose.perl.org:"]
-    insteadOf = git://git.moose.perl.org/
+	insteadOf = git://git.moose.perl.org/
 
 [url "catagits@git.shadowcat.co.uk:"]
-    insteadOf = git://git.shadowcat.co.uk/catagits/
+	insteadOf = git://git.shadowcat.co.uk/catagits/
 
 [url "dbsrgits@git.shadowcat.co.uk:"]
-    insteadOf = git://git.shadowcat.co.uk/dbsrgits/
+	insteadOf = git://git.shadowcat.co.uk/dbsrgits/
 
 [url "scpubgit@git.shadowcat.co.uk:"]
-    insteadOf = git://git.shadowcat.co.uk/scpubgit/
+	insteadOf = git://git.shadowcat.co.uk/scpubgit/
 
 ; from https://gist.github.com/piscisaureus/3342247
 ; copy one of these to your .git/config as needed
 ;[remote "origin"]
-;    fetch = +refs/pull/*/head:refs/remotes/origin/pr/*
+;	fetch = +refs/pull/*/head:refs/remotes/origin/pr/*
 ;[remote "upstream"]
-;    fetch = +refs/pull/*/head:refs/remotes/upstream/pr/*
+;	fetch = +refs/pull/*/head:refs/remotes/upstream/pr/*

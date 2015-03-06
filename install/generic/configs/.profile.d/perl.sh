@@ -176,7 +176,7 @@ newdist() {
     local dist=`perl -we"print q{$module} =~ s/::/-/r"`
     pushd ~/git
     dzil new -P Author::ETHER -p default $dist
-    pushd mydists; ln -sf ../$dist; popd
+    pushd _mydists; ln -sf ../$dist; popd
     cd $dist
 }
 
@@ -204,7 +204,7 @@ stdperls() {
 }
 
 mydists() {
-    cpanm $(perl -wle'print map { s/-/::/g; $_ . "\n" } @ARGV' $(ls -1 ~/git/mydists))
+    cpanm $(perl -wle'print map { s/-/::/g; $_ . "\n" } @ARGV' $(ls -1 ~/git/_mydists))
 }
 
 firstcome() {
@@ -221,13 +221,13 @@ firstcome_bugs() {
 }
 
 adopted_bugs() {
-    pushd ~/git/adopteddists
+    pushd ~/git/_adopteddists
     perl ~/git/misc/rt-data.pl $(ls -l1)
     popd
 }
 
 shipped_bugs() {
-    pushd ~/git/shippeddists
+    pushd ~/git/_shippeddists
     perl ~/git/misc/rt-data.pl $(ls -l1)
     popd
 }

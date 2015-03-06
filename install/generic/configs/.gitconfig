@@ -1,6 +1,6 @@
 ; vim: set ts=8 sw=8 tw=78 noet :
 ;[include]
-;	path = ~ether/git/misc/install/generic/configs/.gitconfig
+;	path = ~/git/misc/install/generic/configs/.gitconfig
 
 [user]
 	email = ether@cpan.org
@@ -40,10 +40,10 @@
 ;	branch = auto
 
 [core]
-	excludesfile = ~ether/.gitexclude
+	excludesfile = ~/.gitexclude
 	# indent-with-non-tab omitted - it makes diffs look ugly
 	whitespace = space-before-tab,tab-in-indent,trailing-space
-	attributesfile = ~ether/.gitattributes
+	attributesfile = ~/.gitattributes
 
 [interactive]
 	singlekey = true

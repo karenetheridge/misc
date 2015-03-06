@@ -1,6 +1,6 @@
 ; vim: set ts=8 sw=8 tw=78 noet nolist :
 [include]
-	path = ~ether/git/misc/install/generic/configs/.gitconfig
+	path = ~/git/misc/install/generic/configs/.gitconfig
 
 ; see doc/howto/gitflow.txt
 [gitflow "branch"]

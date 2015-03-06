@@ -26,7 +26,7 @@ export LESSCHARSET="utf-8"
 export FIGNORE="CVS:~:.o:.svn:.swp"
 
 # commented out -- I don't need lots of "you have mail in.." alerts
-# export MAIL=/Users/ether/mail/i
+# export MAIL=$HOME/mail/i
 
 # be protective!  ... actually this is annoying when changing to root...
 #umask 077

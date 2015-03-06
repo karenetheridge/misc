@@ -1,6 +1,6 @@
 ; vim: set ts=8 sw=8 tw=78 noet :
 [include]
-	path = ~ether/git/misc/install/generic/configs/.gitconfig
+	path = ~/git/misc/install/generic/configs/.gitconfig
 
 ; from https://gist.github.com/piscisaureus/3342247
 ; copy one of these to your .git/config as needed

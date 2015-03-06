@@ -79,6 +79,7 @@ qw(
     Dist::Zilla::Plugin::Test::CheckBreaks
     Dist::Zilla::Plugin::MungeFile::WithConfigFile
     Dist::Zilla::Plugin::Prereqs::Soften
+    Dist::Zilla::Plugin::PodVersion
     Module::Install
     Module::Install::Repository
     Module::Install::AuthorRequires
@@ -109,6 +110,7 @@ my @serial_tests = qw(
     File::Slurp
     Test::Inline
     Storable
+    File::ShareDir::Install
 );
 
 my @fails_tests = qw(

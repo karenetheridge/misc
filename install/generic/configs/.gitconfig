@@ -69,6 +69,7 @@
 	stashes = stash list --pretty='%cd %h %gd %gs'
 	; from http://stackoverflow.com/questions/3065650/whats-the-simplest-way-to-git-a-list-of-conflicted-files
 	conf = diff --name-only --diff-filter=U
+	cherry-pick = cherry-pick --ff
 
 ; for automatic translation of URLs
 [url "git@github.com:"]

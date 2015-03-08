@@ -16,6 +16,10 @@ unset V
 # don't do this everywhere... just remember how to do it when we need it.
 # PERL_MM_OPT=NORECURS=1
 
+# see App::Nopaste::Command
+export NOPASTE_SERVICES="Shadowcat Gist"
+
+
 # equivalent to perldoc -l <module>
 perlwhere() {
     perl -wle'eval "require $ARGV[0]" or die; ($mod = $ARGV[0]) =~ s|::|/|g; print $INC{"${mod}.pm"}' $1
@@ -61,9 +65,6 @@ gitmo() {
 }
 
 
-# see App::Nopaste::Command
-# this may need to be defined in order to do nopaste --chan <foo>
-#export NOPASTE_SERVICES='Shadowcat Pastie'
 
 releases() {
     egrep '(CPAN Upload|Day changed)' irclogs/IRCnet*/#moose.log | less

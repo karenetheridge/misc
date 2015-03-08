@@ -1,4 +1,4 @@
-; vim: set ts=8 sw=8 tw=78 noet nolist :
+; vim: ts=8 sw=8 sts=8 tw=78 noet :
 [include]
 	path = ~/git/misc/install/generic/configs/.gitconfig
 

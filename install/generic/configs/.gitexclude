@@ -3,3 +3,6 @@
 .DS_Store
 .ackrc
 !.mailmap
+.netrc
+.fetchmailrc
+.msmtprc

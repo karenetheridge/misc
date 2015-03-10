@@ -5,3 +5,4 @@
 --ignore-dir=Plack-App-BeanstalkConsole/t/app/public
 --ignore-dir=_eumm
 --ignore-dir=blib
+--ignore-dir=.latest

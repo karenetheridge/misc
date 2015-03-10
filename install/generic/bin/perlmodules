@@ -80,6 +80,7 @@ qw(
     Dist::Zilla::Plugin::MungeFile::WithConfigFile
     Dist::Zilla::Plugin::Prereqs::Soften
     Dist::Zilla::Plugin::PodVersion
+    Dist::Zilla::Plugin::Deprecated
     Module::Install
     Module::Install::Repository
     Module::Install::AuthorRequires

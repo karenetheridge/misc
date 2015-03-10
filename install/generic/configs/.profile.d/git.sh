@@ -6,6 +6,7 @@ alias gds='git diff --staged'
 alias gs='git status'
 alias glp='git log -p'
 alias gca='git commit --amend'   # not to be confused with 'gcpa' below
+alias gcp='git cherry-pick'
 
 alias gpr='git pull --rebase'
 alias grc='git rebase --continue'

@@ -197,7 +197,7 @@ set reverse_name=yes            # reply as the user to whom the mail was sent
 set reverse_realname=yes    # use header name as-is, without using 'realname'
 set use_from                # always generate a From: header
 
-alternates '(karen@etheridge.ca|.*@froods.org|karen.?etheridge@gmail.com|ether@cpan.org)'
+set alternates='(karen@etheridge.ca|.*@froods.org|karen.?etheridge@gmail.com|ether@cpan.org)'
 #my_hdr Reply-To: Karen Etheridge <karen@etheridge.ca>
 unhdr_order *
 hdr_order From Date: From: To: Cc: Subject: Organization: X-Spam:

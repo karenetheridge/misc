@@ -16,13 +16,20 @@ fix_ssh_agent()
 # attempt to connect to a running agent - cache SSH_AUTH_SOCK in ~/.ssh/
 sagent()
 {
-    [ -S "$SSH_AUTH_SOCK" ] || export SSH_AUTH_SOCK="$(< ~/.ssh/ssh-agent.env)"
+    [ -S "$SSH_AUTH_SOCK" ] || {
+        agent=$(readlink ~/.ssh/cached-ssh-agent)
+        echo cached ssh agent: $agent
+        export SSH_AUTH_SOCK="$agent"
+    }
 
     # if cached agent socket is invalid, start a new one
     [ -S "$SSH_AUTH_SOCK" ] || {
+        echo 'cached ssh agent is invalid; generating a new one'
         eval "$(ssh-agent)"
         ssh-add -t 25920000 -K ~/.ssh/id_rsa
-        echo "$SSH_AUTH_SOCK" > ~/.ssh/ssh-agent.env
+        ln -sf $SSH_AUTH_SOCK ~/.ssh/cached-ssh-agent
     }
+
+    echo agent is good? $SSH_AUTH_SOCK
 }
 

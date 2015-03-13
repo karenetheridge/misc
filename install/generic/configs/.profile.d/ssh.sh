@@ -33,3 +33,9 @@ sagent()
     echo agent is good? $SSH_AUTH_SOCK
 }
 
+# this will prompt for password, but allow us to use the
+# keychain (e.g. to send mail) when logged in remotely.
+unlock() {
+    sagent
+    security unlock-keychain ~/Library/Keychains/login.keychain
+}

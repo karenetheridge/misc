@@ -1,0 +1,93 @@
+#!/usr/bin/env perl
+use strict;
+use warnings;
+package ETHER::FetchRT;
+use Encode ();
+
+sub _rt_data_for_dists
+{
+    my ($self, @dist_names) = @_;
+
+    my $json = $self->_rt_data_raw;
+    return if not $json;
+
+    require JSON::MaybeXS; JSON::MaybeXS->VERSION('1.001000');
+    my $all_data = JSON::MaybeXS->new(utf8 => 0)->decode($json);
+
+    my %rt_data;
+    foreach my $dist_name (@dist_names)
+    {
+        next if not $all_data->{$dist_name};
+        $rt_data{$dist_name}{open} = $all_data->{$dist_name}{counts}{active}
+                       - $all_data->{$dist_name}{counts}{stalled};
+        $rt_data{$dist_name}{stalled} = $all_data->{$dist_name}{counts}{stalled};
+    }
+    return %rt_data;
+}
+
+sub _rt_data_raw
+{
+    my $self = shift;
+
+    $self->log_debug('fetching RT bug data...');
+    my $data = $self->_fetch('https://rt.cpan.org/Public/bugs-per-dist.json');
+    $self->log('could not fetch RT data?'), return if not $data;
+    return $data;
+}
+
+sub _fetch
+{
+    my ($self, $url) = @_;
+
+    require HTTP::Tiny;
+    my $res = HTTP::Tiny->new->get($url);
+    return if not $res->{success};
+
+    my $data = $res->{content};
+
+    require HTTP::Headers;
+    if (my $charset = HTTP::Headers->new(%{ $res->{headers} })->content_type_charset)
+    {
+        $data = Encode::decode($charset, $data, Encode::FB_CROAK);
+    }
+
+    return $data;
+}
+
+sub log
+{
+    my $self = shift;
+    print @_, "\n";
+}
+sub log_debug { goto \&log }
+
+package main;
+use Term::ANSIColor 'colored';
+
+my $class = 'ETHER::FetchRT';
+
+my @dist_names = @ARGV;
+#print "fetching rt data for @dist_names...\n";
+
+my %rt_data = $class->_rt_data_for_dists(@dist_names);
+
+print sprintf("%-50s  %4s %4s\n", ' ', 'open', 'stalled');
+foreach my $dist_name (sort @dist_names) {
+    print
+        sprintf("%-50s", $dist_name),
+        exists $rt_data{$dist_name}
+            ? (
+                $rt_data{$dist_name}{open}
+                    ? colored(sprintf("%4d", $rt_data{$dist_name}{open}), 'bright_red')
+                    : colored(sprintf("%4d", '0'), 'green'),
+                $rt_data{$dist_name}{stalled}
+                    ? colored(sprintf("%4d", $rt_data{$dist_name}{stalled}), 'yellow')
+                    : colored(sprintf("%4d", '0'), 'green'),
+                $rt_data{$dist_name}{open} || $rt_data{$dist_name}{stalled}
+                    ? ('  https://rt.cpan.org/Public/Dist/Display.html?Name=' . $dist_name)
+                    : '',
+            ) : (colored(sprintf("%4s%4s", '-', '-'), 'green')),
+        "\n";
+}
+
+

@@ -218,18 +218,24 @@ disapprove() {
 
 
 firstcome_bugs() {
-    perl ~/git/misc/rt-data.pl $(firstcome)
+    rt $(firstcome)
+}
+
+mydist_bugs() {
+    pushd ~/git/_mydists
+    rt $(ls -l1)
+    popd
 }
 
 adopted_bugs() {
     pushd ~/git/_adopteddists
-    perl ~/git/misc/rt-data.pl $(ls -l1)
+    rt $(ls -l1)
     popd
 }
 
 shipped_bugs() {
     pushd ~/git/_shippeddists
-    perl ~/git/misc/rt-data.pl $(ls -l1)
+    rt $(ls -l1)
     popd
 }
 

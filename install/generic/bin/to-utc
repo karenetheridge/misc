@@ -1,0 +1,113 @@
+#!/usr/bin/env perl
+use strict;
+use warnings;
+
+use DateTime;
+use DateTime::Format::Strptime;
+use DateTime::Format::ISO8601;
+
+# TODO: try out DateTimeX::Easy for parsing. might DTRT?
+
+while (my $line = <>)
+{
+    if ($line =~ m/^([\d._]+)(-TRIAL)?\s+(.+)$/)
+    {
+        my ($version, $trial, $rest) = ($1, $2, $3);
+
+#print "version $version, trial $trial, rest $rest\n";
+        my ($formatter, $dt, $pattern, $timestamp, $timezone);
+
+        # YYYY-mm-dd HH:MM:SS ZZzz - managing for ambiguous timezones
+        if ($rest =~ m/(\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}) \w+([+-]\d{4})/i)
+        {
+            $pattern = '%Y-%m-%d %T %z';
+            $timestamp = $1 . ' ' . $2;
+            $rest = $';
+        }
+        # YYYY-mm-dd HH:MM:SS Foo/Bar
+        # YYYY-mm-dd HH:MM:SS-08:00 Foo/Bar
+        elsif ($rest =~ m/(\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2})(?:[-+]\d{2}:\d{2})? (\w+(?:\/\w+)?)/i)
+        {
+            $pattern = '%Y-%m-%d %T';
+            $timestamp = $1;
+            $timezone = $2;
+            $rest = $';
+        }
+        # YYYY-mm-dd HH:MM:SSzz:zz Foo/Bar
+        elsif ($rest =~ m/(\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2})[+-][\d:]+ (\w+\/\w+)/i)
+        {
+            $pattern = '%Y-%m-%d %T';
+            $timestamp = $1;
+            $timezone = $2;
+            $rest = $';
+        }
+        # WWW, dd mmm YYYY HH::MM:SS ZZ
+        elsif ($rest =~ m/([a-z]+, \d{2} [a-z]+ \d{4} \d{2}:\d{2}:\d{2}) ([+-]\d{4})/i)
+        {
+            $pattern = '%a, %d %b %Y %T';
+            $timestamp = $1;
+            $timezone = $2;
+            $rest = $';
+        }
+        # MMMM dd, YYYY
+        elsif ($rest =~ m/([a-z]+ \d{1,2}, \d{4})/i)
+        {
+            $pattern = '%B %d, %Y';
+            $timestamp = $1;
+            $rest = $';
+        }
+        # dd MMMM, YYYY
+        elsif ($rest =~ m/(\d{1,2} [a-z]+(,)? \d{4})/i)
+        {
+            my $comma //= '';
+            $pattern = "%d %B$comma %Y";
+            $timestamp = $1;
+            $rest = $';
+        }
+
+        # add more conditions here...
+
+if (0){
+use Data::Dumper;
+print "### extracted: ", Dumper({
+    pattern => $pattern,
+    timestamp => $timestamp,
+    timezone => $timezone,
+    rest => $rest,
+});
+}
+
+        if ($pattern)
+        {
+            $formatter = DateTime::Format::Strptime->new(
+                pattern => $pattern,
+                $timezone ? ( time_zone => $timezone ) : (),
+            );
+        }
+
+#use Data::Dumper;
+#local $Data::Dumper::Maxdepth = 2;
+#print "### got so far: ", Dumper({
+#    formatter => $formatter,
+#    timestamp => $timestamp,
+#    pattern => $pattern,
+#    timezone => $timezone,
+#});
+
+        if ($formatter)
+        {
+            $dt = $formatter->parse_datetime($timestamp);
+            $dt->set_time_zone('UTC');
+
+            print sprintf('%-8s  %s%s',
+                ($version . ($trial // '')),
+                $dt->format_cldr('yyyy-MM-dd HH:mm:ss\'Z\''),
+                $rest,
+            ), "\n";
+
+            next;
+        }
+    }
+
+    print $line;
+}

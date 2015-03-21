@@ -81,6 +81,7 @@ qw(
     Dist::Zilla::Plugin::Prereqs::Soften
     Dist::Zilla::Plugin::PodVersion
     Dist::Zilla::Plugin::Deprecated
+    Pod::Weaver::Section::Contributors
     Module::Install
     Module::Install::Repository
     Module::Install::AuthorRequires

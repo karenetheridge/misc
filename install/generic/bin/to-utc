@@ -5,6 +5,7 @@ use warnings;
 use DateTime;
 use DateTime::Format::Strptime;
 use DateTime::Format::ISO8601;
+use HTTP::Date 'str2time';
 
 # TODO: try out DateTimeX::Easy for parsing. might DTRT?
 
@@ -17,8 +18,17 @@ while (my $line = <>)
 #print "version $version, trial $trial, rest $rest\n";
         my ($formatter, $dt, $pattern, $timestamp, $timezone);
 
+        # WWW mmm dd HH::MM:SS PST YYYY (HTTP::Date format)
+        if ($rest =~ m/([a-z]+ [a-z]+ \d{2} \d{2}:\d{2}:\d{2} [a-z]{3,4} \d{4})/i
+            and my $time = str2time($rest))
+        {
+            $pattern = '%s';
+            $timestamp = $time;
+            $timezone = '';
+            $rest = $';
+        }
         # YYYY-mm-dd HH:MM:SS ZZzz - managing for ambiguous timezones
-        if ($rest =~ m/(\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}) \w+([+-]\d{4})/i)
+        elsif ($rest =~ m/(\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}) \w+([+-]\d{4})/i)
         {
             $pattern = '%Y-%m-%d %T %z';
             $timestamp = $1 . ' ' . $2;

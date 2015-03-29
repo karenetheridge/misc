@@ -2,7 +2,10 @@
 # (moved from .bash_profile where it was put automatically):
 
 # MacPorts Installer addition on 2012-03-10_at_09:51:50: adding an appropriate PATH variable for use with MacPorts.
-export PATH=/opt/local/bin:/opt/local/sbin:$PATH
+# export PATH=/opt/local/bin:/opt/local/sbin:$PATH
+
+prepend_path_uniq /opt/local/sbin /opt/local/bin
+
 # Finished adapting your PATH environment variable for use with MacPorts.
 
 ############### manual additions below this point:

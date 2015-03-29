@@ -1,3 +1,5 @@
+# This file is intentionally loaded first or nearly-first out of all .sh files
+
 alias l='less -S'
 alias m='less'
 alias dir='ls -l'
@@ -65,3 +67,23 @@ alias nonascii='ack "[^[:ascii:]]"'
 
 alias crontab="VIM_CRONTAB=true crontab"
 
+
+
+# append paths to $PATH, only if they are not already present
+append_path_uniq() {
+    for value in $*; do
+        if [[ :$PATH: != *:$value:* ]] ; then
+            export PATH="$PATH:$value"
+        fi
+    done
+}
+
+# append paths to $PATH, only if they are not already present
+# (last entry appears first in the final $PATH)
+prepend_path_uniq() {
+    for value in $*; do
+        if [[ :$PATH: != *:$value:* ]] ; then
+            export PATH="$value:$PATH"
+        fi
+    done
+}

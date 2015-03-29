@@ -26,33 +26,6 @@ diffp()
     diff --unified=3 $@
 }
 
-build()
-{
-    make clean; perl Makefile.PL; make
-}
-
-pM()
-{
-    perl Makefile.PL
-}
-
-M()
-{
-    make
-}
-
-Mc()
-{
-    make clean
-}
-
-Mt()
-{
-    make test
-}
-
-
-
 
 
 ####### Dec 2009: Tequila

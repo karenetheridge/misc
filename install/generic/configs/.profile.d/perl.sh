@@ -280,3 +280,30 @@ mymodules() {
 }
 
 alias dtr='dzil test --release'
+
+build()
+{
+    if [ -f Build.PL ]; then
+        if [ -f Build ]; then
+            echo ./Build realclean
+            ./Build realclean
+        fi
+        echo perl Build.PL\; ./Build
+        perl Build.PL; ./Build
+    elif [ -f Makefile.PL ]; then
+        if [ -f Makefile ]; then
+            echo make realclean
+            make realclean
+        fi
+        echo perl Makefile.PL\; make
+        perl Makefile.PL; make
+    else
+        >&2 echo no Build.PL or Makefile.PL
+    fi
+}
+
+alias pM='perl Makefile.PL'
+alias M=make
+alias Mc='make clean'
+alias Mt='make test'
+

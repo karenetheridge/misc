@@ -9,7 +9,7 @@ alias gca='git commit --amend'   # not to be confused with 'gcpa' below
 alias gcp='git cherry-pick --ff'
 
 alias gpr='git pull --rebase'
-alias grc='git rerere; git rebase --continue; git rerere'
+alias grc='git rebase --continue'
 alias gra='git rebase --abort'
 alias gcpc='git cherry-pick --continue'
 alias gcpa='git cherry-pick --abort'

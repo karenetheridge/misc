@@ -43,6 +43,7 @@ qw(
     Devel::Confess
     Devel::TraceUse
     Devel::PatchPerl
+    Devel::Dwarn
     Test::DiagINC
     Acme::require::case
     Safe::Isa

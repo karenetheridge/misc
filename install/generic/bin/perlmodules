@@ -133,12 +133,23 @@ run( qw/yes | perlbrew install-cpanm/ );
 # currently active)
 chomp(my $cpanm = `which cpanm`);
 
+my @cpanm = ($cpanm,
+# do not use until output is less spammy, and cpanm-reporter knows how to
+# process file:/// URLs
+#qw(
+#    --cascade-search
+#    --save-dists /Volumes/amaretto/Users/ether/.cpanm/cache
+#    --mirror /Volumes/amaretto/Users/ether/.cpanm/cache
+#    --mirror http://mirrors.gossamer-threads.com/CPAN/
+#)
+);
+
 # until I add option parsing, hack this to turn on/off dev installs.
 #my $dev = '--dev';
 my $dev = '';
 
 ## let's avoid any pod tests when we try to install stuff
-#system( $cpanm 'TAP::Harness::Restricted' );
+#system( @cpanm 'TAP::Harness::Restricted' );
 #local $ENV{HARNESS_SUBCLASS} = "TAP::Harness::Restricted";
 
 # now install the rest
@@ -154,39 +165,39 @@ if ($separately)
     goto SEPARATELY;
 }
 
-run_or_die($cpanm, @install_first);
+run_or_die(@cpanm, @install_first);
 run_or_die('cpanm-reporter');
 
 
 # first pre-pass - ensure Test::Tester and ok are installed as stable, to
 # avoid having Test::More upgraded to trial unduly.
-run("$cpanm --mirror http://www.cpan.org Test::Tester ok");
+run("@cpanm --mirror http://www.cpan.org Test::Tester ok");
 run('cpanm-reporter');
 
 ## on the first big pass, just try to install my pluginbundle, using
 ## default HARNESS_OPTIONS, trial/developer releases of everything upstream if there are any
-#run("EXTRA_TESTING=1 $cpanm $dev --mirror http://www.cpan.org Dist::Zilla::PluginBundle::Author::ETHER");
+#run("EXTRA_TESTING=1 @cpanm $dev --mirror http://www.cpan.org Dist::Zilla::PluginBundle::Author::ETHER");
 #run('cpanm-reporter');
 
 # in the first big pass, try to install everything in one process, using
 # default HARNESS_OPTIONS, trial/developer releases if there are any
-run("EXTRA_TESTING=1 $cpanm $dev --mirror http://www.cpan.org @to_install @serial_tests @fails_tests");
+run("EXTRA_TESTING=1 @cpanm $dev --mirror http://www.cpan.org @to_install @serial_tests @fails_tests");
 run('cpanm-reporter');
 
 # now try again to install things whose tests break when run in parallel
-run("HARNESS_OPTIONS=j1 $cpanm @serial_tests");
+run("HARNESS_OPTIONS=j1 @cpanm @serial_tests");
 run('cpanm-reporter');
 
 # now try again to install things whose tests are known to fail
-run($cpanm, '--notest', @fails_tests) if @fails_tests;
+run(@cpanm, '--notest', @fails_tests) if @fails_tests;
 run('cpanm-reporter') if @fails_tests;
 
-run($cpanm, '--reinstall', '--with-recommends', '--with-dev', '--dev', @with_dev_recommends);
+run(@cpanm, '--reinstall', '--with-recommends', '--with-dev', '--dev', @with_dev_recommends);
 run('cpanm-reporter');
 
 SEPARATELY:
 
-run("moose-outdated | $cpanm $dev --mirror http://www.cpan.org");
+run("moose-outdated | @cpanm $dev --mirror http://www.cpan.org");
 run('cpanm-reporter');
 
 use Module::CoreList;
@@ -200,7 +211,7 @@ print "\n\ninstalling again, to handle circular dependencies, and things that di
 
 # try installing everything again, stable releases this time, to handle circular deps, parallelization problems
 my @results = part {
-    my $result = run("HARNESS_OPTIONS=j1 $cpanm", $_[0]);
+    my $result = run("HARNESS_OPTIONS=j1 @cpanm", $_[0]);
     run('cpanm-reporter');
     $result ? 0 : 1;
 } (@install_first, @install_no_dev, @to_install, @fails_tests);

@@ -70,6 +70,10 @@ releases() {
     egrep '(CPAN Upload|Day changed)' irclogs/IRCnet*/#moose.log | less
 }
 
+# XXX TODO
+#export PERL_CPANM_OPT="--cascade-search --save-dists=$HOME/.cpanm/cache --mirror=$HOME/.cpanm/cache"
+#--mirror=http://search.cpan.org/CPAN"
+
 # if App::cpanminus::reporter is installed, we send reports automatically
 #alias cpanm='cpanm --mirror-only --mirror http://mirrors.gossamer-threads.com/CPAN/'
 function cpanm() {

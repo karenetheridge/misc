@@ -230,7 +230,7 @@ shippeddists() {
 }
 
 firstcome() {
-    gzcat ~/.cpanm/06perms.txt.gz | ack ',ETHER,[fm]' | perl -n -e's/,ETHER,[fm]//; s/::/-/g; print'
+    cat ~/.cpanm/06perms.txt | ack ',ETHER,[fm]' | perl -n -e's/,ETHER,[fm]//; s/::/-/g; print'
 }
 
 cpanm_mydists() {

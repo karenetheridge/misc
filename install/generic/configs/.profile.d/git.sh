@@ -13,7 +13,7 @@ alias grc='git rebase --continue'
 alias gra='git rebase --abort'
 alias gcpc='git cherry-pick --continue'
 alias gcpa='git cherry-pick --abort'
-alias viconf='vim $(git conf)'  # all files in conflict
+alias viconf='vim $(git conf)'  # all files in conflict - see .gitconfig alias
 
 if [ -f ~/.git-completion.bash ]; then
   . ~/.git-completion.bash

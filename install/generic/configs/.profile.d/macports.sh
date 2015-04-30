@@ -23,6 +23,20 @@ macportsup() {
     echo ""
     echo "executing: \"sudo port upgrade outdated\""
     sudo port upgrade outdated
+
+    # uninstall dependencies that are no longer needed
+    echo ""
+    echo "executing: \"sudo port uninstall leaves\""
+    sudo port uninstall leaves
+
+    # uninstall inactive things
+    echo ""
+    echo "executing: \"sudo port uninstall inactive\""
+    sudo port uninstall inactive
+
+    echo ""
+    echo "need more disk space? run repeatedly until there is nothing more to do:"
+    echo "sudo port uninstall leaves; sudo port uninstall inactive"
 }
 
 alias macportsupdate=macportsup

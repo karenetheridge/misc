@@ -209,17 +209,33 @@ stdperls() {
 }
 
 mydists() {
-    cpanm $(perl -wle'print map { s/-/::/g; $_ . "\n" } @ARGV' $(ls -1 ~/git/_mydists))
+    pushd ~/git/_mydists
+    local list=($(ls -l1))
+    popd
+    echo "${list[@]}"
+}
+
+adopteddists() {
+    pushd ~/git/_adopteddists
+    local list=($(ls -l1))
+    popd
+    echo "${list[@]}"
+}
+
+shippeddists() {
+    pushd ~/git/_shippeddists
+    local list=($(ls -l1))
+    popd
+    echo "${list[@]}"
 }
 
 firstcome() {
     gzcat ~/.cpanm/06perms.txt.gz | ack ',ETHER,[fm]' | perl -n -e's/,ETHER,[fm]//; s/::/-/g; print'
 }
 
-disapprove() {
-    perl -CS -wle'print v3232.95.3232'  # 0x0CA0 0x5F 0x0CA0
+cpanm_mydists() {
+    cpanm $(perl -wle'print map { s/-/::/g; $_ . "\n" } @ARGV' $(ls -1 ~/git/_mydists))
 }
-
 
 firstcome_bugs() {
     rt $(firstcome)

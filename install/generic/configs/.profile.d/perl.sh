@@ -259,6 +259,14 @@ shipped_bugs() {
     popd
 }
 
+disapprove() {
+    # unicode: 0x0CA0 0x5F 0x0CA0
+    #          \x{0ca0}\x5f0x{0ca0}
+    # UTF-8:   0xE0B2A0
+    #          \x{e0b2a0}
+    perl -CS -wle'print v3232.95.3232'
+}
+
 snowman () {
     perl -CO -le'print v9731'   # 0x2603
 }

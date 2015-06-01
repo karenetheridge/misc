@@ -194,7 +194,7 @@ run('cpanm-reporter');
 run(@cpanm, '--notest', @fails_tests) if @fails_tests;
 run('cpanm-reporter') if @fails_tests;
 
-run(@cpanm, '--with-recommends', '--with-development', '--dev', @with_dev_recommends);
+run(@cpanm, '--with-recommends', '--with-develop', '--dev', @with_dev_recommends);
 run('cpanm-reporter');
 
 SEPARATELY:

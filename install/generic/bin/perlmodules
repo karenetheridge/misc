@@ -18,6 +18,7 @@ my @install_first = qw(
 );
 my @to_install = (
 qw(
+    Alt::Module::Runtime::ButEUMM
     Dist::Zilla::PluginBundle::Author::ETHER
     ExtUtils::MakeMaker
     App::Ack

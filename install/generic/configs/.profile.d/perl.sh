@@ -233,6 +233,10 @@ firstcome() {
     cat ~/.cpanm/06perms.txt | ack ',ETHER,[fm]' | perl -n -e's/,ETHER,[fm]//; s/::/-/g; print'
 }
 
+havecomaint() {
+    cat ~/.cpanm/06perms.txt | ack ',ETHER,c' | perl -n -e's/,ETHER,c//; s/::/-/g; print'
+}
+
 # <command> | xargs perl -wle'print map { s/-/::/g; $_ . "\n" } @ARGV' | cpanm
 
 # to install arbitrary dists that I paste:
@@ -244,6 +248,10 @@ cpanm_mydists() {
 
 cpanm_adopteddists() {
     cpanm $(perl -wle'print map { s/-/::/g; $_ . "\n" } @ARGV' $(ls -1 ~/git/_adopteddists))
+}
+
+cpanm_firstcomedists() {
+    firstcome | xargs perl -wle'print map { s/-/::/g; $_ . "\n" } @ARGV' | cpanm
 }
 
 firstcome_bugs() {

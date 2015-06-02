@@ -243,15 +243,21 @@ havecomaint() {
 # cat | xargs perl -wle'print map { s/-/::/g; $_ . "\n" } @ARGV' | cpanm
 
 cpanm_mydists() {
-    cpanm $(perl -wle'print map { s/-/::/g; $_ . "\n" } @ARGV' $(ls -1 ~/git/_mydists))
+    local dists=$(perl -wle'print map { s/-/::/g; $_ . "\n" } @ARGV' $(ls -1 ~/git/_mydists))
+    echo cpanm $dists
+    cpanm $dists
 }
 
 cpanm_adopteddists() {
-    cpanm $(perl -wle'print map { s/-/::/g; $_ . "\n" } @ARGV' $(ls -1 ~/git/_adopteddists))
+    local dists=$(perl -wle'print map { s/-/::/g; $_ . "\n" } @ARGV' $(ls -1 ~/git/_adopteddists))
+    echo cpanm $dists
+    cpanm $dists
 }
 
 cpanm_firstcomedists() {
-    firstcome | xargs perl -wle'print map { s/-/::/g; $_ . "\n" } @ARGV' | cpanm
+    local dists=$(firstcome)
+    echo cpanm $dists
+    cpanm $dists
 }
 
 firstcome_bugs() {

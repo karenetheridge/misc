@@ -19,7 +19,6 @@ my @install_first = qw(
 my @to_install = (
 qw(
     Alt::Module::Runtime::ButEUMM
-    Dist::Zilla::PluginBundle::Author::ETHER
     ExtUtils::MakeMaker
     App::Ack
     App::Nopaste
@@ -31,8 +30,6 @@ qw(
     Unicode::Tussle
     App::Uni
     Test::CPAN::Meta
-    Test::Pod::Coverage
-    Pod::Coverage::TrustPod
     Data::Dumper
     local::lib
     App::FatPacker
@@ -84,7 +81,9 @@ qw(
     Dist::Zilla::Plugin::Prereqs::Soften
     Dist::Zilla::Plugin::PodVersion
     Dist::Zilla::Plugin::Deprecated
-    Pod::Weaver::Section::Contributors
+    Test::Pod::Coverage
+    Pod::Coverage::TrustPod
+    Dist::Zilla::PluginBundle::Author::ETHER
     Module::Install
     Module::Install::Repository
     Module::Install::AuthorRequires
@@ -172,23 +171,23 @@ run_or_die(@cpanm, @install_first);
 run_or_die('cpanm-reporter');
 
 
-# first pre-pass - ensure Test::Tester and ok are installed as stable, to
-# avoid having Test::More upgraded to trial unduly.
-run("@cpanm --mirror http://www.cpan.org Test::Tester ok");
-run('cpanm-reporter');
+## first pre-pass - ensure Test::Tester and ok are installed as stable, to
+## avoid having Test::More upgraded to trial unduly.
+#run("@cpanm --mirror http://www.cpan.org Test::Tester ok");
+#run('cpanm-reporter');
 
 ## on the first big pass, just try to install my pluginbundle, using
 ## default HARNESS_OPTIONS, trial/developer releases of everything upstream if there are any
 #run("EXTRA_TESTING=1 @cpanm $dev --mirror http://www.cpan.org Dist::Zilla::PluginBundle::Author::ETHER");
 #run('cpanm-reporter');
 
+# install things we know to fail when installed in parallel...
+run("HARNESS_OPTIONS=j1 @cpanm @serial_tests");
+run('cpanm-reporter');
+
 # in the first big pass, try to install everything in one process, using
 # default HARNESS_OPTIONS, trial/developer releases if there are any
 run("EXTRA_TESTING=1 @cpanm $dev --mirror http://www.cpan.org @to_install @serial_tests @fails_tests");
-run('cpanm-reporter');
-
-# now try again to install things whose tests break when run in parallel
-run("HARNESS_OPTIONS=j1 @cpanm @serial_tests");
 run('cpanm-reporter');
 
 # now try again to install things whose tests are known to fail

@@ -43,6 +43,14 @@ while (my $line = <>)
             $timezone = $2;
             $rest = $';
         }
+        # YYYY-mm-dd HH:MM:SS -0800  (native format used by git when log.date = iso8601)
+        elsif ($rest =~ m/(\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2})(?: ([-+]\d{4}))?/i)
+        {
+            $pattern = '%Y-%m-%d %T';
+            $timestamp = $1;
+            $timezone = $2 // '0000';
+            $rest = $';
+        }
         # YYYY-mm-dd HH:MM:SSzz:zz Foo/Bar
         elsif ($rest =~ m/(\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2})[+-][\d:]+ (\w+\/\w+)/i)
         {

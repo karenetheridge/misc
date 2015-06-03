@@ -10,6 +10,9 @@ export PERL_INSTALL_QUIET=1
 
 export NO_NETWORK_TESTING=1
 
+# used by EUMM to add things as prereqs, rather than bundling.
+export BUILDING_AS_PACKAGE=1
+
 # ensure version for 'dzil run' subshells does not affect subsequent builds
 unset V
 
@@ -18,6 +21,11 @@ unset V
 
 # see App::Nopaste::Command
 export NOPASTE_SERVICES="Shadowcat Gist"
+
+
+# preferentially use Cpanel::JSON::XS in Parse::CPAN::Meta
+PERL_JSON_BACKEND=Cpanel::JSON::XS
+
 
 
 # equivalent to perldoc -l <module>

@@ -245,19 +245,25 @@ havecomaint() {
 cpanm_mydists() {
     local dists=$(perl -wle'print map { s/-/::/g; $_ . "\n" } @ARGV' $(ls -1 ~/git/_mydists))
     echo cpanm $dists
-    cpanm $dists
+    cpanm --no-report-perl-version $dists
 }
 
 cpanm_adopteddists() {
     local dists=$(perl -wle'print map { s/-/::/g; $_ . "\n" } @ARGV' $(ls -1 ~/git/_adopteddists))
     echo cpanm $dists
-    cpanm $dists
+    cpanm --no-report-perl-version $dists
+}
+
+cpanm_shippeddists() {
+    local dists=$(perl -wle'print map { s/-/::/g; $_ . "\n" } @ARGV' $(ls -1 ~/git/_shippeddists))
+    echo cpanm $dists
+    cpanm --no-report-perl-version $dists
 }
 
 cpanm_firstcomedists() {
     local dists=$(firstcome)
     echo cpanm $dists
-    cpanm $dists
+    cpanm --no-report-perl-version $dists
 }
 
 firstcome_bugs() {
@@ -316,19 +322,22 @@ unstale () {
 
 # install all modules released by me,
 # minus a few oddballs that will screw everything up
-mymodules() {
+cpanm_mymodules() {
         # Moose::Error lost in 2.1200 :/
         # Moose::Exception::* has a few old ones indexed to Moose-1.1205
         # TK tries to install all TK-*
         # Pinto breaks cpanm-reporter
-    grep ETHER ~/.cpanm/02packages.details.txt \
-        | cut -d ' ' -f 1 \
-        | grep -v Moose::Error \
-        | grep -v Moose::Exception \
-        | grep -v ^Task::Kensho$ \
-        | grep -v Task::Kensho::Toolchain \
-        | grep -v ^Mouse \
-        | cpanm --no-report-perl-version
+    local dists=$(
+        grep ETHER ~/.cpanm/02packages.details.txt \
+            | cut -d ' ' -f 1 \
+            | grep -v Moose::Error \
+            | grep -v Moose::Exception \
+            | grep -v ^Task::Kensho$ \
+            | grep -v Task::Kensho::Toolchain \
+            | grep -v ^Mouse
+    )
+    echo cpanm $dists
+    cpanm --no-report-perl-version $dists
 }
 
 alias dtr='dzil test --release'

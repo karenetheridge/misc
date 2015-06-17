@@ -348,6 +348,7 @@ cpanm_mymodules() {
     cpanm --no-report-perl-version $dists
 }
 
+alias db='dzil build --not'
 alias dtr='dzil test --release'
 
 build()

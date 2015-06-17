@@ -43,6 +43,7 @@ qw(
     Devel::PatchPerl
     Devel::Dwarn
     Devel::Hide
+    Devel::Cover
     Test::DiagINC
     Acme::require::case
     Safe::Isa
@@ -58,6 +59,7 @@ qw(
     Dist::Zilla::App::Command::dumpwith
     Dist::Zilla::App::Command::lsplugins
     Dist::Zilla::App::Command::cover
+    Dist::Zilla::Plugin::SurgicalPodWeaver
     Dist::Zilla::Plugin::Prereqs::Soften
     Dist::Zilla::Plugin::MungeFile::WithDataSection
     Dist::Zilla::Plugin::OnlyCorePrereqs
@@ -81,6 +83,7 @@ qw(
     Dist::Zilla::Plugin::Prereqs::Soften
     Dist::Zilla::Plugin::PodVersion
     Dist::Zilla::Plugin::Deprecated
+    Dist::Zilla::App::Command::cover
     Test::Pod::Coverage
     Pod::Coverage::TrustPod
     Dist::Zilla::PluginBundle::Author::ETHER

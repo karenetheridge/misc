@@ -102,6 +102,7 @@ qw(
     DateTime
     DateTime::TimeZone
     DateTime::Format::ISO8601
+    Module::CoreList
 ),
 (map { (my $mod = basename($_)) =~ s/-/::/g; $mod } glob('~/git/mydists/*')),
 );
@@ -205,7 +206,7 @@ SEPARATELY:
 run("moose-outdated | @cpanm $dev --mirror http://www.cpan.org");
 run('cpanm-reporter');
 
-use Module::CoreList;
+use Module::CoreList; # requires 2.22
 my $in_core = Module::CoreList->find_version($]);
 run('cpanm', grep { !/win32/i } keys %$in_core);
 run('cpanm-reporter');

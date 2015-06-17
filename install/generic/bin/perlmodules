@@ -184,13 +184,13 @@ run_or_die('cpanm-reporter');
 #run("EXTRA_TESTING=1 @cpanm $dev --mirror http://www.cpan.org Dist::Zilla::PluginBundle::Author::ETHER");
 #run('cpanm-reporter');
 
-# install things we know to fail when installed in parallel...
-run("HARNESS_OPTIONS=j1 @cpanm @serial_tests");
-run('cpanm-reporter');
-
 # in the first big pass, try to install everything in one process, using
 # default HARNESS_OPTIONS, trial/developer releases if there are any
 run("EXTRA_TESTING=1 @cpanm $dev --mirror http://www.cpan.org @to_install @serial_tests @fails_tests");
+run('cpanm-reporter');
+
+# install things we know to fail when installed in parallel...
+run("HARNESS_OPTIONS=j1 @cpanm @serial_tests");
 run('cpanm-reporter');
 
 # now try again to install things whose tests are known to fail

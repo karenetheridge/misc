@@ -83,7 +83,6 @@ qw(
     Dist::Zilla::Plugin::Prereqs::Soften
     Dist::Zilla::Plugin::PodVersion
     Dist::Zilla::Plugin::Deprecated
-    Dist::Zilla::App::Command::cover
     Test::Pod::Coverage
     Pod::Coverage::TrustPod
     Dist::Zilla::PluginBundle::Author::ETHER

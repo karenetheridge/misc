@@ -269,7 +269,7 @@ cpanm_shippeddists() {
 }
 
 cpanm_firstcomedists() {
-    local dists=$(firstcome)
+    local dists=$(perl -wle'print map { s/-/::/g; $_ . "\n" } @ARGV' $(firstcome))
     echo cpanm $dists
     cpanm --no-report-perl-version $dists
 }

@@ -50,3 +50,9 @@ alias macportsupgrade=macportsup
 #  http://guide.macports.org/chunked/using.common-tasks.html
 # sudo port uninstall inactive
 # sudo port echo leaves  -> port installed leaves -> port uninstall leaves
+
+
+# added at the request of git +bash_completion
+if [ -f /opt/local/etc/profile.d/bash_completion.sh ]; then
+    . /opt/local/etc/profile.d/bash_completion.sh
+fi

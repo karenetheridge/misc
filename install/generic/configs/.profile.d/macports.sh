@@ -24,6 +24,10 @@ macportsup() {
     echo "executing: \"sudo port upgrade outdated\""
     sudo port upgrade outdated
 
+    echo "if you are extremely happy with the results, or need disk space, run macportscleanup"
+}
+
+macportscleanup() {
     # uninstall dependencies that are no longer needed
     echo ""
     echo "executing: \"sudo port uninstall leaves\""

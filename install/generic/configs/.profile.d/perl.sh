@@ -260,18 +260,21 @@ cpanm_adopteddists() {
     local dists=$(perl -wle'print map { s/-/::/g; $_ . "\n" } @ARGV' $(ls -1 ~/git/_adopteddists))
     echo cpanm $dists
     cpanm --no-report-perl-version $dists
+    cpanmdev --no-report-perl-version $dists
 }
 
 cpanm_shippeddists() {
     local dists=$(perl -wle'print map { s/-/::/g; $_ . "\n" } @ARGV' $(ls -1 ~/git/_shippeddists))
     echo cpanm $dists
     cpanm --no-report-perl-version $dists
+    cpanmdev --no-report-perl-version $dists
 }
 
 cpanm_firstcomedists() {
     local dists=$(perl -wle'print map { s/-/::/g; $_ . "\n" } @ARGV' $(firstcome))
     echo cpanm $dists
     cpanm --no-report-perl-version $dists
+    cpanmdev --no-report-perl-version $dists
 }
 
 firstcome_bugs() {

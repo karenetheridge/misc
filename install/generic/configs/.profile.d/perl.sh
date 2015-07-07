@@ -381,3 +381,6 @@ alias M=make
 alias Mc='make clean'
 alias Mt='make test'
 
+perm() {
+    grep $1 ~/.cpanm/06perms.txt
+}

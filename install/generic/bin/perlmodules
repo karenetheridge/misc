@@ -66,6 +66,7 @@ qw(
     Dist::Zilla::Plugin::CheckBin
     Dist::Zilla::Plugin::CheckLib
     Dist::Zilla::Plugin::AssertOS
+    Dist::Zilla::Plugin::NoAutomatedTesting
     Dist::Zilla::Plugin::GenerateFile::ShareDir
     Dist::Zilla::Plugin::DynamicPrereqs
     Dist::Zilla::Plugin::OptionalFeature
@@ -83,6 +84,8 @@ qw(
     Dist::Zilla::Plugin::Prereqs::Soften
     Dist::Zilla::Plugin::PodVersion
     Dist::Zilla::Plugin::Deprecated
+    Dist::Zilla::Plugin::CheckVersionIncrement
+    Dist::Zilla::Plugin::Test::Version
     Test::Pod::Coverage
     Pod::Coverage::TrustPod
     Dist::Zilla::PluginBundle::Author::ETHER

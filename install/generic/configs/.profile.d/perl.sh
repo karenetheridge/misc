@@ -90,7 +90,11 @@ function cpanm() {
 }
 
 function cpanmdev() {
-    command cpanm --with-recommends --dev $@
+    command cpanm --dev $@
+    cpanm-reporter
+}
+function cpanmrec() {
+    command cpanm --dev --recommends $@
     cpanm-reporter
 }
 

@@ -89,6 +89,7 @@ qw(
     Test::Pod::Coverage
     Pod::Coverage::TrustPod
     Dist::Zilla::PluginBundle::Author::ETHER
+    Pod::Weaver::Section::AllowOverride
     Module::Install
     Module::Install::Repository
     Module::Install::AuthorRequires

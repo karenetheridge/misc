@@ -320,9 +320,9 @@ heart () {
 }
 
 # run the command on all major perlbrews
-# TODO: 5.8.8, 5.10.0
+# TODO: 5.8.1, 5.8.5
 allperls () {
-    for perl in 8.8 8.9 10.0 10.1 12.5 14.4 16.3 18.4 20.2 22.0 23.0 ; do
+    for perl in 8.8 8.9 10.0 10.1 12.5 14.4 16.3 18.4 20.2 22.0 23.1 ; do
         perlbrew use ${perl}@std;
         echo; echo using $PERL5LIB
         eval $(printf "%q " "$@")

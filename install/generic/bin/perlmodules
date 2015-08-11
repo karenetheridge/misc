@@ -75,6 +75,7 @@ qw(
     Dist::Zilla::Plugin::PPPort
     Dist::Zilla::Plugin::ReportPhase
     Dist::Zilla::Plugin::VerifyPhases
+    Dist::Zilla::Plugin::BlockRelease
     Dist::Zilla::Plugin::Prepender
     Dist::Zilla::Plugin::Covenant
     Dist::Zilla::Plugin::Conflicts
@@ -86,6 +87,9 @@ qw(
     Dist::Zilla::Plugin::Deprecated
     Dist::Zilla::Plugin::CheckVersionIncrement
     Dist::Zilla::Plugin::Test::Version
+    Dist::Zilla::Plugin::EnsurePrereqsInstalled
+    Test::DistManifest
+    Test::RequiresInternet
     Test::Pod::Coverage
     Pod::Coverage::TrustPod
     Dist::Zilla::PluginBundle::Author::ETHER

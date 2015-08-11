@@ -79,18 +79,22 @@
 
 [url "p5sagit@git.shadowcat.co.uk:"]
 	insteadOf = git://git.shadowcat.co.uk/p5sagit/
+	insteadOf = git://git.shadowcat.co.uk:p5sagit/
 
 [url "gitmo@git.moose.perl.org:"]
 	insteadOf = git://git.moose.perl.org/
 
 [url "catagits@git.shadowcat.co.uk:"]
 	insteadOf = git://git.shadowcat.co.uk/catagits/
+	insteadOf = git://git.shadowcat.co.uk:catagits/
 
 [url "dbsrgits@git.shadowcat.co.uk:"]
 	insteadOf = git://git.shadowcat.co.uk/dbsrgits/
+	insteadOf = git://git.shadowcat.co.uk:dbsrgits/
 
 [url "scpubgit@git.shadowcat.co.uk:"]
 	insteadOf = git://git.shadowcat.co.uk/scpubgit/
+	insteadOf = git://git.shadowcat.co.uk:scpubgit/
 
 ; from https://gist.github.com/piscisaureus/3342247
 ; copy one of these to your .git/config as needed

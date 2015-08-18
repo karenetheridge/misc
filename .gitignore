@@ -1,6 +1,11 @@
 /install/generic/configs/.profile.d/local.sh
 !.ackrc
+.bash_history
 .netrwhist
 .netrc
 .fetchmailrc
 .msmtprc
+.viminfo
+id_rsa
+id_dsa
+known_hosts

@@ -242,11 +242,13 @@ shippeddists() {
 }
 
 firstcome() {
-    cat ~/.cpanm/06perms.txt | ack ',ETHER,[fm]' | perl -n -e's/,ETHER,[fm]//; s/::/-/g; print'
+    local author=${1-ETHER}
+    cat ~/.cpanm/06perms.txt | ack ",${author},[fm]" | perl -n -e"s/,${author},[fm]//; s/::/-/g; print"
 }
 
 havecomaint() {
-    cat ~/.cpanm/06perms.txt | ack ',ETHER,c' | perl -n -e's/,ETHER,c//; s/::/-/g; print'
+    local author=${1-ETHER}
+    cat ~/.cpanm/06perms.txt | ack ",${author},c" | perl -n -e"s/,${author},c//; s/::/-/g; print"
 }
 
 # <command> | xargs perl -wle'print map { s/-/::/g; $_ . "\n" } @ARGV' | cpanm
@@ -282,7 +284,7 @@ cpanm_firstcomedists() {
 }
 
 firstcome_bugs() {
-    rt $(firstcome)
+    rt $(firstcome $1)
 }
 
 mydist_bugs() {
@@ -319,6 +321,10 @@ heart () {
     perl -CO -le'print v9825'   # 0x2661
 }
 
+poo() {
+    perl -CO -le'print v128169' # U+1F4A9
+}
+
 # run the command on all major perlbrews
 # TODO: 5.8.1, 5.8.5
 allperls () {
@@ -329,6 +335,11 @@ allperls () {
         #$@
         #command cpanm-reporter
     done
+}
+
+mt() {
+    test -f Makefile && make clean
+    perl Makefile.PL && make test
 }
 
 unstale () {

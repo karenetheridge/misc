@@ -11,6 +11,7 @@ alias gcp='git cherry-pick --ff'
 alias gpr='git pull --rebase'
 alias grc='git rebase --continue'
 alias gra='git rebase --abort'
+alias gri='git rebase -i $(git describe --abbrev=0 --tags)'
 alias gcpc='git cherry-pick --continue'
 alias gcpa='git cherry-pick --abort'
 alias viconf='vim $(git conf)'  # all files in conflict - see .gitconfig alias

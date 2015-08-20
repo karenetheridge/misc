@@ -159,8 +159,8 @@ my @cpanm = ($cpanm,
 );
 
 # until I add option parsing, hack this to turn on/off dev installs.
-#my $dev = '--dev';
-my $dev = '';
+my $dev = '--dev';
+#my $dev = '';
 
 ## let's avoid any pod tests when we try to install stuff
 #system( @cpanm 'TAP::Harness::Restricted' );
@@ -208,6 +208,9 @@ run('cpanm-reporter');
 # now try again to install things whose tests are known to fail
 run(@cpanm, '--notest', @fails_tests) if @fails_tests;
 run('cpanm-reporter') if @fails_tests;
+
+run("EXTRA_TESTING=1 @cpanm $dev --mirror http://www.cpan.org @to_install @fails_tests");
+run('cpanm-reporter');
 
 run(@cpanm, '--with-recommends', '--with-develop', '--dev', @with_dev_recommends);
 run('cpanm-reporter');

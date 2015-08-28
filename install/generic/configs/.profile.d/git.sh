@@ -4,14 +4,14 @@ alias gd='git diff'
 alias gdd='git diff $(git describe --abbrev=0 --tags)'
 alias gds='git diff --staged'
 alias gs='git status'
-alias glp='git log -p'
+alias glp='git log -p --decorate'
 alias gca='git commit --amend'   # not to be confused with 'gcpa' below
 alias gcp='git cherry-pick --ff'
 
 alias gpr='git pull --rebase'
 alias grc='git rebase --continue'
 alias gra='git rebase --abort'
-alias gri='git rebase -i $(git describe --abbrev=0 --tags)'
+alias gri='git rebase -p -i $(git describe --abbrev=0 --tags)'
 alias gcpc='git cherry-pick --continue'
 alias gcpa='git cherry-pick --abort'
 alias viconf='vim $(git conf)'  # all files in conflict - see .gitconfig alias

@@ -9,6 +9,8 @@ use HTTP::Date 'str2time';
 
 # TODO: try out DateTimeX::Easy for parsing. might DTRT?
 
+use constant DEBUG => 0;
+
 while (my $line = <>)
 {
     if ($line =~ m/^([\d._]+)(-TRIAL)?\s+(.+)$/)
@@ -22,6 +24,7 @@ while (my $line = <>)
         if ($rest =~ m/([a-z]+ [a-z]+ \d{2} \d{2}:\d{2}:\d{2} [a-z]{3,4} \d{4})/i
             and my $time = str2time($rest))
         {
+print "1\n" if DEBUG;
             $pattern = '%s';
             $timestamp = $time;
             $timezone = '';
@@ -30,6 +33,7 @@ while (my $line = <>)
         # YYYY-mm-dd HH:MM:SS ZZzz - managing for ambiguous timezones
         elsif ($rest =~ m/(\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}) \w+([+-]\d{4})/i)
         {
+print "2\n" if DEBUG;
             $pattern = '%Y-%m-%d %T %z';
             $timestamp = $1 . ' ' . $2;
             $rest = $';
@@ -38,6 +42,7 @@ while (my $line = <>)
         # YYYY-mm-dd HH:MM:SS-08:00 Foo/Bar
         elsif ($rest =~ m/(\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2})(?:[-+]\d{2}:\d{2})? (\w+(?:\/\w+)?)/i)
         {
+print "3\n" if DEBUG;
             $pattern = '%Y-%m-%d %T';
             $timestamp = $1;
             $timezone = $2;
@@ -46,6 +51,7 @@ while (my $line = <>)
         # YYYY-mm-dd HH:MM:SS -0800  (native format used by git when log.date = iso8601)
         elsif ($rest =~ m/(\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2})(?: ([-+]\d{4}))?/i)
         {
+print "4\n" if DEBUG;
             $pattern = '%Y-%m-%d %T';
             $timestamp = $1;
             $timezone = $2 // '0000';
@@ -54,6 +60,7 @@ while (my $line = <>)
         # YYYY-mm-dd HH:MM:SSzz:zz Foo/Bar
         elsif ($rest =~ m/(\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2})[+-][\d:]+ (\w+\/\w+)/i)
         {
+print "5\n" if DEBUG;
             $pattern = '%Y-%m-%d %T';
             $timestamp = $1;
             $timezone = $2;
@@ -62,6 +69,7 @@ while (my $line = <>)
         # WWW, dd mmm YYYY HH::MM:SS ZZ
         elsif ($rest =~ m/([a-z]+, \d{2} [a-z]+ \d{4} \d{2}:\d{2}:\d{2}) ([+-]\d{4})/i)
         {
+print "6\n" if DEBUG;
             $pattern = '%a, %d %b %Y %T';
             $timestamp = $1;
             $timezone = $2;
@@ -70,6 +78,7 @@ while (my $line = <>)
         # MMMM dd, YYYY
         elsif ($rest =~ m/([a-z]+ \d{1,2}, \d{4})/i)
         {
+print "8\n" if DEBUG;
             $pattern = '%B %d, %Y';
             $timestamp = $1;
             $rest = $';
@@ -77,6 +86,7 @@ while (my $line = <>)
         # dd MMMM, YYYY
         elsif ($rest =~ m/(\d{1,2} [a-z]+(,)? \d{4})/i)
         {
+print "9\n" if DEBUG;
             my $comma //= '';
             $pattern = "%d %B$comma %Y";
             $timestamp = $1;
@@ -85,7 +95,7 @@ while (my $line = <>)
 
         # add more conditions here...
 
-if (0){
+if (DEBUG){
 use Data::Dumper;
 print "### extracted: ", Dumper({
     pattern => $pattern,

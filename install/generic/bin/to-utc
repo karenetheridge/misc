@@ -75,6 +75,26 @@ print "6\n" if DEBUG;
             $timezone = $2;
             $rest = $';
         }
+        # WWWW  d mmm YYYY HH:MM:SS PDT
+        elsif ($rest =~ m/([a-z]+  ?\d{1,2} [a-z]+ \d{4} \d{2}:\d{2}:\d{2}) ([a-z]+)/i)
+        #elsif ($rest =~ m/([a-z]+  ?\d{1,2} [a-z]+ \d{4} \d{2}:\d{2}:\d{2})/i)# [a-z]+)/i)
+        {
+print "6.5\n" if DEBUG;
+            #$pattern = '%a %d %b %Y %T %z';
+            $pattern = '%a %d %b %Y %T';
+            $timestamp = $1;
+            $timezone = $2 eq 'PDT' ? 'America/Vancouver' : undef;
+            $rest = $';
+        }
+        # WWW mmm dd HH::MM:SS YYYY
+        elsif ($rest =~ m/([a-z]+ [a-z]+  ?\d{1,2} \d{2}:\d{2}:\d{2} \d{4})(?: ([+-]\d{4}))?/i)
+        {
+print "7\n" if DEBUG;
+            $pattern = '%a %b %d %T %Y';
+            $timestamp = $1;
+            $timezone = $2;
+            $rest = $';
+        }
         # MMMM dd, YYYY
         elsif ($rest =~ m/([a-z]+ \d{1,2}, \d{4})/i)
         {

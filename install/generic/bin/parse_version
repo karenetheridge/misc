@@ -11,7 +11,7 @@ use CPAN::Meta;
 use Parse::PMFile;
 use ExtUtils::MakeMaker;
 use V ();
-use Module::Info;
+eval 'require Module::Info';
 use Module::InstalledVersion;
 use Module::Version;
 use Module::Metadata;
@@ -40,11 +40,11 @@ print "Guessing module name is $module from file $pmfile.\n\n";
     print sprintf('%30s', 'V::get_version: '), (V::get_version($module) // '<undef>'), "\n\n";
 }
 
-{
+eval {
     my $mod = Module::Info->new_from_file($pmfile);
     print sprintf('%30s', 'Module::Info->packages_inside: '), join(', ', $mod->packages_inside), "\n";
     print sprintf('%30s', 'Module::Info->...->version: '), ($mod->version // '<undef>'), "\n\n";
-}
+};
 
 {
     # Module::Extract

@@ -89,6 +89,7 @@ qw(
     Dist::Zilla::Plugin::CheckVersionIncrement
     Dist::Zilla::Plugin::Test::Version
     Dist::Zilla::Plugin::EnsurePrereqsInstalled
+    Dist::Zilla::Plugin::Test::Synopsis
     Test::DistManifest
     Test::RequiresInternet
     Test::Pod::Coverage
@@ -106,6 +107,7 @@ qw(
     perlsecret
     Parse::PMFile
     V
+    Module::Info
     Module::InstalledVersion
     Module::Version
     DateTime

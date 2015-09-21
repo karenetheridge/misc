@@ -86,7 +86,16 @@ print "6.5\n" if DEBUG;
             $timezone = $2 eq 'PDT' ? 'America/Vancouver' : undef;
             $rest = $';
         }
-        # WWW mmm dd HH::MM:SS YYYY
+        # WWW mmm dd HH:MM:SS YYYY (Foo/Bar)
+        elsif ($rest =~ m/([a-z]+ [a-z]+  ?\d{1,2} \d{2}:\d{2}:\d{2} \d{4}) \(([a-z\/]+)\)/i)
+        {
+print "6.6\n" if DEBUG;
+            $pattern = '%a %b %d %T %Y';
+            $timestamp = $1;
+            $timezone = $2;
+            $rest = $';
+        }
+        # WWW mmm dd HH:MM:SS YYYY
         elsif ($rest =~ m/([a-z]+ [a-z]+  ?\d{1,2} \d{2}:\d{2}:\d{2} \d{4})(?: ([+-]\d{4}))?/i)
         {
 print "7\n" if DEBUG;

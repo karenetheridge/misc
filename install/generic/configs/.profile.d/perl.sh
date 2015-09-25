@@ -11,7 +11,8 @@ export PERL_INSTALL_QUIET=1
 export NO_NETWORK_TESTING=1
 
 # used by EUMM to add things as prereqs, rather than bundling.
-export BUILDING_AS_PACKAGE=1
+# cannot use this when actually installing EUMM into an older perl
+#export BUILDING_AS_PACKAGE=1
 
 # ensure version for 'dzil run' subshells does not affect subsequent builds
 unset V

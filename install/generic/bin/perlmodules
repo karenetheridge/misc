@@ -131,6 +131,7 @@ my @serial_tests = qw(
     Test::Inline
     Storable
     File::ShareDir::Install
+    IO::Zlib
 );
 
 my @fails_tests = qw(

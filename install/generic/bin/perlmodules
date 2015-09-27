@@ -20,6 +20,7 @@ my @to_install = (
 qw(
     Alt::Module::Runtime::ButEUMM
     ExtUtils::MakeMaker
+    JSON::PP
     App::Ack
     App::Nopaste
     App::cpanoutdated

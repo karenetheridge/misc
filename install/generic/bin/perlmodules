@@ -216,7 +216,7 @@ run('cpanm-reporter');
 run(@cpanm, '--notest', @fails_tests) if @fails_tests;
 run('cpanm-reporter') if @fails_tests;
 
-run("EXTRA_TESTING=1 @cpanm $dev --mirror http://www.cpan.org @to_install @fails_tests");
+run("EXTRA_TESTING=1 @cpanm --mirror http://www.cpan.org @to_install @fails_tests");
 run('cpanm-reporter');
 
 run(@cpanm, '--with-recommends', '--with-develop', '--dev', @with_dev_recommends);

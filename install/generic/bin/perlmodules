@@ -116,6 +116,7 @@ qw(
     DateTime::TimeZone
     DateTime::Format::ISO8601
     Module::CoreList
+    Plack
 ),
 (map { (my $mod = basename($_)) =~ s/-/::/g; $mod } glob('~/git/mydists/*')),
 );

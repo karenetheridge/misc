@@ -10,7 +10,7 @@ export DEVEL_CONFESS_OPTIONS=objects,better_names,color,errors,warnings
 
 ackall() {
     ack "$@" \
-        lib t tlib bin devtools root root-admin extlib database push-tasks.d
+        lib t tlib bin devtools root root-admin extlib database push-tasks.d doc
 }
 
 export database=localdev

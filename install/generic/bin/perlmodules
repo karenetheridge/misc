@@ -220,7 +220,7 @@ run('cpanm-reporter') if @fails_tests;
 run("EXTRA_TESTING=1 @cpanm --mirror http://www.cpan.org @to_install @fails_tests");
 run('cpanm-reporter');
 
-run(@cpanm, '--with-recommends', '--with-develop', '--dev', @with_dev_recommends);
+run(@cpanm, '--with-recommends', '--with-develop', $dev, @with_dev_recommends);
 run('cpanm-reporter');
 
 SEPARATELY:
@@ -230,7 +230,10 @@ run('cpanm-reporter');
 
 use Module::CoreList; # requires 2.22
 my $in_core = Module::CoreList->find_version($]);
-run('cpanm', grep { !/win32/i } keys %$in_core);
+run(@cpanm, grep { !/win32/i } keys %$in_core);
+run('cpanm-reporter');
+
+run(@cpanm, $dev, grep { !/win32/i } keys %$in_core);
 run('cpanm-reporter');
 
 goto DONE if not $separately;

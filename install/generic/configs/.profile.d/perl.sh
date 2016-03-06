@@ -255,12 +255,12 @@ shippeddists() {
 
 firstcome() {
     local author=${1-ETHER}
-    cat ~/.cpanm/06perms.txt | ack ",${author},[fm]" | perl -n -e"s/,${author},[fm]//; s/::/-/g; print"
+    grep ",${author},[fm]" ~/.cpanm/06perms.txt | perl -n -e"s/,${author},[fm]//; s/::/-/g; print"
 }
 
 havecomaint() {
     local author=${1-ETHER}
-    cat ~/.cpanm/06perms.txt | ack ",${author},c" | perl -n -e"s/,${author},c//; s/::/-/g; print"
+    grep ",${author},c" ~/.cpanm/06perms.txt | perl -n -e"s/,${author},c//; s/::/-/g; print"
 }
 
 # <command> | xargs perl -wle'print map { s/-/::/g; $_ . "\n" } @ARGV' | cpanm

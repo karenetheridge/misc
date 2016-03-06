@@ -269,30 +269,27 @@ havecomaint() {
 # cat | xargs perl -wle'print map { s/-/::/g; $_ . "\n" } @ARGV' | cpanm
 
 cpanm_mydists() {
-    local dists=$(perl -wle'print map { s/-/::/g; $_ . "\n" } @ARGV' $(ls -1 ~/git/_mydists))
-    echo cpanm $dists
-    cpanm --no-report-perl-version $dists
+    local dists=$(ls -1 ~/git/_mydists | perl -n -e's/-/::/g; print')
+    echo cpanmdev --no-report-perl-version --with-develop $dists
+    cpanmdev --no-report-perl-version --with-develop $dists
 }
 
 cpanm_adopteddists() {
-    local dists=$(perl -wle'print map { s/-/::/g; $_ . "\n" } @ARGV' $(ls -1 ~/git/_adopteddists))
-    echo cpanm $dists
-    cpanm --no-report-perl-version $dists
-    cpanmdev --no-report-perl-version $dists
+    local dists=$(ls -1 ~/git/_adopteddists | perl -n -e's/-/::/g; print')
+    echo cpanmdev --no-report-perl-version --with-develop $dists
+    cpanmdev --no-report-perl-version --with-develop $dists
 }
 
 cpanm_shippeddists() {
-    local dists=$(perl -wle'print map { s/-/::/g; $_ . "\n" } @ARGV' $(ls -1 ~/git/_shippeddists))
-    echo cpanm $dists
-    cpanm --no-report-perl-version $dists
-    cpanmdev --no-report-perl-version $dists
+    local dists=$(ls -1 ~/git/_shippeddists | perl -n -e's/-/::/g; print')
+    echo cpanmdev --no-report-perl-version --with-develop $dists
+    cpanmdev --no-report-perl-version --with-develop $dists
 }
 
 cpanm_firstcomedists() {
-    local dists=$(perl -wle'print map { s/-/::/g; $_ . "\n" } @ARGV' $(firstcome))
-    echo cpanm $dists
-    cpanm --no-report-perl-version $dists
-    cpanmdev --no-report-perl-version $dists
+    local dists=$(firstcome | perl -n -e's/-/::/g; print')
+    echo cpanmdev --no-report-perl-version --with-develop $dists
+    cpanmdev --no-report-perl-version --with-develop $dists
 }
 
 firstcome_bugs() {
@@ -383,8 +380,8 @@ cpanm_mymodules() {
             | grep -v Task::Kensho::Toolchain \
             | grep -v ^Mouse
     )
-    echo cpanm $dists
-    cpanm --no-report-perl-version $dists
+    echo cpanm --no-report-perl-version --with-develop $dists
+    cpanm --no-report-perl-version --with-develop $dists
 }
 
 alias db='dzil build --not'

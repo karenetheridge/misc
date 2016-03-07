@@ -6,3 +6,8 @@
 --ignore-dir=_eumm
 --ignore-dir=blib
 --ignore-dir=.latest
+--color
+# default: black on_yellow
+--color-match=bright_yellow
+--color-filename=green
+--color-lineno=yellow

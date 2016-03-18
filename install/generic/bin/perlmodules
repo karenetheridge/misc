@@ -54,7 +54,7 @@ qw(
     indirect multidimensional bareword::filehandles
     strictures
     Role::Tiny Package::Variant Moo
-    Text::Diff@1.41
+    Text::Diff
     Dist::Zilla::Plugin::Chrome::ExtraPrompt
     Dist::Zilla::Plugin::Bootstrap::lib
     Dist::Zilla::App::Command::dumpphases

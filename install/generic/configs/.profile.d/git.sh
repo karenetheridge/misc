@@ -1,7 +1,7 @@
 
 # aliases and customizations for git
 alias gd='git diff'
-alias gdd='git diff $(git describe --abbrev=0 --tags)'
+alias gdd='git diff $(git describe --abbrev=0 --tags) HEAD'
 alias gds='git diff --staged'
 alias gs='git status'
 alias gsi='git status --ignored'

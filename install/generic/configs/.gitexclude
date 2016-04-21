@@ -1,8 +1,6 @@
-!.gitignore
 .*.sw[a-z]
 .DS_Store
 .ackrc
-!.mailmap
 .netrc
 .fetchmailrc
 .msmtprc

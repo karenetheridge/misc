@@ -14,7 +14,7 @@ sub part(&@);
 # TODO: these should all be in Task::BeLike::ETHER
 
 my @install_first = qw(
-    App::cpanminus::reporter@0.12
+    App::cpanminus::reporter
 );
 my @to_install = (
 qw(

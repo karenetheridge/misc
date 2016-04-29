@@ -17,7 +17,7 @@ export database=localdev
 export target_db=localdev
 
 db_credentials() {
-    perl bin/config-db-value $1 db_host db_name db_user db_port db_password
+    config-db-value $1 db_host db_name db_user db_port db_password
 }
 
 dsn() {

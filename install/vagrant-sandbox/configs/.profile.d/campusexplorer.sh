@@ -4,3 +4,5 @@ export CEROOT=/vagrant
 export CE_SSH_TIMEOUT=120
 
 eval $(perl -Mlocal::lib=/vagrant/extlib)
+
+export CHEOPSROOT=/home/vagrant/git/cheops

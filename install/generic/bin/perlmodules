@@ -93,6 +93,7 @@ qw(
     Dist::Zilla::Plugin::EnsurePrereqsInstalled
     Dist::Zilla::Plugin::Test::Synopsis
     Dist::Zilla::Plugin::Substitute
+    Dist::Zilla::Plugin::SmokeTests
     Test::DistManifest
     Test::RequiresInternet
     Test::Pod::Coverage

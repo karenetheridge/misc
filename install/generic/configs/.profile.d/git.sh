@@ -17,6 +17,8 @@ alias gcpc='git cherry-pick --continue'
 alias gcpa='git cherry-pick --abort'
 alias viconf='vim $(git conf)'  # all files in conflict - see .gitconfig alias
 
+alias gitalltags='git log --tags --simplify-by-decoration --pretty="format:%ai %d"'
+
 if [ -f ~/.git-completion.bash ]; then
   . ~/.git-completion.bash
 fi

@@ -61,6 +61,7 @@
 	deltag = push --delete origin tag
 	delbranch = push origin --delete
 	noff = merge --no-ff
+	ff = merge --ff-only
 	uhub = hub --remote upstream
 	rebasemaster = rebase -i $(git merge-base master HEAD)
 	morelog = log --pretty=fuller
@@ -71,6 +72,7 @@
 	; from http://stackoverflow.com/questions/3065650/whats-the-simplest-way-to-git-a-list-of-conflicted-files
 	conf = diff --name-only --diff-filter=U
 	cherry-pick = cherry-pick --ff
+	git = !git		# turns "git git @_" into "git @_", or "git @_" -> "@_"
 
 ; for automatic translation of URLs
 [url "git@github.com:"]

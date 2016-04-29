@@ -1,27 +1,9 @@
 ; vim: set ts=4 sw=4 sts=4 tw=78 noet :
+[include]
+	path = ~/git/misc/install/generic/configs/.gitconfig
+
 [user]
 	email = ketheridge@campusexplorer.com
-	name = Karen Etheridge
-[color]
-	diff = auto
-	status = auto
-	branch = auto
-	interactive = auto
-	ui = true
-[color "diff"]
-[push]
-	default = upstream
-[branch]
-	autosetupmerge = true
-	autosetuprebase = always
-
-[diff "gz"]
-	textconv = zcat
-	cachetextconv = true
-	binary = true
-
-;[column]
-;	branch = auto
 
 ; see doc/howto/gitflow.txt
 [gitflow "branch"]
@@ -34,7 +16,4 @@
 	support = support/
 	cepatch = cepatch/
 	versiontag = release
-
-[core]
-	excludesfile = /home/vagrant/.gitexclude
 

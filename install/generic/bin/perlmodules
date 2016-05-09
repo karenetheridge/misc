@@ -22,6 +22,9 @@ qw(
     Alt::Module::Runtime::ButEUMM
     ExtUtils::MakeMaker
     JSON::PP
+    CPAN::Meta
+    CPAN::Meta::Requirements
+    Parse::CPAN::Meta
     App::Ack
     App::Nopaste
     App::cpanoutdated

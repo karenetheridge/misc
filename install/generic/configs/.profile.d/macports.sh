@@ -17,11 +17,13 @@ macportsup() {
     # update macports itself
     echo ""
     echo "executing: \"sudo port -v selfupdate\""
+    tput bel
     sudo port -v selfupdate
 
     # upgrade everything already installed
     echo ""
     echo "executing: \"sudo port upgrade outdated\""
+    tput bel
     sudo port upgrade outdated
 
     echo "if you are extremely happy with the results, or need disk space, run macportscleanup"
@@ -31,11 +33,13 @@ macportscleanup() {
     # uninstall dependencies that are no longer needed
     echo ""
     echo "executing: \"sudo port uninstall leaves\""
+    tput bel
     sudo port uninstall leaves
 
     # uninstall inactive things
     echo ""
     echo "executing: \"sudo port uninstall inactive\""
+    tput bel
     sudo port uninstall inactive
 
     echo ""

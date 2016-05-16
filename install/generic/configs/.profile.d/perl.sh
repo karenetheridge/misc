@@ -296,6 +296,12 @@ cpanm_firstcomedists() {
     cpanmdev --no-report-perl-version --with-develop $dists
 }
 
+cpanm_myreleases() {
+    local dists=$(grep '\bE/ET/ETHER/' ~/.cpanm/02packages.details.txt | cut -d" " -f 1)
+    echo cpanmdev --no-report-perl-version --with-develop $dists
+    cpanmdev --no-report-perl-version --with-develop $dists
+}
+
 firstcome_bugs() {
     rt $(firstcome $1)
 }

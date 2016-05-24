@@ -28,14 +28,7 @@ unset V
 export NOPASTE_SERVICES="Shadowcat Gist"
 
 gist() {
-    # TODO: App::Nopaste::Service::Gist should do this
-    perl -MApp::Nopaste::Command -MPath::Tiny -wle'
-        my ($username, $password) = path("~/.github")->slurp_utf8 =~ m/login (\N+)\npassword (\N+)/m;
-        $ENV{GITHUB_USER} = $username;
-        $ENV{GITHUB_PASSWORD} = $password;
-        unshift @ARGV, "--service", "Gist";
-        if (my $url = App::Nopaste::Command->new_with_options->run) { print $url; }
-    ' -- $@
+    nopaste --service Gist $@
 }
 
 

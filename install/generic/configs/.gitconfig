@@ -1,6 +1,8 @@
 ; vim: set ts=4 sw=4 sts=4 tw=78 noet :
 ;[include]
 ;	path = ~/git/misc/install/generic/configs/.gitconfig
+[include]
+	path = ~/git/misc/install/generic/configs/.gitconfig.private
 
 [user]
 	email = ether@cpan.org

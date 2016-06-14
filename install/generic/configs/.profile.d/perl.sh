@@ -419,5 +419,17 @@ alias Mc='make clean'
 alias Mt='make test'
 
 perm() {
-    grep $1 ~/.cpanm/06perms.txt
+    grep $* ~/.cpanm/06perms.txt
+}
+
+# see https://github.com/CPAN-API/cpan-api/wiki/SysAdmin#how-to-reindex-a-missing-module
+# pass the fully-qualified dist name as the single argument
+# e.g. X/XS/XSAWYERX/MetaCPAN-API-0.33.tar.gz
+# e.g. sudo -u metacpan /home/metacpan/bin/metacpan-api-carton-exec bin/metacpan release --latest http://cpan.metacpan.org/authors/id/E/ET/ETHER/Dist-Zilla-Plugin-Git.2.039.tar.gz --latest
+metacpan_reindex() {
+    module=$1
+    dist=`grep "^$module\\s" ~/.cpanm/02packages.details.txt | perl -e'print "", (split /\s+/, <>)[2]'`
+    echo ''
+    echo ssh bm-mc-01.metacpan.org
+    echo sudo -u metacpan /home/metacpan/bin/metacpan-api-carton-exec bin/metacpan http://cpan.metacpan.org/authors/id/$dist --latest
 }

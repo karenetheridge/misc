@@ -87,3 +87,8 @@ prepend_path_uniq() {
         fi
     done
 }
+
+no() {
+    perl -e'for (;;) { print "n\n" }'
+}
+

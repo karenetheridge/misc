@@ -31,6 +31,7 @@
 	autoupdate = true
 [diff]
 	algorithm = patience
+	compactionHeuristic = true
 [diff "gz"]
 	textconv = zcat
 	cachetextconv = true

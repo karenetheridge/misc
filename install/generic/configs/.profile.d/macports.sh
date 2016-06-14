@@ -32,9 +32,9 @@ macportsup() {
 macportscleanup() {
     # uninstall dependencies that are no longer needed
     echo ""
-    echo "executing: \"sudo port uninstall leaves\""
+    echo "executing: \"sudo port_cutleaves\""
     tput bel
-    sudo port uninstall leaves
+    sudo port_cutleaves
 
     # uninstall inactive things
     echo ""
@@ -44,7 +44,7 @@ macportscleanup() {
 
     echo ""
     echo "need more disk space? run repeatedly until there is nothing more to do:"
-    echo "sudo port uninstall leaves; sudo port uninstall inactive"
+    echo "macportscleanup"
 }
 
 alias macportsupdate=macportsup

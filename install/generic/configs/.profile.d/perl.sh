@@ -291,8 +291,9 @@ cpanm_firstcomedists() {
 
 cpanm_myreleases() {
     local dists=$(grep '\bE/ET/ETHER/' ~/.cpanm/02packages.details.txt | cut -d" " -f 1)
-    echo cpanmdev --no-report-perl-version --with-develop $dists
-    cpanmdev --no-report-perl-version --with-develop $dists
+    # FIXME: not installing --dev until metacpan is fixed: https://github.com/CPAN-API/cpan-api/issues/483
+    echo cpanm --no-report-perl-version --with-develop $dists
+    cpanm --no-report-perl-version --with-develop $dists
 }
 
 firstcome_bugs() {

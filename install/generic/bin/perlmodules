@@ -25,6 +25,8 @@ qw(
     CPAN::Meta
     CPAN::Meta::Requirements
     Parse::CPAN::Meta
+    Test::Pod
+    Test::Pod::Coverage
     App::Ack
     App::Nopaste
     App::cpanoutdated
@@ -100,7 +102,6 @@ qw(
     Dist::Zilla::Plugin::SmokeTests
     Test::DistManifest
     Test::RequiresInternet
-    Test::Pod::Coverage
     Pod::Coverage::TrustPod
     Pod::Coverage::Moose
     Dist::Zilla::PluginBundle::Author::ETHER

@@ -297,7 +297,7 @@ cpanm_myreleases() {
 }
 
 firstcome_bugs() {
-    rt $(firstcome $1)
+    rt $(firstcome)
 }
 
 mydist_bugs() {

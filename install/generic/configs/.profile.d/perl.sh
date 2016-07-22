@@ -13,6 +13,9 @@ export NO_NETWORK_TESTING=1
 # see https://metacpan.org/pod/release/MSTROUT/Parse-CPAN-Meta-1.4418-TRIAL/lib/Parse/CPAN/Meta.pm#ENVIRONMENT
 export CPAN_META_JSON_BACKEND=JSON::MaybeXS
 
+# Parse::CPAN::Meta only uses this if CPAN_META_JSON_BACKEND is not set
+export PERL_JSON_BACKEND=Cpanel::JSON::XS
+
 
 # used by EUMM to add things as prereqs, rather than bundling.
 # cannot use this when actually installing EUMM into an older perl
@@ -32,8 +35,6 @@ gist() {
 }
 
 
-# preferentially use Cpanel::JSON::XS in Parse::CPAN::Meta
-PERL_JSON_BACKEND=Cpanel::JSON::XS
 
 
 

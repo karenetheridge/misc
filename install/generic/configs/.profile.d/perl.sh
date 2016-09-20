@@ -298,6 +298,13 @@ cpanm_myreleases() {
     cpanm --no-report-perl-version $* $dists
 }
 
+cpanm_core() {
+    local dists=$( perl -MModule::CoreList -wle'print foreach grep { !/win32/i } sort keys %{ Module::CoreList->find_version($]) }')
+    # FIXME: not installing --dev until metacpan is fixed: https://github.com/CPAN-API/cpan-api/issues/483
+    echo cpanm --no-report-perl-version $* $dists
+    cpanm --no-report-perl-version $* $dists
+}
+
 firstcome_bugs() {
     rt $(firstcome)
 }

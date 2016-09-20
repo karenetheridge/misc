@@ -125,8 +125,14 @@ qw(
     Module::CoreList
     Plack
 ),
+# distributions that I call "mine"
 (map { (my $mod = basename($_)) =~ s/-/::/g; $mod } glob('~/git/mydists/*')),
+
+# distributions where ETHER is first-come in PAUSE
+(map { s/,ETHER,[fm]//;s/-/::/g; $_ } split(/\n/, `grep ',ETHER,[fm]' ~/.cpanm/06perms.txt`))
 );
+
+
 # dev versions known to fail
 my @install_no_dev = qw(
     Test::Builder

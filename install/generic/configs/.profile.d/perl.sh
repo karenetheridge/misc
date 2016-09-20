@@ -269,33 +269,33 @@ havecomaint() {
 
 cpanm_mydists() {
     local dists=$(ls -1 ~/git/_mydists | perl -n -e's/-/::/g; print')
-    echo cpanmdev --no-report-perl-version --with-develop $dists
-    cpanmdev --no-report-perl-version --with-develop $dists
+    echo cpanmdev --no-report-perl-version $* $dists
+    cpanmdev --no-report-perl-version $* $dists
 }
 
 cpanm_adopteddists() {
     local dists=$(ls -1 ~/git/_adopteddists | perl -n -e's/-/::/g; print')
-    echo cpanmdev --no-report-perl-version --with-develop $dists
-    cpanmdev --no-report-perl-version --with-develop $dists
+    echo cpanmdev --no-report-perl-version $* $dists
+    cpanmdev --no-report-perl-version $* $dists
 }
 
 cpanm_shippeddists() {
     local dists=$(ls -1 ~/git/_shippeddists | perl -n -e's/-/::/g; print')
-    echo cpanmdev --no-report-perl-version --with-develop $dists
-    cpanmdev --no-report-perl-version --with-develop $dists
+    echo cpanmdev --no-report-perl-version $* $dists
+    cpanmdev --no-report-perl-version $* $dists
 }
 
 cpanm_firstcomedists() {
     local dists=$(firstcome | perl -n -e's/-/::/g; print')
-    echo cpanmdev --no-report-perl-version --with-develop $dists
-    cpanmdev --no-report-perl-version --with-develop $dists
+    echo cpanmdev --no-report-perl-version $* $dists
+    cpanmdev --no-report-perl-version $* $dists
 }
 
 cpanm_myreleases() {
     local dists=$(grep '\bE/ET/ETHER/' ~/.cpanm/02packages.details.txt | cut -d" " -f 1)
     # FIXME: not installing --dev until metacpan is fixed: https://github.com/CPAN-API/cpan-api/issues/483
-    echo cpanm --no-report-perl-version --with-develop $dists
-    cpanm --no-report-perl-version --with-develop $dists
+    echo cpanm --no-report-perl-version $* $dists
+    cpanm --no-report-perl-version $* $dists
 }
 
 firstcome_bugs() {

@@ -242,10 +242,10 @@ run('cpanm-reporter');
 
 use Module::CoreList; # requires 2.22
 my $in_core = Module::CoreList->find_version($]);
-run(@cpanm, grep { !/win32/i } keys %$in_core);
+run(@cpanm, grep { !/win32/i } sort keys %$in_core);
 run('cpanm-reporter');
 
-run(@cpanm, $dev, grep { !/win32/i } keys %$in_core);
+run(@cpanm, $dev, grep { !/win32/i } sort keys %$in_core);
 run('cpanm-reporter');
 
 goto DONE if not $separately;

@@ -25,7 +25,9 @@ export CPAN_META_JSON_BACKEND=JSON::MaybeXS
 # ensure version for 'dzil run' subshells does not affect subsequent builds
 unset V
 
-# don't do this everywhere... just remember how to do it when we need it.
+# maybe don't do this everywhere... just remember how to do it when we need it.
+# careful, if you do this, you will obliterate the INSTALL_BASE setting we
+# need for perlbrew.
 # PERL_MM_OPT=NORECURS=1
 
 # see App::Nopaste::Command

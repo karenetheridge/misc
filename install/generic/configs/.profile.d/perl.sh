@@ -444,3 +444,7 @@ metacpan_reindex() {
     echo ssh bm-mc-01.metacpan.org
     echo sudo -u metacpan /home/metacpan/bin/metacpan-api-carton-exec bin/metacpan http://cpan.metacpan.org/authors/id/$dist --latest
 }
+
+md5hex() {
+    perl -MDigest::MD5=md5_hex -wle'print md5_hex(shift)' $*
+}

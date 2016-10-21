@@ -144,6 +144,11 @@ noremap <F4>  :!chmod u+w %<CR>
     map <F6>  :set invsyntax<CR>
 
 
+" XXX for posterity:
+" fix uses of lives_ok and throws_ok:
+" :%s/lives_ok \({ [^}]\+ }\) \([^;]\+\);/is(    exception \1,    undef,    \2,);/gc
+" :%s/throws_ok \({ [^}]\+ }\) \(qr\/[^/]\+\/\), \([^;]\+\);/like(exception \1,    \2,    \3);/gc
+
 
 " AUTOCOMMANDS
 

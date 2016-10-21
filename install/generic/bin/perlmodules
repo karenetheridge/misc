@@ -118,6 +118,7 @@ qw(
     DateTime::Format::ISO8601
     Module::CoreList
     Plack
+    Const::Fast
     Test::CPAN::Meta
     Test::DiagINC
     Test::DistManifest

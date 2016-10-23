@@ -32,7 +32,7 @@ source ~/.mutt/aliases
 # I sure want negative assertions, grr... -> NOT (estate) or (sophos)
 #send-hook '~t @.*[^es][^so][^tp][^ah][^to][^es]\.com' 'set signature=~/.remote-signature'
 
-set signature='~/bin/sigrandomizermutt|'
+#set signature='~/bin/sigrandomizermutt|'
 
 set print_command='a2ps -=mail -d'
 

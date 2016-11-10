@@ -1,8 +1,10 @@
 
-# these are used for mirroring part of the filesystem to the vagrant sandbox
 export CE_REMOTE_USERNAME=ketheridge
 export CEROOT=~/src/CE
 export CE_EMAIL_ADDRESS=ketheridge@campusexplorer.com
+export CE_SSH_TIMEOUT=120
+
+export CE_MONDAYS_STYLE=safe
 
 export PATH=/Users/ether/src/CE/devtools:/Users/ether/git/CE/devtools:/Users/ether/src/CE/bin:/Users/ether/git/CE/bin:$PATH
 
@@ -22,4 +24,12 @@ db_credentials() {
 
 dsn() {
     perl -Ilib -MCE::Config -wle'print CE::Config->dsn($ARGV[0] // q{localdev}, $ARGV[1] // q{cedev})' $1 $2
+}
+
+ceflow() {
+    tput bel
+    tput bel
+    echo "tried to run: ceflow $*"
+    tput bel
+    tput bel
 }

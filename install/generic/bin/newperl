@@ -14,10 +14,14 @@ my @args = @ARGV;
  
 # trailing "t" means do threads
 my @threads = ( $as =~ /t$/ ) ? (qw/-D usethreads/) : ();
+
+# trailing "no." means . is excluded from @INC (5.25.7+)
+my @no_dot_inc = ( $as =~ /no\.$/ ) ? (qw/-Ddefault_inc_excludes_dot/) : ();
  
 $as =~ s/^5\.//;
 my $perl = "5.$as";
 $perl =~ s/t$//; # strip trailing "t" if any
+$perl =~ s/no\.$//; # strip trailing "no." if any
 my $lib = $as . '@std';
 
 my @no_man = qw/-D man1dir=none -D man3dir=none/;
@@ -30,7 +34,7 @@ run( qw/yes | perlbrew install-cpanm/ );
 
 $perl = '' if grep { qr{^http://} } @args;
 
-run_or_die( qw/perlbrew install -j 9 --as/, $as, $perl, @threads, @no_man, @args );
+run_or_die( qw/perlbrew install -j 9 --as/, $as, $perl, @threads, @no_dot_inc, @no_man, @args );
 run_or_die( qw/chmod -R a-w/, "$ENV{HOME}/perl5/perlbrew/perls/$as" );
 
 # give us a local::lib for installing things

@@ -55,7 +55,6 @@
 	date = iso8601
 
 [alias]
-	git = !git
 	pr = pull --rebase
 	rc = rebase --continue
 	wip = stash save --keep-index 'wip'

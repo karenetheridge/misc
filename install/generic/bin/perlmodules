@@ -136,7 +136,6 @@ my @install_no_dev = qw(
 );
 
 my @serial_tests = qw(
-    File::Next
     IO::Pty
     Parse::CPAN::Packages::Fast
     File::Slurp

@@ -64,7 +64,6 @@ qw(
     Dist::Zilla::App::Command::dumpwith
     Dist::Zilla::App::Command::lsplugins
     Dist::Zilla::App::Command::cover
-    Dist::Zilla::Plugin::SurgicalPodWeaver
     Dist::Zilla::Plugin::Prereqs::Soften
     Dist::Zilla::Plugin::MungeFile::WithDataSection
     Dist::Zilla::Plugin::OnlyCorePrereqs
@@ -96,6 +95,8 @@ qw(
     Dist::Zilla::Plugin::Test::Synopsis
     Dist::Zilla::Plugin::Substitute
     Dist::Zilla::Plugin::SmokeTests
+    Dist::Zilla::PluginBundle::ROKR
+    Dist::Zilla::Plugin::SurgicalPodWeaver
     Pod::Coverage::TrustPod
     Pod::Coverage::Moose
     Dist::Zilla::PluginBundle::Author::ETHER

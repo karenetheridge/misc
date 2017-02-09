@@ -97,6 +97,7 @@ qw(
     Dist::Zilla::Plugin::SmokeTests
     Dist::Zilla::PluginBundle::ROKR
     Dist::Zilla::Plugin::SurgicalPodWeaver
+    Dist::Zilla::Plugin::lib
     Pod::Coverage::TrustPod
     Pod::Coverage::Moose
     Dist::Zilla::PluginBundle::Author::ETHER
@@ -114,6 +115,7 @@ qw(
     Module::Info
     Module::InstalledVersion
     Module::Version
+    Parse::CPAN::Whois
     DateTime
     DateTime::TimeZone
     DateTime::Format::ISO8601

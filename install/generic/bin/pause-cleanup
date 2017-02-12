@@ -110,10 +110,12 @@ for my $key (sort keys %found) {
   my $dist = $found{ $key };
   next unless keys %$dist > $keep;
 
-  # this is a dumb sort, but ought to work out as long as I don't change
-  # version number formats midway in a way that disrupts sorting (because I
-  # know that breaks distro packagers too, I don't do that!)
-  my @versions = sort { $b cmp $a } keys %$dist;
+  my @versions = sort {
+      use version;
+      (my $x = $a) =~ s/-TRIAL$//;
+      (my $y = $b) =~ s/-TRIAL$//;
+      version->parse($y) <=> version->parse($x)
+  } keys %$dist;
 
   # we keep the last $keep *stable* releases - work through all releases in
   # reverse order until we've found that many

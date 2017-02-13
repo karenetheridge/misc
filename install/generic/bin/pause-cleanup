@@ -10,6 +10,9 @@ use Carp;
 use CPAN::DistnameInfo;
 use File::Spec;
 use WWW::Mechanize;
+use Path::Tiny;
+use HTTP::Tiny;
+use Parse::CPAN::Packages::Fast;
 
 # keep the last N stable dists
 my $keep = shift || 2;
@@ -131,7 +134,12 @@ for my $key (sort keys %found) {
   for my $version (map { $versions[$_] } $index+1 .. $#versions) {
 
     for my $file (@{ $dist->{ $version }{values} }) {
-      print "scheduling $file for deletion\n";
+      if (my @modules = indexed_modules($file)) {
+        warn "scheduling $file for deletion, but WARNING!! $file is still indexed against module(s): ",
+            join(', ', @modules), "\n";
+      } else {
+        print "scheduling $file for deletion\n";
+      }
       $ticked{ $file } ++;
     }
   }
@@ -154,3 +162,25 @@ $mech->click('SUBMIT_pause99_delete_files_delete');
 
 
 print "Now go to https://pause.perl.org/pause/authenquery?ACTION=delete_files and confirm that all is well.\n";
+
+### END ###
+
+{
+    my $packages;
+    sub indexed_modules
+    {
+        my $dist_name = shift;
+        $packages //= do {
+            my $tempdir = Path::Tiny->tempdir(CLEANUP => 1);
+            my $filename = '02packages.details.txt.gz';
+            my $path = $tempdir->child($filename);
+            my $base = $ENV{CPAN_INDEX_BASE_URL} || 'http://www.cpan.org';
+            my $url = $base . '/modules/' . $filename;
+            my $response = HTTP::Tiny->new->mirror($url, $path);
+            Parse::CPAN::Packages::Fast->new($path->stringify);
+        };
+
+        my @indexed_dists = grep { $_ =~ /$dist_name$/ } keys %{ $packages->{dist_to_pkgs} };
+        map { @{ $packages->{dist_to_pkgs}{$_} } } @indexed_dists;
+    }
+}

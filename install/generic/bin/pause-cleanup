@@ -57,12 +57,7 @@ my $username = $arg{user};
 die "couldn't get username" unless length $username;
 die "no password found"     unless $arg{password};
 
-my $mech = WWW::Mechanize->new;
-$mech->credentials($username, $arg{password});
-
-my $res = $mech->get(
-  q{https://pause.perl.org/pause/authenquery?ACTION=delete_files}
-);
+my $mech = delete_files_mech();
 
 my @files = grep { defined }
             map  { $_->possible_values }
@@ -105,8 +100,6 @@ FILE: for my $file (@files) {
 
 use YAML::XS;
 
-$mech->form_number(1);
-
 my %ticked;
 
 for my $key (sort keys %found) {
@@ -145,17 +138,27 @@ for my $key (sort keys %found) {
   }
 }
 
-print "ticked ", scalar keys %ticked, " ticky boxes\n";
+print "ticking ", scalar keys %ticked, " ticky boxes...\n";
 
-for my $input (
-  $mech->find_all_inputs(name => 'pause99_delete_files_FILE')
-) {
-  for my $val ($input->possible_values) {
-    next if !defined $val || !$ticked{$val};
-    $input->value($val);
-    last;
-  }
-}
+do {
+    my $batch_size = 0;
+    for my $input (
+      $mech->find_all_inputs(name => 'pause99_delete_files_FILE')
+    ) {
+      for my $val ($input->possible_values) {
+        next if !defined $val || !$ticked{$val};
+        $input->value($val);
+        delete $ticked{$val};
+        ++$batch_size;
+        if ($batch_size > 999) {
+            $mech->click('SUBMIT_pause99_delete_files_delete');
+            $batch_size = 0;
+            $mech = delete_files_mech();
+        }
+        last;
+      }
+    }
+} while keys %ticked;
 
 $mech->click('SUBMIT_pause99_delete_files_delete');
 # print $mech->content;
@@ -183,4 +186,16 @@ print "Now go to https://pause.perl.org/pause/authenquery?ACTION=delete_files an
         my @indexed_dists = grep { $_ =~ /$dist_name$/ } keys %{ $packages->{dist_to_pkgs} };
         map { @{ $packages->{dist_to_pkgs}{$_} } } @indexed_dists;
     }
+}
+
+sub delete_files_mech
+{
+    my $mech = WWW::Mechanize->new;
+    $mech->credentials($username, $arg{password});
+
+    my $res = $mech->get(
+      q{https://pause.perl.org/pause/authenquery?ACTION=delete_files}
+    );
+    $mech->form_number(1);
+    $mech;
 }

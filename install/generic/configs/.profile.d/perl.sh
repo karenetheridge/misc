@@ -334,7 +334,7 @@ disapprove() {
     #          \x{0ca0}\x5f0x{0ca0}
     # UTF-8:   0xE0B2A0
     #          \x{e0b2a0}
-    perl -CS -wle'print v3232.95.3232'
+    perl -CS -le'print v3232.95.3232'
 }
 
 snowman () {

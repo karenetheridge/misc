@@ -446,5 +446,5 @@ metacpan_reindex() {
 }
 
 md5hex() {
-    perl -MDigest::MD5=md5_hex -wle'print md5_hex(shift)' $*
+    perl -MDigest::MD5=md5_hex -wle'chomp(my $line = <>); print md5_hex($line)'
 }

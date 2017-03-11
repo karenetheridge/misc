@@ -32,7 +32,7 @@ run( qw/yes | perlbrew install-cpanm/ );
 
 # install perl and lock it down
 
-$perl = '' if grep { qr{^http://} } @args;
+$perl = '' if grep { qr{^http} } @args;
 
 run_or_die( qw/perlbrew install -j 9 --as/, $as, $perl, @threads, @no_dot_inc, @no_man, @args );
 run_or_die( qw/chmod -R a-w/, "$ENV{HOME}/perl5/perlbrew/perls/$as" );

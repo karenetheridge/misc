@@ -150,6 +150,11 @@ my @serial_tests = qw(
 my @fails_tests = qw(
 );
 
+my @final_fix = qw(
+    Dist::Zilla::Plugin::SurgicalPodWeaver
+    Hash::Util::FieldHash::Compat
+);
+
 my @with_dev_recommends = (
 qw(
     ExtUtils::MakeMaker

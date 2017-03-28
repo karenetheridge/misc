@@ -33,3 +33,10 @@ ceflow() {
     tput bel
     tput bel
 }
+
+# overrides the less usable version in devtools/cessh
+# Also assumes that campusexplorer.com is in the list of search domains.
+cessh() {
+    host=$1; shift
+    ssh -p 8822 $host "$@"
+}

@@ -40,3 +40,8 @@ cessh() {
     host=$1; shift
     ssh -p 8822 $host "$@"
 }
+
+cescp() {
+    host=$1; shift
+    scp -P 8822 $host "$@"
+}

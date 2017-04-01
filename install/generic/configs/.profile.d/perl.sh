@@ -449,6 +449,10 @@ md5hex() {
     perl -MDigest::MD5=md5_hex -wle'chomp(my $line = <>); print md5_hex($line)'
 }
 
+base64 () {
+    perl -MDigest::MD5=md5_base64 -wle'chomp(my $line = <>); print md5_base64($line)'
+}
+
 rot13(){
     perl -n -wle'tr/A-MN-Za-mn-z/N-ZA-Mn-za-m/; print'
 }

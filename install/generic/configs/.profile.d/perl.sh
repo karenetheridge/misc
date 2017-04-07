@@ -236,24 +236,27 @@ stdperls() {
 }
 
 mydists() {
-    pushd ~/git/_mydists
-    local list=($(ls -l1))
-    popd
-    echo "${list[@]}"
+    pushd ~/git/_mydists > /dev/null
+    ls -l1
+    popd > /dev/null
 }
 
 adopteddists() {
-    pushd ~/git/_adopteddists
-    local list=($(ls -l1))
-    popd
-    echo "${list[@]}"
+    pushd ~/git/_adopteddists > /dev/null
+    ls -l1
+    popd > /dev/null
 }
 
 shippeddists() {
-    pushd ~/git/_shippeddists
-    local list=($(ls -l1))
-    popd
-    echo "${list[@]}"
+    pushd ~/git/_shippeddists > /dev/null
+    ls -l1
+    popd > /dev/null
+}
+
+comaintdists() {
+    pushd ~/git/_comaintdists > /dev/null
+    ls -l1
+    popd > /dev/null
 }
 
 firstcome() {

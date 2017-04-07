@@ -57,6 +57,8 @@ qw(
     strictures
     Role::Tiny Package::Variant Moo
     Text::Diff
+    ExtUtils::CBuilder
+    ExtUtils::HasCompiler
     Dist::Zilla::Plugin::Chrome::ExtraPrompt
     Dist::Zilla::Plugin::Bootstrap::lib
     Dist::Zilla::App::Command::dumpphases

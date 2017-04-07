@@ -164,8 +164,8 @@ qw(
     Moose
     Dist::Zilla::PluginBundle::Author::ETHER
 ),
-# distributions that I call "mine"
-(map { (my $mod = basename($_)) =~ s/-/::/g; $mod } glob('~/git/mydists/*')),
+# distributions that I call "mine", or "adopted"
+(map { (my $mod = basename($_)) =~ s/-/::/g; $mod } glob('~/git/_{my,adopted}dists/*')),
 
 # distributions where ETHER is first-come in PAUSE
 (map { s/,ETHER,[fm]//;s/-/::/g; $_ } split(/\n/, `grep ',ETHER,[fm]' ~/.cpanm/06perms.txt`))

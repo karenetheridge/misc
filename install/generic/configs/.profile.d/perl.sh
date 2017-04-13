@@ -15,6 +15,10 @@ export DZIL_AIRPLANE=1
 # see https://metacpan.org/pod/release/MSTROUT/Parse-CPAN-Meta-1.4418-TRIAL/lib/Parse/CPAN/Meta.pm#ENVIRONMENT
 export CPAN_META_JSON_BACKEND=JSON::MaybeXS
 
+# if I set this variable to true, I want it to be intentional.
+# otherwise, engage maximal failure mode.
+export PERL_USE_UNSAFE_INC=0
+
 # Parse::CPAN::Meta only uses this if CPAN_META_JSON_BACKEND is not set
 # and it must be either JSON::PP or JSON::XS.
 # export PERL_JSON_BACKEND=Cpanel::JSON::XS

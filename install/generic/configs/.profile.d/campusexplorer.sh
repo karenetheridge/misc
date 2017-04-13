@@ -35,13 +35,12 @@ ceflow() {
 }
 
 # overrides the less usable version in devtools/cessh
-# Also assumes that campusexplorer.com is in the list of search domains.
 cessh() {
     host=$1; shift
-    ssh -p 8822 $host "$@"
+    ssh -p 8822 -l $CE_REMOTE_USERNAME $host.campusexplorer.com "$@"
 }
 
 cescp() {
     host=$1; shift
-    scp -P 8822 $host "$@"
+    scp -P 8822 -l $CE_REMOTE_USERNAME $host.campusexplorer.com "$@"
 }

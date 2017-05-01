@@ -58,7 +58,7 @@
 	pr = pull --rebase
 	rc = rebase --continue
 	wip = stash save --keep-index 'wip'
-	fetchall = fetch --all --prune
+	fetchall = fetch --all --tags --prune
 	squash = commit -m'squash'
 	deltag = push --delete origin tag
 	delbranch = push origin --delete

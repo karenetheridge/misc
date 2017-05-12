@@ -27,6 +27,7 @@ macportsup() {
     sudo port upgrade outdated
 
     echo "if you are extremely happy with the results, or need disk space, run macportscleanup"
+    say "macports update complete"
 }
 
 macportscleanup() {
@@ -45,6 +46,7 @@ macportscleanup() {
     echo ""
     echo "need more disk space? run repeatedly until there is nothing more to do:"
     echo "macportscleanup"
+    say "macports cleanup complete"
 }
 
 alias macportsupdate=macportsup

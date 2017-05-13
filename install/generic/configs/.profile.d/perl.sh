@@ -385,7 +385,7 @@ mt() {
 }
 
 unstale () {
-    dzil stale --all | cpanm
+    DZIL_AIRPLANE= dzil stale --all | cpanm
 }
 
 # install all modules released by me,

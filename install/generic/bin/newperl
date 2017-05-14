@@ -42,7 +42,7 @@ run_or_die( qw/perlbrew lib create/, $lib );
 
 my $elapsed_time = time() - $start_time;
 my ($min, $sec) = (int($elapsed_time / 60), $elapsed_time % 60);
-print "done (elapsed time: ${min}m ${sec}s). now you should run: perlbrew use $as\@std; PERL_USE_UNSAFE_INC=1 CPAN_META_JSON_BACKEND= perlmodules \n";
+print "done (elapsed time: ${min}m ${sec}s). now you should run: perlbrew use $as\@std; CPAN_META_JSON_BACKEND= perlmodules \n";
 system(say => 'done.');
 system(say => "elapsed time: ${min} minutes, ${sec} seconds.");
 

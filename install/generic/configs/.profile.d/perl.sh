@@ -102,9 +102,9 @@ releases() {
 #--mirror=http://search.cpan.org/CPAN"
 
 # if App::cpanminus::reporter is installed, we send reports automatically
-#alias cpanm='cpanm --mirror-only --mirror http://mirrors.gossamer-threads.com/CPAN/'
+#alias cpanm='cpanm --mirror-only --mirror https://mirrors.gossamer-threads.com/CPAN/'
 function cpanm() {
-    command cpanm --mirror-only --mirror http://mirrors.gossamer-threads.com/CPAN/ $@
+    command cpanm  --mirror https://mirrors.gossamer-threads.com/CPAN/ $@
     cpanm-reporter
 }
 

@@ -132,6 +132,7 @@ qw(
     Test::RequiresInternet
     Test::Pod
     Test::Pod::Coverage
+    Reindeer
 ),
 );
 

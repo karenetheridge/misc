@@ -1,1 +1,3 @@
 set bell-style visible
+set editing-mode emacs
+set keymap emacs

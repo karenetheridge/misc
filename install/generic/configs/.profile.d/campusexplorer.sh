@@ -1,14 +1,25 @@
 
 export CE_REMOTE_USERNAME=ketheridge
 export CEROOT=~/src/CE
+
+# for host-to-guest mounting:
+export CE_VAGRANT_VBOXSF_MOUNTPOINT=~/src/CE
+
+# for guest-to-host mounting:
+# export CE_VAGRANT_SSHFS_MOUNTPOINT=...
+
+export CHEOPSROOT=~/src/cheops
 export CE_EMAIL_ADDRESS=ketheridge@campusexplorer.com
 export CE_SSH_TIMEOUT=120
+
+export AWS_CONFIG_FILE=$HOME/.aws-campusexplorer/aws.config
 
 export CE_MONDAYS_STYLE=safe
 
 export PATH=/Users/ether/src/CE/devtools:/Users/ether/git/CE/devtools:/Users/ether/src/CE/bin:/Users/ether/git/CE/bin:$PATH
 
 export DEVEL_CONFESS_OPTIONS=objects,better_names,color,errors,warnings
+
 
 ackall() {
     ack "$@" \

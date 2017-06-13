@@ -44,3 +44,22 @@ cescp() {
     host=$1; shift
     scp -P 8822 -l $CE_REMOTE_USERNAME $host.campusexplorer.com "$@"
 }
+
+aws_upload() {
+    filename="$1"
+    zip $filename.zip $filename
+    aws s3 cp $filename.zip s3://tmp.campusexplorer.com
+    bin/s3-authenticated-url --expires 1440 tmp.campusexplorer.com/`basename $filename.zip`
+    tput bel
+}
+
+build_jenkins() {
+    job='ether-testbed%20%2812.04%29'
+    branch="$1"
+
+    # curl --insecure --silent -X POST "https://localhost/job/$job/build" \
+    #         --data-urlencode json='{"parameter": [{"name":"branch", "value":"'$branch'"}]}'
+
+    ssh jenkins.campusexplorer.com ./build_jenkins "$job" "$branch"
+}
+

@@ -4,3 +4,8 @@
 .netrc
 .fetchmailrc
 .msmtprc
+access-key-id.txt
+aws-credential-file.txt
+aws.config
+awsenv
+boto.cfg

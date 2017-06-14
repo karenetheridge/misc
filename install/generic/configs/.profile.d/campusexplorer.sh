@@ -1,4 +1,5 @@
 
+export CE_HOST_USERNAME=ether
 export CE_REMOTE_USERNAME=ketheridge
 export CEROOT=~/src/CE
 
@@ -19,6 +20,14 @@ export CE_MONDAYS_STYLE=safe
 export PATH=/Users/ether/src/CE/devtools:/Users/ether/git/CE/devtools:/Users/ether/src/CE/bin:/Users/ether/git/CE/bin:$PATH
 
 export DEVEL_CONFESS_OPTIONS=objects,better_names,color,errors,warnings
+
+# AWS credentials for Campus Explorer
+export AWS_CONFIG_FILE=$HOME/.aws-campusexplorer/aws.config
+export AWS_CREDENTIAL_FILE=$HOME/.aws-campusexplorer/aws-credential-file.txt
+export BOTO_CONFIG=$HOME/.aws-campusexplorer/boto.cfg
+source $HOME/.aws-campusexplorer/awsenv
+# AWS setup -- END
+
 
 
 ackall() {

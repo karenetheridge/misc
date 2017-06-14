@@ -199,6 +199,10 @@ if has("autocmd")
       au FileType yaml                      set shiftwidth=2
   augroup END
 
+  augroup gitconfig
+      au FileType gitconfig    set ts=8 sw=8 noet nolist
+  augroup END
+
 endif
 
 

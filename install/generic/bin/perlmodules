@@ -255,6 +255,10 @@ run('cpanm-reporter');
 run(@cpanm, @with_dev_recommends);
 run('cpanm-reporter');
 
+# and finally, fix the things that may have been busted by cuckoo modules
+run("EXTRA_TESTING=1 @cpanm --mirror http://www.cpan.org @final_fix");
+run('cpanm-reporter');
+
 SEPARATELY:
 
 run("moose-outdated | @cpanm $dev --mirror http://www.cpan.org");

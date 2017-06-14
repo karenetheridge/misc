@@ -3,18 +3,6 @@
 	path = ~/git/misc/install/generic/configs/.gitconfig
 	path = ~/git/misc/install/bourbon/configs/.gitconfig.private
 
-; see doc/howto/gitflow.txt
-[gitflow "branch"]
-	master = production
-	develop = trunk
-[gitflow "prefix"]
-	feature = feature/
-	release = staging/
-	hotfix = hotfix/
-	support = support/
-	cepatch = cepatch/
-	versiontag = release
-
 [alias]
 	rebasetrunk = rebase -i $(git merge-base trunk HEAD)
 

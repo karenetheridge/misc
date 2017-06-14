@@ -1,4 +1,7 @@
 
+# see also ~/git/misc/install/generic/configs/.gitconfig
+# for more aliases
+
 # aliases and customizations for git
 alias gd='git diff'
 alias gdd='git diff $(git describe --abbrev=0 --tags) HEAD'

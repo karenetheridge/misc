@@ -75,7 +75,9 @@ aws_upload() {
 
 build_jenkins() {
     job='ether-testbed%20%2812.04%29'
-    branch="$1"
+    branch="${1:-$(git branchname)}"
+
+    echo kicking off a jenkins build for $branch on $job
 
     # curl --insecure --silent -X POST "https://localhost/job/$job/build" \
     #         --data-urlencode json='{"parameter": [{"name":"branch", "value":"'$branch'"}]}'

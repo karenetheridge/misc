@@ -74,6 +74,7 @@
 	conf = diff --name-only --diff-filter=U
 	cherry-pick = cherry-pick --ff
 	git = !git		# turns "git git @_" into "git @_", or "git @_" -> "@_"
+	branchname = rev-parse --abbrev-ref HEAD
 
 ; for automatic translation of URLs
 [url "git@github.com:"]

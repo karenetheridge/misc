@@ -74,7 +74,7 @@ aws_upload() {
 }
 
 build_jenkins() {
-    job='ether-testbed%20%2812.04%29'
+    job='ether-testbed-12.04'
     branch="${1:-$(git branchname)}"    # [alias] branchname = rev-parse --abbrev-ref HEAD
 
     echo kicking off a jenkins build for $branch on $job

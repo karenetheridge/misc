@@ -85,3 +85,15 @@ build_jenkins() {
     ssh jenkins.campusexplorer.com ./build_jenkins "$job" "$branch"
 }
 
+build_jenkins_xenial() {
+    job='ether-testbed-16.04'
+    branch="${1:-$(git branchname)}"    # [alias] branchname = rev-parse --abbrev-ref HEAD
+
+    echo kicking off a jenkins build for $branch on $job
+
+    # curl --insecure --silent -X POST "https://localhost/job/$job/build" \
+    #         --data-urlencode json='{"parameter": [{"name":"branch", "value":"'$branch'"}]}'
+
+    ssh jenkins.campusexplorer.com ./build_jenkins "$job" "$branch"
+}
+

@@ -64,7 +64,7 @@
 	noff = merge --no-ff
 	ff = merge --ff-only
 	uhub = hub --remote upstream
-	rebasemaster = rebase -i $(git merge-base master HEAD)
+	rebasemaster = !git rebase -i $(git merge-base master HEAD)
 	morelog = log --pretty=fuller
 ; XXX FIXME - I want tags in bright yellow, branches in bright red
 	logone = log --graph --oneline --decorate --date=short --pretty=format:'%C(yellow)%h %Cred%ad %Cblue%an%C(red bold)%d %Creset%s'
@@ -75,6 +75,7 @@
 	cherry-pick = cherry-pick --ff
 	git = !git		# turns "git git @_" into "git @_", or "git @_" -> "@_"
 	branchname = rev-parse --abbrev-ref HEAD
+	addconf = !git add $(git conf)
 
 ; for automatic translation of URLs
 [url "git@github.com:"]

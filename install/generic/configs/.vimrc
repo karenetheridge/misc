@@ -228,6 +228,8 @@ if has("syntax")
   endif
 endif
 
+set mouse=nv    " disable mouse in insert mode, etc.
+
 if (!has("gui_running"))
     set mouse=      " disable the mouse from interfering!
     set background=dark

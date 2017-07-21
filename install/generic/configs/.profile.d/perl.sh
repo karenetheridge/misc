@@ -360,7 +360,7 @@ poo() {
 
 # run the command on all major perlbrews, starting at 8.8
 almostallperls() {
-    for perl in 8.8 8.9 10.0 10.1 12.5 14.4 16.3 18.4 20.3 22.4 24.2 26.0 27.1 ; do
+    for perl in 8.8 8.9 10.0 10.1 12.5 14.4 16.3 18.4 20.3 22.4 24.2 26.0 27.2 ; do
         perlbrew use ${perl}@std;
         echo; echo using $PERL5LIB
         eval $(printf "%q " "$@")
@@ -370,7 +370,7 @@ almostallperls() {
 }
 
 allperls () {
-    for perl in 8.1 8.5 8.8 8.9 10.0 10.1 12.5 14.4 16.3 18.4 20.3 22.4 24.2 26.0 27.1 ; do
+    for perl in 8.1 8.5 8.8 8.9 10.0 10.1 12.5 14.4 16.3 18.4 20.3 22.4 24.2 26.0 27.2 ; do
         perlbrew use ${perl}@std;
         echo; echo using $PERL5LIB
         eval $(printf "%q " "$@")

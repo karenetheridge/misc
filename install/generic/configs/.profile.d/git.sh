@@ -8,7 +8,7 @@ alias gdd='git diff $(git describe --abbrev=0 --tags) HEAD'
 alias gds='git diff --staged'
 alias gs='git status'
 alias gsi='git status --ignored'
-alias glp='git log -p --decorate --pretty=fuller'
+alias glp='git log -p --decorate --notes --pretty=fuller'
 alias gca='git commit --amend'   # not to be confused with 'gcpa' below
 alias gcp='git cherry-pick --ff'
 
@@ -20,7 +20,7 @@ alias gcpc='git cherry-pick --continue'
 alias gcpa='git cherry-pick --abort'
 alias viconf='vim $(git conf)'  # all files in conflict - see .gitconfig alias
 
-alias gitalltags='git log --tags --simplify-by-decoration --pretty="format:%ai %d"'
+alias gitalltags='git log --tags --simplify-by-decoration --notes --pretty="format:%ai %d"'
 
 if [ -f ~/.git-completion.bash ]; then
   . ~/.git-completion.bash

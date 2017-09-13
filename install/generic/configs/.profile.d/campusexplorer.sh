@@ -97,3 +97,9 @@ build_jenkins_xenial() {
     ssh jenkins.campusexplorer.com ./build_jenkins "$job" "$branch"
 }
 
+# on any elasticsearch cluster host...
+# note you can also make tunnels; go to http://localhost:9210/_plugin/head/
+# for the health of the zora cluster as a whole.
+es_health() {
+    curl -XGET http://localhost:9200/_cluster/health?pretty=1
+}

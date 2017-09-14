@@ -68,8 +68,35 @@ cescp() {
 aws_upload() {
     filename="$1"
     zip $filename.zip $filename
-    aws s3 cp $filename.zip s3://tmp.campusexplorer.com
-    bin/s3-authenticated-url --expires 1440 tmp.campusexplorer.com/`basename $filename.zip`
+
+    # aws s3 cp $filename.zip s3://tmp.campusexplorer.com
+    # bin/s3-authenticated-url --expires 1440 tmp.campusexplorer.com/`basename $filename.zip`
+
+    s3file=$filename
+    s3bucket=tmp.campusexplorer.com
+    expires=$((60 * 60 * 24 * 1)) # 1 day
+    region=us-east-1
+
+    aws s3 cp $filename s3://$s3bucket/$s3file
+
+    AWS_ACCESS_KEY_ID=$(aws ssm get-parameters \
+      --region "$region" \
+      --names /external/s3download/awscreds \
+      --with-decryption \
+      --query 'Parameters[].Value' \
+      --output text | sed 's/:.*//')
+
+    AWS_SECRET_ACCESS_KEY=$(aws ssm get-parameters \
+      --region "$region" \
+      --names /external/s3download/awscreds \
+      --with-decryption \
+      --query 'Parameters[].Value' \
+      --output text | sed 's/.*://')
+
+    aws s3 presign \
+      --expires-in $expires \
+      s3://$s3bucket/$s3file
+
     tput bel
 }
 

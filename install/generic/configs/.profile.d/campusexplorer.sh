@@ -72,8 +72,8 @@ aws_upload() {
     # aws s3 cp $filename.zip s3://tmp.campusexplorer.com
     # bin/s3-authenticated-url --expires 1440 tmp.campusexplorer.com/`basename $filename.zip`
 
-    s3file=$filename
-    s3bucket=tmp.campusexplorer.com
+    s3file=ether/$filename
+    s3bucket=download.campusexplorer.com
     expires=$((60 * 60 * 24 * 1)) # 1 day
     region=us-east-1
 

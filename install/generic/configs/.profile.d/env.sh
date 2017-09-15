@@ -11,6 +11,8 @@ export PAGER='less -icMR'
 export MANPAGER='less -sicMR'
 export PERLDOC_PAGER='less -sicMr'
 
+export PERLDOC=-oman    # xdg++, fixes https://rt.cpan.org/Public/Bug/Display.html?id=88204
+
 export HISTTIMEFORMAT="%Y-%m-%d %T  "
 export HISTSIZE=10000
 

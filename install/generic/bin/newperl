@@ -16,6 +16,7 @@ my @args = @ARGV;
 my @threads = ( $as =~ /t$/ ) ? (qw/-D usethreads/) : ();
 
 # trailing "no." means . is excluded from @INC (5.25.7+)
+# and this option defaults to true anyway for 5.25.11+
 my @no_dot_inc = ( $as =~ /no\.$/ ) ? (qw/-Ddefault_inc_excludes_dot/) : ();
  
 $as =~ s/^5\.//;

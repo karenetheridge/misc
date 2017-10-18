@@ -69,6 +69,13 @@ aws_upload() {
     filename="$1"
     zip $filename.zip $filename
 
+    # only zip if does not end in .zip or .gz
+    if ! [[ $filename =~ \.(zip|gz)$ ]]; then
+        echo zipping $filename to $filename.zip...
+        zip $filename.zip $filename
+        filename=$filename.zip
+    fi
+
     # aws s3 cp $filename.zip s3://tmp.campusexplorer.com
     # bin/s3-authenticated-url --expires 1440 tmp.campusexplorer.com/`basename $filename.zip`
 

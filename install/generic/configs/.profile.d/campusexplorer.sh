@@ -59,7 +59,6 @@ cescp() {
 
 aws_upload() {
     filename="$1"
-    zip $filename.zip $filename
 
     # only zip if does not end in .zip or .gz
     if ! [[ $filename =~ \.(zip|gz)$ ]]; then
@@ -68,8 +67,8 @@ aws_upload() {
         filename=$filename.zip
     fi
 
-    # aws s3 cp $filename.zip s3://tmp.campusexplorer.com
-    # bin/s3-authenticated-url --expires 1440 tmp.campusexplorer.com/`basename $filename.zip`
+    # aws s3 cp $filename.zip s3://download.campusexplorer.com
+    # bin/s3-authenticated-url --expires 1440 download.campusexplorer.com/`basename $filename.zip`
 
     s3file=ether/$filename
     s3bucket=download.campusexplorer.com

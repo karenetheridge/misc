@@ -16,7 +16,7 @@ fix_ssh_agent()
 # attempt to connect to a running agent - cache SSH_AUTH_SOCK in ~/.ssh/
 sagent()
 {
-    [ -S "$SSH_AUTH_SOCK" ] || {
+    {
         agent=$(readlink ~/.ssh/cached-ssh-agent)
         echo cached ssh agent: $agent
         export SSH_AUTH_SOCK="$agent"
@@ -30,8 +30,11 @@ sagent()
         ln -sf $SSH_AUTH_SOCK ~/.ssh/cached-ssh-agent
     }
 
-    echo agent is good? $SSH_AUTH_SOCK
+    echo agent in \$SSH_AUTH_SOCK is good: $SSH_AUTH_SOCK
 }
+
+# when starting, make sure we have an agent?
+sagent
 
 # this will prompt for password, but allow us to use the
 # keychain (e.g. to send mail) when logged in remotely.

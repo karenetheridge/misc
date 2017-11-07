@@ -13,8 +13,6 @@ export CHEOPSROOT=~/src/cheops
 export CE_EMAIL_ADDRESS=ketheridge@campusexplorer.com
 export CE_SSH_TIMEOUT=120
 
-export AWS_CONFIG_FILE=$HOME/.aws-campusexplorer/aws.config
-
 export CE_MONDAYS_STYLE=safe
 
 export PATH=/Users/ether/src/CE/devtools:/Users/ether/git/CE/devtools:/Users/ether/src/CE/bin:/Users/ether/git/CE/bin:$PATH

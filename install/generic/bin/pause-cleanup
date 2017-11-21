@@ -90,7 +90,6 @@ FILE: for my $file (@files) {
     }
   }
 
-  # lol that'll be the day
   next if $dni->dist eq 'perl';
 
   my $by_name = $found{ $dni->dist } ||= {};

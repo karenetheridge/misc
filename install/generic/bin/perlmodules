@@ -215,9 +215,9 @@ if ($separately)
     goto SEPARATELY;
 }
 
-run_or_die(@cpanm, @install_first);
+# only CPAN::Testers::Common::Client still needs . in @INC...
+run_or_die('PERL_USE_UNSAFE_INC=1', 'CPAN_META_JSON_BACKEND=', @cpanm, @install_first);
 run_or_die('cpanm-reporter');
-
 
 ## first pre-pass - ensure Test::Tester and ok are installed as stable, to
 ## avoid having Test::More upgraded to trial unduly.
@@ -233,8 +233,28 @@ run_or_die('cpanm-reporter');
 # we try to install them in parallel first to get their prereqs in parallel.
 run(@cpanm, @serial_tests);
 run('cpanm-reporter');
-run("HARNESS_OPTIONS=j1 @cpanm @serial_tests");
+run('HARNESS_OPTIONS=j1', @cpanm, @serial_tests);
 run('cpanm-reporter');
+
+my @needs_dot_in_inc = qw(
+    Task::Weaken
+    IPC::System::Simple
+    Test::Object
+    Array::Diff
+    List::UtilsBy
+    Module::CPANfile
+    Test::Spelling
+    Test::SubCalls
+    Term::Encoding
+    Dist::Zilla
+    Dist::Zilla::Plugin::Git::CheckFor::MergeConflicts
+);
+run(@cpanm, @needs_dot_in_inc); # once without variable, to get prereqs
+run('cpanm-reporter');
+# may need to split this up into separate waves, if we have layers of blocking prereqs...
+run('PERL_USE_UNSAFE_INC=1', @cpanm, @needs_dot_in_inc);
+run('cpanm-reporter');
+
 
 # in the first big pass, try to install everything in one process, using
 # default HARNESS_OPTIONS, trial/developer releases if there are any

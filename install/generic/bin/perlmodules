@@ -97,7 +97,6 @@ qw(
     Dist::Zilla::Plugin::Test::Synopsis
     Dist::Zilla::Plugin::Substitute
     Dist::Zilla::Plugin::SmokeTests
-    Dist::Zilla::PluginBundle::ROKR
     Dist::Zilla::Plugin::SurgicalPodWeaver
     Dist::Zilla::Plugin::lib
     Dist::Zilla::Plugin::ModuleIncluder
@@ -133,6 +132,7 @@ qw(
     Test::Pod
     Test::Pod::Coverage
     Reindeer
+    App::grindperl
 ),
 );
 
@@ -237,7 +237,7 @@ run('HARNESS_OPTIONS=j1', @cpanm, @serial_tests);
 run('cpanm-reporter');
 
 my @needs_dot_in_inc = qw(
-    Task::Weaken
+    Alt::Module::Runtime::ButEUMM
     IPC::System::Simple
     Test::Object
     Array::Diff

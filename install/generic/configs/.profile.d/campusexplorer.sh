@@ -61,34 +61,33 @@ aws_upload() {
     # only zip if does not end in .zip or .gz
     if ! [[ $filename =~ \.(zip|gz)$ ]]; then
         echo zipping $filename to $filename.zip...
-        zip $filename.zip $filename
-        filename=$filename.zip
+        zip "$filename.zip" "$filename"
+        filename="$filename.zip"
     fi
 
     # aws s3 cp $filename.zip s3://download.campusexplorer.com
     # bin/s3-authenticated-url --expires 1440 download.campusexplorer.com/`basename $filename.zip`
 
-    s3file=ether/$filename
+    s3file="ether/$filename"
     s3bucket=download.campusexplorer.com
     expires=$((60 * 60 * 24 * 1)) # 1 day
     region=us-east-1
 
     aws s3 cp $filename s3://$s3bucket/$s3file
 
-    AWS_ACCESS_KEY_ID=$(aws ssm get-parameters \
+    # these variables should be set in the context of the presign command
+    aws_access_key_id=$(aws ssm get-parameters \
       --region "$region" \
       --names /external/s3download/awscreds \
       --with-decryption \
       --query 'Parameters[].Value' \
-      --output text | sed 's/:.*//')
-
+      --output text | sed 's/:.*//') \
     AWS_SECRET_ACCESS_KEY=$(aws ssm get-parameters \
       --region "$region" \
       --names /external/s3download/awscreds \
       --with-decryption \
       --query 'Parameters[].Value' \
-      --output text | sed 's/.*://')
-
+      --output text | sed 's/.*://') \
     aws s3 presign \
       --expires-in $expires \
       s3://$s3bucket/$s3file

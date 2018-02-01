@@ -99,6 +99,11 @@ build_jenkins() {
     job='ether-testbed-12.04'
     branch="${1:-$(git branchname)}"    # [alias] branchname = rev-parse --abbrev-ref HEAD
 
+    if [[ $branch == 'trunk' ]]
+    then
+        job='Trunk-12.04'
+    fi
+
     echo kicking off a jenkins build for $branch on $job
 
     # curl --insecure --silent -X POST "https://localhost/job/$job/build" \
@@ -110,6 +115,11 @@ build_jenkins() {
 build_jenkins_xenial() {
     job='ether-testbed-16.04'
     branch="${1:-$(git branchname)}"    # [alias] branchname = rev-parse --abbrev-ref HEAD
+
+    if [[ $branch == 'trunk' ]]
+    then
+        job='Trunk-16.04'
+    fi
 
     echo kicking off a jenkins build for $branch on $job
 

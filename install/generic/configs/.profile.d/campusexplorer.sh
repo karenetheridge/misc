@@ -2,6 +2,8 @@
 export CE_HOST_USERNAME=ether
 export CE_REMOTE_USERNAME=ketheridge
 export CEROOT=~/src/CE
+export CE_PMML_VM=~/pmml-vm
+export CE_PMML_MODELS=~/src/pmml-models
 
 # for host-to-guest mounting:
 export CE_VAGRANT_VBOXSF_MOUNTPOINT=~/src/CE

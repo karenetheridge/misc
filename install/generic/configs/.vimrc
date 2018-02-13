@@ -76,6 +76,9 @@ set modeline            " read mode line - e.g. sets file type
 set splitbelow          " I prefer new windows to appear on the bottom
 set splitright          " ... and the right
 
+set nofileignorecase    " I only use case-sensitive filesystems
+set nowildignorecase
+
 set guioptions+=a       " copy the selected area into the global clipboard
 
 if has("folding")

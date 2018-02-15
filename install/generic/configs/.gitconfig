@@ -87,11 +87,9 @@
 	insteadOf = git://git.shadowcat.co.uk/p5sagit/
 	insteadOf = git://git.shadowcat.co.uk:p5sagit/
 
-[url "gitmo@git.moose.perl.org:"]
+[url "gitmo@git.shadowcat.co.uk:"]
 	insteadOf = git://git.shadowcat.co.uk/gitmo/
 	insteadOf = git://git.shadowcat.co.uk:gitmo/
-
-[url "gitmo@git.moose.perl.org:"]
 	insteadOf = git://git.moose.perl.org/
 
 [url "catagits@git.shadowcat.co.uk:"]

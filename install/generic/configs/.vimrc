@@ -206,6 +206,8 @@ if has("autocmd")
       au FileType gitconfig    set ts=8 sw=8 noet nolist
   augroup END
 
+  autocmd BufNewFile,BufRead *.PL   set filetype=perl
+
 endif
 
 

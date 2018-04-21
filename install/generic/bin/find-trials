@@ -1,0 +1,57 @@
+# adapted from original by David Golden (xdg), 2018-04-21
+# vim: set ft=perl ts=8 sts=4 sw=4 tw=115 et :
+#!/usr/bin/env perl
+use v5.14;
+use strict;
+use warnings;
+use CPAN::DistnameInfo;
+use HTTP::Tiny;
+use Parse::CPAN::Packages::Fast;
+
+my $_02_packages = '/Volumes/amaretto/Users/ether/.cpanm/02packages.details.txt';
+
+my $author = shift || "ether";	
+
+$author = uc $author;
+
+my $author_path = $author =~ s{^((.).)}{$2/$1/$1}r;
+
+my (@files) = qx{rsync -avn cpan-rsync.perl.org::CPAN/authors/id/$author_path .};
+
+my %latest;
+for my $f (@files) {
+    chomp $f;
+    next unless $f =~ /\A$author.*tar\.gz\z/;
+    my $info = CPAN::DistnameInfo->new($f);
+    my ( $dist, $version ) = map { $info->$_ } qw/dist version/;
+
+    next if $dist eq 'perl';
+
+    $version =~ s/-TRIAL//;
+    $version = eval { version->new($version) };
+
+    $latest{$dist} ||= { version => 0 };
+    if ( !defined $version ) {
+        printf( "$dist: Bad version '%s'\n", $info->version );
+        next;
+    }
+    if ( $version > $latest{$dist}{version} ) {
+        $latest{$dist}{version}  = $version;
+        $latest{$dist}{maturity} = $info->maturity;
+        $latest{$dist}{tarball}  = $info->filename;
+    }
+}
+
+my $p = Parse::CPAN::Packages::Fast->new($_02_packages);
+
+my $ht = HTTP::Tiny->new;
+
+for my $d ( sort keys %latest ) {
+    my $mod = $d =~ s{-}{::}gr;
+    next if $p->package($mod) && $p->package($mod)->version > $latest{$d}{version};
+    next if $latest{$d}{maturity} eq 'released';
+    my $tarball = $latest{$d}{tarball} =~ s{^$author/}{}r;
+    my $res     = $ht->head("http://www.cpan.org/authors/id/$author_path/$tarball");
+    my $date    = $res->{success} ? $res->{headers}{'last-modified'} : "unknown date";
+    printf( "%29s -- %s\n", $date, $latest{$d}{tarball} );
+}

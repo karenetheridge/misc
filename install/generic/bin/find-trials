@@ -1,6 +1,8 @@
+#!/usr/bin/env perl
+
 # adapted from original by David Golden (xdg), 2018-04-21
 # vim: set ft=perl ts=8 sts=4 sw=4 tw=115 et :
-#!/usr/bin/env perl
+
 use v5.14;
 use strict;
 use warnings;

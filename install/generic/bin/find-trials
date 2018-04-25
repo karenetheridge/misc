@@ -10,10 +10,9 @@ use CPAN::DistnameInfo;
 use HTTP::Tiny;
 use Parse::CPAN::Packages::Fast;
 
-my $_02_packages = '/Volumes/amaretto/Users/ether/.cpanm/02packages.details.txt';
+my $_02_packages = (glob('~'))[0] . '/.cpanm/02packages.details.txt';
 
-my $author = shift || "ether";	
-
+my $author = shift || 'ether';
 $author = uc $author;
 
 my $author_path = $author =~ s{^((.).)}{$2/$1/$1}r;

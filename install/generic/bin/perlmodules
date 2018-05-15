@@ -59,6 +59,7 @@ qw(
     Text::Diff
     ExtUtils::CBuilder
     ExtUtils::HasCompiler
+    File::Copy::Recursive
     Dist::Zilla::Plugin::Chrome::ExtraPrompt
     Dist::Zilla::Plugin::Bootstrap::lib
     Dist::Zilla::App::Command::dumpphases
@@ -244,8 +245,12 @@ my @needs_dot_in_inc = qw(
     Module::CPANfile
     Test::Spelling
     Term::Encoding
-    Dist::Zilla
+    Test::utf8
+    Text::LineFold
     Dist::Zilla::Plugin::Git::CheckFor::MergeConflicts
+    MooseX::MarkAsMethods
+    Module::Info
+    Test::TCP
 );
 run(@cpanm, @needs_dot_in_inc); # once without variable, to get prereqs
 run('cpanm-reporter');

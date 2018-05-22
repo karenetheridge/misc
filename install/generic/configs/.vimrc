@@ -141,10 +141,14 @@ noremap <F3>  :noh<CR>
 " F4: chmod u+w
 noremap <F4>  :!chmod u+w %<CR>
 " F5: toggles list view
-    map <F5>  :set invlist<CR>
+map <F5>  :set invlist<CR>
 
 " F6: toggles syntax colouring
-    map <F6>  :set invsyntax<CR>
+map <F6>  :set invsyntax<CR>
+
+" ,dd -- inserts common perl debugging snippet on next line.
+map ,dd   :set paste<CR>Ouse Data::Dumper;<CR>local $Data::Dumper::Sortkeys = 1;<CR>local $Data::Dumper::Maxdepth = 2;<CR><ESC>:set nopaste<CR>
+
 
 
 " XXX for posterity:

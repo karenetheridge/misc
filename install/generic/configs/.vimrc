@@ -147,7 +147,7 @@ map <F5>  :set invlist<CR>
 map <F6>  :set invsyntax<CR>
 
 " ,dd -- inserts common perl debugging snippet on next line.
-map ,dd   :set paste<CR>Ouse Data::Dumper;<CR>local $Data::Dumper::Sortkeys = 1;<CR>local $Data::Dumper::Maxdepth = 2;<CR><ESC>:set nopaste<CR>
+map ,dd   :set paste<CR>Ouse Data::Dumper;<CR>local $Data::Dumper::Sortkeys = 1;<CR>local $Data::Dumper::Maxdepth = 2;<ESC>:set nopaste<CR>o
 
 
 

@@ -1,6 +1,5 @@
 .*.sw[a-z]
 .DS_Store
-.ackrc
 .netrc
 .fetchmailrc
 .msmtprc

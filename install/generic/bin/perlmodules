@@ -239,10 +239,7 @@ run('cpanm-reporter');
 
 my @needs_dot_in_inc = qw(
     Alt::Module::Runtime::ButEUMM
-    IPC::System::Simple
     Array::Diff
-    List::UtilsBy
-    Module::CPANfile
     Test::Spelling
     Term::Encoding
     Test::utf8

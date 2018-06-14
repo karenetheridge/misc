@@ -3,6 +3,8 @@
 use strict;
 use warnings;
 
+use sigtrap qw(die normal-signals);
+
 # split from from 'newperl', because perlbrew exec has problems handling
 # local::lib directories when we're not actually in that perl directly
 
@@ -336,7 +338,7 @@ sub run_or_die
     my $cmd = join(' ', @_);
     print "\nRunning: $cmd\n";
     system $cmd;
-    die "$cmd returned exit code $?: stopping" if $?;
+    Carp::croak("$cmd returned exit code $?: stopping") if $?;
     return $?
 }
 
@@ -345,7 +347,7 @@ sub run
     my $cmd = join(' ', @_);
     print "\nRunning: $cmd\n";
     system $cmd;
-    warn "$cmd returned exit code $?" if $?;
+    Carp::carp("$cmd returned exit code $?") if $?;
     return $?
 }
 

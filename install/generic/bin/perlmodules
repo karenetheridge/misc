@@ -246,10 +246,10 @@ my @needs_dot_in_inc = qw(
     Term::Encoding
     Test::utf8
     Text::LineFold
-    Dist::Zilla::Plugin::Git::CheckFor::MergeConflicts
     MooseX::MarkAsMethods
     Module::Info
     Test::TCP
+    Dist::Zilla::Plugin::Git::CheckFor::MergeConflicts
 );
 run(@cpanm, @needs_dot_in_inc); # once without variable, to get prereqs
 run('cpanm-reporter');

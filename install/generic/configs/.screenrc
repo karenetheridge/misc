@@ -60,13 +60,13 @@ bind b focus bottom
 ###  # H: terminfo vs100 AB=\E[4%p1%dm
 ###
 ###  # Windows.
-screen -t tf 0 tf -n
+#screen -t tf 0 tf -n
 #    screen -t foo 0
 #    screen -l 1
-screen 1 mutt   # -l
-screen 2 #    fetchmail # -l
-screen 3 agaton
-screen 4    # -l
+#screen 1 mutt   # -l
+#screen 2 #    fetchmail # -l
+#screen 3 agaton
+#screen 4    # -l
 #screen -l 5
 #screen -l 6
 #screen -l 7

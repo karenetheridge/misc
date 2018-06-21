@@ -13,6 +13,11 @@ prepend_path_uniq /opt/local/sbin /opt/local/bin
 # not needed: PATH is used to figure out where to go.
 #export MANPATH=/opt/local/man:$MANPATH
 
+# for a list of what ports I explicitly requested:
+# port installed requested
+
+# https://guide.macports.org/chunked/using.common-tasks.html
+
 macportsup() {
     # update macports itself
     echo ""

@@ -54,7 +54,8 @@ set shiftwidth=4        " autoindents are worth four columns
 set expandtab           " use spaces rather than tabs
 " set formatoptions+=l    " Don't wrap already-long lines
 " set wrapmargin=2        " go to next line when close to the edge
-
+set listchars=tab:^.,trail:⋅,eol:
+set list                " start off in list mode (may sometimes be annoying though)
 
 " BEHAVIOUR
 

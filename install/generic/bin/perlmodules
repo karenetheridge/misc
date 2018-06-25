@@ -174,7 +174,7 @@ qw(
 (map { (my $mod = basename($_)) =~ s/-/::/g; $mod } glob('~/git/_{my,adopted}dists/*')),
 
 # distributions where ETHER is first-come in PAUSE
-( grep { !/^Hash::Util::FieldHash::Compat/ }
+( grep { !/^(Hash::Util::FieldHash::Compat|JSON::Any)/ }
     map { s/,ETHER,[fm]//;s/-/::/g; $_ } split(/\n/, `grep ',ETHER,[fm]' ~/.cpanm/06perms.txt`))
 );
 

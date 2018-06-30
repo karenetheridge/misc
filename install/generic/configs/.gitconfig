@@ -76,8 +76,6 @@
 	git = !git		# turns "git git @_" into "git @_", or "git @_" -> "@_"
 	branchname = rev-parse --abbrev-ref HEAD
 	addconf = !git add $(git conf)
-	staging = !git checkout $(git staging-latest)
-	prod = !git checkout $(git prod-latest)
 
 ; for automatic translation of URLs
 [url "git@github.com:"]

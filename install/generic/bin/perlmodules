@@ -240,7 +240,6 @@ run('HARNESS_OPTIONS=j1', @cpanm, @serial_tests);
 run('cpanm-reporter');
 
 my @needs_dot_in_inc = qw(
-    Alt::Module::Runtime::ButEUMM
     Array::Diff
     Test::Spelling
     Term::Encoding

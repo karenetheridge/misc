@@ -249,6 +249,7 @@ my @needs_dot_in_inc = qw(
     Module::Info
     Test::TCP
     Dist::Zilla::Plugin::Git::CheckFor::MergeConflicts
+    Dist::Zilla::Plugin::Git::Remote::Check
 );
 run(@cpanm, @needs_dot_in_inc); # once without variable, to get prereqs
 run('cpanm-reporter');

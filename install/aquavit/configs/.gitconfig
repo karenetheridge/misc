@@ -1,1 +1,15 @@
-../../generic/configs/.gitconfig
+; vim: set ts=4 sw=4 sts=4 tw=78 noet :
+[include]
+	path = ~/git/misc/install/generic/configs/.gitconfig
+	path = ~/git/misc/install/aquavit/configs/.gitconfig.private
+
+[user]
+	email = ether@joyent.com
+	name = Karen Etheridge
+
+; from https://gist.github.com/piscisaureus/3342247
+; copy one of these to your .git/config as needed
+;[remote "origin"]
+;	fetch = +refs/pull/*/head:refs/remotes/origin/pull/*
+;[remote "upstream"]
+;	fetch = +refs/pull/*/head:refs/remotes/upstream/pull/*

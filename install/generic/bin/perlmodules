@@ -3,13 +3,12 @@
 use strict;
 use warnings;
 
-use sigtrap qw(die normal-signals);
-
 # split from from 'newperl', because perlbrew exec has problems handling
 # local::lib directories when we're not actually in that perl directly
 
 my $start_time = time();
 
+use Carp ();
 use File::Basename;
 sub part(&@);
 
@@ -338,6 +337,7 @@ sub run_or_die
     my $cmd = join(' ', @_);
     print "\nRunning: $cmd\n";
     system $cmd;
+    Carp::croak("$cmd stopped with signal ", ($? & 127), ': stopping') if $? & 127;
     Carp::croak("$cmd returned exit code $?: stopping") if $?;
     return $?
 }
@@ -347,6 +347,7 @@ sub run
     my $cmd = join(' ', @_);
     print "\nRunning: $cmd\n";
     system $cmd;
+    Carp::croak("$cmd stopped with signal ", ($? & 127), ': stopping') if $? & 127;
     Carp::carp("$cmd returned exit code $?") if $?;
     return $?
 }

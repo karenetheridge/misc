@@ -35,6 +35,12 @@ run( qw/yes | perlbrew install-cpanm/ );
 
 $perl = '' if grep { qr{^http} } @args;
 
+# DB_File on OSX 10.13 is incompatible - when the build fails,
+# sudo port install db48,
+# and then add these lines to cpan/DB_File/config.in and rebuild:
+# INCLUDE = /opt/local/include/db48
+# LIB = /opt/local/lib/db48
+# see also cpan RT#125238, perl RT#133280.
 run_or_die( qw/perlbrew install -j 9 --as/, $as, $perl, @threads, @no_dot_inc, @no_man, @args );
 run_or_die( qw/chmod -R a-w/, "$ENV{HOME}/perl5/perlbrew/perls/$as" );
 

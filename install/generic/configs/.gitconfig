@@ -4,7 +4,7 @@
 	path = ~/git/misc/install/generic/configs/.gitconfig.private
 
 [user]
-	email = ether@cpan.org
+	email = (none)	; forces local config before commits are allowed
 	name = Karen Etheridge
 [color]
 	diff = auto

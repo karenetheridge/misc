@@ -76,6 +76,8 @@
 	git = !git		# turns "git git @_" into "git @_", or "git @_" -> "@_"
 	branchname = rev-parse --abbrev-ref HEAD
 	addconf = !git add $(git conf)
+	; from daleg, 2018-07-12
+	check-whitespace = !git diff-tree --check $(git hash-object -t tree /dev/null) HEAD
 
 ; for automatic translation of URLs
 [url "git@github.com:"]

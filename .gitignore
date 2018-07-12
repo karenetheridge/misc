@@ -1,5 +1,5 @@
-/install/generic/configs/.profile.d/local.sh
-/install/generic/configs/.gitconfig.local
+/install/*/configs/.profile.d/local.sh
+/install/*/configs/.gitconfig.local
 !.ackrc
 .bash_history
 .netrwhist

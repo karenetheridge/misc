@@ -204,7 +204,7 @@ errno_list() {
     perl -le 'for (1..255) { $! = $_; my ($key) = grep $!{$_}, keys %!; print "$_: $key: $!" if defined $key }'
 }
 
-json() {
+jsondump() {
     perl -MJSON -MData::Dumper -wle'$Data::Dumper::Sortkeys = 1; print Dumper(decode_json(qq($ARGV[0])))' "$@"
 }
 

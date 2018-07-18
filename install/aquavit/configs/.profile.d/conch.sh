@@ -10,3 +10,8 @@ export PATH=$PATH:/opt/local/lib/postgresql96/bin
 # from buildops-docs/setup/mac/
 export GOPATH=$HOME/go
 export PATH=$GOPATH/bin:$PATH
+
+
+conch_db() {
+    sudo -u postgres psql -U conch
+}

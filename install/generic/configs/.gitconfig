@@ -81,6 +81,8 @@
 	addconf = !git add $(git conf)
 	; from daleg, 2018-07-12
 	check-whitespace = !git diff-tree --check $(git hash-object -t tree /dev/null) HEAD
+	; from http://durdn.com/blog/2012/11/22/must-have-git-aliases-advanced-examples/
+	ls-aliases = !git config -l | grep alias | cut -c 7-
 
 ; for automatic translation of URLs
 [url "git@github.com:"]

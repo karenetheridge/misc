@@ -54,6 +54,7 @@
 
 [log]
 	date = iso8601
+	follow = true	; as if we did 'git log --follow', when just one file
 
 [alias]
 	pr = pull --rebase

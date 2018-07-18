@@ -1,3 +1,4 @@
+# this file is install/generic/configs/.bashrc
 
 # note this gets run via .bash_profile too
 

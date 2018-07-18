@@ -1,7 +1,7 @@
 ###################################################################
 ###
 ### ether's muttrc
-### This file lives in //depot/users/ether/.muttrc
+### This file lives in install/generic/configs/.muttrc
 ### Largely based on the .muttrc for ether@tcp.com
 ### with a few things taken from neilw, lukec etc
 ###

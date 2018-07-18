@@ -1,3 +1,5 @@
+# this file is install/generic/configs/.profile.d/zzz.sh
+
 # stuff that runs at the (presumed) end of the .sh startup
 
 prepend_path_uniq \

@@ -1,3 +1,4 @@
+# this file is install/generic/configs/.profile.d/svn.sh
 
 # print description of change (legacy name from Luke)..
 # pdes 4   -> prints info about rev 4

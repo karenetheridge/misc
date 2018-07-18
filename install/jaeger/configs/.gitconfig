@@ -1,4 +1,6 @@
 ; vim: set ts=4 sw=4 sts=4 tw=78 noet :
+; this file is install/jaeger/configs/.gitconfig
+
 [include]
 	path = ~/git/misc/install/generic/configs/.gitconfig
 	path = ~/git/misc/install/jaeger/configs/.gitconfig.private

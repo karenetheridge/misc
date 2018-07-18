@@ -1,3 +1,5 @@
+# this file is install/generic/configs/.profile.d/perlbrew.sh
+
 # from perlbrew.pl:
 ## Installing perlbrew
 # The perlbrew is installed as:

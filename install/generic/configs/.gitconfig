@@ -1,4 +1,6 @@
 ; vim: set ts=4 sw=4 sts=4 tw=78 noet :
+; this file is install/generic/configs/.gitconfig
+
 [include]
 ;	path = ~/git/misc/install/generic/configs/.gitconfig -- this file!
 	path = ~/git/misc/install/generic/configs/.gitconfig.private

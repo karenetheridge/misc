@@ -1,3 +1,4 @@
+# this file is install/generic/configs/.profile.d/git-hub.sh
 
 # see https://github.com/ingydotnet/git-hub
 

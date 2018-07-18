@@ -1,3 +1,5 @@
+# this file is install/generic/configs/.profile.d/env.sh
+
 export EDITOR=vim
 
 # use ANSI color sequences in 'ls', even when outputting to non-tty

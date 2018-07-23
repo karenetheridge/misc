@@ -3,7 +3,7 @@
 
 [include]
 	path = ~/git/misc/install/generic/configs/.gitconfig
-	path = ~/git/misc/install/aquavit/configs/.gitconfig.private
+	path = ~/git/misc/install/aquavit/configs/.gitconfig.local
 
 [user]
 	email = ether@joyent.com

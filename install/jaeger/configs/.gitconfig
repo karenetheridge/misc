@@ -3,7 +3,7 @@
 
 [include]
 	path = ~/git/misc/install/generic/configs/.gitconfig
-	path = ~/git/misc/install/jaeger/configs/.gitconfig.private
+	path = ~/git/misc/install/jaeger/configs/.gitconfig.local
 
 [user]
 	email = ether@cpan.org

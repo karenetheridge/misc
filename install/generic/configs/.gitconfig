@@ -3,7 +3,7 @@
 
 [include]
 ;	path = ~/git/misc/install/generic/configs/.gitconfig -- this file!
-	path = ~/git/misc/install/generic/configs/.gitconfig.private
+	path = ~/git/misc/install/generic/configs/.gitconfig.local
 
 [user]
 	email = (none)	; forces local config before commits are allowed

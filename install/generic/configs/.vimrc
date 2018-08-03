@@ -157,6 +157,9 @@ map <F6>  :set invsyntax<CR>
 " ,dd -- inserts common perl debugging snippet on next line.
 map ,dd   :set paste<CR>Ouse Data::Dumper;<CR>local $Data::Dumper::Sortkeys = 1;<CR>local $Data::Dumper::Maxdepth = 2;<ESC>:set nopaste<CR>o
 
+" ,jd -- inserts common test mojo dump snippet
+map ,jd   :set paste<CR>O->or(sub {<CR>use Data::Dumper;<CR>local $Data::Dumper::Sortkeys = 1;<CR>local $Data::Dumper::Maxdepth = 2;<CR>diag 'got response: ', Dumper(shift->tx->res->json) });<ESC>:set nopaste<CR>o
+
 
 
 " XXX for posterity:

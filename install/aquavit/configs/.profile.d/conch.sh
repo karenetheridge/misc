@@ -15,3 +15,8 @@ export PATH=$GOPATH/bin:$PATH
 conch_db() {
     sudo -u postgres psql -U conch
 }
+
+conch_versions() {
+    echo prod: $(curl --silent https://conch.joyent.us/version)
+    echo staging: $(curl --silent https://staging.conch.joyent.us/version)
+}

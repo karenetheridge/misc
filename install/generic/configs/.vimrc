@@ -153,6 +153,8 @@ map ,dd   :set paste<CR>Ouse Data::Dumper;<CR>local $Data::Dumper::Sortkeys = 1;
 " ,jd -- inserts common test mojo dump snippet
 map ,jd   :set paste<CR>O->or(sub {<CR>use Data::Dumper;<CR>local $Data::Dumper::Sortkeys = 1;<CR>local $Data::Dumper::Maxdepth = 2;<CR>diag 'got response: ', Dumper(shift->tx->res->json) });<ESC>:set nopaste<CR>o
 
+" ,l -- compile test of current file
+noremap ,l :!perl -Ilib -c %
 
 
 " XXX for posterity:

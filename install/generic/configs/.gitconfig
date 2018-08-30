@@ -56,6 +56,11 @@
 	date = iso8601
 	follow = true	; as if we did 'git log --follow', when just one file
 
+[github]
+	user = karenetheridge
+[ghi]
+	token = !security find-internet-password -a karenetheridge -s github.com -l 'ghi token' -w
+
 [alias]
 	pr = pull --rebase
 	rc = rebase --continue

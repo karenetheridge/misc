@@ -3,14 +3,7 @@
 
 " Karen Etheridge, ether@tcp.com, 1994-2007.
 " Karen Etheridge, ether@csc.uvic.ca, 1995-1997
-" Karen Etheridge, ketherid@glenayre.com, 1998-2000.
-" Karen Etheridge, kde@microplex.com, 2000.
-" Karen Etheridge, ether@armadillonetworks.com, 2000-2001.
-" Karen Etheridge, ether@activestate.com, 2004-2006.
-" Karen Etheridge, karen.etheridge@globalrelay.net, 2006.
-" Karen Etheridge, ketheridge@threewavesoftware.com, 2007-2008.
-" Karen Etheridge, karene@airg.com, 2008-2013.
-" Karen Etheridge, karen#etheridge.ca, 2000-
+" Karen Etheridge, ether@cpan.org, 2008-
 
 " vim has copious :help, and you can also ask me about anything that this
 " file does.  If you just want syntax colouring or easy format filtering,

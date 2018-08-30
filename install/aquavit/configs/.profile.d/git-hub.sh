@@ -1,1 +1,1 @@
-/Users/ether/git/misc/install/generic/configs/.profile.d/git-hub.sh
+../../../generic/configs/.profile.d/git-hub.sh

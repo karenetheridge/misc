@@ -1,1 +1,1 @@
-/Users/ether/git/misc/install/generic/configs/.profile.d/git-completion.bash
+../../../generic/configs/.profile.d/git-completion.bash

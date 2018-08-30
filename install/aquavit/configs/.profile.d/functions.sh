@@ -1,1 +1,1 @@
-/Users/ether/git/misc/install/generic/configs/.profile.d/functions.sh
+../../../generic/configs/.profile.d/functions.sh

@@ -17,6 +17,7 @@ export PERLDOC=-oman    # xdg++, fixes https://rt.cpan.org/Public/Bug/Display.ht
 
 export HISTTIMEFORMAT="%Y-%m-%d %T  "
 export HISTSIZE=10000
+export HISTCONTROL=ignoredups   # turn off ignorespace
 
 export LANG=en_CA.UTF-8
 #export LC_ALL=en_CA.UTF-8

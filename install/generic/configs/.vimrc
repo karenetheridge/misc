@@ -96,7 +96,8 @@ endif
 set secure              " disable unsafe commands in .vimrc files if I do not own them
                         " (e.g. autocommand, shell, write commands)
 
-silent! source .vimlocal    " load .vimlocal files, but do not fail if nonexistent
+silent! source .vimlocal        " load .vimlocal files, but do not fail if nonexistent
+silent! source %:h/.vimlocal    " and override with $dir_of_file/.vimlocal, if present
 
 
 " to change a file's encoding: :write ++enc=utf-8

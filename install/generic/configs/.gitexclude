@@ -8,3 +8,4 @@ aws-credential-file.txt
 aws.config
 awsenv
 boto.cfg
+.vimlocal

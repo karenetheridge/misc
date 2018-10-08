@@ -20,6 +20,7 @@
 	; default = simple
 [merge]
 	renamelimit = 1658
+	ff = false
 [rebase]
 	autostash = true
 [pull]

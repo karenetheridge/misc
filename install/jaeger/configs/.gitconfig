@@ -12,5 +12,7 @@
 ; copy one of these to your .git/config as needed
 ;[remote "origin"]
 ;	fetch = +refs/pull/*/head:refs/remotes/origin/pull/*
+; this seems to work again too:
+;	fetch = +refs/pull/*/head:refs/remotes/origin/pr/*
 ;[remote "upstream"]
 ;	fetch = +refs/pull/*/head:refs/remotes/upstream/pull/*

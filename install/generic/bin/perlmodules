@@ -316,7 +316,7 @@ DONE:
 my $elapsed_time = time() - $start_time;
 my ($min, $sec) = (int($elapsed_time / 60), $elapsed_time % 60);
 print "done (elapsed time: ${min}m ${sec}s).\n";
-system(say => 'done.');
+system(say => "done, on perl $]");
 system(say => "elapsed time: ${min} minutes, ${sec} seconds.");
 
 sub part(&@)

@@ -96,9 +96,6 @@ endif
 set secure              " disable unsafe commands in .vimrc files if I do not own them
                         " (e.g. autocommand, shell, write commands)
 
-silent! source .vimlocal        " load .vimlocal files, but do not fail if nonexistent
-silent! source %:h/.vimlocal    " and override with $dir_of_file/.vimlocal, if present
-
 
 " to change a file's encoding: :write ++enc=utf-8
 
@@ -172,6 +169,10 @@ if has("autocmd")
   " Turn off line wrap for common files
   au BufNewFile,BufRead db.*	setlocal nowrap
   au BufNewFile,BufRead /etc/*	setlocal nowrap
+
+  " load local override files
+  au BufNewFile,BufRead * silent! source .vimlocal        " load .vimlocal files, but do not fail if nonexistent
+  au BufNewFile,BufRead * silent! source %:h/.vimlocal    " and override with $dir_of_file/.vimlocal, if present
 
   au BufNewFile,BufRead,StdinReadPost *
     \ let s:l1 = getline(1) |

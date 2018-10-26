@@ -68,7 +68,7 @@
 	wip = stash save --keep-index 'wip'
 	fetchall = fetch --all --tags --prune
 	squash = commit -m'squash'
-	deltag = "!git tag -d $1; git push --delete origin tag $1"
+	deltag = "!git push --delete origin tag $1; git tag -d $1"
 	delbranch = push origin --delete
 	noff = merge --no-ff
 	ff = merge --ff-only

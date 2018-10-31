@@ -103,6 +103,7 @@ qw(
     Dist::Zilla::Plugin::lib
     Dist::Zilla::Plugin::ModuleIncluder
     Dist::Zilla::Plugin::Bootstrap::ShareDir::Module
+    Dist::Zilla::Plugin::OSPrereqs
     Pod::Coverage::TrustPod
     Pod::Coverage::Moose
     Dist::Zilla::PluginBundle::Author::ETHER
@@ -135,6 +136,8 @@ qw(
     Test::Pod::Coverage
     Reindeer
     App::grindperl
+    Dist::Zilla::Plugin::Prereqs::FromCPANfile
+    Dist::Zilla::Plugin::Test::Pod::Coverage::Configurable
 ),
 );
 

@@ -166,6 +166,11 @@ noremap ,l :!perl -Ilib -c %
 if has("autocmd")
   filetype plugin indent on
 
+  " more filetype detection:
+  au BufNewFile,BufRead *.PL                    set filetype=perl
+  au BufNewFile,BufReadPre cpanfile             set filetype=perl
+  au BufNewFile,BufReadPre cpanfile.snapshot    set filetype=yaml
+
   " Turn off line wrap for common files
   au BufNewFile,BufRead db.*	setlocal nowrap
   au BufNewFile,BufRead /etc/*	setlocal nowrap
@@ -218,7 +223,6 @@ if has("autocmd")
       au FileType gitconfig    set ts=8 sw=8 noet nolist
   augroup END
 
-  autocmd BufNewFile,BufRead *.PL   set filetype=perl
 
 endif
 

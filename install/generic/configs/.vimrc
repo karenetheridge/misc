@@ -168,6 +168,7 @@ if has("autocmd")
 
   " more filetype detection:
   au BufNewFile,BufRead *.PL                    set filetype=perl
+  au BufNewFile,BufRead *.ti                    set filetype=perl
   au BufNewFile,BufReadPre cpanfile             set filetype=perl
   au BufNewFile,BufReadPre cpanfile.snapshot    set filetype=yaml
 

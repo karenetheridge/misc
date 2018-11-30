@@ -3,6 +3,8 @@
 # to alter ExtUtils::MakeMaker options (e.g. compile options used in cpan):
 # export PERL_MM_OPT="INC=-I/opt/local/include LIBS=-L/opt/local/lib"
 
+# export PERL_MB_OPT="--install_path bindoc= --install_path libdoc="
+
 # export PATH=/usr/local/ActivePerl-5.8/bin:$PATH
 
 export HARNESS_OPTIONS=j5:c

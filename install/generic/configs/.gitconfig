@@ -3,7 +3,6 @@
 
 [include]
 ;	path = ~/git/misc/install/generic/configs/.gitconfig -- this file!
-	path = ~/git/misc/install/generic/configs/.gitconfig.local
 
 [user]
 	name = Karen Etheridge

@@ -6,7 +6,6 @@
 	path = ~/git/misc/install/generic/configs/.gitconfig.local
 
 [user]
-	email = (none)	; forces local config before commits are allowed
 	name = Karen Etheridge
 [color]
 	diff = auto

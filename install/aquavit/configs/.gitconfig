@@ -5,8 +5,6 @@
 	path = ~/git/misc/install/generic/configs/.gitconfig
 	path = ~/git/misc/install/aquavit/configs/.gitconfig.local
 
-[user]
-	email = ether@joyent.com
 
 ; from https://gist.github.com/piscisaureus/3342247
 ; copy one of these to your .git/config as needed

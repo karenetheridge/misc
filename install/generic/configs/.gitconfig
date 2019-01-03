@@ -21,6 +21,8 @@
 	ff = false
 [rebase]
 	autostash = true
+	missingCommitsCheck = true
+	stat = true
 [pull]
 	autostash = true
 [branch]

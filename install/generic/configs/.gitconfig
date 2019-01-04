@@ -21,7 +21,7 @@
 	ff = false
 [rebase]
 	autostash = true
-	missingCommitsCheck = true
+	missingCommitsCheck = warn
 	stat = true
 [pull]
 	autostash = true

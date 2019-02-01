@@ -89,6 +89,8 @@
 	check-whitespace = !git diff-tree --check $(git hash-object -t tree /dev/null) HEAD
 	; from http://durdn.com/blog/2012/11/22/must-have-git-aliases-advanced-examples/
 	ls-aliases = !git config -l | grep alias | cut -c 7-
+	pull-url = "!echo $(git remote get-url --push origin | perl -p -e's{^(?:git@|https?//)([^:/]*)[:/](.+).git}{https://$1/$2/pull/new/}')$(git branchname)"
+	pr = "!git push -u origin $(git branchname); open $(git pull-url)"
 
 ; for automatic translation of URLs
 [url "git@github.com:"]

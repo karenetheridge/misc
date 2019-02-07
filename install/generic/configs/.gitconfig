@@ -91,6 +91,8 @@
 	ls-aliases = !git config -l | grep alias | cut -c 7-
 	pull-url = "!echo $(git remote get-url --push origin | perl -p -e's{^(?:git@|https?//)([^:/]*)[:/](.+).git}{https://$1/$2/pull/new/}')$(git branchname)"
 	pr = "!git push -u origin $(git branchname); open $(git pull-url)"
+	# files that changed in the commit
+	df = !sh -c 'git diff-tree --no-commit-id --name-only -r "${1-HEAD}"'
 
 ; for automatic translation of URLs
 [url "git@github.com:"]

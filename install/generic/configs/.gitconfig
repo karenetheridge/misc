@@ -93,6 +93,7 @@
 	pr = "!git push -u origin $(git branchname); open $(git pull-url)"
 	# files that changed in the commit
 	df = !sh -c 'git diff-tree --no-commit-id --name-only -r "${1-HEAD}"'
+	pushf = push --force-with-lease
 
 ; for automatic translation of URLs
 [url "git@github.com:"]

@@ -94,3 +94,6 @@ no() {
     perl -e'for (;;) { print "n\n" }'
 }
 
+spelling() {
+    aspell list | sort -u
+}

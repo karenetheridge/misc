@@ -38,7 +38,7 @@ path() {
     perl -wle'print join "\n", split(":", $ENV{PATH})'
 }
 
-alias diff='colordiff  -u -s --ignore-blank-lines'
+alias diff='colordiff  -u -s'
 
 alias sidediff='colordiff  -s --side-by-side --width=165'
 

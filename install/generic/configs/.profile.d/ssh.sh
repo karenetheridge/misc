@@ -28,6 +28,9 @@ sagent()
         echo 'cached ssh agent is invalid; generating a new one'
         eval "$(ssh-agent)"
         ssh-add -t 25920000 -K ~/.ssh/id_rsa
+        if [ -e ~/.ssh/id_ecdsa ]; then
+            ssh-add -t 25920000 -K ~/.ssh/id_ecdsa;
+        fi
         ln -sf $SSH_AUTH_SOCK ~/.ssh/cached-ssh-agent
     }
 

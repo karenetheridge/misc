@@ -206,8 +206,10 @@ if has("autocmd")
   au FileType p4 setlocal noexpandtab
   au FileType p4 setlocal ai
 
-  " this stuff needs more work...
   au FileType perl set formatoptions+=l
+  au FileType perl set textwidth=95
+
+  au FileType sql set textwidth=78
 
   " au FileType * source ~/.vim/plugin/tab.vim
 
@@ -215,10 +217,10 @@ if has("autocmd")
       au BufNewFile,BufReadPre Makefile*    set list
   augroup END
 
-  augroup filetype_yaml
-      au FileType yaml                      set softtabstop=2
-      au FileType yaml                      set shiftwidth=2
-  augroup END
+  au FileType yaml set softtabstop=2
+  au FileType yaml set shiftwidth=2
+
+  au FileType gitcommit set tw=78
 
   augroup gitconfig
       au FileType gitconfig    set ts=8 sw=8 noet nolist

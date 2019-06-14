@@ -148,8 +148,11 @@ map <F6>  :set invsyntax<CR>
 " ,dd -- inserts common perl debugging snippet on next line.
 map ,dd   :set paste<CR>Ouse Data::Dumper;<CR>local $Data::Dumper::Sortkeys = 1;<CR>local $Data::Dumper::Maxdepth = 2;<ESC>:set nopaste<CR>o
 
-" ,jd -- inserts common test mojo dump snippet
+" ,jd -- inserts common test mojo response dump snippet
 map ,jd   :set paste<CR>Ouse Data::Dumper;<CR>local $Data::Dumper::Sortkeys = 1;<CR>local $Data::Dumper::Maxdepth = 5;<CR>diag 'got response: ', Dumper($t->tx->res->json);<ESC>:set nopaste<CR>o
+
+" ,dl -- inserts common mojo log dump snippet
+map ,dl   :set paste<CR>Ouse Data::Dumper;<CR>local $Data::Dumper::Sortkeys = 1;<CR>local $Data::Dumper::Maxdepth = 5;<CR>diag 'got log: ', Dumper($t->app->log->history);<ESC>:set nopaste<CR>o
 
 " ,l -- compile test of current file
 noremap ,l :!perl -Ilib -c %

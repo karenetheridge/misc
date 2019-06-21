@@ -469,3 +469,7 @@ base64 () {
 rot13(){
     perl -n -wle'tr/A-MN-Za-mn-z/N-ZA-Mn-za-m/; print'
 }
+
+maxlen() {
+    perl -wle'my $max=0; while (<>) { chomp; my $length = length($_); $max = $length if $length > $max } print $max'
+}

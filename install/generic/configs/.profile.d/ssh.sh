@@ -38,7 +38,9 @@ sagent()
 }
 
 # when starting, make sure we have an agent?
-sagent
+if [ -t 0 ]; then
+    sagent
+fi
 
 # this will prompt for password, but allow us to use the
 # keychain (e.g. to send mail) when logged in remotely.

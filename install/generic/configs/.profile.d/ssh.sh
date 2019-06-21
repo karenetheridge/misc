@@ -9,6 +9,9 @@ fix_ssh_agent()
 # having troubles getting the passphrase remembered on a headless OSX session?
 # try this:  ssh-add -K ~/.ssh/id_rsa
 
+# looking for a way to print your public key in md5-hex form?
+# https://superuser.com/questions/1088165/get-ssh-key-fingerprint-in-old-hex-format-on-new-version-of-openssh
+# ssh-keygen -l -E md5 -f ~/.ssh/id_ecdsa.pub
 
 
 # adapted from

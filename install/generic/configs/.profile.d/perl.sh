@@ -473,3 +473,7 @@ rot13(){
 maxlen() {
     perl -wle'my $max=0; while (<>) { chomp; my $length = length($_); $max = $length if $length > $max } print $max'
 }
+
+perlpie() {
+    perl -p -i -e $* $(find lib -type f -name \*.pm)
+}

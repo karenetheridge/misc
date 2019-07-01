@@ -475,5 +475,8 @@ maxlen() {
 }
 
 perlpie() {
-    perl -p -i -e $* $(find lib -type f -name \*.pm)
+    sub=$1
+    shift
+    dirs="${@:-lib}"
+    perl -p -i -e $sub $(find $dirs -type f)
 }

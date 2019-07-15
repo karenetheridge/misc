@@ -301,7 +301,7 @@ cpanm_shippeddists() {
 }
 
 cpanm_firstcomedists() {
-    local dists=$(firstcome | perl -n -e's/-/::/g; print')
+    local dists=$(firstcome | perl -n -e's/-/::/g; print' | grep -v JSON::Any)
     echo cpanmdev --no-report-perl-version $* $dists
     cpanmdev --no-report-perl-version $* $dists
 }

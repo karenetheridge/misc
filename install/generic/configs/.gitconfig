@@ -64,7 +64,6 @@
 	token = !security find-internet-password -a karenetheridge -s github.com -l 'ghi token' -w
 
 [alias]
-	pr = pull --rebase
 	rc = rebase --continue
 	wip = stash save --keep-index 'wip'
 	fetchall = fetch --all --tags --prune

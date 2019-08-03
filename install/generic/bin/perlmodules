@@ -250,7 +250,6 @@ my @needs_dot_in_inc = qw(
     Text::LineFold
     MooseX::MarkAsMethods
     Module::Info
-    Test::TCP
     Dist::Zilla::Plugin::Git::CheckFor::MergeConflicts
     Dist::Zilla::Plugin::Git::Remote::Check
 );

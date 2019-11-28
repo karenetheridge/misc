@@ -170,18 +170,18 @@ if has("autocmd")
   filetype plugin indent on
 
   " more filetype detection:
-  au BufNewFile,BufRead *.PL                    set filetype=perl
-  au BufNewFile,BufRead *.t                     set filetype=perl
-  au BufNewFile,BufReadPre cpanfile             set filetype=perl
-  au BufNewFile,BufReadPre cpanfile.snapshot    set filetype=yaml
+  au BufNewFile,BufRead,BufWinEnter *.PL                    set filetype=perl
+  au BufNewFile,BufRead,BufWinEnter *.t                     set filetype=perl
+  au BufNewFile,BufReadPre,BufWinEnter cpanfile             set filetype=perl
+  au BufNewFile,BufReadPre,BufWinEnter cpanfile.snapshot    set filetype=yaml
 
   " Turn off line wrap for common files
-  au BufNewFile,BufRead db.*	setlocal nowrap
-  au BufNewFile,BufRead /etc/*	setlocal nowrap
+  au BufNewFile,BufRead,BufWinEnter db.*	setlocal nowrap
+  au BufNewFile,BufRead,BufWinEnter /etc/*	setlocal nowrap
 
   " load local override files
-  au BufNewFile,BufRead * silent! source .vimlocal        " load .vimlocal files, but do not fail if nonexistent
-  au BufNewFile,BufRead * silent! source %:h/.vimlocal    " and override with $dir_of_file/.vimlocal, if present
+  au BufNewFile,BufRead,BufWinEnter * silent! source .vimlocal        " load .vimlocal files, but do not fail if nonexistent
+  au BufNewFile,BufRead,BufWinEnter * silent! source %:h/.vimlocal    " and override with $dir_of_file/.vimlocal, if present
 
   au BufNewFile,BufRead,StdinReadPost *
     \ let s:l1 = getline(1) |
@@ -210,6 +210,8 @@ if has("autocmd")
   au FileType p4 setlocal ai
 
   au FileType perl set formatoptions+=l
+  au FileType perl set softtabstop=4
+  au FileType perl set shiftwidth=4
   au FileType perl set textwidth=95
 
   au FileType sql set textwidth=78

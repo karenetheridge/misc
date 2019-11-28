@@ -33,8 +33,9 @@
 	enabled = true
 	autoupdate = true
 [diff]
-	algorithm = patience
+	algorithm = histogram	; a bit better than patience
 	compactionHeuristic = true
+	indentHeuristic = true
 [diff "gz"]
 	textconv = zcat
 	cachetextconv = true

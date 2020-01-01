@@ -30,6 +30,12 @@ export LESSCHARSET="utf-8"
 # tab-completion ignore
 export FIGNORE="CVS:~:.o:.svn:.swp"
 
+# suppress warning at login:
+#   The default interactive shell is now zsh.
+#   To update your account to use zsh, please run `chsh -s /bin/zsh`.
+#   For more details, please visit https://support.apple.com/kb/HT208050.
+export BASH_SILENCE_DEPRECATION_WARNING=1
+
 # commented out -- I don't need lots of "you have mail in.." alerts
 # export MAIL=$HOME/mail/i
 

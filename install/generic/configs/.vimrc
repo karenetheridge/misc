@@ -49,6 +49,7 @@ set expandtab           " use spaces rather than tabs
 " set wrapmargin=2        " go to next line when close to the edge
 set listchars=tab:^.,trail:⋅,eol:
 set list                " start off in list mode (may sometimes be annoying though)
+set nojoinspaces        " when joining, insert one space after [.?!], not two
 
 " BEHAVIOUR
 
@@ -148,8 +149,9 @@ map <F6>  :set invsyntax<CR>
 " ,dd -- inserts common perl debugging snippet on next line.
 map ,dd   :set paste<CR>Ouse Data::Dumper;<CR>local $Data::Dumper::Sortkeys = 1;<CR>local $Data::Dumper::Maxdepth = 2;<ESC>:set nopaste<CR>o
 
-" ,jd -- inserts common test mojo response dump snippet
+" ,jd -- inserts common test mojo response dump snippets
 map ,jd   :set paste<CR>Ouse Data::Dumper;<CR>local $Data::Dumper::Sortkeys = 1;<CR>local $Data::Dumper::Maxdepth = 5;<CR>diag 'got response: ', Dumper($t->tx->res->json);<ESC>:set nopaste<CR>o
+map ,td   :set paste<CR>Oprint STDERR "### got response: ", $t->tx->res->text;<ESC>:set nopaste<CR>o
 
 " ,dl -- inserts common mojo log dump snippet
 map ,dl   :set paste<CR>Ouse Data::Dumper;<CR>local $Data::Dumper::Sortkeys = 1;<CR>local $Data::Dumper::Maxdepth = 5;<CR>diag 'got log: ', Dumper($t->app->log->history);<ESC>:set nopaste<CR>o
@@ -217,7 +219,7 @@ if has("autocmd")
   au FileType perl set shiftwidth=4
   au FileType perl set textwidth=95
 
-  au FileType sql set textwidth=78
+  au FileType sql set textwidth=95
 
   " au FileType * source ~/.vim/plugin/tab.vim
 

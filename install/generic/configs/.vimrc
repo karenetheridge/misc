@@ -170,10 +170,13 @@ if has("autocmd")
   filetype plugin indent on
 
   " more filetype detection:
-  au BufNewFile,BufRead,BufWinEnter *.PL                    set filetype=perl
-  au BufNewFile,BufRead,BufWinEnter *.t                     set filetype=perl
-  au BufNewFile,BufReadPre,BufWinEnter cpanfile             set filetype=perl
-  au BufNewFile,BufReadPre,BufWinEnter cpanfile.snapshot    set filetype=yaml
+  au BufNewFile,BufRead,BufReadPre,BufWinEnter *.PL                 set filetype=perl
+  au BufNewFile,BufRead,BufReadPre,BufWinEnter *.t                  set filetype=perl
+  au BufNewFile,BufRead,BufReadPre,BufWinEnter cpanfile             set filetype=perl
+  au BufNewFile,BufRead,BufReadPre,BufWinEnter cpanfile.snapshot    set filetype=yaml
+  au BufNewFile,BufRead,BufReadPre,BufWinEnter *.html.ep            set filetype=html
+
+  au BufNewFile,BufRead,BufReadPre,BufWinEnter Changes              set tw=78
 
   " Turn off line wrap for common files
   au BufNewFile,BufRead,BufWinEnter db.*	setlocal nowrap

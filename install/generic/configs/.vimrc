@@ -211,33 +211,21 @@ if has("autocmd")
   au FileType mail map Bo gg}o
 
   " perforce submissions
-  au FileType p4 setlocal tw=77
-  au FileType p4 setlocal wrap
-  au FileType p4 setlocal noexpandtab
-  au FileType p4 setlocal ai
+  au FileType p4 setlocal tw=77 wrap noexpandtab ai
 
-  au FileType perl set formatoptions+=l
-  au FileType perl set softtabstop=4
-  au FileType perl set shiftwidth=4
-  au FileType perl set textwidth=95
+  au FileType perl set formatoptions+=l softtabstop=4 shiftwidth=4 textwidth=95
 
   au FileType sql set textwidth=95
 
   " au FileType * source ~/.vim/plugin/tab.vim
 
-  augroup makefile
-      au BufNewFile,BufReadPre Makefile*    set list
-  augroup END
+  au FileType make set list
 
-  au FileType yaml set softtabstop=2
-  au FileType yaml set shiftwidth=2
+  au FileType yaml set softtabstop=2  shiftwidth=2
 
   au FileType gitcommit set tw=78
 
-  augroup gitconfig
-      au FileType gitconfig    set ts=8 sw=8 noet nolist
-  augroup END
-
+  au FileType gitconfig set noexpandtab  nolist  shiftwidth=8
 
 endif
 

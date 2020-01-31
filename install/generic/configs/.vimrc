@@ -45,11 +45,13 @@ set nocompatible        " I understand all the ways that vim != vi.
 set softtabstop=4       " each time I bang on tab, give me four columns
 set shiftwidth=4        " autoindents are worth four columns
 set expandtab           " use spaces rather than tabs
-" set formatoptions+=l    " Don't wrap already-long lines
 " set wrapmargin=2        " go to next line when close to the edge
 set listchars=tab:^.,trail:⋅,eol:
 set list                " start off in list mode (may sometimes be annoying though)
 set nojoinspaces        " when joining, insert one space after [.?!], not two
+set formatoptions-=o    " do not automatically insert the current comment leader after hitting 'o' or 'O' in Normal mode
+set formatoptions+=j    " where it makes sense, remove a comment leader when joining lines
+
 
 " BEHAVIOUR
 

@@ -9,10 +9,12 @@ prepend_path_uniq /opt/local/sbin /opt/local/bin
 
 # Finished adapting your PATH environment variable for use with MacPorts.
 
-############### manual additions below this point:
+# MacPorts Installer addition on 2020-01-22_at_21:37:16: adding an appropriate MANPATH variable for use with MacPorts.
+export MANPATH="/opt/local/share/man:$MANPATH"
+# Finished adapting your MANPATH environment variable for use with MacPorts.
 
-# not needed: PATH is used to figure out where to go.
-#export MANPATH=/opt/local/man:$MANPATH
+
+############### manual additions below this point:
 
 # for a list of what ports I explicitly requested:
 # port installed requested

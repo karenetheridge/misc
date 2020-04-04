@@ -1,0 +1,49 @@
+#!/usr/bin/env perl
+
+use strict;
+use warnings;
+use utf8;
+use Mojo::UserAgent;
+
+# shamelessly stolen from https://github.com/Relequestual/sensible-github-labels/blob/master/label-me.js
+
+my $repo = shift or die "Usage: $0 user-or-org/repository";
+my $token = $ENV{GITHUB_OAUTH_TOKEN} or die "missing environment variable GITHUB_OAUTH_TOKEN";
+
+my $uri = 'https://api.github.com/repos/'.$repo.'/labels';
+
+my $labels = [
+  { name => 'Priority: Low', color => '009800' },
+  { name => 'Priority: Medium', color => 'fbca04' },
+  { name => 'Priority: High', color => 'eb6420' },
+  { name => 'Priority: Critical', color => 'e11d21' },
+  { name => 'Status: Abandoned', color => '000000' },
+  { name => 'Status: Accepted', color => '009800' },
+  { name => 'Status: Available', color => 'bfe5bf' },
+  { name => 'Status: Blocked', color => 'e11d21' },
+  { name => 'Status: Completed', color => '006b75' },
+  { name => 'Status: In Progress', color => 'cccccc' },
+  { name => 'Status: On Hold', color => 'e11d21' },
+  { name => 'Status: Review Needed', color => 'fbca04' },
+  { name => 'Status: Revision Needed', color => 'e11d21' },
+  { name => 'Type: Bug', color => 'e11d21' },
+  { name => 'Type: Maintenance', color => 'fbca04' },
+  { name => 'Type: Enhancement', color => '84b6eb' },
+  { name => 'Type: Question', color => 'cc317c' },
+  { name => '¯\\_[ツ]_/¯', color => 'FFC107' },
+  { name => '[ノಠ益ಠ]ノ彡┻━┻', color => '333333' }
+];
+
+# github api: https://developer.github.com/v3/issues/labels/
+# create a label:   POST /repos/:owner/:repo/labels
+
+foreach my $label ($labels->@*) {
+    my $tx = Mojo::UserAgent->new->post(
+        $uri, 
+        { Authorization => "token $token" },
+        json => $label,
+    );
+
+    # do soemthing with response?
+}
+

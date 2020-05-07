@@ -213,7 +213,7 @@ if has("autocmd")
   " perforce submissions
   au FileType p4 setlocal tw=77 wrap noexpandtab ai
 
-  au FileType perl set formatoptions+=l softtabstop=4 shiftwidth=4 textwidth=95
+  au FileType perl set formatoptions+=l softtabstop=2 shiftwidth=2 textwidth=100
 
   au FileType sql set textwidth=95
 
@@ -225,7 +225,7 @@ if has("autocmd")
 
   au FileType gitcommit set tw=78
 
-  au FileType gitconfig set noexpandtab  nolist  shiftwidth=8
+  au FileType gitconfig set noexpandtab nolist shiftwidth=8 tabstop=4
 
 endif
 

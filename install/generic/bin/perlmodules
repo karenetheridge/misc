@@ -172,7 +172,7 @@ qw(
     Moose
     Dist::Zilla::PluginBundle::Author::ETHER
 ),
-(grep { !/^(Hash::Util::FieldHash::Compat|JSON::Any)/ }
+(grep !/^(Hash::Util::FieldHash::Compat|JSON::Any|Test::Mock::LWP::UserAgent::ButAwesome)/,
   # distributions that I call "mine", or "adopted"
   (map { (my $mod = basename($_)) =~ s/-/::/g; $mod } glob('~/git/_{my,adopted}dists/*')),
 
@@ -212,13 +212,19 @@ my $dev = '--dev';
 
 my (@success, @failed);
 
-my $separately = shift;
+my ($separately) = grep /^--separately$/, @ARGV;
+my ($once) = grep /^--once$/, @ARGV;
 
 if ($separately)
 {
     # this is crude but will do for now...
-    print "argument detected - skipping to installing each module separately\n";
+    print "--separately: skipping to installing each module separately\n";
     goto SEPARATELY;
+}
+
+if ($once) {
+    run_or_die(@cpanm, @to_install);
+    run_or_die('cpanm-reporter');
 }
 
 run_or_die('CPAN_META_JSON_BACKEND=', @cpanm, @install_first);

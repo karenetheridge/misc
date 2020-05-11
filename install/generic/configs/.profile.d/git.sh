@@ -21,6 +21,10 @@ alias gcpc='git cherry-pick --continue'
 alias gcpa='git cherry-pick --abort'
 alias viconf='vim $(git conf)'  # all files in conflict - see .gitconfig alias
 
+sq () {
+    git commit -m"squash: $*"
+}
+
 alias gitalltags='git log --tags --simplify-by-decoration --notes --pretty="format:%ai %d"'
 
 if [ -f ~/.git-completion.bash ]; then

@@ -51,6 +51,7 @@ set list                " start off in list mode (may sometimes be annoying thou
 set nojoinspaces        " when joining, insert one space after [.?!], not two
 set formatoptions-=o    " do not automatically insert the current comment leader after hitting 'o' or 'O' in Normal mode
 set formatoptions+=j    " where it makes sense, remove a comment leader when joining lines
+set showmatch           " when typing a bracket/brace/parenthesis, blip to the matching one
 
 
 " BEHAVIOUR

@@ -99,7 +99,7 @@ endif
 
 set secure              " disable unsafe commands in .vimrc files if I do not own them
                         " (e.g. autocommand, shell, write commands)
-
+"DoMatchParen           " http://vimdoc.sourceforge.net/htmldoc/pi_paren.html
 
 " to change a file's encoding: :write ++enc=utf-8
 
@@ -283,6 +283,8 @@ if (has("gui_running"))
   hi Search term=reverse cterm=reverse guifg=Black guibg=LightBlue
 endif
 
+" settings for http://vimdoc.sourceforge.net/htmldoc/pi_paren.html
+hi MatchParen term=NONE ctermbg=2 guibg=#008f00
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

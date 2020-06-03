@@ -49,9 +49,11 @@ set expandtab           " use spaces rather than tabs
 set listchars=tab:^.,trail:⋅,eol:
 set list                " start off in list mode (may sometimes be annoying though)
 set nojoinspaces        " when joining, insert one space after [.?!], not two
-set formatoptions-=o    " do not automatically insert the current comment leader after hitting 'o' or 'O' in Normal mode
+set textwidth=78        " affects formatting (gq), wordwrapping etc; should be set before fo
 set formatoptions+=j    " where it makes sense, remove a comment leader when joining lines
 set showmatch           " when typing a bracket/brace/parenthesis, blip to the matching one
+set formatoptions+=c    " auto-format comment as they are typed
+set formatoptions-=o    " do not automatically insert the current comment leader after hitting 'o' or 'O' in Normal mode
 
 
 " BEHAVIOUR
@@ -69,7 +71,6 @@ set smartcase           " ...but not if the pattern contains uppercase
 " set cpoptions+=f        " :read sets filename for current buffer
 " set cpoptions+=W        " don't overwrite a readonly file unless :w! is used
 set viminfo='100,\"50,n~/.viminfo    " configure viminfo file
-set textwidth=78        " affects formatting (gq), wordwrapping etc
 set modeline            " read mode line - e.g. sets file type
 set splitbelow          " I prefer new windows to appear on the bottom
 set splitright          " ... and the right

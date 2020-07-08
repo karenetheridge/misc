@@ -28,6 +28,7 @@ my $lib = $as . '@std';
 my @no_man = qw/-D man1dir=none -D man3dir=none/;
 
 run( qw/perlbrew self-upgrade/ );
+# note: this is important - see http://blogs.perl.org/users/atoomic/2018/10/using-perlbrew-after-macos-mojave-1014-update.html
 run( qw/yes | perlbrew install-patchperl/ );
 run( qw/yes | perlbrew install-cpanm/ );
 

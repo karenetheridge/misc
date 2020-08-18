@@ -480,3 +480,23 @@ perlpie() {
     dirs="${@:-lib}"
     perl -p -i -e $sub $(find $dirs -type f)
 }
+
+json2yaml() {
+    perl -MYAML::XS -MJSON::MaybeXS -wle'$YAML::XS::Boolean="JSON::PP"; print Dump(JSON::MaybeXS->new->decode(do { local $/; <> }))' $*
+}
+
+json2dd() {
+    perl -MJSON::MaybeXS -MData::Dumper -wle'print Data::Dumper->new([ JSON()->new->decode(do { local $/; <> }) ] )->Sortkeys(1)->Indent(1)->Terse(1)->Dump' $*
+}
+
+yaml2json() {
+    perl -MYAML::XS -MJSON::MaybeXS -wle'print JSON()->new->pretty->indent_length(2)->canonical->encode(Load(do { local $/; <> }))' $*
+}
+
+yaml2dd() {
+    perl -MYAML::XS -MData::Dumper -wle'print Data::Dumper->new([ Load(do { local $/; <> })] )->Sortkeys(1)->Indent(1)->Terse(1)->Dump' $*
+}
+
+json2json() {
+    perl -MJSON::MaybeXS -wle'print JSON()->new->pretty->indent_length(2)->canonical->encode(JSON()->new->decode(do { local $/; <> }))' $*
+}

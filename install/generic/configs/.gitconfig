@@ -24,6 +24,7 @@
 	autostash = true
 	missingCommitsCheck = warn
 	stat = true
+	autoSquash = true
 [pull]
 	autostash = true
 [branch]

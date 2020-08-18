@@ -46,7 +46,7 @@ unset V
 export NOPASTE_SERVICES="Shadowcat Gist"
 
 gist() {
-    nopaste --service Gist --private $@
+    nopaste --service Gist --private --desc "commandline gist $0" $@
 }
 
 

@@ -16,6 +16,7 @@ terminfo xterm-color AF=\E[3%p1%dm:AB=\E[4%p1%dm
 activity '~~Activity in window %.'
 bell '~~Bell in window %.'
 vbell off
+deflog on	# use logging.
 #deflogin on    # not needed in OSX: see footnote.
 defscrollback 10000  # we have tons of memory; use it!
 # defzombie '^k^r'    # type ^k to kill window, ^r to restart/ressurect.

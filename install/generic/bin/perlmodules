@@ -61,6 +61,7 @@ qw(
     ExtUtils::CBuilder
     ExtUtils::HasCompiler
     File::Copy::Recursive
+    next::XS
     Dist::Zilla::Plugin::Chrome::ExtraPrompt
     Dist::Zilla::Plugin::Bootstrap::lib
     Dist::Zilla::App::Command::dumpphases

@@ -232,12 +232,12 @@ run_or_die('cpanm-reporter');
 
 ## first pre-pass - ensure Test::Tester and ok are installed as stable, to
 ## avoid having Test::More upgraded to trial unduly.
-#run("@cpanm --mirror http://www.cpan.org Test::Tester ok");
+#run("@cpanm Test::Tester ok");
 #run('cpanm-reporter');
 
 ## on the first big pass, just try to install my pluginbundle, using
 ## default HARNESS_OPTIONS, trial/developer releases of everything upstream if there are any
-#run("EXTRA_TESTING=1 @cpanm $dev --mirror http://www.cpan.org Dist::Zilla::PluginBundle::Author::ETHER");
+#run("EXTRA_TESTING=1 @cpanm $dev Dist::Zilla::PluginBundle::Author::ETHER");
 #run('cpanm-reporter');
 
 # install things we know to fail when installed in parallel...
@@ -268,14 +268,14 @@ run('cpanm-reporter');
 
 # in the first big pass, try to install everything in one process, using
 # default HARNESS_OPTIONS, trial/developer releases if there are any
-run("EXTRA_TESTING=1 @cpanm $dev --mirror http://www.cpan.org @to_install @fails_tests");
+run("EXTRA_TESTING=1 @cpanm $dev @to_install @fails_tests");
 run('cpanm-reporter');
 
 # now try again to install things whose tests are known to fail
 run(@cpanm, '--notest', @fails_tests) if @fails_tests;
 run('cpanm-reporter') if @fails_tests;
 
-run("EXTRA_TESTING=1 @cpanm --mirror http://www.cpan.org @to_install @fails_tests");
+run("EXTRA_TESTING=1 @cpanm @to_install @fails_tests");
 run('cpanm-reporter');
 
 run(@cpanm, '--with-recommends', '--with-develop', $dev, @with_dev_recommends);
@@ -286,13 +286,16 @@ run(@cpanm, @with_dev_recommends);
 run('cpanm-reporter');
 
 # and finally, fix the things that may have been busted by cuckoo modules
-run("EXTRA_TESTING=1 @cpanm --mirror http://www.cpan.org @final_fix");
+run("EXTRA_TESTING=1 @cpanm @final_fix");
 run('cpanm-reporter');
 
 SEPARATELY:
 
-run("moose-outdated | @cpanm $dev --mirror http://www.cpan.org");
+# should not be necessary
+if (0) {
+run("moose-outdated | @cpanm $dev");
 run('cpanm-reporter');
+}
 
 use Module::CoreList; # requires 2.22
 my $in_core = Module::CoreList->find_version($]);

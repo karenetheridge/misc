@@ -9,10 +9,10 @@ alias gdd='git diff $(git describe --abbrev=0 --tags) HEAD'
 alias gds='git diff --staged'
 alias gs='git status'
 alias gsi='git status --ignored'
-alias glp='git log -p --decorate --notes --pretty=fuller'
+alias glp='git log -p --decorate --notes --pretty=fuller --stat'
 alias gca='git commit --amend'   # not to be confused with 'gcpa' below
 alias gcp='git cherry-pick --ff'
-alias gl='git log --decorate --notes --graph --pretty=fuller'
+alias gl='git log --decorate --notes --graph --pretty=fuller --stat'
 
 alias gpr='git pull --rebase'
 alias grc='git rebase --continue'

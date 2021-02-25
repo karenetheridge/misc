@@ -181,6 +181,8 @@ if has("autocmd")
   au BufNewFile,BufRead,BufReadPre,BufWinEnter cpanfile.snapshot    set filetype=yaml
   au BufNewFile,BufRead,BufReadPre,BufWinEnter *.html.ep            set filetype=html
 
+  au BufNewFile,BufRead,BufReadPre,BufWinEnter *.vue                set filetype=javascript
+
   au BufNewFile,BufRead,BufReadPre,BufWinEnter Changes              set tw=78
 
   " Turn off line wrap for common files
@@ -216,6 +218,9 @@ if has("autocmd")
 
   au FileType perl set formatoptions+=l softtabstop=2 shiftwidth=2 textwidth=100
 
+  au FileType go set formatoptions+=l softtabstop=4 shiftwidth=4 noexpandtab tabstop=4 nolist textwidth=100
+  au FileType proto set formatoptions+=l shiftwidth=4 noexpandtab tabstop=4 nolist textwidth=100
+
   au FileType sql set textwidth=95
 
   " au FileType * source ~/.vim/plugin/tab.vim
@@ -224,7 +229,7 @@ if has("autocmd")
 
   au FileType yaml set softtabstop=2  shiftwidth=2
 
-  au FileType gitcommit set tw=78
+  au FileType gitcommit set textwidth=78
 
   au FileType gitconfig set noexpandtab nolist shiftwidth=8 tabstop=4
 

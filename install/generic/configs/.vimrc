@@ -71,7 +71,7 @@ set smartcase           " ...but not if the pattern contains uppercase
 " set cpoptions+=f        " :read sets filename for current buffer
 " set cpoptions+=W        " don't overwrite a readonly file unless :w! is used
 set viminfo='100,\"50,n~/.viminfo    " configure viminfo file
-set modeline            " read mode line - e.g. sets file type
+set modelines=5         " respect modelines in first and last N lines of file
 set splitbelow          " I prefer new windows to appear on the bottom
 set splitright          " ... and the right
 
@@ -91,7 +91,6 @@ set backspace=indent,eol,start
 
 set termencoding=utf-8
 set encoding=utf-8      " latin1 is not quite good enough anymore for a default
-set modelines=5         " respect modelines in first and last N lines of file
 
 if $VIM_CRONTAB == "true"
   set nobackup

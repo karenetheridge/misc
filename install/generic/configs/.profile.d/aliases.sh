@@ -97,3 +97,5 @@ no() {
 spelling() {
     aspell list | sort -u
 }
+
+alias rehash='hash -r'

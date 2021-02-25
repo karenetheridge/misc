@@ -36,6 +36,9 @@ export FIGNORE="CVS:~:.o:.svn:.swp"
 #   For more details, please visit https://support.apple.com/kb/HT208050.
 export BASH_SILENCE_DEPRECATION_WARNING=1
 
+# prevent OS X resource files from being included in tarballs
+COPYFILE_DISABLE=1
+
 # commented out -- I don't need lots of "you have mail in.." alerts
 # export MAIL=$HOME/mail/i
 

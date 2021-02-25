@@ -42,8 +42,8 @@ set nocompatible        " I understand all the ways that vim != vi.
 " INSERT MODE
 
 " tabstop               " each ^T in the file is worth 8 columns
-set softtabstop=4       " each time I bang on tab, give me four columns
-set shiftwidth=4        " autoindents are worth four columns
+set softtabstop=2       " each time I bang on tab, give me two columns
+set shiftwidth=2        " autoindents are worth two columns
 set expandtab           " use spaces rather than tabs
 " set wrapmargin=2        " go to next line when close to the edge
 set listchars=tab:^.,trail:⋅,eol:

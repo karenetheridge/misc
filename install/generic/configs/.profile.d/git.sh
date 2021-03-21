@@ -25,6 +25,9 @@ alias viconf='vim $(git conf)'  # all files in conflict - see .gitconfig alias
 sq () {
     git commit -m"squash! $*"
 }
+fi () {
+    git commit -m"fixup! $*"
+}
 
 alias gitalltags='git log --tags --simplify-by-decoration --notes --pretty="format:%ai %d"'
 

@@ -138,6 +138,7 @@ qw(
     App::grindperl
     Dist::Zilla::Plugin::Prereqs::FromCPANfile
     Dist::Zilla::Plugin::Test::Pod::Coverage::Configurable
+    Devel::DDCWarn
 ),
 );
 

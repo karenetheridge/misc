@@ -30,7 +30,6 @@ qw(
     App::Nopaste
     App::cpanoutdated
     App::pmuninstall
-    App::cpangrep
     App::PAUSE::Comaint
     Module::CoreList
     CPAN::Perl::Releases

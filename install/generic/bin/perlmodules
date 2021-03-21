@@ -258,6 +258,7 @@ my @needs_dot_in_inc = qw(
     Module::Info
     Dist::Zilla::Plugin::Git::CheckFor::MergeConflicts
     Dist::Zilla::Plugin::Git::Remote::Check
+    Unicode::LineBreak
 );
 run(@cpanm, @needs_dot_in_inc); # once without variable, to get prereqs
 run('cpanm-reporter');

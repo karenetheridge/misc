@@ -52,6 +52,7 @@
 	# indent-with-non-tab omitted - it makes diffs look ugly
 	whitespace = space-before-tab,tab-in-indent,trailing-space
 	attributesfile = ~/.gitattributes
+	symlinks = false # https://github.blog/2021-03-09-git-clone-vulnerability-announced/
 
 [interactive]
 	singlekey = true
@@ -62,6 +63,7 @@
 
 [github]
 	user = karenetheridge
+	# see also .gitconfig.local
 [ghi]
 	token = !security find-internet-password -a karenetheridge -s github.com -l 'ghi token' -w
 
@@ -97,6 +99,7 @@
 	df = !sh -c 'git diff-tree --no-commit-id --name-only -r "${1-HEAD}"'
 	pushf = push --force-with-lease
 	chp = checkout -p
+	upsub = "!git submodule update --init --recursive $*; git submodule update --remote $*"
 
 ; for automatic translation of URLs
 [url "git@github.com:"]

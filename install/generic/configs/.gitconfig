@@ -52,7 +52,8 @@
 	# indent-with-non-tab omitted - it makes diffs look ugly
 	whitespace = space-before-tab,tab-in-indent,trailing-space
 	attributesfile = ~/.gitattributes
-	symlinks = false # https://github.blog/2021-03-09-git-clone-vulnerability-announced/
+	# not needed if we are at git 2.30.2
+	# symlinks = false # https://github.blog/2021-03-09-git-clone-vulnerability-announced/
 
 [interactive]
 	singlekey = true

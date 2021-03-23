@@ -25,7 +25,8 @@ alias viconf='vim $(git conf)'  # all files in conflict - see .gitconfig alias
 sq () {
     git commit -m"squash! $*"
 }
-fi () {
+
+fixup () {
     git commit -m"fixup! $*"
 }
 

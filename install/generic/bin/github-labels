@@ -4,6 +4,7 @@ use strict;
 use warnings;
 use utf8;
 use Mojo::UserAgent;
+use 5.016;
 
 # shamelessly stolen from https://github.com/Relequestual/sensible-github-labels/blob/master/label-me.js
 
@@ -11,6 +12,7 @@ my $repo = shift or die "Usage: $0 user-or-org/repository";
 my $token = $ENV{GITHUB_OAUTH_TOKEN} or die "missing environment variable GITHUB_OAUTH_TOKEN";
 
 my $uri = 'https://api.github.com/repos/'.$repo.'/labels';
+say "posting to $uri";
 
 my $labels = [
   { name => 'Priority: Low', color => '009800' },
@@ -44,6 +46,9 @@ foreach my $label ($labels->@*) {
         json => $label,
     );
 
-    # do soemthing with response?
+    my $res = $tx->res;
+
+    if ($res->is_success)  { say $res->body }
+    elsif ($res->is_error) { say $res->message }
 }
 

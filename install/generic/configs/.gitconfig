@@ -4,6 +4,9 @@
 [include]
 ;	path = ~/git/misc/install/generic/configs/.gitconfig -- this file!
 
+; see also ~/git/misc/install/generic/configs/.gitconfig.local
+; which contains credentials etc that are never committed in git
+
 [user]
 	name = Karen Etheridge
 [color]

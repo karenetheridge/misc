@@ -5,22 +5,25 @@
 
 # aliases and customizations for git
 alias gd='git diff'
-alias gdd='git diff $(git describe --abbrev=0 --tags) HEAD'
+alias gdd='git diff $(git describe --abbrev=0 --tags) HEAD' # committed changes since last tag
 alias gds='git diff --staged'
 alias gs='git status'
 alias gsi='git status --ignored'
 alias glp='git log -p --decorate --notes --pretty=fuller --stat'
-alias gca='git commit --amend'   # not to be confused with 'gcpa' below
-alias gcp='git cherry-pick --ff'
 alias gl='git log --decorate --notes --graph --pretty=fuller --stat'
+alias gtc='git tag --contains'
+
+alias gca='git commit --amend'   # not to be confused with 'gcpa' below
+
+alias gcp='git cherry-pick --ff'
+alias gcpc='git cherry-pick --continue'
+alias gcpa='git cherry-pick --abort'
 
 alias gpr='git pull --rebase'
 alias grc='git rebase --continue'
 alias gra='git rebase --abort'
 alias gri='git rebase -i $(git describe --abbrev=0 --tags)'
-alias gcpc='git cherry-pick --continue'
-alias gcpa='git cherry-pick --abort'
-alias viconf='vim $(git conf)'  # all files in conflict - see .gitconfig alias
+alias viconf='vim $(git conf)'  # edit all files in conflict - see .gitconfig alias
 
 sq () {
     git commit -m"squash! $*"

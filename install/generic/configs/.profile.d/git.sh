@@ -47,10 +47,10 @@ fi
 # this is only valid for OSX, but harmless to include everywhere...
 export PATH=$PATH:/opt/local/share/git-core/contrib/workdir
 
-# perform command(s) in each repository in 'mydists' sequentially.
+# perform command(s) in each repository in '_mydists' sequentially.
 mydists() {
     local COMMANDS="$@"
-    for dir in ~/git/mydists/*; do
+    for dir in ~/git/_mydists/*; do
         pushd $dir
         echo "executing: $COMMANDS"
         eval $COMMANDS
@@ -60,7 +60,7 @@ mydists() {
 
 adopteddists() {
     local COMMANDS="$@"
-    for dir in ~/git/adopteddists/*; do
+    for dir in ~/git/_adopteddists/*; do
         pushd $dir
         echo "executing: $COMMANDS"
         eval $COMMANDS

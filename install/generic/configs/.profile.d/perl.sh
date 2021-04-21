@@ -53,24 +53,24 @@ gist() {
 
 # equivalent to perldoc -l <module>
 perlwhere() {
-    perl -wle'eval "require $ARGV[0]" or die; ($mod = $ARGV[0]) =~ s|::|/|g; print $INC{"${mod}.pm"}' $1
+    perl -wE'eval "require $ARGV[0]" or die; ($mod = $ARGV[0]) =~ s|::|/|g; say $INC{"${mod}.pm"}' $1
 }
 
 perlversion() {
-    perl -m$1 -wle'print $ARGV[0]->VERSION' $1
+    perl -m$1 -wE'say $ARGV[0]->VERSION' $1
 }
 
 # given a class name, dumps its symbol table
 dumpsymbols() {
-    perl -Ilib -MData::Dumper -MModule::Runtime=use_module -wle'
+    perl -Ilib -MData::Dumper -MModule::Runtime=use_module -wE'
         local $Data::Dumper::Terse = 1;
         local $Data::Dumper::Sortkeys = 1;
         foreach my $className (@ARGV)
         {
             use_module($className);
-            print "symbols in $className:";
+            say "symbols in $className:";
             no strict "refs";
-            print Dumper(\%{"main::${className}::"});
+            say Dumper(\%{"main::${className}::"});
         }
 ' $@
 }
@@ -86,13 +86,13 @@ dumpsymbols() {
 # p5sagit@git.shadowcat.co.uk:Log-Contextual.git
 # git://git.shadowcat.co.uk/p5sagit/Log-Contextual.git
 gitmo() {
-    perl -wle'
+    perl -wE'
         my $dist = shift @ARGV;
         $dist =~ s/::/-/g;
         $dist =~ s/moose/Moose/;
         $dist =~ s/oosex/ooseX/i;
         $dist =~ s/-([a-z])/"-". uc($1)/e;
-        print "git://git.moose.perl.org/", $dist, ".git"' $1
+        say "git://git.moose.perl.org/", $dist, ".git"' $1
 }
 
 
@@ -175,7 +175,7 @@ newperllibs() {
 #    popd
 
     # take this out when the stable version exceeds this
-    perl -MTest::Simple -wle'system(q{cpanm http://cpan.metacpan.org/authors/id/M/MS/MSCHWERN/Test-Simple-0.98_05.tar.gz}) if Test::Simple->VERSION lt eval q{0.98_05}'
+    perl -MTest::Simple -wE'system(q{cpanm http://cpan.metacpan.org/authors/id/M/MS/MSCHWERN/Test-Simple-0.98_05.tar.gz}) if Test::Simple->VERSION lt eval q{0.98_05}'
 }
 
 # update the main things I care about (run on each perlbrew)
@@ -194,7 +194,7 @@ function cpanupdate() {
 
 
 function metacpan-favorited() {
-    curl -s  https://metacpan.org/author/ETHER | perl -ne 'if (m!class="release".*/release/([^"]+)!) { $_ = $1; s/-/::/g; print $_,$/ }'
+    curl -s  https://metacpan.org/author/ETHER | perl -nE 'if (m!class="release".*/release/([^"]+)!) { $_ = $1; s/-/::/g; say $_,$/ }'
 }
  
 function cpanm-metacpan-favorited {
@@ -203,17 +203,17 @@ function cpanm-metacpan-favorited {
 
 # courtesy hobbs, #perl 2013-01-30
 errno_list() {
-    perl -le 'for (1..255) { $! = $_; my ($key) = grep $!{$_}, keys %!; print "$_: $key: $!" if defined $key }'
+    perl -lE 'for (1..255) { $! = $_; my ($key) = grep $!{$_}, keys %!; say "$_: $key: $!" if defined $key }'
 }
 
 jsondump() {
-    perl -MJSON -MData::Dumper -wle'$Data::Dumper::Sortkeys = 1; print Dumper(decode_json(qq($ARGV[0])))' "$@"
+    perl -MJSON -MData::Dumper -wE'$Data::Dumper::Sortkeys = 1; say Dumper(decode_json(qq($ARGV[0])))' "$@"
 }
 
 # can take either a dist or module name
 newdist() {
     local module=$1
-    local dist=`perl -we"print q{$module} =~ s/::/-/r"`
+    local dist=`perl -wE"say q{$module} =~ s/::/-/r"`
     pushd ~/git
     dzil new -P Author::ETHER -p default $dist
     pushd _mydists; ln -sf ../$dist; popd
@@ -225,7 +225,7 @@ newmodule() {
 }
 
 minver() {
-    perl -MData::Dumper -MPerl::MinimumVersion::Fast -wle'$Data::Dumper::Terse = 1; print "$_: ", Dumper(Perl::MinimumVersion::Fast->new($_)) foreach @ARGV' $@
+    perl -MData::Dumper -MPerl::MinimumVersion::Fast -wE'$Data::Dumper::Terse = 1; say "$_: ", Dumper(Perl::MinimumVersion::Fast->new($_)) foreach @ARGV' $@
 }
 
 alias dbn='dzil build --not'
@@ -314,7 +314,7 @@ cpanm_myreleases() {
 }
 
 cpanm_core() {
-    local dists=$( perl -MModule::CoreList -wle'print foreach grep { !/win32/i } sort keys %{ Module::CoreList->find_version($]) }')
+    local dists=$( perl -MModule::CoreList -wE'say foreach grep { !/win32/i } sort keys %{ Module::CoreList->find_version($]) }')
     # FIXME: not installing --dev until metacpan is fixed: https://github.com/CPAN-API/cpan-api/issues/483
     echo cpanm --no-report-perl-version $* $dists
     cpanm --no-report-perl-version $* $dists
@@ -477,19 +477,19 @@ metacpan_reindex() {
 }
 
 md5hex() {
-    perl -MDigest::MD5=md5_hex -wle'chomp(my $line = <>); print md5_hex($line)'
+    perl -MDigest::MD5=md5_hex -wE'chomp(my $line = <>); say md5_hex($line)'
 }
 
 base64 () {
-    perl -MDigest::MD5=md5_base64 -wle'chomp(my $line = <>); print md5_base64($line)'
+    perl -MDigest::MD5=md5_base64 -wE'chomp(my $line = <>); say md5_base64($line)'
 }
 
 rot13(){
-    perl -n -wle'tr/A-MN-Za-mn-z/N-ZA-Mn-za-m/; print'
+    perl -n -wE'tr/A-MN-Za-mn-z/N-ZA-Mn-za-m/; say'
 }
 
 maxlen() {
-    perl -wle'my $max=0; while (<>) { chomp; my $length = length($_); $max = $length if $length > $max } print $max'
+    perl -wE'my $max=0; while (<>) { chomp; my $length = length($_); $max = $length if $length > $max } say $max'
 }
 
 perlpie() {
@@ -500,21 +500,21 @@ perlpie() {
 }
 
 json2yaml() {
-    perl -MYAML::XS -MJSON::MaybeXS -wle'$YAML::XS::Boolean="JSON::PP"; print Dump(JSON::MaybeXS->new->decode(do { local $/; <> }))' $*
+    perl -MYAML::XS -MJSON::MaybeXS -wE'$YAML::XS::Boolean="JSON::PP"; say Dump(JSON::MaybeXS->new->decode(do { local $/; <> }))' $*
 }
 
 json2dd() {
-    perl -MJSON::MaybeXS -MData::Dumper -wle'print Data::Dumper->new([ JSON()->new->decode(do { local $/; <> }) ] )->Sortkeys(1)->Indent(1)->Terse(1)->Dump' $*
+    perl -MJSON::MaybeXS -MData::Dumper -wE'say Data::Dumper->new([ JSON()->new->decode(do { local $/; <> }) ] )->Sortkeys(1)->Indent(1)->Terse(1)->Dump' $*
 }
 
 yaml2json() {
-    perl -MYAML::XS -MJSON::MaybeXS -wle'print JSON()->new->pretty->indent_length(2)->canonical->encode(Load(do { local $/; <> }))' $*
+    perl -MYAML::XS -MJSON::MaybeXS -wE'say JSON()->new->pretty->indent_length(2)->canonical->encode(Load(do { local $/; <> }))' $*
 }
 
 yaml2dd() {
-    perl -MYAML::XS -MData::Dumper -wle'print Data::Dumper->new([ Load(do { local $/; <> })] )->Sortkeys(1)->Indent(1)->Terse(1)->Dump' $*
+    perl -MYAML::XS -MData::Dumper -wE'say Data::Dumper->new([ Load(do { local $/; <> })] )->Sortkeys(1)->Indent(1)->Terse(1)->Dump' $*
 }
 
 json2json() {
-    perl -MJSON::MaybeXS -wle'print JSON()->new->pretty->indent_length(2)->canonical->encode(JSON()->new->decode(do { local $/; <> }))' $*
+    perl -MJSON::MaybeXS -wE'say JSON()->new->pretty->indent_length(2)->canonical->encode(JSON()->new->decode(do { local $/; <> }))' $*
 }

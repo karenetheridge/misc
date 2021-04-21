@@ -383,6 +383,24 @@ allperls () {
     done
 }
 
+modernperls() {
+    for perl in 16.3 18.4 20.3 22.4 24.4 26.3 28.1t 28.3 30.3 32.1 33.9 ; do
+        perlbrew use ${perl}@std;
+        echo; echo using $PERL5LIB
+        eval $(printf "%q " "$@")
+    done
+}
+
+everyperl () {
+    set -o noglob
+    for perl in $(perlbrew list | grep '@std' | grep -v rc | grep -v \*); do
+        perlbrew use $perl
+        echo; echo using $PERL5LIB
+        eval $(printf "%q " "$@")
+    done
+    set +o noglob
+}
+
 mt() {
     test -f Makefile && make clean
     perl Makefile.PL && make test

@@ -3,12 +3,13 @@
 
 [include]
 ;	path = ~/git/misc/install/generic/configs/.gitconfig -- this file!
-
-; see also ~/git/misc/install/generic/configs/.gitconfig.local
-; which contains credentials etc that are never committed in git
+	; this file is NEVER committed to git, as it could contain credentials or
+	; machine-specific configurations.
+	path = ~/git/misc/install/generic/configs/.gitconfig.local
 
 [user]
 	name = Karen Etheridge
+	useConfigOnly = true	; don't try to guess creds if missing
 [color]
 	diff = auto
 	status = auto

@@ -1,1 +1,0 @@
-../../../generic/configs/.profile.d/zzz.sh

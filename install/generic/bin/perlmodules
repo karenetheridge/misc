@@ -15,6 +15,7 @@ sub part(&@);
 # TODO: these should all be in Task::BeLike::ETHER
 
 my @install_first = qw(
+    ExtUtils::MakeMaker
     App::cpanminus::reporter
 );
 my @to_install = (

@@ -9,4 +9,5 @@
 .viminfo
 id_rsa
 id_dsa
+id_ecdsa
 known_hosts

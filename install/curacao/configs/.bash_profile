@@ -1,1 +1,0 @@
-../../generic/configs/.bash_profile

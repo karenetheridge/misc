@@ -186,6 +186,8 @@ if has("autocmd")
 
   au BufNewFile,BufRead,BufReadPre,BufWinEnter Changes              set tw=78
 
+  au BufNewFile,BufRead,BufReadPre,BufWinEnter *.conf               set filetype=conf
+
   " Turn off line wrap for common files
   au BufNewFile,BufRead,BufWinEnter db.*	setlocal nowrap
   au BufNewFile,BufRead,BufWinEnter /etc/*	setlocal nowrap

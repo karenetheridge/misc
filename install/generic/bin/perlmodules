@@ -172,6 +172,7 @@ qw(
     Module::Metadata
     Moose
     Dist::Zilla::PluginBundle::Author::ETHER
+    CPAN::DistnameInfo
 ),
 (grep !/^(Hash::Util::FieldHash::Compat|JSON::Any|Test::Mock::LWP::UserAgent::ButAwesome)/,
   # distributions that I call "mine", or "adopted"

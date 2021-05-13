@@ -13,6 +13,7 @@ use WWW::Mechanize;
 use Path::Tiny;
 use HTTP::Tiny;
 use Parse::CPAN::Packages::Fast;
+use LWP::Protocol::https;
 
 # keep the last N stable dists
 my $keep = shift || 2;

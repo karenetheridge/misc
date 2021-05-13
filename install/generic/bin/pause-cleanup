@@ -108,8 +108,10 @@ for my $key (sort keys %found) {
 
   my @versions = sort {
       use version;
-      (my $x = $a) =~ s/-TRIAL$//;
-      (my $y = $b) =~ s/-TRIAL$//;
+      (my $x = $a) =~ s/-(TRIAL|RC)\d?$//;
+      $x =~ tr/_//cd;
+      (my $y = $b) =~ s/-(TRIAL|RC)\d?$//;
+      $y =~ tr/_//cd;
       version->parse($y) <=> version->parse($x)
   } keys %$dist;
 

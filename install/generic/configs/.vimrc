@@ -192,10 +192,6 @@ if has("autocmd")
   au BufNewFile,BufRead,BufWinEnter db.*	setlocal nowrap
   au BufNewFile,BufRead,BufWinEnter /etc/*	setlocal nowrap
 
-  " load local override files
-  au BufNewFile,BufRead,BufWinEnter * silent! source .vimlocal        " load .vimlocal files, but do not fail if nonexistent
-  au BufNewFile,BufRead,BufWinEnter * silent! source %:h/.vimlocal    " and override with $dir_of_file/.vimlocal, if present
-
   au BufNewFile,BufRead,StdinReadPost *
     \ let s:l1 = getline(1) |
     \ if s:l1 =~ '^Return-Path: ' |
@@ -235,6 +231,10 @@ if has("autocmd")
   au FileType gitcommit set textwidth=78
 
   au FileType gitconfig set noexpandtab nolist shiftwidth=8 tabstop=4
+
+  " load local override files
+  au BufNewFile,BufRead,BufWinEnter * silent! source .vimlocal        " load .vimlocal files, but do not fail if nonexistent
+  au BufNewFile,BufRead,BufWinEnter * silent! source %:h/.vimlocal    " and override with $dir_of_file/.vimlocal, if present
 
 endif
 

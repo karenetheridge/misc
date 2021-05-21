@@ -13,7 +13,8 @@ alias glp='git log -p --decorate --notes --pretty=fuller --stat'
 alias gl='git log --decorate --notes --graph --pretty=fuller --stat'
 alias gtc='git tag --contains'
 
-alias gca='git commit --amend'   # not to be confused with 'gcpa' below
+alias gca='git commit -v --amend'   # not to be confused with 'gcpa' below
+alias gc='git commit -v'
 
 alias gcp='git cherry-pick --ff'
 alias gcpc='git cherry-pick --continue'
@@ -24,6 +25,10 @@ alias grc='git rebase --continue'
 alias gra='git rebase --abort'
 alias gri='git rebase -i $(git describe --abbrev=0 --tags)'
 alias viconf='vim $(git conf)'  # edit all files in conflict - see .gitconfig alias
+
+gcm () {
+    git commit -m"$*"
+}
 
 sq () {
     git commit -m"squash! $*"

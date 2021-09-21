@@ -500,21 +500,23 @@ perlpie() {
 }
 
 json2yaml() {
-    perl -MYAML::XS -MJSON::MaybeXS -wE'$YAML::XS::Boolean="JSON::PP"; say Dump(JSON::MaybeXS->new->decode(do { local $/; <> }))' $*
+    perl -MYAML::XS -MJSON::MaybeXS -wE'$YAML::XS::Boolean="JSON::PP"; print Dump(JSON::MaybeXS->new->decode(do { local $/; <> }))' $*
 }
 
 json2dd() {
-    perl -MJSON::MaybeXS -MData::Dumper -wE'say Data::Dumper->new([ JSON()->new->decode(do { local $/; <> }) ] )->Sortkeys(1)->Indent(1)->Terse(1)->Dump' $*
+    perl -MJSON::MaybeXS -MData::Dumper -wE'print Data::Dumper->new([ JSON()->new->decode(do { local $/; <> }) ] )->Sortkeys(1)->Indent(1)->Terse(1)->Dump' $*
 }
 
 yaml2json() {
-    perl -MYAML::XS -MJSON::MaybeXS -wE'say JSON()->new->pretty->indent_length(2)->canonical->encode(Load(do { local $/; <> }))' $*
+    perl -MYAML::XS -MJSON::MaybeXS -wE'print JSON()->new->pretty->indent_length(2)->canonical->encode(Load(do { local $/; <> }))' $*
 }
 
 yaml2dd() {
-    perl -MYAML::XS -MData::Dumper -wE'say Data::Dumper->new([ Load(do { local $/; <> })] )->Sortkeys(1)->Indent(1)->Terse(1)->Dump' $*
+    perl -MYAML::XS -MData::Dumper -wE'print Data::Dumper->new([ Load(do { local $/; <> })] )->Sortkeys(1)->Indent(1)->Terse(1)->Dump' $*
 }
 
+# pure-perl json format, 4 columns:
+# perl -MJSON::PP -wE'print JSON::PP->new->pretty->indent_length(4)->canonical->encode(JSON::PP->new->decode(do { local $/; <> }))' $*
 json2json() {
-    perl -MJSON::MaybeXS -wE'say JSON()->new->pretty->indent_length(2)->canonical->encode(JSON()->new->decode(do { local $/; <> }))' $*
+    perl -MJSON::MaybeXS -wE'print JSON()->new->pretty->indent_length(2)->canonical->encode(JSON()->new->decode(do { local $/; <> }))' $*
 }

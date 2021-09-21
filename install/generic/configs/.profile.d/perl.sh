@@ -520,3 +520,22 @@ yaml2dd() {
 json2json() {
     perl -MJSON::MaybeXS -wE'print JSON()->new->pretty->indent_length(2)->canonical->encode(JSON()->new->decode(do { local $/; <> }))' $*
 }
+
+pt () {
+    perltidy -b -bext='/' $*
+}
+
+# re-sorts the provided .json files
+jsonsort () {
+  perl -MJSON::MaybeXS -0777 -p -i -e'my $encoder = JSON::MaybeXS->new(canonical=>1, pretty=>1, indent_length=>4, utf8=>1); $_ = $encoder->encode($encoder->decode($_));' $*
+}
+
+# run all acceptance tests from the bleeding edge
+acceptance_tests () {
+  tests=(t/zzz-acceptance-draft2020-12.t t/zzz-acceptance-draft2019-09.t t/zzz-acceptance-draft7.t)
+  if [ -e t/zzz-acceptance-draft2020-12-format.t ]; then
+    tests+=(t/zzz-acceptance-draft2020-12-format.t t/zzz-acceptance-draft2019-09-format.t t/zzz-acceptance-draft7-format.t)
+  fi
+
+  AUTHOR_TESTING=1 TEST_PREFIXDIR=/Volumes/amaretto/Users/ether/git/JSON-Schema-Test-Suite prove -Ilib ${tests[@]}
+}

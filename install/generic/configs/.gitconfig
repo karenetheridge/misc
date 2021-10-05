@@ -67,6 +67,10 @@
 	date = iso8601
 	follow = true	; as if we did 'git log --follow', when just one file
 
+[pager]
+	log = less -G '+/^([*] )?commit '
+	logone = less
+
 [github]
 	user = karenetheridge
 	# see also .gitconfig.local

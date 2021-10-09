@@ -113,6 +113,10 @@
 	pushf = push --force-with-lease
 	chp = checkout -p
 	upsub = "!git submodule update --init --recursive $*; git submodule update --remote $*"
+	c = commit -v
+	# all commits, in ascending chronological order, since the last blead release
+	bleadcommits = !git log --oneline --decorate --date=short --pretty=format:'%C(yellow)%h %Cred%ad %Cblue%an%C(red bold)%d %Creset%s' --reverse $(git describe --abbrev=0 --tags)~1..HEAD
+	common = !git merge-base $(git rev-parse --abbrev-ref HEAD)  # common ancestor between current branch and provided branch or commit
 
 ; for automatic translation of URLs
 [url "git@github.com:"]

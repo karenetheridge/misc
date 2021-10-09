@@ -38,6 +38,9 @@
 [rerere]
 	enabled = true
 	autoupdate = true
+[gc]
+	rerereUnresolved = 2	; prune unresolved conflicts older than N days; default 15
+	rerereResolved = 14		; prune resolved conflicts older than N days; default 60
 [diff]
 	algorithm = histogram	; a bit better than patience
 	compactionHeuristic = true

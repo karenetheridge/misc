@@ -71,8 +71,11 @@
 	follow = true	; as if we did 'git log --follow', when just one file
 
 [pager]
-	log = less -G '+/^([*] )?commit '
+	log = less -G '+/^([*] +)?commit '
 	logone = less
+	#diff = less -G '+/^([*] )?diff '		# TODO
+	stashes = less
+	stash = less -F
 
 [github]
 	user = karenetheridge

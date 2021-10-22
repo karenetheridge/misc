@@ -347,19 +347,19 @@ disapprove() {
     #          \x{0ca0}\x{5f}\x{0ca0}
     # UTF-8:   0xE0 0xB2 0xA0 0x5F 0xE0 0xB2 0xA0
     #          \x{e0}\x{b2}\x{a0}\x{5f}\x{e0}\x{b2}\x{a0}
-    perl -CS -le'print v3232.95.3232'
+    perl -CS -E'say v3232.95.3232'
 }
 
 snowman () {
-    perl -CO -le'print v9731'   # 0x2603
+    perl -CO -E'say v9731'   # 0x2603
 }
 
 heart () {
-    perl -CO -le'print v9825'   # 0x2661
+    perl -CO -E'say v9825'   # 0x2661
 }
 
 poo() {
-    perl -CO -le'print v128169' # U+1F4A9
+    perl -CO -E'say v128169' # U+1F4A9
 }
 
 # run the command on all major perlbrews, starting at 8.8

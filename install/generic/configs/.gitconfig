@@ -102,7 +102,7 @@
 ; XXX FIXME - I want tags in bright yellow, branches in bright red
 	logone = log --graph --oneline --decorate --date=short --pretty=format:'%C(yellow)%h %Cred%ad %Cblue%an%C(red bold)%d %Creset%s'
 	reflogs = reflog --notes --pretty='%cd %h %gd %gs'
-	stashes = stash list --pretty='%cd %h %gd %gs'
+	stashes = stash list --pretty='%Cred%cd %Cblue%h %Cgreen%gd %Creset%gs'
 	; from http://stackoverflow.com/questions/3065650/whats-the-simplest-way-to-git-a-list-of-conflicted-files
 	conf = diff --name-only --diff-filter=U
 	cherry-pick = cherry-pick --ff

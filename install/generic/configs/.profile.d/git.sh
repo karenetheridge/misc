@@ -10,6 +10,7 @@ alias gds='git diff --staged'
 alias gs='git status'
 alias gsi='git status --ignored'
 alias glp='git log -p --decorate --notes --pretty=fuller --stat'
+alias glpd='git log -p --reverse $(git describe --abbrev=0 --tags)..HEAD'
 alias gl='git log --decorate --notes --graph --pretty=fuller --stat'
 alias gtc='git tag --contains'
 

@@ -71,11 +71,15 @@
 	follow = true	; as if we did 'git log --follow', when just one file
 
 [pager]
-	log = less -G '+/^([*] +)?commit '
+	log = less '+/^([*] +)?commit '
+	## esc-u disables highlighting just for this search.
+	#log = less -p'^([*] +)?commit '
 	logone = less
 	#diff = less -G '+/^([*] )?diff '		# TODO
-	stashes = less
-	stash = less -F
+	#stashes = less
+	#stash = less -F
+	#diff = less -F #-p'^diff '
+	#stash = less -ciMR  # 'git wip' ends up in the pager and I don't like it
 
 [github]
 	user = karenetheridge

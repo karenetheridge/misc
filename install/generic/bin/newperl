@@ -34,7 +34,7 @@ run( qw/yes | perlbrew install-cpanm/ );
 
 # install perl and lock it down
 
-$perl = '' if grep { qr{^http} } @args;
+$perl = '' if grep qr{^http}, @args;
 
 # DB_File on OSX 10.13 is incompatible - when the build fails,
 # sudo port install db48,
@@ -56,21 +56,19 @@ system(say => 'done.');
 system(say => "elapsed time: ${min} minutes, ${sec} seconds.");
 
 
-sub run_or_die
-{
-    my $cmd = join(' ', @_);
-    print "Running: $cmd\n";
-    system $cmd;
-    die "$cmd returned exit code $?: stopping" if $?;
-    return $?
+sub run_or_die {
+  my $cmd = join(' ', @_);
+  print "Running: $cmd\n";
+  system $cmd;
+  die "$cmd returned exit code $?: stopping" if $?;
+  return $?
 }
 
-sub run
-{
-    my $cmd = join(' ', @_);
-    print "Running: $cmd\n";
-    system $cmd;
-    warn "$cmd returned exit code $?" if $?;
-    return $?
+sub run {
+  my $cmd = join(' ', @_);
+  print "Running: $cmd\n";
+  system $cmd;
+  warn "$cmd returned exit code $?" if $?;
+  return $?
 }
 

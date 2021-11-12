@@ -244,6 +244,10 @@ endif
 
 colorscheme default
 
+" for https://github.com/vim-perl/vim-perl
+let perl_sub_signatures = 1
+
+
 " experimental.. attempt to get colours right
 set t_Co=16
 

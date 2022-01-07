@@ -342,11 +342,12 @@ shipped_bugs() {
     popd
 }
 
-disapprove() {
+disapprove() {  # ಠ_ಠ
     # unicode: 0x0CA0 0x5F 0x0CA0
     #          \x{0ca0}\x{5f}\x{0ca0}
     # UTF-8:   0xE0 0xB2 0xA0 0x5F 0xE0 0xB2 0xA0
     #          \x{e0}\x{b2}\x{a0}\x{5f}\x{e0}\x{b2}\x{a0}
+    #          v224.178.160.95.224.178.160
     perl -CS -E'say v3232.95.3232'
 }
 

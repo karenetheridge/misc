@@ -124,6 +124,8 @@
 	# all commits, in ascending chronological order, since the last blead release
 	bleadcommits = !git log --oneline --decorate --date=short --pretty=format:'%C(yellow)%h %Cred%ad %Cblue%an%C(red bold)%d %Creset%s' --reverse $(git describe --abbrev=0 --tags)~1..HEAD
 	common = !git merge-base $(git rev-parse --abbrev-ref HEAD)  # common ancestor between current branch and provided branch or commit
+	defaultbranch = "!defaultbranch=$(git config init.defaultBranch); echo ${defaultbranch:-master}"
+	rbm = "!git fetchall; git rebase -i origin/$(git defaultbranch)"
 
 ; for automatic translation of URLs
 [url "git@github.com:"]

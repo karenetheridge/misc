@@ -79,6 +79,7 @@ set nofileignorecase    " I only use case-sensitive filesystems
 set nowildignorecase
 
 set guioptions+=a       " copy the selected area into the global clipboard
+set autowrite           " write the file contents on :next, previous etc
 
 if has("folding")
 "  set foldmethod=syntax
@@ -174,6 +175,9 @@ noremap ,l :!perl -Ilib -c %
 
 if has("autocmd")
   filetype plugin indent on
+
+  " https://www.reddit.com/r/vim/comments/gnkws5/convince_me_that_i_dont_need_this_in_my_vimrc/
+  au CursorHold,CursorHoldI * checktime       " autodetect when files have changed externally
 
   " more filetype detection:
   au BufNewFile,BufRead,BufReadPre,BufWinEnter *.PL                 set filetype=perl

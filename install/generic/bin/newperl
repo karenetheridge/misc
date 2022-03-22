@@ -52,6 +52,8 @@ my $elapsed_time = time() - $start_time;
 my ($min, $sec) = (int($elapsed_time / 60), $elapsed_time % 60);
 print "done (elapsed time: ${min}m ${sec}s). now you should run:\n";
 print "perlbrew use $as\@std; perlmodules\n";
+print "or\n";
+print "perlbrew use $as\@std; CPAN_META_JSON_BACKEND= cpanm App::cpanminus::reporter\n";
 system(say => 'done.');
 system(say => "elapsed time: ${min} minutes, ${sec} seconds.");
 

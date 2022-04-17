@@ -65,7 +65,6 @@ qw(
     Dist::Zilla::Plugin::Chrome::ExtraPrompt
     Dist::Zilla::Plugin::Bootstrap::lib
     Dist::Zilla::App::Command::dumpphases
-    Dist::Zilla::App::Command::podpreview
     Dist::Zilla::App::Command::dumpwith
     Dist::Zilla::App::Command::lsplugins
     Dist::Zilla::App::Command::cover
@@ -140,6 +139,7 @@ qw(
     Dist::Zilla::Plugin::Prereqs::FromCPANfile
     Dist::Zilla::Plugin::Test::Pod::Coverage::Configurable
     Devel::DDCWarn
+    App::perlvars
 ),
 );
 
@@ -173,8 +173,9 @@ qw(
     Moose
     Dist::Zilla::PluginBundle::Author::ETHER
     CPAN::DistnameInfo
+    JSON::Schema::Modern
 ),
-(grep !/^(Hash::Util::FieldHash::Compat|JSON::Any|Test::Mock::LWP::UserAgent::ButAwesome)/,
+(grep !/^(Hash::Util::FieldHash::Compat|JSON::Any|Test::Mock::LWP::UserAgent::ButAwesome|Draft201909)/,
   # distributions that I call "mine", or "adopted"
   (map { (my $mod = basename($_)) =~ s/-/::/g; $mod } glob('~/git/_{my,adopted}dists/*')),
 
@@ -251,9 +252,6 @@ run('cpanm-reporter');
 
 my @needs_dot_in_inc = qw(
     Alt::Module::Runtime::ButEUMM
-    Array::Diff
-    Test::Spelling
-    Term::Encoding
     Test::utf8
     Text::LineFold
     MooseX::MarkAsMethods

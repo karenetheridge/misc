@@ -127,14 +127,13 @@ for my $key (sort keys %found) {
   }
 
   for my $version (map { $versions[$_] } $index+1 .. $#versions) {
-
     for my $file (@{ $dist->{ $version }{values} }) {
       if (my @modules = indexed_modules($file)) {
-        warn "scheduling $file for deletion, but WARNING!! $file is still indexed against module(s): ",
+        warn "!!! not scheduling $file for deletion because $file is still indexed against module(s): ",
             join(', ', @modules), "\n";
-      } else {
-        print "scheduling $file for deletion\n";
+        next;
       }
+      print "scheduling $file for deletion\n";
       $ticked{ $file } ++;
     }
   }

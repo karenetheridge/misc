@@ -41,7 +41,7 @@ my %arg;
 
 while (<$pauserc>) {
   chomp;
-  next unless $_ and $_ !~ /^\s*#/;
+  next unless $_ and $_ !~ /^\s*#/; # comment to unconfuse TextMate (?)
 
   my ($k, $v) = /^\s*(\w+)\s+(.+)$/;
   croak "multiple enties for $k" if $arg{$k};

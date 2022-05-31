@@ -305,6 +305,16 @@ endif
 hi MatchParen term=NONE ctermbg=2 guibg=#008f00
 
 
+" PLUGINS
+" https://github.com/junegunn/vim-plug
+call plug#begin()
+
+" insert more Plug commands here
+
+call plug#end()
+
+
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Below this point is stuff stolen from Neil... moving to above the line as I

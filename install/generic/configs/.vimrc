@@ -164,6 +164,8 @@ map ,dl   :set paste<CR>Ouse Data::Dumper;<CR>local $Data::Dumper::Sortkeys = 1;
 " ,l -- compile test of current file
 noremap ,l :!perl -Ilib -c %
 
+map ,term :below terminal ++rows=10<CR>
+
 
 " XXX for posterity:
 " fix uses of lives_ok and throws_ok:

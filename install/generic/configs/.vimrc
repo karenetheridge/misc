@@ -309,6 +309,9 @@ hi MatchParen term=NONE ctermbg=2 guibg=#008f00
 " https://github.com/junegunn/vim-plug
 call plug#begin()
 
+" https://github.com/prabirshrestha/vim-lsp
+Plug 'prabirshrestha/vim-lsp'
+
 " insert more Plug commands here
 
 call plug#end()

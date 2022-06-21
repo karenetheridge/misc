@@ -319,6 +319,31 @@ Plug 'prabirshrestha/vim-lsp'
 call plug#end()
 
 
+"" from fgs and drbrain, #vim, 2022-05-31.
+let g:ale_linters = {'rust': ['analyzer']}
+let g:ale_completion_enabled = 1
+let g:ale_rust_rustfmt_options = '+stable'
+let g:ale_fix_on_save = 1
+
+"let g:ale_sign_column_always = 1
+let g:ale_sign_error = '⸭⸭'
+let g:ale_sign_warning = ' ⁂'
+let g:ale_rust_analyzer_executable = '/usr/local/bin/rust-analyzer'
+
+let g:ale_fixers = {
+      \ '*': ['remove_trailing_lines', 'trim_whitespace'],
+      \ 'go': ['gofmt'],
+      \ 'rust': ['rustfmt'],
+      \}
+
+nmap <silent> <C-]> <Plug>(ale_go_to_definition)
+
+au FileType rust let g:airline#extensions#ale#enabled = 1  " requires vim-airline?
+au FileType rust let g:ale_sign_column_always = 1
+
+
+
+
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 

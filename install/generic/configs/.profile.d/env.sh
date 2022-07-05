@@ -9,7 +9,7 @@ export CLICOLOR=1
 # e.g https://rt.perl.org/rt3/Public/Bug/Display.html?id=114312
 #export CLICOLOR_FORCE=1
 
-export PAGER='less -icMR'
+export PAGER='less -icMR --tabs=4'
 export MANPAGER='less -sicMR'
 export PERLDOC_PAGER='less -sicMr'
 

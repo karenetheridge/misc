@@ -129,6 +129,9 @@
 	defaultbranch = "!defaultbranch=$(git config init.defaultBranch); echo ${defaultbranch:-master}"
 	rbm = "!git fetchall; git rebase -i origin/$(git defaultbranch)"
 	firstcommit = !git rev-list HEAD | tail -n 1
+	isdirty = diff --quiet --stat # returns 0 if the file is clean, 1 if it is dirty
+	# all commits from main branch to HEAD, in commit order
+	commits = "!git log -p --decorate --notes --pretty=fuller --stat --reverse origin/$(git defaultbranch)..HEAD"
 
 ; for automatic translation of URLs
 [url "git@github.com:"]

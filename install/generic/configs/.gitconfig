@@ -92,7 +92,8 @@
 	wip = stash save --keep-index 'wip'
 	fetchall = fetch --all --tags --prune
 	squash = commit -m"squash! $@"	# see also "sq" and "fixup" shell functions
-	deltag = "!git push --delete origin tag $1; git tag -d $1"
+	# https://stackoverflow.com/questions/37583800/how-can-i-create-a-git-alias-to-delete-a-tag-remotely
+	deltag = !sh -c 'git tag -d $1 && git push origin :refs/tags/$1' -
 	delbranch = push origin --delete
 	m = merge --no-ff
 	mff = merge --ff-only

@@ -99,3 +99,75 @@ spelling() {
 }
 
 alias rehash='hash -r'
+
+disapprove() {  # ಠ_ಠ
+    # unicode: 0x0CA0 0x5F 0x0CA0
+    #          \x{0ca0}\x{5f}\x{0ca0}
+    # UTF-8:   0xE0 0xB2 0xA0 0x5F 0xE0 0xB2 0xA0
+    #          \x{e0}\x{b2}\x{a0}\x{5f}\x{e0}\x{b2}\x{a0}
+    #          v224.178.160.95.224.178.160
+    perl -CS -E'say v3232.95.3232'
+}
+
+snowman () {
+    perl -CO -E'say v9731'   # 0x2603
+}
+
+heart () {
+    perl -CO -E'say v9825'   # 0x2661
+}
+
+poo() {
+    perl -CO -E'say v128169' # U+1F4A9
+}
+
+md5hex() {
+    perl -MDigest::MD5=md5_hex -wE'chomp(my $line = <>); say md5_hex($line)'
+}
+
+base64 () {
+    perl -MDigest::MD5=md5_base64 -wE'chomp(my $line = <>); say md5_base64($line)'
+}
+
+rot13(){
+    perl -n -wE'tr/A-MN-Za-mn-z/N-ZA-Mn-za-m/; say'
+}
+
+maxlen() {
+    perl -wE'my $max=0; while (<>) { chomp; my $length = length($_); $max = $length if $length > $max } say $max'
+}
+
+perlpie() {
+    sub=$1
+    shift
+    dirs="${@:-lib}"
+    perl -p -i -e $sub $(find $dirs -type f)
+}
+
+json2yaml() {
+    perl -MYAML::XS -MJSON::MaybeXS -wE'$YAML::XS::Boolean="JSON::PP"; print Dump(JSON::MaybeXS->new->decode(do { local $/; <> }))' $*
+}
+
+json2dd() {
+    perl -MJSON::MaybeXS -MData::Dumper -wE'print Data::Dumper->new([ JSON()->new->decode(do { local $/; <> }) ] )->Sortkeys(1)->Indent(1)->Terse(1)->Dump' $*
+}
+
+yaml2json() {
+    perl -MYAML::XS -MJSON::MaybeXS -wE'print JSON()->new->pretty->indent_length(2)->canonical->encode(Load(do { local $/; <> }))' $*
+}
+
+yaml2dd() {
+    perl -MYAML::XS -MData::Dumper -wE'print Data::Dumper->new([ Load(do { local $/; <> })] )->Sortkeys(1)->Indent(1)->Terse(1)->Dump' $*
+}
+
+# pure-perl json format, 4 columns:
+# perl -MJSON::PP -wE'print JSON::PP->new->pretty->indent_length(4)->canonical->encode(JSON::PP->new->decode(do { local $/; <> }))' $*
+json2json() {
+    perl -MJSON::MaybeXS -wE'print JSON()->new->pretty->indent_length(2)->canonical->encode(JSON()->new->decode(do { local $/; <> }))' $*
+}
+
+# re-sorts the provided .json files
+jsonsort () {
+  perl -MJSON::MaybeXS -0777 -p -i -e'my $encoder = JSON::MaybeXS->new(canonical=>1, pretty=>1, indent_length=>4, utf8=>1); $_ = $encoder->encode($encoder->decode($_));' $*
+}
+

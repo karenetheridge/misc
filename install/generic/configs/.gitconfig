@@ -126,6 +126,7 @@
 	common = !git merge-base $(git rev-parse --abbrev-ref HEAD)  # common ancestor between current branch and provided branch or commit
 	defaultbranch = "!defaultbranch=$(git config init.defaultBranch); echo ${defaultbranch:-master}"
 	rbm = "!git fetchall; git rebase -i origin/$(git defaultbranch)"
+	firstcommit = !git rev-list HEAD | tail -n 1
 
 ; for automatic translation of URLs
 [url "git@github.com:"]

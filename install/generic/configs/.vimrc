@@ -46,7 +46,7 @@ set softtabstop=2       " each time I bang on tab, give me two columns
 set shiftwidth=2        " autoindents are worth two columns
 set expandtab           " use spaces rather than tabs
 " set wrapmargin=2        " go to next line when close to the edge
-set listchars=tab:^.,trail:⋅,eol:
+set listchars=tab:^.,trail:⋅,eol:$
 set list                " start off in list mode (may sometimes be annoying though)
 set nojoinspaces        " when joining, insert one space after [.?!], not two
 set textwidth=78        " affects formatting (gq), wordwrapping etc; should be set before fo

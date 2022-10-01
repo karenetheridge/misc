@@ -36,6 +36,8 @@
 
 version 4.x             " I have read the 4.0 release notes.
 set nocompatible        " I understand all the ways that vim != vi.
+scriptencoding utf-8
+set encoding=utf-8
 
 "  autocmd!              " Remove ALL autocommands.
 
@@ -49,7 +51,7 @@ set expandtab           " use spaces rather than tabs
 set listchars=tab:^.,trail:⋅,eol:$
 set list                " start off in list mode (may sometimes be annoying though)
 set nojoinspaces        " when joining, insert one space after [.?!], not two
-set textwidth=78        " affects formatting (gq), wordwrapping etc; should be set before fo
+set textwidth=100       " affects formatting (gq), wordwrapping etc; should be set before fo
 set formatoptions+=j    " where it makes sense, remove a comment leader when joining lines
 set showmatch           " when typing a bracket/brace/parenthesis, blip to the matching one
 set formatoptions+=c    " auto-format comment as they are typed

@@ -204,8 +204,9 @@ function cpanm-metacpan-favorited {
 }
 
 # courtesy hobbs, #perl 2013-01-30
+# fixed for dupe entries 2022-10-26
 errno_list() {
-    perl -lE 'for (1..255) { $! = $_; my ($key) = grep $!{$_}, keys %!; say "$_: $key: $!" if defined $key }'
+    perl -lE 'for (1..255) { $! = $_; my (@keys) = grep $!{$_}, keys %!; say "$_: ", join(",", @keys), ": $!" if @keys }'
 }
 
 jsondump() {

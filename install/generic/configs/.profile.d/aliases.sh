@@ -171,3 +171,7 @@ jsonsort () {
   perl -MJSON::MaybeXS -0777 -p -i -e'my $encoder = JSON::MaybeXS->new(canonical=>1, pretty=>1, indent_length=>4, utf8=>1); $_ = $encoder->encode($encoder->decode($_));' $*
 }
 
+ini2yaml() {
+    perl -MConfig::INI::Reader -MYAML::XS -wE'$YAML::XS::Boolean="JSON::PP"; print Dump(Config::INI::Reader->read_string(do { local $/; <> }))' $*
+}
+

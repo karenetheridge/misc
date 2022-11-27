@@ -28,6 +28,8 @@ export CPAN_META_JSON_BACKEND=JSON::MaybeXS
 # otherwise, engage maximal failure mode.
 export PERL_USE_UNSAFE_INC=0
 
+# added in perl 5.33.5
+export PERL_TEST_HARNESS_ASAP=1
 
 
 # used by EUMM to add things as prereqs, rather than bundling.

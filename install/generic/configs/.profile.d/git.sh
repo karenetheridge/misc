@@ -7,6 +7,7 @@
 alias gd='git diff'
 alias gdd='git diff $(git describe --abbrev=0 --tags) HEAD' # committed changes since last tag
 alias gds='git diff --staged'
+alias gdo='git diff origin/$(git branchname)'
 alias gs='git status'
 alias gsi='git status --ignored'
 alias glp='git log -p --decorate --notes --pretty=fuller --stat'

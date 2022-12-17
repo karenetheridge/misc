@@ -472,3 +472,8 @@ acceptance_tests () {
 
   AUTHOR_TESTING=1 TEST_PREFIXDIR=/Volumes/amaretto/Users/ether/git/JSON-Schema-Test-Suite prove -Ilib ${tests[@]}
 }
+
+failed_installs () {
+    version=$(perl -wle'print $] =~ s/^5.0(\d{2})0(\d{2})$/"5.".($1+0).".".($2+0)/re')
+    ack --nocolor "test FAIL.*$version" ~/.cpanreporter/reports-sent.db
+}

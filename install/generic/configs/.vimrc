@@ -82,6 +82,7 @@ set nowildignorecase
 
 set guioptions+=a       " copy the selected area into the global clipboard
 set autowrite           " write the file contents on :next, previous etc
+set redrawtime=10000    " default 2000; slowdown might be caused by a missing library
 
 if has("folding")
 "  set foldmethod=syntax

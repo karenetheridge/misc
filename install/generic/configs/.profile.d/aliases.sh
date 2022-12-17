@@ -175,3 +175,7 @@ ini2yaml() {
     perl -MConfig::INI::Reader -MYAML::XS -wE'$YAML::XS::Boolean="JSON::PP"; print Dump(Config::INI::Reader->read_string(do { local $/; <> }))' $*
 }
 
+# something that I can pipe to that reverses the order of all lines.
+reverse_lines () {
+  perl -wE'print reverse <>'
+}

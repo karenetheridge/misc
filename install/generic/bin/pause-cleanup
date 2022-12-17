@@ -91,6 +91,14 @@ FILE: for my $file (@files) {
     }
   }
 
+  if (not $dni->dist or not $dni->version) {
+    use Data::Dumper;
+    local $Data::Dumper::Sortkeys = 1;
+    local $Data::Dumper::Maxdepth = 2;
+    warn "I don't know what to do about this distribution: ",Dumper($dni);
+    next;
+  }
+
   next if $dni->dist eq 'perl';
 
   my $by_name = $found{ $dni->dist } ||= {};

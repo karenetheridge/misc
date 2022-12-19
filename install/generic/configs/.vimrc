@@ -49,7 +49,6 @@ set shiftwidth=2        " autoindents are worth two columns
 set expandtab           " use spaces rather than tabs
 " set wrapmargin=2        " go to next line when close to the edge
 set listchars=tab:^.,trail:⋅,eol:$
-set list                " start off in list mode (may sometimes be annoying though)
 set nojoinspaces        " when joining, insert one space after [.?!], not two
 set textwidth=100       " affects formatting (gq), wordwrapping etc; should be set before fo
 set formatoptions+=j    " where it makes sense, remove a comment leader when joining lines
@@ -358,7 +357,6 @@ set ai		" always do autoindenting
 "if has("mouse")
 "  set mouse=nvi	" use mouse support in xterm
 "endif
-set listchars=tab:^.,trail:·
 
 
 

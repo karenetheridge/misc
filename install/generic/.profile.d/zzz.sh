@@ -1,4 +1,4 @@
-# this file is install/generic/configs/.profile.d/zzz.sh
+# this file is install/generic/.profile.d/zzz.sh
 
 # stuff that runs at the (presumed) end of the .sh startup
 

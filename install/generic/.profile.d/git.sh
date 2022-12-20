@@ -1,6 +1,6 @@
-# this file is install/generic/configs/.profile.d/git.sh
+# this file is install/generic/.profile.d/git.sh
 
-# see also install/generic/configs/.gitconfig
+# see also install/generic/.gitconfig
 # for more aliases
 
 # aliases and customizations for git

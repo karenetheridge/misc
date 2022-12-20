@@ -1,4 +1,4 @@
-# this file is install/generic/configs/.profile.d/env.sh
+# this file is install/generic/.profile.d/env.sh
 
 export EDITOR=vim
 

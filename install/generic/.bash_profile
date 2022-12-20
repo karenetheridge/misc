@@ -1,4 +1,4 @@
-# this file is install/generic/configs/.bash_profile
+# this file is install/generic/.bash_profile
 
 # apparently necessary: .bashrc is not sourced on its own from the default
 # 'login', 'bash' sequence?

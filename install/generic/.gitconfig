@@ -1,11 +1,11 @@
 ; vim: set ts=4 sw=4 sts=4 tw=78 noet nolist :
-; this file is install/generic/configs/.gitconfig
+; this file is install/generic/.gitconfig
 
 [include]
-;	path = ~/git/misc/install/generic/configs/.gitconfig -- this file!
+;	path = ~/git/misc/install/generic/.gitconfig -- this file!
 	; this file is NEVER committed to git, as it could contain credentials or
 	; machine-specific configurations.
-	path = ~/git/misc/install/generic/configs/.gitconfig.local
+	path = ~/git/misc/install/generic/.gitconfig.local
 
 [user]
 	name = Karen Etheridge

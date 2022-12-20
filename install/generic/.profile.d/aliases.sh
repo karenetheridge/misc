@@ -1,4 +1,4 @@
-# this file is install/generic/configs/.profile.d/aliases.sh
+# this file is install/generic/.profile.d/aliases.sh
 
 # This file is intentionally loaded first or nearly-first out of all .sh files
 

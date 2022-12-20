@@ -1,2 +1,2 @@
-# this file is install/generic/configs/.profile.d/functions.sh
+# this file is install/generic/.profile.d/functions.sh
 

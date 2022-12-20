@@ -1,4 +1,4 @@
-# this file is install/generic/configs/.ackrc
+# this file is install/generic/.ackrc
 
 --type-add=perl=.psgi
 --ignore-dir=.build

@@ -1,4 +1,4 @@
-# this file is install/generic/configs/.profile.d/imagemagick.sh
+# this file is install/generic/.profile.d/imagemagick.sh
 
 #export MAGICK_HOME="$HOME/src/ImageMagick-6.5.3"
 #export PATH="$MAGICK_HOME/bin:$PATH"

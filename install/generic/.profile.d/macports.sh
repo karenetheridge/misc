@@ -1,4 +1,4 @@
-# this file is install/generic/configs/.profile.d/macports.sh
+# this file is install/generic/.profile.d/macports.sh
 
 # (moved from .bash_profile where it was put automatically):
 

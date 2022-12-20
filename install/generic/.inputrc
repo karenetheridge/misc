@@ -1,4 +1,4 @@
-# this file is install/generic/configs/.inputrc
+# this file is install/generic/.inputrc
 
 set bell-style visible
 set editing-mode emacs

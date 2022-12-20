@@ -1,4 +1,4 @@
-# this file is install/generic/configs/.profile.d/perl.sh
+# this file is install/generic/.profile.d/perl.sh
 
 # to alter ExtUtils::MakeMaker options (e.g. compile options used in cpan):
 # export PERL_MM_OPT="INC=-I/opt/local/include LIBS=-L/opt/local/lib"

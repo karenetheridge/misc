@@ -1,4 +1,4 @@
-# this file is install/generic/configs/.profile.d/completion.sh
+# this file is install/generic/.profile.d/completion.sh
 
 # bash shell completion
 

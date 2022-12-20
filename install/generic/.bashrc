@@ -1,4 +1,4 @@
-# this file is install/generic/configs/.bashrc
+# this file is install/generic/.bashrc
 
 # note this gets run via .bash_profile too
 

@@ -1,4 +1,4 @@
-# this file is install/generic/configs/.profile.d/prompt.sh
+# this file is install/generic/.profile.d/prompt.sh
 
 # Set Attribute Mode      <ESC>[{attr1};...;{attrn}m
 # Sets multiple display attribute settings.

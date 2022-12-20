@@ -1,4 +1,4 @@
-# this file is install/generic/configs/.profile.d/z_gpg.sh_
+# this file is install/generic/.profile.d/z_gpg.sh_
 
 # from https://metacpan.org/module/Config::Identity,
 # modified 

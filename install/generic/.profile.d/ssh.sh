@@ -1,4 +1,4 @@
-# this file is install/generic/configs/.profile.d/ssh.sh
+# this file is install/generic/.profile.d/ssh.sh
 
 fix_ssh_agent()
 {

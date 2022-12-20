@@ -41,7 +41,7 @@ sub make_host_link ($install, $host, $target = '', $level = 0) {
     my $dest = join('/',(('..')x$level), 'generic', $target);
     my $source = "$install/$host/$target";
     say "symlink $dest, $source";
-    symlink($dest, $source);
+    symlink($dest, $source) or die "symlink $dest <- $source failed: $!";
 
     make_origin_link($install, $host, $target);
   }
@@ -58,7 +58,7 @@ sub make_origin_link ($install, $host, $target) {
     return;
   }
   say "symlink $dest, $source";
-  symlink($dest, $source);
+  symlink($dest, $source) or die "symlink $dest <- $source failed: $!";
 }
 
 say "Files under $install/$host created! Look them over, delete as desired, then git add.";

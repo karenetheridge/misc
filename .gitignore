@@ -6,6 +6,7 @@
 .netrc
 .fetchmailrc
 .msmtprc
+.pause
 .viminfo
 id_rsa
 id_dsa

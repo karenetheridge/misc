@@ -1,5 +1,4 @@
 /install/*/.profile.d/local.sh
-/install/*/.gitconfig.local
 !.ackrc
 .bash_history
 .netrwhist

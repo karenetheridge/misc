@@ -1,0 +1,5 @@
+; vim: set ts=4 sw=4 sts=4 tw=78 noet ft=gitconfig :
+
+; this file is ~/git/misc/install/generic/.gitconfig.local
+
+; copy this file to the host-specific directory and edit as needed.

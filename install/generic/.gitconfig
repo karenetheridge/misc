@@ -5,7 +5,7 @@
 ;	path = ~/git/misc/install/generic/.gitconfig -- this file!
 	; this file is NEVER committed to git, as it could contain credentials or
 	; machine-specific configurations.
-	path = ~/git/misc/install/generic/.gitconfig.local
+	path = ~/.gitconfig.local
 
 [user]
 	name = Karen Etheridge

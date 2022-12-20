@@ -34,6 +34,9 @@ sagent()
         if [ -e ~/.ssh/id_ecdsa ]; then
             ssh-add -t 25920000 -K ~/.ssh/id_ecdsa;
         fi
+        if [ -e ~/.ssh/id_ed25519 ]; then
+            ssh-add -t 25920000 -K ~/.ssh/id_ed25519;
+        fi
         ln -sf $SSH_AUTH_SOCK ~/.ssh/cached-ssh-agent
     }
 

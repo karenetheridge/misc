@@ -470,7 +470,7 @@ acceptance_tests () {
     tests+=(t/zzz-acceptance-draft2020-12-format.t t/zzz-acceptance-draft2019-09-format.t t/zzz-acceptance-draft7-format.t)
   fi
 
-  AUTHOR_TESTING=1 TEST_PREFIXDIR=/Volumes/amaretto/Users/ether/git/JSON-Schema-Test-Suite prove -Ilib ${tests[@]}
+  AUTHOR_TESTING=1 TEST_PREFIXDIR=~/git/JSON-Schema-Test-Suite prove -Ilib ${tests[@]}
 }
 
 failed_installs () {

@@ -238,7 +238,7 @@ if has("autocmd")
 
   au FileType gitcommit set textwidth=78
 
-  au FileType gitconfig set noexpandtab nolist shiftwidth=8 tabstop=4
+  au FileType gitconfig set noexpandtab nolist shiftwidth=8 softtabstop=4 tabstop=4
 
   " load local override files
   au BufNewFile,BufRead,BufWinEnter * silent! source .vimlocal        " load .vimlocal files, but do not fail if nonexistent

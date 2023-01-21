@@ -347,7 +347,7 @@ shipped_bugs() {
 
 # run the command on all major perlbrews, starting at 8.8
 almostallperls() {
-    for perl in 8.8 8.9 10.0 10.1 12.5 14.4 16.3 18.4 20.3 22.4 24.4 26.3 28.1t 28.3 30.3 32.1 34.1 36.0 37.6 ; do
+    for perl in 8.8 8.9 10.0 10.1 12.5 14.4 16.3 18.4 20.3 22.4 24.4 26.3 28.1t 28.3 30.3 32.1 34.1 36.0 37.8 ; do
         perlbrew use ${perl}@std;
         echo; echo using $PERL5LIB
         eval $(printf "%q " "$@")
@@ -357,7 +357,7 @@ almostallperls() {
 }
 
 allperls () {
-    for perl in 8.1 8.5 8.8 8.9 10.0 10.1 12.5 14.4 16.3 18.4 20.3 22.4 24.4 26.3 28.1t 28.3 30.3 32.1 34.1 36.0 37.6 ; do
+    for perl in 8.1 8.5 8.8 8.9 10.0 10.1 12.5 14.4 16.3 18.4 20.3 22.4 24.4 26.3 28.1t 28.3 30.3 32.1 34.1 36.0 37.8 ; do
         perlbrew use ${perl}@std;
         echo; echo using $PERL5LIB
         eval $(printf "%q " "$@")
@@ -367,7 +367,7 @@ allperls () {
 }
 
 modernperls() {
-    for perl in 16.3 18.4 20.3 22.4 24.4 26.3 28.1t 28.3 30.3 32.1 34.1 36.0 37.6 ; do
+    for perl in 20.3 22.4 24.4 26.3 28.1t 28.3 30.3 32.1 34.1 36.0 37.8 ; do
         perlbrew use ${perl}@std;
         echo; echo using $PERL5LIB
         eval $(printf "%q " "$@")

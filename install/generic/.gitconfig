@@ -115,7 +115,7 @@
 	; from http://durdn.com/blog/2012/11/22/must-have-git-aliases-advanced-examples/
 	ls-aliases = !git config -l | grep alias | cut -c 7-
 	pull-url = "!echo $(git remote get-url --push origin | perl -p -e's{^(?:git@|https?//)([^:/]*)[:/](.+?)(\\.git)?$}{https://$1/$2/pull/new/}')$(git branchname)"
-	pr = "!git push --force-with-lease -u origin $(git branchname); open $(git pull-url)"
+	pr = "!git push --force-with-lease -u origin $(git branchname); echo $(git pull-url); open $(git pull-url)"
 	# files that changed in the commit
 	df = !sh -c 'git diff-tree --no-commit-id --name-only -r "${1-HEAD}"'
 	pushf = push --force-with-lease

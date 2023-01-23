@@ -371,6 +371,7 @@ modernperls() {
         perlbrew use ${perl}@std;
         echo; echo using $PERL5LIB
         eval $(printf "%q " "$@")
+        ack --nocolor "test FAIL.*5.${perl}" ~/.cpanreporter/reports-sent.db | sort -u
     done
 }
 

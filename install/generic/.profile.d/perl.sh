@@ -475,5 +475,5 @@ acceptance_tests () {
 
 failed_installs () {
     version=$(perl -wle'print $] =~ s/^5.0(\d{2})0(\d{2})$/"5.".($1+0).".".($2+0)/re')
-    ack --nocolor "test FAIL.*$version" ~/.cpanreporter/reports-sent.db
+    ack --nocolor "test FAIL.*$version" ~/.cpanreporter/reports-sent.db | sort -u
 }

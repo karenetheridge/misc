@@ -3,7 +3,12 @@
 fix_ssh_agent()
 {
     eval $(ssh-agent)
-    ssh-add -t 25920000 --apple-use-keychain ~/.ssh/id_rsa
+    for f in ~/.ssh/id_{rsa,ecdsa,ed25519} ; do
+      if [ -e $f ]; then
+        echo ssh-add -t 25920000 --apple-use-keychain $f
+        ssh-add -t 25920000 --apple-use-keychain $f
+      fi
+    done
 }
 
 # having troubles getting the passphrase remembered on a headless OSX session?
@@ -30,13 +35,12 @@ sagent()
     [ -S "$SSH_AUTH_SOCK" ] || {
         echo 'cached ssh agent is invalid; generating a new one'
         eval "$(ssh-agent)"
-        ssh-add -t 25920000 --apple-use-keychain ~/.ssh/id_rsa
-        if [ -e ~/.ssh/id_ecdsa ]; then
-            ssh-add -t 25920000 --apple-use-keychain ~/.ssh/id_ecdsa;
-        fi
-        if [ -e ~/.ssh/id_ed25519 ]; then
-            ssh-add -t 25920000 --apple-use-keychain ~/.ssh/id_ed25519;
-        fi
+        for f in ~/.ssh/id_{rsa,ecdsa,ed25519} ; do
+          if [ -e $f ]; then
+            echo ssh-add -t 25920000 --apple-use-keychain $f
+            ssh-add -t 25920000 --apple-use-keychain $f
+          fi
+        done
         ln -sf $SSH_AUTH_SOCK ~/.ssh/cached-ssh-agent
     }
 

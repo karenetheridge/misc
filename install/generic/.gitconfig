@@ -41,6 +41,9 @@
 [gc]
 	rerereUnresolved = 2	; prune unresolved conflicts older than N days; default 15
 	rerereResolved = 14		; prune resolved conflicts older than N days; default 60
+	reflogExpire = 365		; days; default: 90
+	reflogExpireUnreachable = 365	; days; default: 30
+
 [diff]
 	algorithm = histogram	; a bit better than patience
 	compactionHeuristic = true

@@ -116,8 +116,8 @@ PROMPT_COMMAND="prompt_function"
 
 # test -t 0: checks fd 0 (stdin)
 if test -t 0; then
-    P1="${red}:${NC} [\u@\h \$PS1_DIR1\$SEP\$PS1_DIR2]"
-    P2="\$${red};${NC} "
+    P1="${yellow}:${NC} \$(if [[ \$? != 0 ]]; then printf \"${yellow}\"; fi)[\u@\h \$PS1_DIR1\$SEP\$PS1_DIR2]"
+    P2="\$${yellow};${NC} "
     if test -n "$WINDOW"; then
       export PS1="${P1}.\${WINDOW}${P2}"
     else

@@ -120,8 +120,11 @@ prompt_function() {
 PROMPT_COMMAND="prompt_function"
 
 # test -t 0: checks fd 0 (stdin)
+# we filter out $?=141 which is pipefail:
+# https://unix.stackexchange.com/questions/582844/how-to-suppress-sigpipe-in-bash
+# https://unix.stackexchange.com/questions/274120/pipe-fail-141-when-piping-output-into-tee-why
 if test -t 0; then
-    P1="${yellow}:${NC} \$(if [[ \$? != 0 ]]; then printf \"${yellow}\"; fi)[\u@\h \$PS1_DIR1\$SEP\$PS1_DIR2]"
+    P1="${yellow}:${NC} \$(if [[ \$? != 0 && \$? != 141 ]]; then printf \"${yellow}\"; fi)[\u@\h \$PS1_DIR1\$SEP\$PS1_DIR2]"
     P2="\$${yellow};${NC} "
     if test -n "$WINDOW"; then
       export PS1="${P1}.\${WINDOW}${P2}"

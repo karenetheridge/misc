@@ -31,26 +31,31 @@
 # 47      White
 # 
 #if ${use_color}; then
-invisible='\[\e[0;8m\]'
-    black='\[\e[0;30m\]'
+ # modifiers go first, then colours.
+    blink='\[\e[5m\]'
+   invert='\[\e[7m\]'
+invisible='\[\e[8m\]'
+    black='\[\e[30m\]'
      grey='\[\e[1;30m\]'
-      red='\[\e[0;31m\]'
+      red='\[\e[31m\]'
       RED='\[\e[1;31m\]'
-    green='\[\e[0;32m\]'
+    green='\[\e[32m\]'
     GREEN='\[\e[1;32m\]'
-   yellow='\[\e[0;33m\]'
-    brown='\[\e[0;33m\]'
+   yellow='\[\e[33m\]'
+    brown='\[\e[33m\]'
    YELLOW='\[\e[1;33m\]'
-     blue='\[\e[0;34m\]'
+     blue='\[\e[34m\]'
      BLUE='\[\e[1;34m\]'
-  magenta='\[\e[0;35m\]'
+  magenta='\[\e[35m\]'
   MAGENTA='\[\e[1;35m\]'
-     cyan='\[\e[0;36m\]'
+     cyan='\[\e[36m\]'
      CYAN='\[\e[1;36m\]'
-    white='\[\e[0;37m\]'
+    white='\[\e[37m\]'
     WHITE='\[\e[1;37m\]'
        NC='\[\e[0m\]'
 
+# experiment thusly:
+# echo  -e "\033[5mhello world\033[0m"
 
 ##### all this commented out!
 if test 0; then

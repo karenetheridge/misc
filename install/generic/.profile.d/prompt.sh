@@ -29,12 +29,20 @@
 # 45      Magenta
 # 46      Cyan
 # 47      White
-# 
+
+# reference: https://stackoverflow.com/questions/5947742/how-to-change-the-output-color-of-echo-in-linux
+
 #if ${use_color}; then
  # modifiers go first, then colours.
-    blink='\[\e[5m\]'
+     bold='\[\e[1m\]'
+      dim='\[\e[2m\]'
+   italic='\[\e[3m\]' # (may not work in OSX Terminal)
+underline='\[\e[4m\]'
+    blink='\[\e[5m\]' # slow blink
+fastblink='\[\e[6m\]' # fast blink (may not work)
    invert='\[\e[7m\]'
 invisible='\[\e[8m\]'
+strikethrough='\[\e[9m\]'
     black='\[\e[30m\]'
      grey='\[\e[1;30m\]'
       red='\[\e[31m\]'
@@ -125,7 +133,7 @@ PROMPT_COMMAND="prompt_function"
 # https://unix.stackexchange.com/questions/274120/pipe-fail-141-when-piping-output-into-tee-why
 if test -t 0; then
     P1="${yellow}:${NC} \$(if [[ \$? != 0 && \$? != 141 && \$? != 146 ]]; then printf \"${yellow}\"; fi)[\u@\h \$PS1_DIR1\$SEP\$PS1_DIR2]"
-    P2="\$${yellow};${NC} "
+    P2="\$${dim}${yellow};${NC} "
     if test -n "$WINDOW"; then
       export PS1="${P1}.\${WINDOW}${P2}"
     else

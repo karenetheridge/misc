@@ -90,6 +90,8 @@
 	#stash = less -F
 	#diff = less -F #-p'^diff '
 	#stash = less -ciMR  # 'git wip' ends up in the pager and I don't like it
+	stashes = less
+	#stash = less -F	# when popping, we want the dropped sha to appear in scrollback.
 
 [github]
 	user = karenetheridge

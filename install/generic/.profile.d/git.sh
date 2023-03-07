@@ -7,7 +7,7 @@
 alias gd='git diff'
 alias gdd='git diff $(git describe --abbrev=0 --tags) HEAD' # committed changes since last tag
 alias gds='git diff --staged'
-alias gdo='git diff origin/$(git branchname)'
+alias gdo='git diff @{u}'
 alias gs='git status'
 alias gsi='git status --ignored'
 alias glp='git log -p --decorate --notes --pretty=fuller --stat'
@@ -27,6 +27,12 @@ alias grc='git rebase --continue'
 alias gra='git rebase --abort'
 alias gri='git rebase -i $(git describe --abbrev=0 --tags)'
 alias viconf='vim $(git conf)'  # edit all files in conflict - see .gitconfig alias
+alias gco='git checkout'
+alias gcop='git checkout -p'
+
+stash () {
+  git show "stash@{$1}"
+}
 
 gcm () {
     git commit -m"$*"

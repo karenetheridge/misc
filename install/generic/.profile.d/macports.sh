@@ -65,6 +65,10 @@ alias macportsupgrade=macportsup
 # sudo port uninstall inactive
 # sudo port echo leaves  -> port installed leaves -> port uninstall leaves
 
+# upgrading the OS:
+# https://trac.macports.org/wiki/Migration
+# port echo requested | cut -d ' ' -f 1 | uniq > macports-requested-$(date +'%Y%m%d').txt
+
 
 # added at the request of git +bash_completion
 if [ -f /opt/local/etc/profile.d/bash_completion.sh ]; then

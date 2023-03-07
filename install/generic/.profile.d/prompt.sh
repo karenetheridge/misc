@@ -128,9 +128,11 @@ prompt_function() {
 PROMPT_COMMAND="prompt_function"
 
 # test -t 0: checks fd 0 (stdin)
-# we filter out $?=141 which is pipefail:
+# 141 -> signal 13, SIGPIPE - happens on macos a lot
+# 146 -> signal 18, SIGCONT - when we paused a process
 # https://unix.stackexchange.com/questions/582844/how-to-suppress-sigpipe-in-bash
 # https://unix.stackexchange.com/questions/274120/pipe-fail-141-when-piping-output-into-tee-why
+
 if test -t 0; then
     P1="${yellow}:${NC} \$(if [[ \$? != 0 && \$? != 141 && \$? != 146 ]]; then printf \"${yellow}\"; fi)[\u@\h \$PS1_DIR1\$SEP\$PS1_DIR2]"
     P2="\$${dim}${yellow};${NC} "

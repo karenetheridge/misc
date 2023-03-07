@@ -309,37 +309,39 @@ hi MatchParen term=NONE ctermbg=2 guibg=#008f00
 
 " PLUGINS
 " https://github.com/junegunn/vim-plug
-call plug#begin()
+"call plug#begin()
 
 " https://github.com/prabirshrestha/vim-lsp
-Plug 'prabirshrestha/vim-lsp'
+"Plug 'prabirshrestha/vim-lsp'
 
 " insert more Plug commands here
 
-call plug#end()
+"call plug#end()
 
 
 "" from fgs and drbrain, #vim, 2022-05-31.
-let g:ale_linters = {'rust': ['analyzer']}
-let g:ale_completion_enabled = 1
-let g:ale_rust_rustfmt_options = '+stable'
-let g:ale_fix_on_save = 1
+" let g:ale_linters = {'rust': ['analyzer']}
+" let g:ale_rust_rustfmt_options = '+stable'
+" let g:ale_fix_on_save = 1
+" 
+" let g:ale_sign_column_always = 1
+" let g:ale_sign_error = '⸭⸭'
+" let g:ale_sign_warning = ' ⁂'
+" let g:ale_rust_analyzer_executable = '/usr/local/bin/rust-analyzer'
 
-"let g:ale_sign_column_always = 1
-let g:ale_sign_error = '⸭⸭'
-let g:ale_sign_warning = ' ⁂'
-let g:ale_rust_analyzer_executable = '/usr/local/bin/rust-analyzer'
-
-let g:ale_fixers = {
-      \ '*': ['remove_trailing_lines', 'trim_whitespace'],
-      \ 'go': ['gofmt'],
-      \ 'rust': ['rustfmt'],
-      \}
+" \ '*': ['remove_trailing_lines', 'trim_whitespace'],
+"let g:ale_fixers = {
+"      \ 'go': ['gofmt'],
+"      \ 'rust': ['rustfmt'],
+"      \}
 
 nmap <silent> <C-]> <Plug>(ale_go_to_definition)
 
+au FileType rust let g:ale_completion_enabled = 1
 au FileType rust let g:airline#extensions#ale#enabled = 1  " requires vim-airline?
 au FileType rust let g:ale_sign_column_always = 1
+
+au FileType perl let g:ale_completion_enabled = 0
 
 
 
@@ -416,4 +418,3 @@ set ai		" always do autoindenting
 
 "[23:50|lukec> vimrc tip: " map <F5> to open file in p4 edit mode
 "[23:50|lukec> map <F5> :!p4 edit %^[:set noro^[
-

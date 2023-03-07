@@ -66,6 +66,13 @@
 	# not needed if we are at git 2.30.2
 	# symlinks = false # https://github.blog/2021-03-09-git-clone-vulnerability-announced/
 
+[init]
+	# it seems that 2.37.1 (ish) now sets defaultBranch
+	defaultBranch = master	# let me switch to main for each branch individually
+
+# this cannot be global, if the file does not exist?
+#[blame]
+#	ignoreRevsFile = .git-blame-ignore-revs
 [interactive]
 	singlekey = true
 
@@ -129,6 +136,7 @@
 	# all commits, in ascending chronological order, since the last blead release
 	bleadcommits = "!git log --graph --oneline --decorate --date=short --pretty=format:'%C(yellow)%h %Cred%ad %Cblue%an%C(red bold)%d %Creset%s' $(git bleadrelease)~1..HEAD | perl -wE'print reverse <>' | perl -wne'm/^(\\W+)+ /g; my $str = (substr($_, 0, pos()) =~ tr{/\\\\}{\\\\/}r).substr($_, pos()); print $str'"
 	common = !git merge-base $(git rev-parse --abbrev-ref HEAD)  # common ancestor between current branch and provided branch or commit
+	# it seems that 2.37.1 (ish) now sets defaultBranch
 	defaultbranch = "!defaultbranch=$(git config init.defaultBranch); echo ${defaultbranch:-master}"
 	rbm = "!git fetchall; git rebase -i origin/$(git defaultbranch)"
 	firstcommit = !git rev-list HEAD | tail -n 1

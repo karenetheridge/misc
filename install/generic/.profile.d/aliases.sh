@@ -160,6 +160,10 @@ yaml2dd() {
     perl -MYAML::XS -MData::Dumper -wE'print Data::Dumper->new([ Load(do { local $/; <> })] )->Sortkeys(1)->Indent(1)->Terse(1)->Dump' $*
 }
 
+dd2yaml() {
+    perl -MYAML::XS -MData::Dumper -wE'$YAML::XS::Boolean="JSON::PP"; print Dump(eval do { local $/; <> })' $*
+}
+
 # pure-perl json format, 4 columns:
 # perl -MJSON::PP -wE'print JSON::PP->new->pretty->indent_length(4)->canonical->encode(JSON::PP->new->decode(do { local $/; <> }))' $*
 json2json() {

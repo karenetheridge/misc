@@ -183,3 +183,8 @@ ini2yaml() {
 reverse_lines () {
   perl -wE'print reverse <>'
 }
+
+# shellquote!
+sq () {
+  jq --raw-output --raw-input '. | @sh'
+}

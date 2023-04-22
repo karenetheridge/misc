@@ -4,9 +4,9 @@
 # for more aliases
 
 # aliases and customizations for git
-alias gd='git diff --word-diff=color'
-alias gdd='git diff --word-diff=color $(git describe --abbrev=0 --tags) HEAD' # committed changes since last tag
-alias gds='git diff --word-diff=color --staged'
+alias gd='git diff'
+alias gdd='git diff $(git describe --abbrev=0 --tags) HEAD' # committed changes since last tag
+alias gds='git diff --staged'
 alias gdo='git diff @{u}'
 alias gs='git status'
 alias gsi='git status --ignored'

@@ -30,8 +30,8 @@ alias viconf='vim $(git conf)'  # edit all files in conflict - see .gitconfig al
 alias gco='git checkout'
 alias gcop='git checkout -p'
 
-stash () {
-  git show "stash@{$1}"
+stash() {
+  git show "stash@{${1:-0}}"
 }
 
 gcm () {

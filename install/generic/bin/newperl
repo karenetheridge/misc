@@ -9,7 +9,8 @@ use warnings;
 my $start_time = time();
 
 my $as = shift
-    or die "Usage: $0 <perl-version-alias> [listed version to install]";
+    or die "Usage: $0 [args] <perl-version-alias> [listed version to install]";
+die "'$as' not a recognized perl version" if $as !~ /\d+\.\d+$/;
 my @args = @ARGV;
  
 # trailing "t" means do threads
@@ -34,7 +35,7 @@ run( qw/yes | perlbrew install-cpanm/ );
 
 # install perl and lock it down
 
-$perl = '' if grep qr{^http}, @args;
+$perl = '' if grep /^http/, @args;
 
 # DB_File on OSX 10.13 is incompatible - when the build fails,
 # sudo port install db48,

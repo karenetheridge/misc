@@ -116,9 +116,9 @@ for my $key (sort keys %found) {
 
   my @versions = sort {
       use version;
-      (my $x = $a) =~ s/-(TRIAL|RC)\d?$//;
+      (my $x = $a) =~ s/-([a-zA-Z]+)\d?$//;
       $x =~ tr/_//d;
-      (my $y = $b) =~ s/-(TRIAL|RC)\d?$//;
+      (my $y = $b) =~ s/-([a-zA-Z]+)\d?$//;
       $y =~ tr/_//d;
       version->parse($y) <=> version->parse($x)
   } keys %$dist;
@@ -126,9 +126,12 @@ for my $key (sort keys %found) {
   # we keep the last $keep *stable* releases - work through all releases in
   # reverse order until we've found that many
   my $found_stable = 0;
+  my %seen_versions;
   my $index;
   for ($index = 0; $index < @versions; ++$index)
   {
+    next if $seen_versions{$versions[$index]}++;  # there may be multiple dists with the same version
+
     ++$found_stable if $versions[$index] !~ /_/ and not grep qr/-TRIAL\d?$/, $dist->{$versions[$index]}{values}->@*;
     last if $found_stable >= $keep;
   }

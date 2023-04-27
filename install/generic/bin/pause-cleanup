@@ -129,9 +129,8 @@ for my $key (sort keys %found) {
   my $index;
   for ($index = 0; $index < @versions; ++$index)
   {
-      ++$found_stable if $versions[$index] !~ /_/
-          and $versions[$index] !~ qr/-TRIAL$/;
-      last if $found_stable >= $keep;
+    ++$found_stable if $versions[$index] !~ /_/ and not grep qr/-TRIAL\d?$/, $dist->{$versions[$index]}{values}->@*;
+    last if $found_stable >= $keep;
   }
 
   for my $version (map { $versions[$_] } $index+1 .. $#versions) {

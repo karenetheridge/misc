@@ -135,17 +135,20 @@ for my $key (sort keys %found) {
   }
 
   for my $version (map { $versions[$_] } $index+1 .. $#versions) {
-    for my $file (@{ $dist->{ $version }{values} }) {
+    for my $file (sort @{ $dist->{ $version }{values} }) {
       if (my @modules = indexed_modules($file)) {
         warn "!!! not scheduling $file for deletion because $file is still indexed against module(s): ",
             join(', ', @modules), "\n";
+        delete $ticked{ $file =~ s/\.tar.gz/\.readme/r };
+        delete $ticked{ $file =~ s/\.tar.gz/\.meta/r };
         next;
       }
-      print "scheduling $file for deletion\n";
       $ticked{ $file } ++;
     }
   }
 }
+
+print "scheduling $_ for deletion\n" foreach sort keys %ticked;
 
 print "ticking ", scalar keys %ticked, " ticky boxes...\n";
 

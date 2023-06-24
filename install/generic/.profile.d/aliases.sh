@@ -188,3 +188,7 @@ reverse_lines () {
 sq () {
   jq --raw-output --raw-input '. | @sh'
 }
+
+bee () {
+  ack -h --nocolor "\\b[$1]+\\b\\W*$" ~/bee* | grep $2 | perl -p -e's/\W/\n/g' | ack --nocolor '\w{4}' | sort -u
+}

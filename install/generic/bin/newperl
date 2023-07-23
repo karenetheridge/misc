@@ -33,8 +33,6 @@ run( qw/perlbrew self-upgrade/ );
 run( qw/yes | perlbrew install-patchperl/ );
 run( qw/yes | perlbrew install-cpanm/ );
 
-# install perl and lock it down
-
 $perl = '' if grep /^http/, @args;
 
 # DB_File on OSX 10.13 is incompatible - when the build fails,

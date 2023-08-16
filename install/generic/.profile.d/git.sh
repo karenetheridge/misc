@@ -7,8 +7,10 @@
 alias gd='git diff'
 alias gdd='git diff $(git describe --abbrev=0 --tags) HEAD' # committed changes since last tag
 alias gds='git diff --staged'
-alias gdo='git diff @{u}'
-alias glpo='glp --reverse origin/master..HEAD'
+alias gdo='git diff $(git rb)'
+alias gdom='git diff origin/$(git defaultbranch)'
+alias glpo='glp --reverse origin/$(git defaultbranch)..HEAD'
+alias glpom='glp --reverse origin/$(git defaultbranch)..HEAD'
 alias gs='git status'
 alias gsi='git status --ignored'
 alias glp='git log -p --decorate --notes --pretty=fuller --stat'

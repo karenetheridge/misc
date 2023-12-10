@@ -17,10 +17,10 @@ sub part(&@);
 my @install_first = qw(
     ExtUtils::MakeMaker
     App::cpanminus::reporter
+    App::cpanminus
 );
 my @to_install = (
 qw(
-    App::cpanminus
     Alt::Module::Runtime::ButEUMM
     ExtUtils::MakeMaker
     JSON::PP

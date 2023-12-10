@@ -254,7 +254,6 @@ my @needs_dot_in_inc = qw(
     Alt::Module::Runtime::ButEUMM
     Test::utf8
     Text::LineFold
-    MooseX::MarkAsMethods
     Module::Info
     Dist::Zilla::Plugin::Git::CheckFor::MergeConflicts
     Dist::Zilla::Plugin::Git::Remote::Check

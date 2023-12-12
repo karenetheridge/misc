@@ -49,7 +49,11 @@
 	compactionHeuristic = true
 	indentHeuristic = true
 [diff "gz"]
-	textconv = zcat
+	textconv = gzcat
+	cachetextconv = true
+	binary = true
+[diff "tgz"]
+	textconv = tar -xvzO -f
 	cachetextconv = true
 	binary = true
 [diff "zip"]

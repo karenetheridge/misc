@@ -1,4 +1,10 @@
+# in/as .git/info/attributes
+
 *.pl linguist-language=Perl whitespace=trailing-space,space-before-tab,tab-in-indent
 *.pm linguist-language=Perl whitespace=trailing-space,space-before-tab,tab-in-indent
 *.t linguist-language=Perl whitespace=trailing-space,space-before-tab,tab-in-indent
 Makefile whitespace=trailing-space,space-before-tab,-tab-in-indent
+
+*.txt.gz diff=gz
+*.tgz diff=tgz
+*.tar.gz diff=tgz

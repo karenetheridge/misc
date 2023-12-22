@@ -84,6 +84,16 @@
 	date = iso8601
 	follow = true	; as if we did 'git log --follow', when just one file
 
+[pretty]
+	# for all format strings, see 'man git-log' or 'git help log' under 'PRETTY FORMATS'
+	# default format is git reflog --format='%C(auto)%h%d %gd: %gs'
+	# %h - abbreviated commit hash
+	# %d - ref names
+	# %gd - reflog selector, e.g., refs/stash@{1}
+	# %gs - reflog subject
+	# use --date=format:'%Y-%m-%d %H:%m' to change the reflog date format.
+	reflog = %C(auto)%h %gd%d %gs %C(240)%as%C(auto)
+
 [pager]
 	log = less '+/^([*] +)?commit '
 	## esc-u disables highlighting just for this search.
@@ -150,6 +160,7 @@
 	# all commits from main branch to HEAD, in commit order
 	commits = "!git log -p --decorate --notes --pretty=fuller --stat --reverse origin/$(git defaultbranch)..HEAD"
 	rb = git rev-parse --abbrev-ref --symbolic-full-name @{u}
+	rl = reflog --format=reflog --date=format:'%Y-%m-%d %H:%m'
 
 ; for automatic translation of URLs
 [url "git@github.com:"]

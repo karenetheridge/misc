@@ -235,7 +235,7 @@ if has("autocmd")
 
   " au FileType * source ~/.vim/plugin/tab.vim
 
-  au FileType make set list
+  " au FileType make set list
 
   au FileType yaml set softtabstop=2  shiftwidth=2
 

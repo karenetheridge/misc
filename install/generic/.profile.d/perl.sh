@@ -45,13 +45,11 @@ unset V
 # PERL_MM_OPT=NORECURS=1
 
 # see App::Nopaste::Command
-export NOPASTE_SERVICES="Shadowcat Gist"
+export NOPASTE_SERVICES='Shadowcat Gist Pastie Snitch'
 
 gist() {
     nopaste --service Gist --private --desc "commandline gist $0" $@
 }
-
-
 
 # equivalent to perldoc -l <module>
 perlwhere() {
@@ -122,8 +120,6 @@ function cpanmrec() {
     command cpanm --dev --recommends $@
     cpanm-reporter
 }
-
-export NOPASTE_SERVICES='Shadowcat Gist Pastie Snitch'
 
 # stop using cpanplus
 export PERL_AUTOINSTALL_PREFER_CPAN=1

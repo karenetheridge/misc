@@ -9,3 +9,4 @@ aws.config
 awsenv
 boto.cfg
 .vimlocal
+.gitconfig.local

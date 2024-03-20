@@ -1,0 +1,41 @@
+#!/usr/bin/env perl
+
+# thanks to Sawyer for the original (see after the fold)
+
+use strict;
+use warnings;
+
+print STDERR "### got argv: @ARGV\n";
+
+review($ARGV[0]) if $ARGV[0];
+
+#my $emdash = "\342\200\224";
+#
+#while ( my $line = <STDIN> ) {
+#    if ( $line =~ /^\s*.\s([0-9a-f]+)\s(-|$emdash)\s(.*)$/ ) {
+#        review($1);
+#    }
+#}
+
+sub review {
+    my $id = shift;
+    print STDERR "### executing glp -n 1 $id\n";
+    exec "git log -p --decorate --notes --pretty=fuller -n 1 $id";
+}
+
+
+__END__
+`git lp' is aliased to `log --graph --pretty=format:'%Cred%h%Creset - %s %C(yellow)%d%Creset %Cgreen(%cr) %C(bold blue)<%an>%Creset''
+map <F3> :w !perl /home/sawyer/code/personal/p5p-summaries/bin/commit-review.pl<CR>
+^ That is in ~/.vimrc
+Then, the file is: (hold for the paste)
+use strict;
+use warnings;
+my $emdash = "\342\200\224";
+while ( my $line = <STDIN> ) {
+    if ( $line =~ /^\s*.\s([0-9a-f]+)\s(-|$emdash)\s(.*)$/ ) {
+        my $id = $1;
+        system "cd /home/sawyer/code/personal/perl/ && git log -p --color -n 1 $id";
+    }
+}
+

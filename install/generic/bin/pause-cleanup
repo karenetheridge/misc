@@ -14,6 +14,7 @@ use Path::Tiny;
 use HTTP::Tiny;
 use Parse::CPAN::Packages::Fast;
 use LWP::Protocol::https;
+use stable 'postderef';
 
 # keep the last N stable dists
 my $keep = shift || 2;
@@ -128,11 +129,10 @@ for my $key (sort keys %found) {
   my $found_stable = 0;
   my %seen_versions;
   my $index;
-  for ($index = 0; $index < @versions; ++$index)
-  {
+  for ($index = 0; $index < @versions; ++$index) {
     next if $seen_versions{$versions[$index]}++;  # there may be multiple dists with the same version
 
-    ++$found_stable if $versions[$index] !~ /_/ and not grep qr/-TRIAL\d?$/, $dist->{$versions[$index]}{values}->@*;
+    ++$found_stable if $versions[$index] !~ /_/ and not grep /-TRIAL\d?$/, $dist->{$versions[$index]}{values}->@*;
     last if $found_stable >= $keep;
   }
 

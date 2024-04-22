@@ -411,8 +411,8 @@ cpanm_mymodules() {
 }
 
 alias db='dzil build --not'
-alias dt='dzil test'
-alias dtr='dzil test --release'
+alias dt='dzil test; say tests completed with result $?'
+alias dtr='dzil test --release; say tests completed with result $?'
 
 build()
 {

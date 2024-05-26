@@ -160,7 +160,7 @@
 	# all commits from main branch to HEAD, in commit order
 	commits = "!git log -p --decorate --notes --pretty=fuller --stat --reverse origin/$(git defaultbranch)..HEAD"
 	rb = git rev-parse --abbrev-ref --symbolic-full-name @{u}
-	rl = reflog --format=reflog --date=format:'%Y-%m-%d %H:%m'
+	rl = reflog --format=reflog --date=format:'%Y-%m-%d %H:%M:%S'
 
 	# when rebasing, this will keep the local version of everything in
 	# conflict, not the conflicting changes from the rebase

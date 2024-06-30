@@ -190,7 +190,7 @@ sq () {
 }
 
 bee () {
-  ack -h --nocolor "\\b[$1]+\\b\\W*$" ~/bee* | grep $2 | perl -p -e's/\W/\n/g' | ack --nocolor '\w{4}' | sort -u
+  ack -h --nocolor "\\b[$1]+\\b\\W*$" ~/bee* | ack --nocolor $2 | perl -p -e's/\W/\n/g' | ack --nocolor '\w{4}' | sort -u
 }
 
 reverse () {

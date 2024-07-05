@@ -72,7 +72,7 @@
 
 [init]
 	# it seems that 2.37.1 (ish) now sets defaultBranch
-	defaultBranch = master	# let me switch to main for each branch individually
+	defaultBranch = master	# let me switch to main for each repository individually
 
 # this cannot be global, if the file does not exist?
 #[blame]

@@ -170,6 +170,9 @@
 	# preferring the conflicting changes from the rebase
 	keeptheirs = "!git checkout --ours -- .; git add $(git conf)"
 
+	# tag a working checkpoint, to ensure reflog does not drop it prematurely
+	checkpoint = "!git tag -m\"checkpoint: $(git branchname) $(date +'%Y-%m-%dT%T')\" \"checkpoint-$(git branchname)-$(date +'%Y-%m-%dT%H%M%S')\""
+
 ; for automatic translation of URLs
 [url "git@github.com:"]
 	insteadOf = http://github.com/

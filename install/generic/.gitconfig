@@ -21,6 +21,7 @@
 [push]
 	default = upstream
 	; default = simple
+	followTags = true	; automatically push annotated tags that are reachable
 [merge]
 	renamelimit = 1658
 	ff = false

@@ -13,7 +13,9 @@ export PAGER='less -icMR --tabs=4'
 export MANPAGER='less -sicMR'
 export PERLDOC_PAGER='less -sicMr'
 
-export PERLDOC=-oman    # xdg++, fixes https://rt.cpan.org/Public/Bug/Display.html?id=88204
+# xdg++, fixes https://rt.cpan.org/Public/Bug/Display.html?id=88204
+# but now in 2024 'perldoc perlop' hangs, so I will switch from -oman to -oansi
+export PERLDOC=-oansi
 
 export HISTTIMEFORMAT="%Y-%m-%d %T  "
 export HISTSIZE=10000

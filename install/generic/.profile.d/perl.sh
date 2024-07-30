@@ -26,7 +26,8 @@ export CPAN_META_JSON_BACKEND=JSON::MaybeXS
 
 # if I set this variable to true, I want it to be intentional.
 # otherwise, engage maximal failure mode.
-export PERL_USE_UNSAFE_INC=0
+# 2024-07-26  try going without to see how things are different?
+# export PERL_USE_UNSAFE_INC=0
 
 # added in perl 5.33.5
 export PERL_TEST_HARNESS_ASAP=1

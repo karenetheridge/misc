@@ -463,9 +463,9 @@ pt () {
 
 # run all acceptance tests from the bleeding edge
 acceptance_tests () {
-  tests=(t/zzz-acceptance-draft2020-12.t t/zzz-acceptance-draft2019-09.t t/zzz-acceptance-draft7.t)
+  tests=(t/zzz-acceptance-draft2020-12.t t/zzz-acceptance-draft2019-09.t t/zzz-acceptance-draft7.t t/zzz-acceptance-draft6.t t/zzz-acceptance-draft4.t)
   if [ -e t/zzz-acceptance-draft2020-12-format.t ]; then
-    tests+=(t/zzz-acceptance-draft2020-12-format.t t/zzz-acceptance-draft2019-09-format.t t/zzz-acceptance-draft7-format.t)
+    tests+=(t/zzz-acceptance-draft2020-12-format.t t/zzz-acceptance-draft2019-09-format.t t/zzz-acceptance-draft7-format.t t/zzz-acceptance-draft6-format.t t/zzz-acceptance-draft4-format.t)
   fi
 
   AUTHOR_TESTING=1 TEST_PREFIXDIR=~/git/JSON-Schema-Test-Suite prove -Ilib ${tests[@]}

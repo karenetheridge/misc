@@ -13,3 +13,4 @@
 --color-match=bright_yellow
 --color-filename=green
 --color-lineno=yellow
+--smart-case

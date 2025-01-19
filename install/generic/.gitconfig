@@ -44,6 +44,8 @@
 	rerereResolved = 14		; prune resolved conflicts older than N days; default 60
 	reflogExpire = 365		; days; default: 90
 	reflogExpireUnreachable = 365	; days; default: 30
+[commit]
+	verbose = 2				; show diff being committed, and diff of unstaged files
 
 [diff]
 	algorithm = histogram	; a bit better than patience
@@ -148,7 +150,7 @@
 	pushf = push --force-with-lease
 	chp = checkout -p
 	upsub = "!git submodule update --init --recursive $*; git submodule update --remote $*"
-	c = commit -v
+	c = commit -v -v
 	bleadrelease = git describe --abbrev=0 --tags
 	# all commits, in ascending chronological order, since the last blead release
 	bleadcommits = "!git log --graph --oneline --decorate --date=short --pretty=format:'%C(yellow)%h %Cred%ad %Cblue%an%C(red bold)%d %Creset%s' $(git bleadrelease)~1..HEAD | perl -wE'print reverse <>' | perl -wne'm/^(\\W+)+ /g; my $str = (substr($_, 0, pos()) =~ tr{/\\\\}{\\\\/}r).substr($_, pos()); print $str'"

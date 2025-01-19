@@ -1,0 +1,18 @@
+#!/usr/bin/perl
+
+# usage: snooze 1200
+# prints a countdown to the screen.
+
+my $total = shift;
+my $elapsed = 0;
+
+$| = 1;
+while ($elapsed <= $total) {
+  print sprintf("% 10d -- $total", $elapsed);
+  ++$elapsed;
+  sleep 1;
+}
+continue {
+  print "\b" x (10 + 4 + length("$total"));
+}
+print "\ndone!\n";

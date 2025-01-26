@@ -1,0 +1,32 @@
+#!/usr/bin/env perl
+use strict;
+use warnings;
+use Path::Tiny;
+use IPC::Open3;
+
+chomp(my $home_dir = `ls -1d ~/.cpanm/work`);
+my @timestamps = sort { $a <=> $b } map $_->basename, path($home_dir)->children;
+my $latest = $timestamps[-1];
+
+my $cpanm_pid = open3('<&STDIN', '>&STDOUT', '>&STDERR', 'cpanm', @ARGV);
+# new calling style: only in 1.24
+# my $cpanm_pid = open3(['&', *STDIN], ['&', *STDOUT], ['&', *STDERR], 'cpanm', @ARGV);
+# print "### would do: cpanm @ARGV\n";
+waitpid($cpanm_pid, 0);
+
+# find the timestamp created just after the last one we knew about before
+my $target_ts;
+foreach my $ts (sort { $a <=> $b } map $_->basename, path("~/.cpanm/work")->children) {
+  $target_ts = $ts and last if $ts > $latest;
+}
+
+if (not $target_ts) {
+  print 'no log file found that is more recent than '.$latest, "\n";
+  exit 1;
+}
+
+#print "### would do: ", join(' ', 'cpanm-reporter', '--build_logfile='.$home_dir.'/'.$target_ts.'/build.log'), "\n";
+exec('cpanm-reporter', '--build_logfile='.$home_dir.'/'.$target_ts.'/build.log');
+
+
+

@@ -109,17 +109,20 @@ releases() {
 # if App::cpanminus::reporter is installed, we send reports automatically
 #alias cpanm='cpanm --mirror-only --mirror https://mirrors.gossamer-threads.com/CPAN/'
 function cpanm() {
-    command cpanm $@
-    cpanm-reporter
+    #command cpanm $@
+    #cpanm-reporter
+    command cpanm-parallel $@
 }
 
 function cpanmdev() {
-    command cpanm --dev $@
-    cpanm-reporter
+    #command cpanm --dev $@
+    #cpanm-reporter
+    command cpanm-parallel --dev $@
 }
 function cpanmrec() {
-    command cpanm --dev --recommends $@
-    cpanm-reporter
+    #command cpanm --dev --recommends $@
+    #cpanm-reporter
+    command cpanm-parallel --dev --recommends $@
 }
 
 # stop using cpanplus

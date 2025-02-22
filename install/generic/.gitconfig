@@ -164,13 +164,15 @@
 	rb = git rev-parse --abbrev-ref --symbolic-full-name @{u}
 	rl = reflog --format=reflog --date=format:'%Y-%m-%d %H:%M:%S'
 
-	# when rebasing, this will keep the local version of everything in
-	# conflict, not the conflicting changes from the rebase
-	keepmine = "!git checkout --theirs -- .; git add $(git conf)"
+	# when rebasing, this will keep the original version of everything in
+	# conflict (the first of the three diffs), not the conflicting changes
+	# coming in from the rebase, cherry-pick or stash application
+	keepmine = "!git checkout --ours -- .; git add $(git conf)"
 
-	# when rebasing, this will discard the local version of everything, and
-	# preferring the conflicting changes from the rebase
-	keeptheirs = "!git checkout --ours -- .; git add $(git conf)"
+	# when rebasing, this will discard the original version of everything,
+	# preferring the conflicting changes coming in from the rebase,
+	# cherry-pick or stash application (the third of the three diffs)
+	keeptheirs = "!git checkout --theirs -- .; git add $(git conf)"
 
 	# tag a working checkpoint, to ensure reflog does not drop it prematurely
 	checkpoint = "!git tag -m\"checkpoint: $(git branchname) $(date +'%Y-%m-%dT%T')\" \"checkpoint-$(git branchname)-$(date +'%Y-%m-%dT%H%M%S')\""

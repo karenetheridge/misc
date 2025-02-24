@@ -1,11 +1,19 @@
 #!/usr/bin/env perl
+# vim: set ts=8 sts=2 sw=2 tw=100 et :
 use strict;
 use warnings;
-use Path::Tiny;
 use IPC::Open3;
 
 chomp(my $home_dir = `ls -1d ~/.cpanm/work`);
-my @timestamps = sort { $a <=> $b } map $_->basename, path($home_dir)->children;
+
+sub timestamps {
+  opendir(my $dh, $home_dir) or die "Can't open $home_dir: $!";
+  my @timestamps = sort { $a <=> $b } grep !/^\.{1,2}$/, readdir $dh;
+  closedir $dh;
+  return @timestamps;
+}
+
+my @timestamps = timestamps();
 my $latest = $timestamps[-1];
 
 my $cpanm_pid = open3('<&STDIN', '>&STDOUT', '>&STDERR', 'cpanm', @ARGV);
@@ -16,9 +24,11 @@ waitpid($cpanm_pid, 0);
 
 # find the timestamp created just after the last one we knew about before
 my $target_ts;
-foreach my $ts (sort { $a <=> $b } map $_->basename, path("~/.cpanm/work")->children) {
+foreach my $ts (timestamps()) {
   $target_ts = $ts and last if $ts > $latest;
 }
+
+#print "found target $target_ts\n";
 
 if (not $target_ts) {
   print 'no log file found that is more recent than '.$latest, "\n";
@@ -27,6 +37,5 @@ if (not $target_ts) {
 
 #print "### would do: ", join(' ', 'cpanm-reporter', '--build_logfile='.$home_dir.'/'.$target_ts.'/build.log'), "\n";
 exec('cpanm-reporter', '--build_logfile='.$home_dir.'/'.$target_ts.'/build.log');
-
 
 

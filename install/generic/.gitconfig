@@ -164,15 +164,20 @@
 	rb = git rev-parse --abbrev-ref --symbolic-full-name @{u}
 	rl = reflog --format=reflog --date=format:'%Y-%m-%d %H:%M:%S'
 
+	# "Note that during git rebase and git pull --rebase, ours and theirs
+	# may appear swapped; --ours gives the version from the branch the
+	# changes are rebased onto, while --theirs gives the version from the
+	# branch that holds your work that is being rebased."
+
 	# when rebasing, this will keep the original version of everything in
 	# conflict (the first of the three diffs), not the conflicting changes
 	# coming in from the rebase, cherry-pick or stash application
-	keepmine = "!git checkout --ours -- .; git add $(git conf)"
+	keepmine = "!git checkout --theirs -- .; git add $(git conf)"
 
 	# when rebasing, this will discard the original version of everything,
 	# preferring the conflicting changes coming in from the rebase,
 	# cherry-pick or stash application (the third of the three diffs)
-	keeptheirs = "!git checkout --theirs -- .; git add $(git conf)"
+	keeptheirs = "!git checkout --ours -- .; git add $(git conf)"
 
 	# tag a working checkpoint, to ensure reflog does not drop it prematurely
 	checkpoint = "!git tag -m\"checkpoint: $(git branchname) $(date +'%Y-%m-%dT%T')\" \"checkpoint-$(git branchname)-$(date +'%Y-%m-%dT%H%M%S')\""

@@ -50,8 +50,8 @@ fixup () {
 }
 
 gbi() {
-  # first arg, defaulting to 2; all args after the first
-  git rebase -i "HEAD~${1:-2}" "${@: 2}";
+  # first arg, defaulting to 3; all args after the first
+  git rebase -i "HEAD~${1:-2}" "${@: 3}";
 }
 
 alias gitalltags='git log --tags --simplify-by-decoration --notes --pretty="format:%ai %d"'

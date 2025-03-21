@@ -1,3 +1,4 @@
+# vim: set ts=8 sts=2 sw=2 tw=100 et ft=bash :
 # this file is install/generic/.profile.d/perl.sh
 
 # to alter ExtUtils::MakeMaker options (e.g. compile options used in cpan):

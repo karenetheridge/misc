@@ -51,7 +51,7 @@ fixup () {
 
 gbi() {
   # first arg, defaulting to 3; all args after the first
-  git rebase -i "HEAD~${1:-2}" "${@: 3}";
+  git rebase -i "HEAD~${1:-3}" "${@: 2}";
 }
 
 alias gitalltags='git log --tags --simplify-by-decoration --notes --pretty="format:%ai %d"'

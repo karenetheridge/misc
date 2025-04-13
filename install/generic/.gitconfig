@@ -163,6 +163,7 @@
 	commits = "!git log -p --decorate --notes --pretty=fuller --stat --reverse origin/$(git defaultbranch)..HEAD"
 	rb = git rev-parse --abbrev-ref --symbolic-full-name @{u}
 	rl = reflog --format=reflog --date=format:'%Y-%m-%d %H:%M:%S'
+	branches = git branch --sort=-committerdate
 
 	# "Note that during git rebase and git pull --rebase, ours and theirs
 	# may appear swapped; --ours gives the version from the branch the

@@ -13,6 +13,14 @@ export PAGER='less -icMR --tabs=4'
 export MANPAGER='less -sicMR'
 export PERLDOC_PAGER='less -sicMr'
 
+# https://stackoverflow.com/questions/1780483/lines-and-columns-environmental-variables-lost-in-a-script/48016366#48016366
+shopt -s checkwinsize             # set $LINES and $COLUMNS after a child process exits
+trap 'export LINES COLUMNS' DEBUG # the DEBUG trap executes before each command entered at the prompt
+# alternatively:
+# export LINES=$(tput lines)
+# export COLUMNS=$(tput cols)
+
+
 # xdg++, fixes https://rt.cpan.org/Public/Bug/Display.html?id=88204
 # but now in 2024 'perldoc perlop' hangs, so I will switch from -oman to -oansi
 export PERLDOC=-oansi

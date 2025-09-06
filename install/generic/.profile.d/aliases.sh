@@ -145,7 +145,7 @@ perlpie() {
 }
 
 json2yaml() {
-    perl -MYAML::XS -MJSON::MaybeXS -wE'$YAML::XS::Boolean="JSON::PP"; print Dump(JSON::MaybeXS->new->decode(do { local $/; <> }))' $*
+    perl -MYAML::XS -MJSON::MaybeXS -wE'$YAML::XS::Boolean="JSON::PP"; print Dump(JSON()->new->allow_nonref->decode(do { local $/; <> }))' $*
 }
 
 json2dd() {
@@ -153,7 +153,7 @@ json2dd() {
 }
 
 yaml2json() {
-    perl -MYAML::XS -MJSON::MaybeXS -wE'print JSON()->new->pretty->indent_length(2)->canonical->encode(Load(do { local $/; <> }))' $*
+    perl -MYAML::XS -MJSON::MaybeXS -wE'print JSON()->new->pretty->indent_length(2)->canonical->allow_nonref->encode(Load(do { local $/; <> }))' $*
 }
 
 yaml2dd() {

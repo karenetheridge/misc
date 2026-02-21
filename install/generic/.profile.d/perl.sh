@@ -376,6 +376,11 @@ modernperls() {
     done
 }
 
+cpanm-reporter-again() {
+  local last=${1-$(ls -1t ~/.cpanm/work/ | head -n1)}
+  cpanm-reporter --force --skip-history --build_logfile=$(ls -1d ~/.cpanm/work)/$last/build.log
+}
+
 everyperl () {
     set -o noglob
     for perl in $(perlbrew list | grep '@std' | grep -v rc | grep -v \*); do

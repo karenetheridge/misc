@@ -152,7 +152,7 @@
 	cm = commit
 	upsub = "!git submodule update --init --recursive $*; git submodule update --remote $*"
 	c = commit -v -v
-	bleadrelease = git describe --abbrev=0 --tags
+	bleadrelease = describe --abbrev=0 --tags
 	# all commits, in ascending chronological order, since the last blead release
 	bleadcommits = "!git log --graph --oneline --decorate --date=short --pretty=format:'%C(yellow)%h %Cred%ad %Cblue%an%C(red bold)%d %Creset%s' $(git bleadrelease)~1..HEAD | perl -wE'print reverse <>' | perl -wne'm/^(\\W+)+ /g; my $str = (substr($_, 0, pos()) =~ tr{/\\\\}{\\\\/}r).substr($_, pos()); print $str'"
 	common = !git merge-base --fork-point $(git rev-parse --abbrev-ref HEAD)  # common ancestor between current branch and provided branch or commit
@@ -163,9 +163,9 @@
 	isdirty = diff --quiet --stat # returns 0 if the file is clean, 1 if it is dirty
 	# all commits from main branch to HEAD, in commit order
 	commits = "!git log -p --decorate --notes --pretty=fuller --stat --reverse origin/$(git defaultbranch)..HEAD"
-	rb = git rev-parse --abbrev-ref --symbolic-full-name @{u}
+	rb = rev-parse --abbrev-ref --symbolic-full-name @{u}
 	rl = reflog --format=reflog --date=format:'%Y-%m-%d %H:%M:%S'
-	branches = git branch --sort=-committerdate
+	branches = branch --sort=-committerdate
 
 	# "Note that during git rebase and git pull --rebase, ours and theirs
 	# may appear swapped; --ours gives the version from the branch the

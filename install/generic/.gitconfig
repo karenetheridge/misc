@@ -25,7 +25,7 @@
 [merge]
 	renamelimit = 1658
 	ff = false
-	conflictstyle = diff3
+	conflictstyle = zdiff3
 [rebase]
 	autostash = true
 	missingCommitsCheck = warn

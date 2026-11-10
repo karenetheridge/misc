@@ -40,10 +40,10 @@
 	enabled = true
 	autoupdate = true
 [gc]
-	rerereUnresolved = 2	; prune unresolved conflicts older than N days; default 15
-	rerereResolved = 14		; prune resolved conflicts older than N days; default 60
-	reflogExpire = 365		; days; default: 90
-	reflogExpireUnreachable = 365	; days; default: 30
+	rerereUnresolved = 30	; prune unresolved conflicts older than N days; default 15
+	rerereResolved = 30		; prune resolved conflicts older than N days; default 60
+	reflogExpire = 180		; days; default: 90
+	reflogExpireUnreachable = 180	; days; default: 30
 [commit]
 	verbose = 2				; show diff being committed, and diff of unstaged files
 

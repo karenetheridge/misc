@@ -9,12 +9,14 @@ alias gdd='git diff $(git describe --abbrev=0 --tags) HEAD' # committed changes 
 alias gds='git diff --staged'
 alias gdo='git diff $(git rb)'
 alias gdom='git diff origin/$(git defaultbranch)'
-alias glpo='glp --reverse origin/$(git defaultbranch)..HEAD'
-alias glpom='glp --reverse origin/$(git defaultbranch)..HEAD'
+alias glpm='git log --decorate --notes --pretty=fuller --stat -p --reverse $(git defaultbranch)~1..HEAD'
+alias glpom='git log --decorate --notes --pretty=fuller --stat -p --reverse origin/$(git defaultbranch)~1..HEAD'
+# show all commits since when current branch and provided branch/commit diverged
+alias glpdiff='git log --decorate --notes --pretty=fuller --stat -p --reverse "$(git common $1)..HEAD"'
 alias gs='git status'
 alias gsi='git status --ignored'
 alias glp='git log -p --decorate --graph --notes --pretty=fuller --stat'
-alias glpd='git log -p --reverse $(git describe --abbrev=0 --tags)..HEAD'
+alias glpt='git log --decorate --notes --pretty=fuller --stat -p --reverse $(git describe --abbrev=0 --tags)..HEAD'
 alias gl='git log --decorate --notes --graph --pretty=fuller --stat'
 alias gtc='git tag --contains'
 
@@ -30,8 +32,10 @@ alias grc='git rebase --continue'
 alias gra='git rebase --abort'
 alias gri='git rebase -i $(git describe --abbrev=0 --tags)'
 alias viconf='vim $(git conf)'  # edit all files in conflict - see .gitconfig alias
+alias vichanged='vim $(git diff-tree --no-commit-id --name-only HEAD -r)' # edit all files changed in the last commit
 alias gco='git checkout'
 alias gcop='git checkout -p'
+alias gap='git add -p'
 
 stash() {
   git show "stash@{${1:-0}}"

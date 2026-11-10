@@ -147,7 +147,9 @@
 	# files that changed in the commit
 	df = !sh -c 'git diff-tree --no-commit-id --name-only -r "${1-HEAD}"'
 	pushf = push --force-with-lease
+	ch = checkout
 	chp = checkout -p
+	cm = commit
 	upsub = "!git submodule update --init --recursive $*; git submodule update --remote $*"
 	c = commit -v -v
 	bleadrelease = git describe --abbrev=0 --tags

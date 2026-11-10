@@ -98,7 +98,7 @@
 	reflog = %C(auto)%h %gd%d %gs %C(240)%as%C(auto)
 
 [pager]
-	log = less '+/^([*] +)?commit '
+	log = less '+/^[^a-zA-Z]*?commit '
 	## esc-u disables highlighting just for this search.
 	#log = less -p'^([*] +)?commit '
 	logone = less
